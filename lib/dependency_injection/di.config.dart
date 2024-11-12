@@ -38,11 +38,14 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
     gh.factory<_i136.OfflineDataSource>(() => _i649.OfflineDataSourceImpl());
-    gh.factory<_i862.AuthRepository>(() => _i566.AuthRepositoryImpl());
-    gh.factory<_i715.AuthUseCase>(
-        () => _i715.AuthUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i787.OnlineDataSource>(
         () => _i824.OnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i862.AuthRepository>(() => _i566.AuthRepositoryImpl(
+          gh<_i136.OfflineDataSource>(),
+          gh<_i787.OnlineDataSource>(),
+        ));
+    gh.factory<_i715.AuthUseCase>(
+        () => _i715.AuthUseCase(gh<_i862.AuthRepository>()));
     return this;
   }
 }
