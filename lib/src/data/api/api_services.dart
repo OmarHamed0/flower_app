@@ -15,7 +15,7 @@ abstract class ApiServices{
 
 
   @POST(ApisEndPoints.signin)
-  Future<SignInResponseModel> login(@Body() SignInRequestBody requestBody);
+  Future<SignInResponseModel> signIn(@Body() SignInRequestBody requestBody);
 
   @GET(ApisEndPoints.loggedUserData)
   Future<LoggedUserDataResponseModel> getLoggedUserData(@Header("token") String token);

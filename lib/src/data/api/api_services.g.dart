@@ -24,7 +24,7 @@ class _ApiServices implements ApiServices {
   final ParseErrorLogger? errorLogger;
 
   @override
-  Future<SignInResponseModel> login(SignInRequestBody requestBody) async {
+  Future<SignInResponseModel> signIn(SignInRequestBody requestBody) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
