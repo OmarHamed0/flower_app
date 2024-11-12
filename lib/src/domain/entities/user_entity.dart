@@ -18,5 +18,4 @@ class UserEntity {
     this.photo,
     this.role
   });
-
 }
