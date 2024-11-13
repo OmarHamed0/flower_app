@@ -5,7 +5,7 @@ import 'package:flower_app/src/data/api/core/response_model/logged_user_data_rep
 import 'package:flower_app/src/data/api/core/response_model/signin_response_model.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-import 'core/apis_baseurl.dart';
+import 'core/constants/apis_baseurl.dart';
 part 'api_services.g.dart';
 @injectable
 @RestApi(baseUrl: ApisBaseurl.authBaseUrl)
