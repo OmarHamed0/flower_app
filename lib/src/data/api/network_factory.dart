@@ -3,8 +3,6 @@ import 'package:flutter/foundation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
-
-
 //   Dio providerDio(){
 //    final Dio dio=Dio(
 //      BaseOptions(
@@ -34,18 +32,17 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 //   }
 // }
 
-
-
 @module
 abstract class DioProvider {
   @lazySingleton
   Dio dioProvider() {
     final Dio dio = Dio(
-          BaseOptions(
+      BaseOptions(
         connectTimeout: const Duration(seconds: 60),
         sendTimeout: const Duration(seconds: 60),
-      receiveTimeout: const  Duration(seconds: 60),
-          )    );
+        receiveTimeout: const Duration(seconds: 60),
+      ),
+    );
     dio.interceptors.add(providePretty());
     return dio;
   }
@@ -64,6 +61,3 @@ abstract class DioProvider {
     );
   }
 }
-
-
-

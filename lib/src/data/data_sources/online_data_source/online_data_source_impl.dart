@@ -1,3 +1,5 @@
+import 'package:flower_app/config/helpers/shared_pre_keys.dart';
+import 'package:flower_app/config/helpers/shared_pref_helper.dart';
 import 'package:flower_app/src/data/api/api_services.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/signin_request_body.dart';
 import 'package:flower_app/src/data/api/core/response_model/signin_response_model.dart';
@@ -12,14 +14,16 @@ class OnlineDataSourceImpl implements OnlineDataSource {
   OnlineDataSourceImpl(this._apiServices);
 
   @override
-  Future<SignInResponseModel> signin(String email, String password) {
-    return _apiServices
-        .signIn(SignInRequestBody(email: email, password: password));
+  Future<SignInResponseModel> signin(String email, String password)async {
+    var response = await _apiServices.signIn(SignInRequestBody(email: email, password: password));
+    ShardPrefHelper.setSecureString(SharedPrefKeys.userToken, response.token??"");
+    return response;
   }
 
   @override
   Future<UserModelDTO> getLoggedUserData() async {
-    var response = await _apiServices.getLoggedUserData("");
+    String token = ShardPrefHelper.getSecureString(SharedPrefKeys.userToken);
+    var response = await _apiServices.getLoggedUserData(token);
     return UserModelDTO.fromResponse(response);
   }
 }

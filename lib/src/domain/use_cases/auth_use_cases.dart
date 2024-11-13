@@ -5,7 +5,7 @@ import 'package:flower_app/src/domain/repositories/auth_repo.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class AuthUseCase{
+class AuthUseCases{
   AuthRepository _authRepository;
-  AuthUseCase(this._authRepository);
+  AuthUseCases(this._authRepository);
 }
