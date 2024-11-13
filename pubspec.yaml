@@ -29,6 +29,9 @@ dependencies:
 
   cupertino_icons: ^1.0.6
   either_dart: ^1.0.0
+  pretty_dio_logger: ^1.4.0
+  shared_preferences: ^2.3.3
+  flutter_secure_storage: ^4.2.1
 
 dev_dependencies:
   flutter_test:

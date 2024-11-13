@@ -11,8 +11,10 @@
 import 'package:dio/dio.dart' as _i361;
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
+import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
 import '../src/data/api/api_services.dart' as _i687;
+import '../src/data/api/network_factory.dart' as _i13;
 import '../src/data/data_sources/offline_data_source/offline_data_source.dart'
     as _i136;
 import '../src/data/data_sources/offline_data_source/offline_data_source_impl.dart'
@@ -36,7 +38,10 @@ extension GetItInjectableX on _i174.GetIt {
       environment,
       environmentFilter,
     );
-    gh.factory<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
+    final dioProvider = _$DioProvider();
+    gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
+    gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
+    gh.singleton<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
     gh.factory<_i136.OfflineDataSource>(() => _i649.OfflineDataSourceImpl());
     gh.factory<_i787.OnlineDataSource>(
         () => _i824.OnlineDataSourceImpl(gh<_i687.ApiServices>()));
@@ -49,3 +54,5 @@ extension GetItInjectableX on _i174.GetIt {
     return this;
   }
 }
+
+class _$DioProvider extends _i13.DioProvider {}
