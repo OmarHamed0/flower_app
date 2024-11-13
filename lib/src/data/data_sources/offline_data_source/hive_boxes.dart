@@ -1,4 +1,4 @@
-abstract class HiveBoxes{
-  static const  String token = "token";
+class HiveBoxes{
+  HiveBoxes._();
   static const  String user = "user";
 }
