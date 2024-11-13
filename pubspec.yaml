@@ -28,6 +28,7 @@ dependencies:
   injectable:
 
   cupertino_icons: ^1.0.6
+  pretty_dio_logger: ^1.4.0
 
 dev_dependencies:
   flutter_test:
