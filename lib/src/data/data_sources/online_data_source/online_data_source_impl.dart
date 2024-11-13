@@ -6,7 +6,6 @@ import 'package:flower_app/src/data/api/api_services.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/signin_request_body.dart';
 import 'package:flower_app/src/data/api/core/response_model/signin_response_model.dart';
 import 'package:flower_app/src/data/data_sources/online_data_source/online_data_source.dart';
-import 'package:flower_app/src/data/models/sign_in_response_dto.dart';
 import 'package:flower_app/src/data/models/usr_model_dto.dart';
 import 'package:injectable/injectable.dart';
 
@@ -18,7 +17,7 @@ class OnlineDataSourceImpl implements OnlineDataSource {
 
   @override
   Future<UserModelDTO> getLoggedUserData() async {
-    String token = ShardPrefHelper.getSecureString(SharedPrefKeys.userToken);
+    String token = SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
     var response = await _apiServices.getLoggedUserData(token);
     return UserModelDTO.fromResponse(response);
   }
@@ -32,7 +31,7 @@ class OnlineDataSourceImpl implements OnlineDataSource {
     });
     switch (response) {
       case Success<SignInResponseModel>():
-        ShardPrefHelper.setSecureString(
+        SharedPrefHelper.setSecureString(
             SharedPrefKeys.userToken, response.data!.token ?? "");
       case Failures<SignInResponseModel>():
     }

@@ -11,5 +11,7 @@ class AuthUseCases{
   Future<ApiResult<SignInEntity>> signIn(String email,String password) async{
     return await _authRepository.signIn(email, password);
   }
-
+  Future<bool> isLoggedUser() async{
+     return _authRepository.isLoggedUser();
+  }
 }

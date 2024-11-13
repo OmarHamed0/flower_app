@@ -35,4 +35,9 @@ class AuthRepositoryImpl implements AuthRepository {
       return Failures(exception: e);
     }
   }
+
+  @override
+  Future<bool> isLoggedUser() async{
+    return _offlineDataSource.isLoggedUser();
+  }
 }
