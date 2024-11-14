@@ -14,6 +14,7 @@ class SignInViewModel extends Cubit<SignInStates>{
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   bool isBoxChecked = false;
+  bool isObscureText = true;
 
 
   void _signIn() async{
@@ -28,10 +29,25 @@ class SignInViewModel extends Cubit<SignInStates>{
     }
   }
 
+  void _changePasswordVisibility(){
+    isObscureText = !isObscureText;
+    isObscureText ? emit(NonVisiblePasswordState()):emit(VisiblePasswordState());
+  }
+
+  void _checkBox(){
+    isBoxChecked = !isBoxChecked;
+    emit(CheckBoxState());
+  }
   void doAction(SignInActions action){
     switch (action) {
       case SignInClickAction():
         _signIn();
+        break;
+      case ChangePasswordVisibilityAction():
+        _changePasswordVisibility();
+        break;
+      case ChangeCheckBoxAction():
+        _checkBox();
         break;
     }
   }
