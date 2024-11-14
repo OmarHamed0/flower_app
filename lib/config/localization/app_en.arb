@@ -1,7 +1,7 @@
 {
   "login": "Login",
   "email" : "Email",
-  "password" : "password",
+  "password" : "Password",
   "enterYourEmail" : "Enter your email",
   "enterYourPassword" : "Enter your password",
   "notValidEmail": "This Email is not valid",
