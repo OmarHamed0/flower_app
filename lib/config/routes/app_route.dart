@@ -1,4 +1,5 @@
 import 'package:flower_app/config/routes/page_route_name.dart';
+import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRoute {
@@ -9,7 +10,8 @@ class AppRoute {
             settings: settings,
             widget: const Scaffold()
         );
-
+      case PageRouteName.signIn:
+        return MaterialPageRoute(builder: (_) => SignInScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings,

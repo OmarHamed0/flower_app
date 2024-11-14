@@ -13,6 +13,7 @@ class AppRadius{
 
  /// Extra small of value 4
  static const xs = Radius.circular(4);
+ static const s = Radius.circular(8);
 
  ///  Extra extra large with value 100
   static const xxl = Radius.circular(100);
