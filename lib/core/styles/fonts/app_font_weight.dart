@@ -1,6 +1,9 @@
 import 'dart:ui';
 
+/// Class to access all font weights
 class AppFontWeights{
+
+  /// private constructor to make this class not instantiated
   AppFontWeights._();
 
   /// Font weight with value 100
