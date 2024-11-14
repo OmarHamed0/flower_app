@@ -12,6 +12,6 @@ class AuthUseCases{
     return await _authRepository.signIn(email, password);
   }
   Future<bool> isLoggedUser() async{
-     return _authRepository.isLoggedUser();
+     return await _authRepository.isLoggedUser();
   }
 }
