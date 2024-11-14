@@ -4,5 +4,10 @@
   "password" : "password",
   "enterYourEmail" : "Enter your email",
   "enterYourPassword" : "Enter your password",
-  "notValidEmail": "This Email is not valid"
+  "notValidEmail": "This Email is not valid",
+  "rememberMe" : "Remember me",
+  "forgetPassword":"Forget password?",
+  "continueAsGuest" : "Continue as guest",
+  "dontHaveAccount" : "Don't have account? ",
+  "signUp": "Sign up"
 }

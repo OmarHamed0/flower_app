@@ -4,6 +4,10 @@
   "password": "كلمة السر",
   "enterYourEmail" : "ادخل البريد الالكتروني",
   "enterYourPassword":   "ادخل كلمة السر",
-  "notValidEmail": "البزيد الالكتروني غير متاح"
-
+  "notValidEmail": "البزيد الالكتروني غير متاح",
+  "rememberMe": "تذكرني",
+  "forgetPassword": "نسيت كلمة السر؟",
+  "continueAsGuest": "الاستمرار كضيف",
+  "dontHaveAccount": "لا تمتلك حساب؟",
+  "signUp": "انشاء حساب"
 }
