@@ -3,17 +3,18 @@
 import 'package:flutter/material.dart';
  class AppColors{
    AppColors._();
-  static const Color kWightBase=Color(0xFFF9F9F9);
-  static const Color kWight10=Color(0xFFfefefe);
-  static const Color kWight20=Color(0xFFfdfdfd);
-  static const Color kWight30=Color(0xFFfcfcfc);
-  static const Color kWight40=Color(0xFFfbfbfb);
-  static const Color kWight50=Color(0xFFfafafa);
-  static const Color kWight60=Color(0xFFd0d0d0);
-  static const Color kWight70=Color(0xFFa6a6a6);
-  static const Color kWight80=Color(0xFF7d7d7d);
-  static const Color kWight90=Color(0xFF535353);
-  static const Color kWight100=Color(0xFF323232);
+   static const Color kBaseColor = Color(0xffD21E6A);
+  static const Color kWhiteBase=Color(0xFFF9F9F9);
+  static const Color kWhite10=Color(0xFFfefefe);
+  static const Color kWhite20=Color(0xFFfdfdfd);
+  static const Color kWhite30=Color(0xFFfcfcfc);
+  static const Color kWhite40=Color(0xFFfbfbfb);
+  static const Color kWhite50=Color(0xFFfafafa);
+  static const Color kWhite60=Color(0xFFd0d0d0);
+  static const Color kWhite70=Color(0xFFa6a6a6);
+  static const Color kWhite80=Color(0xFF7d7d7d);
+  static const Color kWhite90=Color(0xFF535353);
+  static const Color kWhite100=Color(0xFF323232);
 
 
 
