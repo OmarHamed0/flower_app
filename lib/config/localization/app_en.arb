@@ -1,4 +1,8 @@
 {
-  "helloWorld": "hello World",
-  "signIn": "sign in"
+  "login": "Login",
+  "email" : "Email",
+  "password" : "password",
+  "enterYourEmail" : "Enter your email",
+  "enterYourPassword" : "Enter your password",
+  "notValidEmail": "This Email is not valid"
 }

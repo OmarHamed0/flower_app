@@ -1,4 +1,9 @@
 {
-  "helloWorld": "مرحبا ",
-  "signIn": "تسجيل الدخول"
+  "login": "تسجيل الدخول",
+  "email": "البريد الالكتروني",
+  "password": "كلمة السر",
+  "enterYourEmail" : "ادخل البريد الالكتروني",
+  "enterYourPassword":   "ادخل كلمة السر",
+  "notValidEmail": "البزيد الالكتروني غير متاح"
+
 }
