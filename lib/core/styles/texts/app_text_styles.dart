@@ -4,6 +4,7 @@ import 'package:flower_app/core/styles/fonts/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+/// class contains all App main Text style
 class AppTextStyles{
   AppTextStyles._();
 
