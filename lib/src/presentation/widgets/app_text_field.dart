@@ -1,3 +1,4 @@
+import 'package:flower_app/core/styles/app_radius.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,8 @@ class AppTextField extends StatelessWidget {
     this.keyboardType,
     this.maxLines = 1,
     this.hintText,
-    this.hintStyle
+    this.hintStyle,
+    this.labelStyle
   });
 
   final TextEditingController? controller;
@@ -48,6 +50,7 @@ class AppTextField extends StatelessWidget {
   final TextInputType? keyboardType;
   final int maxLines;
   final TextStyle? hintStyle;
+  final TextStyle? labelStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +71,7 @@ class AppTextField extends StatelessWidget {
         labelText: labelText,
         hintText: hintText,
         hintStyle:hintStyle ,
+        labelStyle: labelStyle,
         helperText: helperText,
         errorText: errorText,
         suffixIcon: suffixIcon,
@@ -83,28 +87,28 @@ class AppTextField extends StatelessWidget {
             color: AppColors.kGray,
             width: 1.5,
           ),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: AppBorderRadius.xs,
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: Colors.blue,
+            color: AppColors.kGray,
             width: 1.5,
           ),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: AppBorderRadius.xs,
         ),
         errorBorder: OutlineInputBorder(
           borderSide:  const BorderSide(
             color: AppColors.kRed,
             width: 1.5,
           ),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: AppBorderRadius.xs,
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
             color: AppColors.kRed,
             width: 1.5,
           ),
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: AppBorderRadius.xs,
         ),
       ),
     );
