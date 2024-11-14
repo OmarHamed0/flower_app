@@ -15,15 +15,23 @@ class AppTextStyles{
     color: AppColors.kBlack
   );
 
-  static TextStyle font16 = TextStyle(
+  static TextStyle font16WeightMedium = TextStyle(
       fontSize: 16.sp,
       fontFamily: AppFonts.kPrimaryFont,
+      fontWeight: AppFontWeights.medium
   );
 
-  static TextStyle fontWeightNormal = const TextStyle(
+  static TextStyle font13WeightNormal =  TextStyle(
       fontWeight: AppFontWeights.normal,
       fontFamily: AppFonts.kPrimaryFont,
-      color: AppColors.kBlack
+      color: AppColors.kBlack,
+      fontSize: 13.sp
+  );
+  static TextStyle font12WeightNormal =  TextStyle(
+      fontWeight: AppFontWeights.normal,
+      fontFamily: AppFonts.kPrimaryFont,
+      color: AppColors.kGray,
+      fontSize: 12.sp
   );
 
   static TextStyle font14WeightNormal =  TextStyle(
