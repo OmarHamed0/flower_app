@@ -13,7 +13,7 @@ class SignInViewModel extends Cubit<SignInStates>{
   SignInViewModel(this._authUseCases) : super(SignInInitialState());
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  bool isBoxChecked = false;
 
 
   void _signIn() async{
