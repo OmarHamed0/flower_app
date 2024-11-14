@@ -1,3 +1,5 @@
+import 'package:flower_app/src/presentation/managers/sign_in/sign_in_actions.dart';
+import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,10 +18,16 @@ class RememberMeForgetPasswordRow extends StatelessWidget {
       children: [
         Row(
           children: [
-            Checkbox(
-              value: signInViewModel.isBoxChecked,
-              onChanged: (value) {
-                signInViewModel.isBoxChecked = value!;
+            BlocBuilder<SignInViewModel,SignInStates>(
+              builder: (context,state){
+                if(state is CheckBoxState){
+                }
+                return Checkbox(
+                  value: signInViewModel.isBoxChecked,
+                  onChanged: (value) {
+                    signInViewModel.doAction(ChangeCheckBoxAction());
+                  },
+                );
               },
             ),
             Text(

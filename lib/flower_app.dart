@@ -1,13 +1,12 @@
-import 'dart:math';
 
 import 'package:flower_app/config/localization/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-
 import 'config/routes/app_route.dart';
 import 'config/routes/page_route_name.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 class FlowerApp extends StatelessWidget {
   const FlowerApp({super.key});
@@ -32,7 +31,7 @@ class FlowerApp extends StatelessWidget {
         initialRoute: PageRouteName.signIn,
         onGenerateRoute: AppRoute.onGenerateRoute,
         themeMode:ThemeMode.light,
-       // theme: AppTheme.appTheme,
+       // theme: AppTheme.appTheme,s
       ),
     );
   }
