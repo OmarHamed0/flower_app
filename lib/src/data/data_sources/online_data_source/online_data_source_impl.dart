@@ -29,12 +29,6 @@ class OnlineDataSourceImpl implements OnlineDataSource {
       return await _apiServices
           .signIn(SignInRequestBody(email: email, password: password));
     });
-    switch (response) {
-      case Success<SignInResponseModel>():
-        SharedPrefHelper.setSecureString(
-            SharedPrefKeys.userToken, response.data!.token ?? "");
-      case Failures<SignInResponseModel>():
-    }
     return response;
   }
 }
