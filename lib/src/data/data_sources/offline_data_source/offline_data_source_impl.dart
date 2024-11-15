@@ -5,28 +5,35 @@ import 'package:flower_app/src/data/data_sources/offline_data_source/offline_dat
 import 'package:flower_app/src/data/models/usr_model_dto.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:injectable/injectable.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
 
 
 @Injectable(as: OfflineDataSource)
 class OfflineDataSourceImpl implements OfflineDataSource{
+
   @override
   Future<UserModelDTO> getCachedLoggedUser() {
     // TODO: implement getCachedLoggedUser
     throw UnimplementedError();
   }
 
-  @override
-  Future<SignInResponseModel> getCachedToken() async{
-    // TODO: implement isLoggedUser
-    throw UnimplementedError();
 
-  }
 
   @override
   Future<bool> isLoggedUser() async{
     var token = SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
     return (token.isNullOrEmpty() == true);
+  }
+
+  @override
+  Future<void> deleteToken() {
+    // TODO: implement deleteToken
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<void> saveToken(String token) async{
+      await SharedPrefHelper.setSecureString(SharedPrefKeys.userToken, token);
   }
 
 }

@@ -28,7 +28,8 @@ class AuthRepositoryImpl implements AuthRepository {
       var response = await _onlineDataSource.signIn(email, password);
       Success<SignInResponseModel>? success;
       if(response is Success<SignInResponseModel>){
-        success = response;
+         success = response;
+        _offlineDataSource.saveToken(response.data!.token!);
       }
       return Success(data: SignInResponseDto.toDomain(success!));
     }on Exception catch(e){
