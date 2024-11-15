@@ -21,28 +21,28 @@ class SignInScreenBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 24.h),
           child: Column(
             children: [
-              FadeInUp(
+              FadeInDown(
                 duration: const Duration(milliseconds: 1900),
                 child: const SignInForm(),
               ),
               SizedBox(
                 height: 15.h,
               ),
-              FadeInUp(
+              FadeInDown(
                 duration: const Duration(milliseconds: 2000),
                 child: const RememberMeForgetPasswordRow(),
               ),
               SizedBox(
                 height: 48.h,
               ),
-              FadeInUp(
+              FadeInDown(
                 duration: const Duration(milliseconds: 2100),
                 child: const SignInScreenButtons(),
               ),
               SizedBox(
                 height: 16.h,
               ),
-              FadeInUp(
+              FadeInDown(
                 duration: const Duration(milliseconds: 2200),
                 child: const DonotHaveAccount(),
               ),
