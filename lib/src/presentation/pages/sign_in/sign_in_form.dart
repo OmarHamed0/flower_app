@@ -23,19 +23,23 @@ class SignInForm extends StatelessWidget {
       key: signInViewModel.signInFormKey,
       child: Column(
         children: [
-          AppTextField(
-            controller: signInViewModel.emailController,
-            labelText: AppLocalizations.of(context)!.email,
-            hintText: AppLocalizations.of(context)!.enterYourEmail,
-            labelStyle: AppTextStyles.font12WeightNormal.copyWith(
-                color: emailErrorMessage != null
-                    ? AppColors.kError
-                    : AppColors.kGray),
-            hintStyle: AppTextStyles.font14WeightNormal,
-            errorText: emailErrorMessage,
-            validator: (value) {
-              emailErrorMessage = signInViewModel.validateEmail();
-              return emailErrorMessage;
+          BlocBuilder<SignInViewModel, SignInStates>(
+            builder: (context,state){
+             return AppTextField(
+                controller: signInViewModel.emailController,
+                labelText: AppLocalizations.of(context)!.email,
+                hintText: AppLocalizations.of(context)!.enterYourEmail,
+                labelStyle: AppTextStyles.font12WeightNormal.copyWith(
+                    color: emailErrorMessage != null
+                        ? AppColors.kError
+                        : AppColors.kGray),
+                hintStyle: AppTextStyles.font14WeightNormal,
+                errorText: emailErrorMessage,
+                validator: (value) {
+                  emailErrorMessage = signInViewModel.validateEmail();
+                  return emailErrorMessage;
+                },
+              );
             },
           ),
           verticalSpace(14),
