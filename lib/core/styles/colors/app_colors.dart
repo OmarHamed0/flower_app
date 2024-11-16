@@ -19,7 +19,7 @@ import 'package:flutter/material.dart';
 
 
   static const Color kGray=Color(0xFF535353);
-  static const Color kRed=Color(0xFF535353);
+  static const Color kError=Color(0xffCC1010);
   static const Color kSuccess=Color(0xFF0CB359);
   static const Color kLightBink=Color(0xFFF9ECF0);
 
