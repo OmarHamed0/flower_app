@@ -1,3 +1,4 @@
+import 'package:flower_app/core/styles/spaceing.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_actions.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_view_model.dart';
@@ -31,9 +32,7 @@ class _SignInFormState extends State<SignInForm> {
             labelStyle: AppTextStyles.font12WeightNormal,
             hintStyle: AppTextStyles.font14WeightNormal,
           ),
-          SizedBox(
-            height: 14.h,
-          ),
+          verticalSpace(14),
           BlocBuilder<SignInViewModel,SignInStates>(
             builder: (context, state) {
               if(state is VisiblePasswordState){
