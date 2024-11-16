@@ -1,6 +1,3 @@
-import 'dart:developer';
-
-import 'package:dio/dio.dart';
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/config/helpers/app_regex.dart';
@@ -12,7 +9,7 @@ import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @injectable
 class SignInViewModel extends Cubit<SignInStates>{
@@ -61,7 +58,7 @@ class SignInViewModel extends Cubit<SignInStates>{
   String? validateEmail(){
     String? email = emailController.text;
     if(email.isNullOrEmpty() || !AppRegex.emailValidationRegex.hasMatch(email)){
-      return "Email is not valid";
+      return "Email is valid";
     }
     return null;
   }
