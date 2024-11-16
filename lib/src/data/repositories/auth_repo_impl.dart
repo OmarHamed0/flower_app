@@ -1,5 +1,6 @@
 import 'package:either_dart/src/either.dart';
 import 'package:flower_app/common/api_result.dart';
+import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/data/api/core/response_model/signin_response_model.dart';
 import 'package:flower_app/src/data/data_sources/offline_data_source/offline_data_source.dart';
 import 'package:flower_app/src/data/data_sources/online_data_source/online_data_source.dart';
@@ -26,12 +27,8 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<ApiResult<SignInEntity>> signIn(String email, String password) async {
     try {
       var response = await _onlineDataSource.signIn(email, password);
-      Success<SignInResponseModel>? success;
-      if(response is Success<SignInResponseModel>){
-         success = response;
-        _offlineDataSource.saveToken(response.data!.token!);
-      }
-      return Success(data: SignInResponseDto.toDomain(success!));
+      _offlineDataSource.saveToken(response.token!);
+      return Success(data: SignInResponseDto.toDomain(response));
     }on Exception catch(e){
       return Failures(exception: e);
     }

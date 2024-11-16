@@ -7,9 +7,9 @@ class SignInResponseDto{
 
   SignInResponseDto({this.message});
 
-   static SignInEntity toDomain(Success<SignInResponseModel> response){
+   static SignInEntity toDomain(SignInResponseModel response){
     return SignInEntity(
-      message: response.data!.message
+      message: response.message
     );
   }
 }

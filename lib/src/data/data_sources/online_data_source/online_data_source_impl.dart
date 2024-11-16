@@ -23,12 +23,12 @@ class OnlineDataSourceImpl implements OnlineDataSource {
   }
 
   @override
-  Future<ApiResult<SignInResponseModel>> signIn(
+  Future<SignInResponseModel> signIn(
       String email, String password) async {
-    var response = await executeApi<SignInResponseModel>(apiCall: () async {
-      return await _apiServices
-          .signIn(SignInRequestBody(email: email, password: password));
-    });
+    var response = await  _apiServices.signIn(SignInRequestBody(
+      email: email,
+      password: password
+    ));
     return response;
   }
 }
