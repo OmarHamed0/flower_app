@@ -1,4 +1,5 @@
 import 'package:flower_app/config/routes/page_route_name.dart';
+import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -12,6 +13,8 @@ class AppRoute {
         );
       case PageRouteName.signIn:
         return MaterialPageRoute(builder: (_) => SignInScreen());
+      case PageRouteName.home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings,

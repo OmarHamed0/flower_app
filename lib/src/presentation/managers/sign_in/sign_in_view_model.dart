@@ -34,11 +34,17 @@ class SignInViewModel extends Cubit<SignInStates>{
     }
     emit(SignInLoadingState());
     var response = await _authUseCases.signIn(email, password);
-    if(response is Success<SignInEntity>){
-      emit(SignInSuccessState());
-    }else if(response is Failures<SignInEntity>){
-      final error = ErrorHandler.fromException(response.exception);
-      emit(SingInFailedState(error.errorMassage));
+    emit(PopDialogState());
+    switch (response) {
+      case Success<SignInEntity>():
+        emit(PopDialogState());
+        emit(SignInSuccessState());
+        break;
+      case Failures<SignInEntity>():
+        emit(PopDialogState());
+        final error = ErrorHandler.fromException(response.exception);
+        emit(SignInFailedState(error.errorMassage));
+        break;
     }
   }
 
