@@ -1,8 +1,8 @@
-import 'package:flower_app/core/styles/app_radius.dart';
-import 'package:flower_app/core/styles/colors/app_colors.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import '../../../core/styles/app_radius.dart';
+import '../../../core/styles/colors/app_colors.dart';
 
 class AppTextField extends StatelessWidget {
   const AppTextField({
@@ -27,7 +27,8 @@ class AppTextField extends StatelessWidget {
     this.maxLines = 1,
     this.hintText,
     this.hintStyle,
-    this.labelStyle
+    this.labelStyle,
+    this.onSaved,
   });
 
   final TextEditingController? controller;
@@ -37,7 +38,7 @@ class AppTextField extends StatelessWidget {
   final bool obscureText;
   final ValueChanged<String>? onChanged;
   final AutovalidateMode autovalidateMode;
-  final FormFieldValidator<String>? validator;
+  final FormFieldValidator<String>? validator; // Fixed: Updated type to match TextFormField's validator
   final String? helperText;
   final String? errorText;
   final Widget? suffixIcon;
@@ -51,6 +52,7 @@ class AppTextField extends StatelessWidget {
   final int maxLines;
   final TextStyle? hintStyle;
   final TextStyle? labelStyle;
+  final FormFieldSetter<String>? onSaved;
 
   @override
   Widget build(BuildContext context) {
@@ -58,19 +60,20 @@ class AppTextField extends StatelessWidget {
       keyboardType: keyboardType,
       inputFormatters: inputFormatters,
       onEditingComplete: onEditingComplete,
+      onSaved: onSaved,
       autofillHints: autofillHints,
       controller: controller,
       enabled: enabled,
       obscureText: obscureText,
       onChanged: onChanged,
       autovalidateMode: autovalidateMode,
-      validator: validator,
+      validator: validator, // Now properly typed
       maxLines: maxLines,
       cursorHeight: 16,
       decoration: InputDecoration(
         labelText: labelText,
         hintText: hintText,
-        hintStyle:hintStyle ,
+        hintStyle: hintStyle,
         labelStyle: labelStyle,
         helperText: helperText,
         errorText: errorText,
@@ -90,22 +93,22 @@ class AppTextField extends StatelessWidget {
           borderRadius: AppBorderRadius.xs,
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
+          borderSide:  const BorderSide(
             color: AppColors.kGray,
             width: 1.5,
           ),
           borderRadius: AppBorderRadius.xs,
         ),
         errorBorder: OutlineInputBorder(
-          borderSide:  const BorderSide(
-            color: AppColors.kRed,
+          borderSide: const BorderSide(
+            color: AppColors.kError,
             width: 1.5,
           ),
           borderRadius: AppBorderRadius.xs,
         ),
         focusedErrorBorder: OutlineInputBorder(
           borderSide: const BorderSide(
-            color: AppColors.kRed,
+            color: AppColors.kError,
             width: 1.5,
           ),
           borderRadius: AppBorderRadius.xs,
