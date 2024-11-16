@@ -3,10 +3,11 @@ class SignInStates{}
 class SignInInitialState extends SignInStates{}
 class SignInLoadingState extends SignInStates{}
 class SignInSuccessState extends SignInStates{}
-class SingInFailedState extends SignInStates{
+class SignInFailedState extends SignInStates{
   String? message;
-  SingInFailedState(this.message);
+  SignInFailedState(this.message);
 }
+class PopDialogState extends SignInStates{}
 class VisiblePasswordState extends SignInStates{}
 class NonVisiblePasswordState extends SignInStates{}
 class CheckBoxState extends SignInStates{}

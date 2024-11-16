@@ -26,6 +26,7 @@ dependencies:
   flutter_bloc:
   get_it:
   injectable:
+  fluttertoast: ^8.2.1
 
   cupertino_icons: ^1.0.6
   either_dart: ^1.0.0
@@ -62,6 +63,7 @@ flutter:
     - assets/images/
     - assets/animations/
     - assets/animations/eYr0JZUKw0.json
+    - assets/animations/success.json
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
