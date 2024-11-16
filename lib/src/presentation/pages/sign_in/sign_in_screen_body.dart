@@ -5,13 +5,12 @@ import 'package:flower_app/src/presentation/managers/sign_in/sign_in_view_model.
 import 'package:flower_app/src/presentation/pages/sign_in/remember_me_forget_password_row.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_form.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen_buttons.dart';
+import 'package:flower_app/src/presentation/widgets/app_toast.dart';
 import 'package:flower_app/src/presentation/widgets/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import '../../../../config/routes/page_route_name.dart';
-import '../../../../core/styles/colors/app_colors.dart';
 import '../../../../flower_app.dart';
 import 'donot_have_account.dart';
 
@@ -26,21 +25,19 @@ class SignInScreenBody extends StatelessWidget {
         if (state is SignInLoadingState) {
           LoadingDialog.show(context);
         } else if (state is SignInSuccessState) {
+           Future.delayed(const Duration(milliseconds: 1500),(){
+             navKey.currentState?.pushNamedAndRemoveUntil(
+               PageRouteName.home,
+                   (route) => false,
+             );
+           });
            SuccessDialog.show(context);
-           SuccessDialog.hide(context);
-           navKey.currentState?.pushNamedAndRemoveUntil(
-             PageRouteName.home,
-                 (route) => false,
-           );
         } else if (state is SignInFailedState) {
-          Fluttertoast.showToast(
-            msg: state.message ?? "An error occurred",
-            toastLength: Toast.LENGTH_SHORT,
-            gravity: ToastGravity.BOTTOM,
-            backgroundColor: Colors.red,
-            textColor: Colors.white,
-            fontSize: 16.0,
-          );
+           Future.delayed(const Duration(seconds: 2),(){
+             ErrorDialog.hide(context);
+             showToast(state.message!);
+           });
+          ErrorDialog.show(context);
         } else if (state is PopDialogState) {
            LoadingDialog.hide(context);
         }
@@ -80,4 +77,5 @@ class SignInScreenBody extends StatelessWidget {
       },
     );
   }
+
 }
