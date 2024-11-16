@@ -26,6 +26,7 @@ class SignInScreenBody extends StatelessWidget {
           LoadingDialog.show(context);
         } else if (state is SignInSuccessState) {
            Future.delayed(const Duration(milliseconds: 1500),(){
+             SuccessDialog.hide(context);
              navKey.currentState?.pushNamedAndRemoveUntil(
                PageRouteName.home,
                    (route) => false,
@@ -77,5 +78,4 @@ class SignInScreenBody extends StatelessWidget {
       },
     );
   }
-
 }
