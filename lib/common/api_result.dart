@@ -6,6 +6,6 @@ class Success<T> extends ApiResult<T>{
 }
 
 class Failures<T> extends ApiResult<T>{
- final Exception ? exception;
+ final Exception  exception;
   Failures({required this.exception});
 }

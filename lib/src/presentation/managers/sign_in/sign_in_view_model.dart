@@ -1,6 +1,11 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/config/helpers/app_regex.dart';
+import 'package:flower_app/src/data/api/core/error/error_handler.dart';
+import 'package:flower_app/src/domain/entities/sign_in_entity.dart';
 import 'package:flower_app/src/domain/use_cases/auth_use_cases.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_actions.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart';
@@ -29,10 +34,11 @@ class SignInViewModel extends Cubit<SignInStates>{
     }
     emit(SignInLoadingState());
     var response = await _authUseCases.signIn(email, password);
-    if(response is Success<String>){
+    if(response is Success<SignInEntity>){
       emit(SignInSuccessState());
-    }else if(response is Failures<String>){
-      emit(SingInFailedState("error"));
+    }else if(response is Failures<SignInEntity>){
+      final error = ErrorHandler.fromException(response.exception);
+      emit(SingInFailedState(error.errorMassage));
     }
   }
 

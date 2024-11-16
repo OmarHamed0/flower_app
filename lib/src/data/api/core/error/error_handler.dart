@@ -37,11 +37,11 @@ class ErrorHandler {
     switch (response.statusCode) {
       case StatusCode.unauthorized:
       case StatusCode.forbidden:
-        return ErrorHandler(errorMassage: response.data["message"], code: 401);
+        return ErrorHandler(errorMassage: response.data["error"], code: 401);
       case StatusCode.conflict:
         return ErrorHandler(
             errorMassage:
-                response.data["message"] ?? ErrorMassage.conflictMessage, code: 409);
+                response.data["error"] ?? ErrorMassage.conflictMessage, code: 409);
       case StatusCode.notFount:
         return ErrorHandler(errorMassage: ErrorMassage.notFoundMessage);
       case StatusCode.internalServerError:

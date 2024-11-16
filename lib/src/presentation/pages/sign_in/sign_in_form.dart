@@ -35,6 +35,9 @@ class SignInForm extends StatelessWidget {
                         : AppColors.kGray),
                 hintStyle: AppTextStyles.font14WeightNormal,
                 errorText: emailErrorMessage,
+                onSaved: (value){
+                  emailErrorMessage = signInViewModel.validateEmail();
+                },
                 validator: (value) {
                   emailErrorMessage = signInViewModel.validateEmail();
                   return emailErrorMessage;
