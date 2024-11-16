@@ -19,7 +19,7 @@ class SharedPrefHelper{
   }
 
   /// Saves a [value] with a [key] in the SharedPreferences.
-  static setDate<T>(String key,value)async{
+  static setDate(String key,value)async{
     SharedPreferences sharedPreferences =  await SharedPreferences.getInstance();
     switch (value.runtimeType) {
       case String:

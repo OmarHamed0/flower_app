@@ -1,4 +1,5 @@
 import 'package:flower_app/core/styles/app_radius.dart';
+import 'package:flower_app/core/styles/spaceing.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,9 +28,7 @@ class SignInScreenButtons extends StatelessWidget {
             signInViewModel.doAction(SignInClickAction());
           },
         ),
-        SizedBox(
-          height: 16.h,
-        ),
+        verticalSpace(16),
         AppTextButton(
           borderRadius: AppBorderRadius.xxl,
           buttonText: AppLocalizations.of(context)!.continueAsGuest,

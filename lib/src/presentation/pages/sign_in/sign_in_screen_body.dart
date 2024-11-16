@@ -1,4 +1,5 @@
 import 'package:animate_do/animate_do.dart';
+import 'package:flower_app/core/styles/spaceing.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_view_model.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/remember_me_forget_password_row.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_form.dart';
@@ -25,23 +26,17 @@ class SignInScreenBody extends StatelessWidget {
                 duration: const Duration(milliseconds: 1900),
                 child: const SignInForm(),
               ),
-              SizedBox(
-                height: 15.h,
-              ),
+              verticalSpace(15),
               FadeInDown(
                 duration: const Duration(milliseconds: 2000),
                 child: const RememberMeForgetPasswordRow(),
               ),
-              SizedBox(
-                height: 48.h,
-              ),
+              verticalSpace(48),
               FadeInDown(
                 duration: const Duration(milliseconds: 2100),
                 child: const SignInScreenButtons(),
               ),
-              SizedBox(
-                height: 16.h,
-              ),
+              verticalSpace(16),
               FadeInDown(
                 duration: const Duration(milliseconds: 2200),
                 child: const DonotHaveAccount(),
