@@ -58,7 +58,7 @@ class SignInViewModel extends Cubit<SignInStates>{
   String? validateEmail(){
     String? email = emailController.text;
     if(email.isNullOrEmpty() || !AppRegex.emailValidationRegex.hasMatch(email)){
-      return "Email is valid";
+      return "This Email is not valid";
     }
     return null;
   }

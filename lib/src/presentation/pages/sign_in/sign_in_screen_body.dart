@@ -36,9 +36,9 @@ class SignInScreenBody extends StatelessWidget {
         } else if (state is SignInFailedState) {
            Future.delayed(const Duration(seconds: 2),(){
              ErrorDialog.hide(context);
-             showToast(state.message!);
            });
           ErrorDialog.show(context);
+           showToast(state.message!);
         } else if (state is PopDialogState) {
            LoadingDialog.hide(context);
         }
