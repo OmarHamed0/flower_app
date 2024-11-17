@@ -9,11 +9,11 @@ import 'package:flower_app/src/data/data_sources/online_data_source/online_data_
 import 'package:flower_app/src/data/models/usr_model_dto.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as: OnlineDataSource)
-class OnlineDataSourceImpl implements OnlineDataSource {
+@Injectable(as: SignInOnlineDataSource)
+class SignInOnlineDataSourceImpl implements SignInOnlineDataSource {
   ApiServices _apiServices;
 
-  OnlineDataSourceImpl(this._apiServices);
+  SignInOnlineDataSourceImpl(this._apiServices);
 
   @override
   Future<UserModelDTO> getLoggedUserData() async {

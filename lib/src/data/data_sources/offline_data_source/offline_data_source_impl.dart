@@ -8,8 +8,8 @@ import 'package:injectable/injectable.dart';
 
 
 
-@Injectable(as: OfflineDataSource)
-class OfflineDataSourceImpl implements OfflineDataSource{
+@Injectable(as: SignInOfflineDataSource)
+class SignInOfflineDataSourceImpl implements SignInOfflineDataSource{
 
   @override
   Future<UserModelDTO> getCachedLoggedUser() {
@@ -26,9 +26,8 @@ class OfflineDataSourceImpl implements OfflineDataSource{
   }
 
   @override
-  Future<void> deleteToken() {
-    // TODO: implement deleteToken
-    throw UnimplementedError();
+  Future<void> deleteToken() async{
+    await SharedPrefHelper.removeSecureString(SharedPrefKeys.userToken);
   }
 
   @override
