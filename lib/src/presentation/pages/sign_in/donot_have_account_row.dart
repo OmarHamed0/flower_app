@@ -5,8 +5,8 @@ import '../../../../core/styles/fonts/app_font_weight.dart';
 import '../../../../core/styles/texts/app_text_styles.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class DonotHaveAccount extends StatelessWidget {
-  const DonotHaveAccount({super.key});
+class DonotHaveAccountRow extends StatelessWidget {
+  const DonotHaveAccountRow({super.key});
 
   @override
   Widget build(BuildContext context) {

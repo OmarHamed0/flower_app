@@ -12,7 +12,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../config/routes/page_route_name.dart';
 import '../../../../flower_app.dart';
-import 'donot_have_account.dart';
+import 'donot_have_account_row.dart';
 
 class SignInScreenBody extends StatelessWidget {
   const SignInScreenBody({super.key});
@@ -68,7 +68,7 @@ class SignInScreenBody extends StatelessWidget {
                   verticalSpace(16),
                   FadeInDown(
                     duration: const Duration(milliseconds: 2200),
-                    child: const DonotHaveAccount(),
+                    child: const DonotHaveAccountRow(),
                   ),
                 ],
               ),

@@ -3,18 +3,17 @@ import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/config/helpers/app_regex.dart';
 import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/domain/entities/sign_in_entity.dart';
-import 'package:flower_app/src/domain/use_cases/auth_use_cases.dart';
+import 'package:flower_app/src/domain/use_cases/auth_use_cases/sign_in_use_case.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_actions.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 @injectable
 class SignInViewModel extends Cubit<SignInStates>{
-  final AuthUseCases _authUseCases;
-  SignInViewModel(this._authUseCases) : super(SignInInitialState());
+  final SignInUseCase _signInUseCase;
+  SignInViewModel(this._signInUseCase) : super(SignInInitialState());
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> signInFormKey = GlobalKey<FormState>();
@@ -30,7 +29,7 @@ class SignInViewModel extends Cubit<SignInStates>{
       return;
     }
     emit(SignInLoadingState());
-    var response = await _authUseCases.signIn(email, password);
+    var response = await _signInUseCase.signIn(email, password);
     emit(PopDialogState());
     switch (response) {
       case Success<SignInEntity>():
