@@ -1,14 +1,11 @@
 import 'package:animate_do/animate_do.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flower_app/common/awesome_dialoge.dart';
-import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/core/styles/spaceing.dart';
-import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_view_model.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/remember_me_forget_password_row.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_form.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen_buttons.dart';
+import 'package:flower_app/src/presentation/widgets/app_toast.dart';
 import 'package:flower_app/src/presentation/widgets/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,19 +24,33 @@ class SignInScreenBody extends StatelessWidget {
         if (state is SignInLoadingState) {
           LoadingDialog.show(context);
         } else if (state is SignInSuccessState) {
+          Future.delayed(const Duration(milliseconds: 1500), () {
+            SuccessDialog.hide(context);
+            navKey.currentState?.pushNamedAndRemoveUntil(
+              PageRouteName.home,
+              (route) => false,
+            );
+          });
+          SuccessDialog.show(context);
+        } else if (state is SignInFailedState) {
+          Future.delayed(const Duration(seconds: 2), () {
+            ErrorDialog.hide(context);
+          });
+          ErrorDialog.show(context);
+          showToast(state.message!);
+        } else if (state is PopDialogState) {
+          LoadingDialog.hide(context);
           LoadingDialog.hide(context);
           showAwesomeDialog(context,
               title: 'Success', desc: 'You Signed in successfully', onOk: () {
             navKey.currentState!
                 .pushNamedAndRemoveUntil(PageRouteName.home, (route) => false);
           }, dialogType: DialogType.success);
-        } else if (state is SignInFailedState) {
           showAwesomeDialog(context,
               title: 'Error',
               desc: state.message!,
               onOk: () {},
               dialogType: DialogType.error);
-        } else if (state is PopDialogState) {
           LoadingDialog.hide(context);
         }
       },
