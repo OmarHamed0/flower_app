@@ -14,3 +14,6 @@ class CheckBoxState extends SignInStates{}
 class NonCheckBoxState extends SignInStates{}
 class FormErrorState extends SignInStates{}
 class FromValidateState extends SignInStates{ }
+
+
+class GuestLoginState extends SignInStates{ }

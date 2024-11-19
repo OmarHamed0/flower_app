@@ -34,7 +34,7 @@ class SignInScreenButtons extends StatelessWidget {
           buttonText: AppLocalizations.of(context)!.continueAsGuest,
           textStyle: AppTextStyles.font16WeightMedium
               .copyWith(color: AppColors.kGray),
-          onPressed: () {},
+          onPressed: () =>signInViewModel.doAction(GuestLoginAction()),
           backgroundColor: AppColors.kWhiteBase,
           borderColor: AppColors.kBlack,
         ),

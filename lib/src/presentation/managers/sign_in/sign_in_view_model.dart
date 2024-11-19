@@ -85,6 +85,14 @@ class SignInViewModel extends Cubit<SignInStates>{
       case ChangeCheckBoxAction():
         _checkBox();
         break;
+
+      case GuestLoginAction():
+        _navigateToHomeScreen();
+       break;
     }
+
+}
+  void _navigateToHomeScreen(){
+    emit(GuestLoginState());
   }
 }

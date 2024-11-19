@@ -40,6 +40,9 @@ class SignInScreenBody extends StatelessWidget {
               dialogType: DialogType.error);
         } else if (state is PopDialogState) {
           LoadingDialog.hide(context);
+          LoadingDialog.hide(context);
+        } else if (state is GuestLoginState) {
+          _goNextHome(context);
         }
       },
       builder: (context, state) {
@@ -77,4 +80,8 @@ class SignInScreenBody extends StatelessWidget {
       },
     );
   }
+}
+
+Future<void> _goNextHome(BuildContext context) {
+  return Navigator.pushNamed(context, PageRouteName.home);
 }
