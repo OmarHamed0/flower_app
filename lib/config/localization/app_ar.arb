@@ -1,5 +1,17 @@
 {
-  "@@locale": "ar",
+  "login": "تسجيل الدخول",
+  "email": "البريد الالكتروني",
+  "password": "كلمة السر",
+  "enterYourEmail" : "ادخل البريد الالكتروني",
+  "enterYourPassword":   "ادخل كلمة السر",
+  "notValidEmail": "البزيد الالكتروني غير متاح",
+  "rememberMe": "تذكرني",
+  "forgetPassword": "نسيت كلمة السر؟",
+  "continueAsGuest": "الاستمرار كضيف",
+  "dontHaveAccount": "لا تمتلك حساب؟ ",
+  "signUp": "انشاء حساب",
+  "emailNotValid": "هذا البريد غير صالح",
+  "invalidPassword": "كلمة سر غير صالحة"
   "helloWorld": "مرحبا",
   "signUp": "انشاء حساب"
 }

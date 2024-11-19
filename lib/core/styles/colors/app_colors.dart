@@ -18,10 +18,25 @@ abstract class AppColors{
 
 
 
+ class AppColors{
+   AppColors._();
+   static const Color kBaseColor = Color(0xffD21E6A);
+  static const Color kWhiteBase=Color(0xFFF9F9F9);
+  static const Color kWhite10=Color(0xFFfefefe);
+  static const Color kWhite20=Color(0xFFfdfdfd);
+  static const Color kWhite30=Color(0xFFfcfcfc);
+  static const Color kWhite40=Color(0xFFfbfbfb);
+  static const Color kWhite50=Color(0xFFfafafa);
+  static const Color kWhite60=Color(0xFFd0d0d0);
+  static const Color kWhite70=Color(0xFFa6a6a6);
+  static const Color kWhite80=Color(0xFF7d7d7d);
+  static const Color kWhite90=Color(0xFF535353);
+  static const Color kWhite100=Color(0xFF323232);
+
 
 
   static const Color kGray=Color(0xFF535353);
-  static const Color kRed=Color(0xFF535353);
+  static const Color kError=Color(0xffCC1010);
   static const Color kSuccess=Color(0xFF0CB359);
   static const Color kLightBink=Color(0xFFF9ECF0);
   static const Color mainColor =Color(0xFFD21E6A);

@@ -5,6 +5,9 @@ import 'package:flower_app/src/presentation/auth/signup/manager/signup_viewmodel
 import 'package:flower_app/src/presentation/auth/signup/views/sign_up_view.dart';
 import 'package:flower_app/src/presentation/splash.dart';
 
+import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
+import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
+import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,6 +26,12 @@ class AppRoute {
               create: (context) => getIt<SignUpViewModel>(),
               child: const SignUpView()),
         );
+            widget: const SplashScreen()
+        );
+      case PageRouteName.signIn:
+        return MaterialPageRoute(builder: (_) => SignInScreen());
+      case PageRouteName.home:
+        return MaterialPageRoute(builder: (_) => const HomeScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings,

@@ -7,6 +7,10 @@ showAwesomeDialog(BuildContext context,
       required void Function() onOk,
       void Function()? onCancel, // Made onCancel optional
       required DialogType dialogType}) {
+    required String desc,
+    required void Function() onOk,
+    void Function()? onCancel, // Made onCancel optional
+    required DialogType dialogType}) {
   AwesomeDialog(
     context: context,
     dialogType: dialogType,
@@ -18,10 +22,14 @@ showAwesomeDialog(BuildContext context,
       FocusScope.of(context).unfocus();
       onCancel();
     }
+            FocusScope.of(context).unfocus();
+            onCancel();
+          }
         : null,
     btnOkOnPress: () {
       FocusScope.of(context).unfocus();
       onOk();
     },
   ).show();
+}
 }
