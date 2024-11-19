@@ -25,11 +25,13 @@ class _ApiServices implements ApiServices {
 
   @override
   Future<SignupResponseDto> signUp(SignUpRequestBody requestBody) async {
+  Future<SignInResponseModel> signIn(SignInRequestBody requestBody) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(requestBody.toJson());
+    final _options = _setStreamType<SignInResponseModel>(Options(
     final _options = _setStreamType<SignupResponseDto>(Options(
       method: 'POST',
       headers: _headers,
@@ -37,7 +39,6 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'signup',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -47,9 +48,7 @@ class _ApiServices implements ApiServices {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late SignupResponseDto _value;
     try {
-      _value = SignupResponseDto.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

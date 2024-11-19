@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 showAwesomeDialog(BuildContext context,
     {required String title,
-      required String desc,
-      required void Function() onOk,
-      void Function()? onCancel, // Made onCancel optional
-      required DialogType dialogType}) {
+    required String desc,
+    required void Function() onOk,
+    void Function()? onCancel, // Made onCancel optional
+    required DialogType dialogType}) {
   AwesomeDialog(
     context: context,
     dialogType: dialogType,
@@ -15,9 +15,9 @@ showAwesomeDialog(BuildContext context,
     desc: desc,
     btnCancelOnPress: onCancel != null
         ? () {
-      FocusScope.of(context).unfocus();
-      onCancel();
-    }
+            FocusScope.of(context).unfocus();
+            onCancel();
+          }
         : null,
     btnOkOnPress: () {
       FocusScope.of(context).unfocus();
