@@ -14,6 +14,9 @@ abstract class AppColors{
   static const Color kWight80=Color(0xFF7d7d7d);
   static const Color kWight90=Color(0xFF535353);
   static const Color kWight100=Color(0xFF323232);
+  static const Color error=Color(0xFFB3261E);
+
+
 
 
 
@@ -21,6 +24,8 @@ abstract class AppColors{
   static const Color kRed=Color(0xFF535353);
   static const Color kSuccess=Color(0xFF0CB359);
   static const Color kLightBink=Color(0xFFF9ECF0);
+  static const Color mainColor =Color(0xFFD21E6A);
+
 
 
   static const Color kBlack=Color(0xFF000000);
@@ -35,4 +40,6 @@ abstract class AppColors{
   static const Color kBlack80=Color(0xFF06080b);
   static const Color kBlack90=Color(0xFF040507);
   static const Color kBlack100=Color(0xFF020304);
+
+  static const Color borderColorDark = Color(0xFF1D1B20);
 }

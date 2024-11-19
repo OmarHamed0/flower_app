@@ -30,6 +30,7 @@ class FlowerApp extends StatelessWidget {
         initialRoute: PageRouteName.splash,
         onGenerateRoute: AppRoute.onGenerateRoute,
         themeMode:ThemeMode.light,
+        
        // theme: AppTheme.appTheme,
       ),
     );
