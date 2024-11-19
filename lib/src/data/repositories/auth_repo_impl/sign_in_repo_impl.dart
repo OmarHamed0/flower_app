@@ -10,16 +10,16 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: SignInRepo)
 class SignInRepositoryImpl implements SignInRepo {
-  SignInOnlineDataSource _signInOnlineDataSource;
+  OnlineDataSource _signInOnlineDataSource;
   SignInOfflineDataSource _signInOfflineDataSource;
 
   SignInRepositoryImpl(this._signInOfflineDataSource, this._signInOnlineDataSource);
 
-  @override
-  Future<Either<String, UserEntity>> getLoggedUserData() {
-    // TODO: implement getLoggedUserData
-    throw UnimplementedError();
-  }
+  // @override
+  // Future<Either<String, UserEntity>> getLoggedUserData() {
+  //   // TODO: implement getLoggedUserData
+  //   throw UnimplementedError();
+  // }
 
   @override
   Future<ApiResult<SignInEntity>> signIn(String email, String password) async {

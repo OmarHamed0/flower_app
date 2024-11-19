@@ -11,4 +11,3 @@ void main() {
   Bloc.observer = MyBlocObserver();
   runApp(const FlowerApp());
 }
-

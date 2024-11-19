@@ -12,7 +12,7 @@ class AppTextField extends StatelessWidget {
     this.enabled = true,
     this.obscureText = false,
     this.onChanged,
-    this.autovalidateMode = AutovalidateMode.onUserInteraction,
+    this.autoValidateMode = AutovalidateMode.onUserInteraction,
     this.validator,
     this.helperText,
     this.errorText,
@@ -37,7 +37,7 @@ class AppTextField extends StatelessWidget {
   final bool enabled;
   final bool obscureText;
   final ValueChanged<String>? onChanged;
-  final AutovalidateMode autovalidateMode;
+  final AutovalidateMode autoValidateMode;
   final FormFieldValidator<String>? validator; // Fixed: Updated type to match TextFormField's validator
   final String? helperText;
   final String? errorText;
@@ -66,7 +66,7 @@ class AppTextField extends StatelessWidget {
       enabled: enabled,
       obscureText: obscureText,
       onChanged: onChanged,
-      autovalidateMode: autovalidateMode,
+      autovalidateMode: autoValidateMode,
       validator: validator, // Now properly typed
       maxLines: maxLines,
       cursorHeight: 16,

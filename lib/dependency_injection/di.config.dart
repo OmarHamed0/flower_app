@@ -23,9 +23,18 @@ import '../src/data/data_sources/online_data_source/online_data_source.dart'
     as _i787;
 import '../src/data/data_sources/online_data_source/online_data_source_impl.dart'
     as _i824;
-import '../src/data/repositories/auth_repo_impl/sign_in_repo_impl.dart' as _i566;
+import '../src/data/repositories/auth_repo_impl/forget_password_repo_impl.dart'
+    as _i580;
+import '../src/data/repositories/auth_repo_impl/sign_in_repo_impl.dart'
+    as _i940;
+import '../src/domain/repositories/auth_repo/forget_password_repo.dart'
+    as _i680;
 import '../src/domain/repositories/auth_repo/sign_in_repo.dart' as _i209;
+import '../src/domain/use_cases/auth_use_cases/forget_password_use_case.dart'
+    as _i745;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
+import '../src/presentation/managers/forget_password/forget_password_view_model.dart'
+    as _i1012;
 import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -45,16 +54,22 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i136.SignInOfflineDataSource>(
         () => _i649.SignInOfflineDataSourceImpl());
     gh.singleton<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
-    gh.factory<_i787.SignInOnlineDataSource>(
-        () => _i824.SignInOnlineDataSourceImpl(gh<_i687.ApiServices>()));
-    gh.factory<_i209.SignInRepo>(() => _i566.SignInRepositoryImpl(
+    gh.factory<_i787.OnlineDataSource>(
+        () => _i824.OnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i680.ForgetPasswordRepository>(
+        () => _i580.ForgetPasswordRepositoryImpl(gh<_i787.OnlineDataSource>()));
+    gh.factory<_i209.SignInRepo>(() => _i940.SignInRepositoryImpl(
           gh<_i136.SignInOfflineDataSource>(),
-          gh<_i787.SignInOnlineDataSource>(),
+          gh<_i787.OnlineDataSource>(),
         ));
     gh.factory<_i207.SignInUseCase>(
         () => _i207.SignInUseCase(gh<_i209.SignInRepo>()));
+    gh.factory<_i745.ForgetPasswordUseCase>(() =>
+        _i745.ForgetPasswordUseCase(gh<_i680.ForgetPasswordRepository>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i1012.ForgetPasswordViewModel>(() =>
+        _i1012.ForgetPasswordViewModel(gh<_i745.ForgetPasswordUseCase>()));
     return this;
   }
 }

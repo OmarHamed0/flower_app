@@ -6,10 +6,13 @@
   "enterYourPassword":   "ادخل كلمة السر",
   "notValidEmail": "البزيد الالكتروني غير متاح",
   "rememberMe": "تذكرني",
-  "forgetPassword": "نسيت كلمة السر؟",
+  "forgetPassword": "نسيت كلمة السر",
   "continueAsGuest": "الاستمرار كضيف",
   "dontHaveAccount": "لا تمتلك حساب؟ ",
   "signUp": "انشاء حساب",
   "emailNotValid": "هذا البريد غير صالح",
-  "invalidPassword": "كلمة سر غير صالحة"
+  "invalidPassword": "كلمة سر غير صالحة",
+  "pleaseEnterYourEmailAssociatedToYourAccount" : "الرجاء إدخال بريدك الإلكتروني المرتبط بحسابك",
+  "confirm" : "تأكيد",
+  "emailCanNotBeEmpty" : "لا يمكن أن يكون البريد الإلكتروني فارغًا"
 }
