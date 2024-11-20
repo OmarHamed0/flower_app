@@ -1,4 +1,6 @@
+import 'package:flower_app/config/localization/l10n.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -18,20 +20,19 @@ class FlowerApp extends StatelessWidget {
       splitScreenMode: true,
       builder: (context, child) => MaterialApp(
         localizationsDelegates: const [
+          AppLocalizations.delegate,
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
           GlobalCupertinoLocalizations.delegate,
         ],
-        supportedLocales: [
-          Locale('en'), // English
-          Locale('es'), // Spanish
-        ],
+        supportedLocales: L10n.all,
         debugShowCheckedModeBanner: false,
+        locale: const Locale('en'),
         navigatorKey: navKey,
-        initialRoute: PageRouteName.splash,
+        initialRoute:
+            PageRouteName.splash, // Splash screen is the initial route
         onGenerateRoute: AppRoute.onGenerateRoute,
         themeMode: ThemeMode.light,
-
         // theme: AppTheme.appTheme,
       ),
     );

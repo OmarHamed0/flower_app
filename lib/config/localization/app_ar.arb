@@ -12,7 +12,6 @@
   "forgetPassword": "نسيت كلمة السر؟",
   "continueAsGuest": "الاستمرار كضيف",
   "dontHaveAccount": "لا تمتلك حساب؟ ",
-  "signUp": "انشاء حساب",
   "emailNotValid": "هذا البريد غير صالح",
   "invalidPassword": "كلمة سر غير صالحة"
 }
