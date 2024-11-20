@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AppTextButton extends StatelessWidget {
   final BorderRadius? borderRadius;
   final Color? backgroundColor;
-  final Color? borderColor;
+  final Color?borderColor;
   final double? horizontalPadding;
   final double? verticalPadding;
   final double? buttonWidth;
@@ -33,25 +33,29 @@ class AppTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       style: ButtonStyle(
-          shape: WidgetStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: borderRadius ?? AppBorderRadius.s,
-            ),
+        shape: WidgetStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: borderRadius?? AppBorderRadius.s,
           ),
-          backgroundColor: WidgetStatePropertyAll(
-            backgroundColor ?? AppColors.kBaseColor,
+        ),
+        backgroundColor: WidgetStatePropertyAll(
+          backgroundColor ?? AppColors.kBaseColor,
+        ),
+        padding: WidgetStateProperty.all<EdgeInsets>(
+          EdgeInsets.symmetric(
+            horizontal: horizontalPadding?.w ?? 12.w,
+            vertical: verticalPadding?.h ?? 14.h,
           ),
-          padding: WidgetStateProperty.all<EdgeInsets>(
-            EdgeInsets.symmetric(
-              horizontal: horizontalPadding?.w ?? 12.w,
-              vertical: verticalPadding?.h ?? 14.h,
-            ),
-          ),
-          fixedSize: WidgetStateProperty.all(
-            Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 50.h),
-          ),
-          side: WidgetStateProperty.all<BorderSide>(
-              BorderSide(color: borderColor ?? AppColors.kBaseColor))),
+        ),
+        fixedSize: WidgetStateProperty.all(
+          Size(buttonWidth?.w ?? double.maxFinite, buttonHeight ?? 50.h),
+        ),
+        side: WidgetStateProperty.all<BorderSide>(
+          BorderSide(
+            color: borderColor?? AppColors.kBaseColor
+          )
+        )
+      ),
       onPressed: onPressed,
       child: Text(
         buttonText,

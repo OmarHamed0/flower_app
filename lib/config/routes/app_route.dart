@@ -5,10 +5,31 @@ import 'package:flower_app/src/presentation/pages/otp_verify/otp_verify_view.dar
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppRoute {
   static Route<MaterialPageRoute> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case PageRouteName.signup:
+        return _handleMaterialPageRoute(
+          settings: settings,
+          widget: BlocProvider(
+            create: (context) => getIt<SignUpViewModel>(),
+            child: const SignUpView(),
+          ),
+        );
+
+      case PageRouteName.signIn:
+        return _handleMaterialPageRoute(
+          settings: settings,
+          widget: SignInScreen(),
+        );
+
+      case PageRouteName.home:
+        return _handleMaterialPageRoute(
+          settings: settings,
+          widget: const HomeScreen(),
+        );
       case PageRouteName.splash:
         return _handelMaterialPageRoute(
             settings: settings, widget: const SplashScreen());
@@ -23,13 +44,21 @@ class AppRoute {
         return _handelMaterialPageRoute(
             widget: const OtpVerifyView(), settings: settings);
       default:
-        return _handelMaterialPageRoute(
-            settings: settings, widget: const Scaffold());
+        return _handleMaterialPageRoute(
+          settings: settings,
+          widget: const Scaffold(
+            body: Center(
+              child: Text('Page not found'),
+            ),
+          ),
+        );
     }
   }
 
-  static MaterialPageRoute<MaterialPageRoute> _handelMaterialPageRoute(
-      {required Widget widget, required RouteSettings settings}) {
-    return MaterialPageRoute(builder: (context) => widget, settings: settings);
+  static MaterialPageRoute<dynamic> _handleMaterialPageRoute({
+    required Widget widget,
+    required RouteSettings settings,
+  }) {
+    return MaterialPageRoute(builder: (_) => widget, settings: settings);
   }
 }

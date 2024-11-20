@@ -64,7 +64,7 @@ class SuccessDialog {
   }
 }
 
-class ErrorDialog {
+class ErrorDialog{
   static void show(BuildContext context) {
     showDialog(
       context: context,

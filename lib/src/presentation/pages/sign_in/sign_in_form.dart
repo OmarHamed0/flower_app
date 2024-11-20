@@ -31,7 +31,7 @@ class SignInForm extends StatelessWidget {
                 hintText: AppLocalizations.of(context)!.enterYourEmail,
                 labelStyle: AppTextStyles.font12WeightNormal.copyWith(
                     color: emailErrorMessage != null
-                        ? AppColors.kError
+                        ? AppColors.error
                         : AppColors.kGray),
                 hintStyle: AppTextStyles.font14WeightNormal,
                 errorText: emailErrorMessage,
@@ -60,7 +60,7 @@ class SignInForm extends StatelessWidget {
                   hintStyle: AppTextStyles.font14WeightNormal,
                   labelStyle: AppTextStyles.font12WeightNormal.copyWith(
                       color: passwordErrorMessage != null
-                          ? AppColors.kError
+                          ? AppColors.error
                           : AppColors.kGray),
                   errorText: passwordErrorMessage,
                   suffixIcon: IconButton(

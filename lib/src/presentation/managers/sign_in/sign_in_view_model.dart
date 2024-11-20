@@ -9,9 +9,10 @@ import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 @injectable
-class SignInViewModel extends Cubit<SignInStates> {
+class SignInViewModel extends Cubit<SignInStates>{
   final SignInUseCase _signInUseCase;
 
   SignInViewModel(this._signInUseCase) : super(SignInInitialState());
@@ -21,10 +22,11 @@ class SignInViewModel extends Cubit<SignInStates> {
   bool isBoxChecked = false;
   bool isObscureText = true;
 
-  void _signIn() async {
+
+  void _signIn() async{
     String email = emailController.text;
     String password = passwordController.text;
-    if (!signInFormKey.currentState!.validate()) {
+    if(!signInFormKey.currentState!.validate()){
       emit(FormErrorState());
       return;
     }
@@ -44,19 +46,19 @@ class SignInViewModel extends Cubit<SignInStates> {
     }
   }
 
-  void _changePasswordVisibility() {
+  void _changePasswordVisibility(){
     isObscureText = !isObscureText;
     isObscureText
         ? emit(NonVisiblePasswordState())
         : emit(VisiblePasswordState());
   }
 
-  void _checkBox() {
+  void _checkBox(){
     isBoxChecked = !isBoxChecked;
     emit(CheckBoxState());
   }
 
-  String? validateEmail() {
+  String? validateEmail(){
     String? email = emailController.text;
     if (email.isNullOrEmpty() ||
         !AppRegex.emailValidationRegex.hasMatch(email)) {
@@ -65,9 +67,9 @@ class SignInViewModel extends Cubit<SignInStates> {
     return null;
   }
 
-  String? validatePassword() {
+   String? validatePassword(){
     String? password = passwordController.text;
-    if (password.length < 8) {
+    if(password.length < 8){
       return "Password must be more than 8";
     }
     if (password.isNullOrEmpty() ||
@@ -78,7 +80,7 @@ class SignInViewModel extends Cubit<SignInStates> {
     return null;
   }
 
-  void doAction(SignInActions action) {
+  void doAction(SignInActions action){
     switch (action) {
       case SignInClickAction():
         _signIn();
@@ -89,6 +91,14 @@ class SignInViewModel extends Cubit<SignInStates> {
       case ChangeCheckBoxAction():
         _checkBox();
         break;
+
+      case GuestLoginAction():
+        _navigateToHomeScreen();
+       break;
     }
+
+}
+  void _navigateToHomeScreen(){
+    emit(GuestLoginState());
   }
 }

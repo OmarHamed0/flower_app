@@ -29,8 +29,8 @@ class FlowerApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         locale: const Locale('en'),
         navigatorKey: navKey,
-        initialRoute: PageRouteName.otpVerify,
-        // Splash screen is the initial route
+        initialRoute:
+            PageRouteName.splash, // Splash screen is the initial route
         onGenerateRoute: AppRoute.onGenerateRoute,
         themeMode: ThemeMode.light,
         // theme: AppTheme.appTheme,

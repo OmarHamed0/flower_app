@@ -18,12 +18,35 @@ import 'package:flower_app/src/domain/entities/auth_response/reset_password_resp
 import 'package:flower_app/src/domain/entities/auth_response/verify_reset_code_response.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as: OnlineDataSource)
-class OnlineDataSourceImpl implements OnlineDataSource {
+@Injectable(as: SignInOnlineDataSource)
+class SignInOnlineDataSourceImpl implements SignInOnlineDataSource {
   ApiServices _apiServices;
 
-  OnlineDataSourceImpl(this._apiServices);
+  SignInOnlineDataSourceImpl(this._apiServices);
 
+  @override
+  Future<UserModelDTO> getLoggedUserData() async {
+    String token = SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
+    var response = await _apiServices.getLoggedUserData(token);
+    return UserModelDTO.fromResponse(response);
+  }
+
+  @override
+  Future<ApiResult<SignupResponseDto>> signUp(
+      SignUpRequestBody signUpRequestBody) async {
+    return executeApi<SignupResponseDto>(
+      apiCall: () async {
+        var response = await _apiServices.signUp(signUpRequestBody);
+        return response;
+      },
+    );
+  }
+
+  Future<SignInResponseModel> signIn(String email, String password) async {
+    var response = await _apiServices
+        .signIn(SignInRequestBody(email: email, password: password));
+    return response;
+  }
   @override
   Future<ApiResult<ResetPasswordResponse>> resetPassword(
       ResetPasswordRequest request) {

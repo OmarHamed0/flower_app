@@ -5,21 +5,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// class contains all App main Text style
-class AppTextStyles {
+class AppTextStyles{
   AppTextStyles._();
 
   static TextStyle font20WeightMedium = TextStyle(
-      fontWeight: AppFontWeights.medium,
-      fontSize: 20.sp,
-      fontFamily: AppFonts.kPrimaryFont,
-      color: AppColors.kBlack);
+    fontWeight: AppFontWeights.medium,
+    fontSize: 20.sp,
+    fontFamily: AppFonts.kPrimaryFont,
+    color: AppColors.kBlack
+  );
 
   static TextStyle font16WeightMedium = TextStyle(
       fontSize: 16.sp,
       fontFamily: AppFonts.kPrimaryFont,
       fontWeight: AppFontWeights.medium);
 
-  static TextStyle font13WeightNormal = TextStyle(
+  static TextStyle font13WeightNormal =  TextStyle(
       fontWeight: AppFontWeights.normal,
       fontFamily: AppFonts.kPrimaryFont,
       color: AppColors.kBlack,
@@ -30,9 +31,11 @@ class AppTextStyles {
       color: AppColors.kGray,
       fontSize: 12.sp);
 
-  static TextStyle font14WeightNormal = TextStyle(
-      fontFamily: AppFonts.kPrimaryFont,
-      fontSize: 14.sp,
-      fontWeight: AppFontWeights.normal,
-      color: AppColors.kWhite70);
+  static TextStyle font14WeightNormal =  TextStyle(
+    fontFamily: AppFonts.kPrimaryFont,
+    fontSize: 14.sp,
+    fontWeight: AppFontWeights.normal,
+    color: AppColors.kWhite70
+  );
+
 }

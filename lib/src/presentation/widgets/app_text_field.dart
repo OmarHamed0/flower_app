@@ -12,7 +12,7 @@ class AppTextField extends StatelessWidget {
     this.enabled = true,
     this.obscureText = false,
     this.onChanged,
-    this.autoValidateMode = AutovalidateMode.onUserInteraction,
+    this.autovalidateMode = AutovalidateMode.onUserInteraction,
     this.validator,
     this.helperText,
     this.errorText,
@@ -39,7 +39,7 @@ class AppTextField extends StatelessWidget {
   final bool enabled;
   final bool obscureText;
   final ValueChanged<String>? onChanged;
-  final AutovalidateMode autoValidateMode;
+  final AutovalidateMode autovalidateMode;
   final FormFieldValidator<String>?
       validator; // Fixed: Updated type to match TextFormField's validator
   final String? helperText;
@@ -69,9 +69,8 @@ class AppTextField extends StatelessWidget {
       enabled: enabled,
       obscureText: obscureText,
       onChanged: onChanged,
-      autovalidateMode: autoValidateMode,
-      validator: validator,
-      // Now properly typed
+      autovalidateMode: autovalidateMode,
+      validator: validator, // Now properly typed
       maxLines: maxLines,
       cursorHeight: 16,
       decoration: InputDecoration(
@@ -104,8 +103,8 @@ class AppTextField extends StatelessWidget {
           borderRadius: AppBorderRadius.xs,
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
-            color: AppColors.kError,
+          borderSide: BorderSide(
+            color: AppColors.error,
             width: 1.5,
           ),
           borderRadius: AppBorderRadius.xs,

@@ -42,8 +42,7 @@ class ErrorHandler {
       case StatusCode.conflict:
         return ErrorHandler(
             errorMassage:
-                response.data["error"] ?? ErrorMassage.conflictMessage,
-            code: 409);
+                response.data["error"] ?? ErrorMassage.conflictMessage, code: 409);
       case StatusCode.notFount:
         return ErrorHandler(errorMassage: ErrorMassage.notFoundMessage);
       case StatusCode.internalServerError:
