@@ -10,29 +10,21 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
-  OnlineDataSource _onlineDataSource;
-  OfflineDataSource _offlineDataSource;
+  SignInOnlineDataSource _onlineDataSource;
+  SignInOfflineDataSource _offlineDataSource;
 
   AuthRepositoryImpl(this._offlineDataSource, this._onlineDataSource);
 
   @override
-  Future<ApiResult<SignupResponse>> signUp(SignUpUser user)async {
-   try {
-      var response = await _onlineDataSource.signUp(SignUpRequestBody.fromDomain(user));
+  Future<ApiResult<SignupResponse>> signUp(SignUpUser user) async {
+    try {
+      var response =
+          await _onlineDataSource.signUp(SignUpRequestBody.fromDomain(user));
       SignupResponseDto dto = SignupResponseDto();
       var result = dto.toDomain();
       return Success(data: result);
-   }
-   on Exception catch(e){
-     return Failures(exception: e);
-   }
+    } on Exception catch (e) {
+      return Failures(exception: e);
+    }
   }
-
-  }
-
-
- 
-
-
-
-
+}

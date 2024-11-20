@@ -22,7 +22,6 @@ class _GenderSelectionState extends State<GenderSelection> {
         children: [
           Text(
             'Gender',
-            style: AppFonts.font18Grey500Weight,
           ),
           horizontalSpace(20),
           Row(
@@ -30,14 +29,17 @@ class _GenderSelectionState extends State<GenderSelection> {
               Radio<String>(
                 value: 'female',
                 groupValue: selectedGender,
-                activeColor: AppColors.mainColor,
+                // activeColor: AppColors.mainColor,
                 onChanged: (value) {
                   setState(() {
                     selectedGender = value!;
                   });
                 },
               ),
-               Text('female', style: AppFonts.font14BlackBase400Weight,),
+              Text(
+                'female',
+                style: AppFonts.font14BlackBase400Weight,
+              ),
             ],
           ),
           horizontalSpace(10),
@@ -53,7 +55,10 @@ class _GenderSelectionState extends State<GenderSelection> {
                   });
                 },
               ),
-               Text('male' , style: AppFonts.font14BlackBase400Weight,),
+              Text(
+                'male',
+                style: AppFonts.font14BlackBase400Weight,
+              ),
             ],
           ),
         ],

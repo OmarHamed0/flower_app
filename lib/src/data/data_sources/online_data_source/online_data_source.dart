@@ -1,8 +1,13 @@
 import 'package:flower_app/src/data/api/core/response_model/signin_response_model.dart';
 import 'package:flower_app/src/data/models/usr_model_dto.dart';
 
-abstract class SignInOnlineDataSource{
-  Future<SignInResponseModel> signIn(String email,String password);
+import '../../../../common/api_result.dart';
+import '../../models/auth/signup/request/sign_up_user_body.dart';
+import '../../models/auth/signup/response/sign_up_response.dart';
+
+abstract class SignInOnlineDataSource {
+  Future<SignInResponseModel> signIn(String email, String password);
   Future<UserModelDTO> getLoggedUserData();
-  Future<ApiResult<SignupResponseDto>> signUp(SignUpRequestBody signUpRequestBody);
+  Future<ApiResult<SignupResponseDto>> signUp(
+      SignUpRequestBody signUpRequestBody);
 }
