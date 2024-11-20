@@ -3,21 +3,20 @@ import 'package:flower_app/core/styles/fonts/app_fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
 class AppTextFormField extends StatelessWidget {
   const AppTextFormField(
       {super.key,
-        required this.labelText,
-        this.hintText,
-        this.controller,
-        this.validator,
-        this.isObscureText,
-        this.suffixIcon,
-        this.isReadOnly = false,
-        this.focusNode,
-        this.suffixWidget,
-        this.hintStyle,
-        this.initialValue});
+      required this.labelText,
+      this.hintText,
+      this.controller,
+      this.validator,
+      this.isObscureText,
+      this.suffixIcon,
+      this.isReadOnly = false,
+      this.focusNode,
+      this.suffixWidget,
+      this.hintStyle,
+      this.initialValue});
   final String labelText;
   final String? hintText;
   final TextEditingController? controller;
@@ -54,15 +53,15 @@ class AppTextFormField extends StatelessWidget {
 
           enabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4.r),
-            borderSide: const BorderSide(
-              color: AppColors.borderColorDark,
+            borderSide: BorderSide(
+              color: AppColors.kBlack,
               width: 1,
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4.r),
             borderSide: const BorderSide(
-              color: AppColors.borderColorDark,
+              color: AppColors.kBlack,
               width: 1,
             ),
           ),
@@ -84,14 +83,14 @@ class AppTextFormField extends StatelessWidget {
           disabledBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4.r),
             borderSide: const BorderSide(
-              color: AppColors.borderColorDark,
+              color: AppColors.kBlack,
               width: 1,
             ),
           ),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(4.r),
             borderSide: const BorderSide(
-              color: AppColors.borderColorDark,
+              color: AppColors.kBlack,
               width: 1,
             ),
           ),

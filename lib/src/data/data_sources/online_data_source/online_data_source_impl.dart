@@ -34,13 +34,10 @@ class SignInOnlineDataSourceImpl implements SignInOnlineDataSource {
       },
     );
   }
+
   Future<SignInResponseModel> signIn(String email, String password) async {
     var response = await _apiServices
         .signIn(SignInRequestBody(email: email, password: password));
     return response;
   }
-
-  @override
-  Future<ApiResult<SignupResponseDto>> signUp(
-      SignUpRequestBody signUpRequestBody) async {
 }

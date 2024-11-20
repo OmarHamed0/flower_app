@@ -24,10 +24,15 @@ import '../src/data/data_sources/online_data_source/online_data_source.dart'
 import '../src/data/data_sources/online_data_source/online_data_source_impl.dart'
     as _i824;
 import '../src/data/repositories/auth_repo_impl.dart' as _i566;
+import '../src/data/repositories/auth_repo_impl/sign_in_repo_impl.dart'
+    as _i940;
 import '../src/domain/repositories/auth_repo.dart' as _i862;
+import '../src/domain/repositories/auth_repo/sign_in_repo.dart' as _i209;
 import '../src/domain/use_case/signup_user_use_case.dart' as _i444;
+import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
+import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -43,18 +48,27 @@ extension GetItInjectableX on _i174.GetIt {
     final dioProvider = _$DioProvider();
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
+    gh.factory<_i136.SignInOfflineDataSource>(
+        () => _i649.SignInOfflineDataSourceImpl());
     gh.singleton<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
-    gh.factory<_i136.OfflineDataSource>(() => _i649.OfflineDataSourceImpl());
-    gh.factory<_i787.OnlineDataSource>(
-        () => _i824.OnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i787.SignInOnlineDataSource>(
+        () => _i824.SignInOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i862.AuthRepository>(() => _i566.AuthRepositoryImpl(
-          gh<_i136.OfflineDataSource>(),
-          gh<_i787.OnlineDataSource>(),
+          gh<_i136.SignInOfflineDataSource>(),
+          gh<_i787.SignInOnlineDataSource>(),
+        ));
+    gh.factory<_i209.SignInRepo>(() => _i940.SignInRepositoryImpl(
+          gh<_i136.SignInOfflineDataSource>(),
+          gh<_i787.SignInOnlineDataSource>(),
         ));
     gh.factory<_i444.SignupUserUseCase>(
         () => _i444.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i1070.SignUpViewModel>(
         () => _i1070.SignUpViewModel(gh<_i444.SignupUserUseCase>()));
+    gh.factory<_i207.SignInUseCase>(
+        () => _i207.SignInUseCase(gh<_i209.SignInRepo>()));
+    gh.factory<_i558.SignInViewModel>(
+        () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
     return this;
   }
 }
