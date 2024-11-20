@@ -1,4 +1,6 @@
 {
+  "@@locale": "en",
+  "helloWorld": "hello World",
   "login": "Login",
   "email" : "Email",
   "password" : "Password",
