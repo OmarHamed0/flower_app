@@ -17,14 +17,13 @@ class SignInOfflineDataSourceImpl implements SignInOfflineDataSource {
     var token = SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
     return (token.isNullOrEmpty() == true);
   }
+class OfflineDataSourceImpl implements OfflineDataSource {}
 
   @override
   Future<void> deleteToken() async {
     await SharedPrefHelper.removeSecureString(SharedPrefKeys.userToken);
   }
-
   @override
   Future<void> saveToken(String token) async {
     await SharedPrefHelper.setSecureString(SharedPrefKeys.userToken, token);
   }
-}
