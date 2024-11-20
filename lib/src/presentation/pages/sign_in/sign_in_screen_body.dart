@@ -10,6 +10,7 @@ import 'package:flower_app/src/presentation/widgets/dialogs.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../config/routes/page_route_name.dart';
 import '../../../../flower_app.dart';
 import 'donot_have_account_row.dart';
@@ -25,22 +26,22 @@ class SignInScreenBody extends StatelessWidget {
         if (state is SignInLoadingState) {
           LoadingDialog.show(context);
         } else if (state is SignInSuccessState) {
-           Future.delayed(const Duration(milliseconds: 1500),(){
-             SuccessDialog.hide(context);
-             navKey.currentState?.pushNamedAndRemoveUntil(
-               PageRouteName.home,
-                   (route) => false,
-             );
-           });
-           SuccessDialog.show(context);
+          Future.delayed(const Duration(milliseconds: 1500), () {
+            SuccessDialog.hide(context);
+            navKey.currentState?.pushNamedAndRemoveUntil(
+              PageRouteName.home,
+              (route) => false,
+            );
+          });
+          SuccessDialog.show(context);
         } else if (state is SignInFailedState) {
-           Future.delayed(const Duration(seconds: 2),(){
-             ErrorDialog.hide(context);
-           });
+          Future.delayed(const Duration(seconds: 2), () {
+            ErrorDialog.hide(context);
+          });
           ErrorDialog.show(context);
-           showToast(state.message!);
+          showToast(state.message!);
         } else if (state is PopDialogState) {
-           LoadingDialog.hide(context);
+          LoadingDialog.hide(context);
         }
       },
       builder: (context, state) {

@@ -18,7 +18,6 @@ class FormErrorState extends ForgetPasswordViewState {}
 
 class PopDialogState extends ForgetPasswordViewState {}
 
-
 sealed class ForgetPasswordViewAction {}
 
 class FormDataChangedAction extends ForgetPasswordViewAction {}

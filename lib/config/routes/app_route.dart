@@ -1,8 +1,9 @@
 import 'package:flower_app/config/routes/page_route_name.dart';
+import 'package:flower_app/src/presentation/pages/forget_password/forget_password_view.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
+import 'package:flower_app/src/presentation/pages/otp_verify/otp_verify_view.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
-import 'package:flower_app/src/presentation/pages/forget_password/forget_password_view.dart';
 import 'package:flutter/material.dart';
 
 class AppRoute {
@@ -10,16 +11,17 @@ class AppRoute {
     switch (settings.name) {
       case PageRouteName.splash:
         return _handelMaterialPageRoute(
-            settings: settings,
-            widget: const SplashScreen()
-        );
+            settings: settings, widget: const SplashScreen());
       case PageRouteName.signIn:
         return MaterialPageRoute(builder: (_) => SignInScreen());
       case PageRouteName.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case PageRouteName.forgetPassword:
         return _handelMaterialPageRoute(
-            widget: ForgetPasswordView(), settings: settings);
+            widget: const ForgetPasswordView(), settings: settings);
+      case PageRouteName.otpVerify:
+        return _handelMaterialPageRoute(
+            widget: const OtpVerifyView(), settings: settings);
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

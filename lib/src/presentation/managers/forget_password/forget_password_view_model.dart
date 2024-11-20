@@ -20,6 +20,7 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordViewState> {
 
   final TextEditingController emailController = TextEditingController();
   bool valid = false;
+  String? email = '';
 
   String? validateEmail() {
     String? email = emailController.text;

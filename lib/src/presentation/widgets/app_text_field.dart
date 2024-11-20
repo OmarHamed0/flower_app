@@ -17,9 +17,11 @@ class AppTextField extends StatelessWidget {
     this.helperText,
     this.errorText,
     this.suffixIcon,
-    this.suffixIconConstraints = const BoxConstraints(minHeight: 24, minWidth: 40),
+    this.suffixIconConstraints =
+        const BoxConstraints(minHeight: 24, minWidth: 40),
     this.prefixIcon,
-    this.prefixIconConstraints = const BoxConstraints(minHeight: 24, minWidth: 40),
+    this.prefixIconConstraints =
+        const BoxConstraints(minHeight: 24, minWidth: 40),
     this.autofillHints,
     this.onEditingComplete,
     this.inputFormatters,
@@ -38,7 +40,8 @@ class AppTextField extends StatelessWidget {
   final bool obscureText;
   final ValueChanged<String>? onChanged;
   final AutovalidateMode autoValidateMode;
-  final FormFieldValidator<String>? validator; // Fixed: Updated type to match TextFormField's validator
+  final FormFieldValidator<String>?
+      validator; // Fixed: Updated type to match TextFormField's validator
   final String? helperText;
   final String? errorText;
   final Widget? suffixIcon;
@@ -67,7 +70,8 @@ class AppTextField extends StatelessWidget {
       obscureText: obscureText,
       onChanged: onChanged,
       autovalidateMode: autoValidateMode,
-      validator: validator, // Now properly typed
+      validator: validator,
+      // Now properly typed
       maxLines: maxLines,
       cursorHeight: 16,
       decoration: InputDecoration(
@@ -93,7 +97,7 @@ class AppTextField extends StatelessWidget {
           borderRadius: AppBorderRadius.xs,
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide:  const BorderSide(
+          borderSide: const BorderSide(
             color: AppColors.kGray,
             width: 1.5,
           ),

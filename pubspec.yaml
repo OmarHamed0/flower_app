@@ -29,7 +29,6 @@ dependencies:
   fluttertoast: ^8.2.1
 
   cupertino_icons: ^1.0.6
-  pretty_dio_logger: ^1.4.0
   either_dart: ^1.0.0
   pretty_dio_logger: ^1.4.0
   shared_preferences: ^2.3.3

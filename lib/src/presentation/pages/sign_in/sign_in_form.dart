@@ -3,10 +3,10 @@ import 'package:flower_app/core/styles/spaceing.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_actions.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_view_model.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../core/styles/texts/app_text_styles.dart';
 import '../../widgets/app_text_field.dart';
 
@@ -24,8 +24,8 @@ class SignInForm extends StatelessWidget {
       child: Column(
         children: [
           BlocBuilder<SignInViewModel, SignInStates>(
-            builder: (context,state){
-             return AppTextField(
+            builder: (context, state) {
+              return AppTextField(
                 controller: signInViewModel.emailController,
                 labelText: AppLocalizations.of(context)!.email,
                 hintText: AppLocalizations.of(context)!.enterYourEmail,
@@ -35,7 +35,7 @@ class SignInForm extends StatelessWidget {
                         : AppColors.kGray),
                 hintStyle: AppTextStyles.font14WeightNormal,
                 errorText: emailErrorMessage,
-                onSaved: (value){
+                onSaved: (value) {
                   emailErrorMessage = signInViewModel.validateEmail();
                 },
                 validator: (value) {

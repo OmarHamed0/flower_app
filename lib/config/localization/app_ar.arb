@@ -2,8 +2,8 @@
   "login": "تسجيل الدخول",
   "email": "البريد الالكتروني",
   "password": "كلمة السر",
-  "enterYourEmail" : "ادخل البريد الالكتروني",
-  "enterYourPassword":   "ادخل كلمة السر",
+  "enterYourEmail": "ادخل البريد الالكتروني",
+  "enterYourPassword": "ادخل كلمة السر",
   "notValidEmail": "البزيد الالكتروني غير متاح",
   "rememberMe": "تذكرني",
   "forgetPassword": "نسيت كلمة السر",
@@ -12,7 +12,11 @@
   "signUp": "انشاء حساب",
   "emailNotValid": "هذا البريد غير صالح",
   "invalidPassword": "كلمة سر غير صالحة",
-  "pleaseEnterYourEmailAssociatedToYourAccount" : "الرجاء إدخال بريدك الإلكتروني المرتبط بحسابك",
-  "confirm" : "تأكيد",
-  "emailCanNotBeEmpty" : "لا يمكن أن يكون البريد الإلكتروني فارغًا"
+  "pleaseEnterYourEmailAssociatedToYourAccount": "الرجاء إدخال بريدك الإلكتروني المرتبط بحسابك",
+  "confirm": "تأكيد",
+  "emailCanNotBeEmpty": "لا يمكن أن يكون البريد الإلكتروني فارغًا",
+  "emailVerification": "التحقق من البريد الإلكتروني",
+  "pleaseEnterYourCodeThatSendToYourEmailAddress": "الرجاء إدخال الرمز الخاص بك الذي سيتم إرساله إلى عنوان بريدك الإلكتروني",
+  "didNotReceiveCode": "لم أتلق الرمز؟",
+  "resend": "Resend"
 }

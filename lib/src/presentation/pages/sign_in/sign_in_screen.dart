@@ -11,17 +11,20 @@ class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
   final signInViewModel = getIt.get<SignInViewModel>();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_)=> signInViewModel,
+      create: (_) => signInViewModel,
       child: SafeArea(
         child: Scaffold(
           backgroundColor: AppColors.kWhiteBase,
           appBar: AppBar(
-            leading: const Icon(Icons.arrow_back_ios_new),
-            title: Text(AppLocalizations.of(context)!.login ,style: AppTextStyles.font20WeightMedium,)
-          ),
+              leading: const Icon(Icons.arrow_back_ios_new),
+              title: Text(
+                AppLocalizations.of(context)!.login,
+                style: AppTextStyles.font20WeightMedium,
+              )),
           body: const SignInScreenBody(),
         ),
       ),

@@ -8,14 +8,13 @@ class UserEntity {
   String? role;
   String? photo;
 
-  UserEntity({
-    this.id,
-    this.firstName,
-    this.lastName,
-    this.email,
-    this.gender,
-    this.phone,
-    this.photo,
-    this.role
-  });
+  UserEntity(
+      {this.id,
+      this.firstName,
+      this.lastName,
+      this.email,
+      this.gender,
+      this.phone,
+      this.photo,
+      this.role});
 }

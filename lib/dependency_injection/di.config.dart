@@ -32,9 +32,13 @@ import '../src/domain/repositories/auth_repo/forget_password_repo.dart'
 import '../src/domain/repositories/auth_repo/sign_in_repo.dart' as _i209;
 import '../src/domain/use_cases/auth_use_cases/forget_password_use_case.dart'
     as _i745;
+import '../src/domain/use_cases/auth_use_cases/otp_verify_use_case.dart'
+    as _i1046;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/presentation/managers/forget_password/forget_password_view_model.dart'
     as _i1012;
+import '../src/presentation/managers/otp_verify/otp_verify_view_model.dart'
+    as _i673;
 import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -66,8 +70,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i207.SignInUseCase(gh<_i209.SignInRepo>()));
     gh.factory<_i745.ForgetPasswordUseCase>(() =>
         _i745.ForgetPasswordUseCase(gh<_i680.ForgetPasswordRepository>()));
+    gh.factory<_i1046.OtpVerifyUseCase>(
+        () => _i1046.OtpVerifyUseCase(gh<_i680.ForgetPasswordRepository>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i673.OtpVerifyViewModel>(
+        () => _i673.OtpVerifyViewModel(gh<_i1046.OtpVerifyUseCase>()));
     gh.factory<_i1012.ForgetPasswordViewModel>(() =>
         _i1012.ForgetPasswordViewModel(gh<_i745.ForgetPasswordUseCase>()));
     return this;

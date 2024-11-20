@@ -22,7 +22,7 @@ class ForgetPasswordForm extends StatelessWidget {
       onChanged: () => viewModel.doIntent(FormDataChangedAction()),
       key: viewModel.forgetPasswordFormKey,
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16.w , vertical: 24.h),
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 24.h),
         child: Column(
           children: [
             Row(
@@ -57,7 +57,7 @@ class ForgetPasswordForm extends StatelessWidget {
                       : AppColors.kGray),
               hintStyle: AppTextStyles.font14WeightNormal,
               errorText: emailErrorMessage,
-              onSaved: (value){
+              onSaved: (value) {
                 emailErrorMessage = viewModel.validateEmail();
               },
               validator: (value) {

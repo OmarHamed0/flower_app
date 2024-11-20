@@ -28,7 +28,8 @@ class ForgetPasswordBody extends StatelessWidget {
 
             // Navigate after showing the success dialog
             navKey.currentState?.pushNamedAndRemoveUntil(
-              PageRouteName.home,
+              PageRouteName.otpVerify,
+              arguments: context.read<ForgetPasswordViewModel>().email,
               (route) => false,
             );
           } else if (state is ForgetPasswordFailState) {

@@ -127,11 +127,13 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<VerifyResetCodeResponseDto> verifyResetCode(String resetCode) async {
+  Future<VerifyResetCodeResponseDto> verifyResetCode(
+      OtpVerifyRequestDto resetCode) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final _data = resetCode;
+    final _data = <String, dynamic>{};
+    _data.addAll(resetCode.toJson());
     final _options = _setStreamType<VerifyResetCodeResponseDto>(Options(
       method: 'POST',
       headers: _headers,

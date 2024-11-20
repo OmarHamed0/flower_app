@@ -9,7 +9,7 @@ class SignInResponseModel {
   @JsonKey(name: "token")
   final String? token;
 
-  SignInResponseModel ({
+  SignInResponseModel({
     this.message,
     this.token,
   });
@@ -22,5 +22,3 @@ class SignInResponseModel {
     return _$SignInResponseModelToJson(this);
   }
 }
-
-

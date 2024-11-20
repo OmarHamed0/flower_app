@@ -9,7 +9,7 @@ class SignInRequestBody {
   @JsonKey(name: "password")
   final String? password;
 
-  SignInRequestBody ({
+  SignInRequestBody({
     this.email,
     this.password,
   });
@@ -22,5 +22,3 @@ class SignInRequestBody {
     return _$SignInRequestBodyToJson(this);
   }
 }
-
-

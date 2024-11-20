@@ -1,4 +1,4 @@
-abstract class ApisEndPoints{
+abstract class ApisEndPoints {
   static const String forgetPasswordEndpoint = "forgotPassword";
   static const String verifyRestCodeEndPoint = "verifyResetCode";
   static const String resetPasswordEndpoint = "resetPassword";
