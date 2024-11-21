@@ -14,7 +14,7 @@ class _ApiServices implements ApiServices {
     this.baseUrl,
     this.errorLogger,
   }) {
-    baseUrl ??= 'https://flower.elevateegy.com/api/v1/auth/';
+    baseUrl ??= 'https://flower.elevateegy.com/api/v1/';
   }
 
   final Dio _dio;
@@ -37,7 +37,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'signup',
+          'auth/signup',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -71,7 +71,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'signin',
+          'auth/signin',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -105,7 +105,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'profile-data',
+          'auth/profile-data',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -118,6 +118,39 @@ class _ApiServices implements ApiServices {
     late LoggedUserDataResponseModel _value;
     try {
       _value = LoggedUserDataResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<HomeResponse> getHomeData() async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    const Map<String, dynamic>? _data = null;
+    final _options = _setStreamType<HomeResponse>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'home',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late HomeResponse _value;
+    try {
+      _value = HomeResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;

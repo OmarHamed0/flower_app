@@ -19,6 +19,10 @@ import '../src/data/data_sources/offline_data_source/offline_data_source.dart'
     as _i136;
 import '../src/data/data_sources/offline_data_source/offline_data_source_impl.dart'
     as _i649;
+import '../src/data/data_sources/online_data_source/home_online_datasource.dart'
+    as _i902;
+import '../src/data/data_sources/online_data_source/home_online_datasource_impl.dart'
+    as _i1054;
 import '../src/data/data_sources/online_data_source/online_data_source.dart'
     as _i787;
 import '../src/data/data_sources/online_data_source/online_data_source_impl.dart'
@@ -26,12 +30,16 @@ import '../src/data/data_sources/online_data_source/online_data_source_impl.dart
 import '../src/data/repositories/auth_repo_impl.dart' as _i566;
 import '../src/data/repositories/auth_repo_impl/sign_in_repo_impl.dart'
     as _i940;
+import '../src/data/repositories/home_repository_impl.dart' as _i283;
 import '../src/domain/repositories/auth_repo.dart' as _i862;
 import '../src/domain/repositories/auth_repo/sign_in_repo.dart' as _i209;
+import '../src/domain/repositories/home_repository.dart' as _i781;
 import '../src/domain/use_case/signup_user_use_case.dart' as _i444;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
+import '../src/domain/use_cases/home_usecase.dart' as _i729;
 import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
+import '../src/presentation/managers/home/home_viewmodel.dart' as _i363;
 import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
 
 extension GetItInjectableX on _i174.GetIt {
@@ -67,8 +75,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.SignUpViewModel(gh<_i444.SignupUserUseCase>()));
     gh.factory<_i207.SignInUseCase>(
         () => _i207.SignInUseCase(gh<_i209.SignInRepo>()));
+    gh.factory<_i902.HomeOnlineDataSource>(
+        () => _i1054.HomeOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(
+        homeDataSource: gh<_i902.HomeOnlineDataSource>()));
+    gh.factory<_i729.HomeUseCase>(
+        () => _i729.HomeUseCase(gh<_i781.HomeRepository>()));
+    gh.factory<_i363.HomeViewModel>(
+        () => _i363.HomeViewModel(gh<_i729.HomeUseCase>()));
     return this;
   }
 }

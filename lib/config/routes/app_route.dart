@@ -2,6 +2,7 @@ import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/auth/signup/manager/signup_viewmodel.dart';
 import 'package:flower_app/src/presentation/auth/signup/views/sign_up_view.dart';
+import 'package:flower_app/src/presentation/managers/home/home_viewmodel.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
@@ -29,7 +30,10 @@ class AppRoute {
       case PageRouteName.home:
         return _handleMaterialPageRoute(
           settings: settings,
-          widget: const HomeScreen(),
+          widget: BlocProvider(
+            create: (context) => getIt<HomeViewModel>(),
+            child: const HomeScreen(),
+          ),
         );
       case PageRouteName.splash:
         return _handleMaterialPageRoute(
