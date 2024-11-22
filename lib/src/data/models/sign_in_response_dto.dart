@@ -1,5 +1,5 @@
 import 'package:flower_app/src/data/api/core/response_model/signin_response_model.dart';
-import 'package:flower_app/src/domain/entities/sign_in_entity.dart';
+import 'package:flower_app/src/domain/entities/auth/sign_in_entity.dart';
 
 class SignInResponseDto{
   String? message;

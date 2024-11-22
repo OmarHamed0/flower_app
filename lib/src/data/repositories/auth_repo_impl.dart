@@ -5,6 +5,7 @@ import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
 import 'package:flower_app/src/domain/entities/auth/signup/sign_up_response.dart';
 import 'package:flower_app/src/domain/entities/auth/signup/sign_up_user.dart';
+import 'package:flower_app/src/domain/entities/auth/sign_in_entity.dart';
 import 'package:flower_app/src/domain/repositories/auth_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -26,5 +27,17 @@ class AuthRepositoryImpl implements AuthRepository {
     } on Exception catch (e) {
       return Failures(exception: e);
     }
+  }
+
+  @override
+  Future<bool> isLoggedUser() {
+    // TODO: implement isLoggedUser
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<ApiResult<SignInEntity>> signIn(String email, String password) {
+    // TODO: implement signIn
+    throw UnimplementedError();
   }
 }

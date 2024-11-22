@@ -28,7 +28,7 @@ import '../src/data/repositories/auth_repo_impl/sign_in_repo_impl.dart'
     as _i940;
 import '../src/domain/repositories/auth_repo.dart' as _i862;
 import '../src/domain/repositories/auth_repo/sign_in_repo.dart' as _i209;
-import '../src/domain/use_case/signup_user_use_case.dart' as _i444;
+import '../src/domain/use_cases/auth_use_cases/signup_user_use_case.dart' as _i444;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
