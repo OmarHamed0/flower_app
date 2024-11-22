@@ -4,6 +4,8 @@ import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 
+import '../../src/presentation/pages/product_details/product_details.dart';
+
 class AppRoute {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -16,6 +18,8 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => SignInScreen());
       case PageRouteName.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case PageRouteName.productDetails:
+         return _handelMaterialPageRoute(widget: ProductDetails(), settings: settings);
       default:
         return _handelMaterialPageRoute(
             settings: settings,

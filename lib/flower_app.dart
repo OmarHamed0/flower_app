@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flower_app/config/localization/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -29,7 +28,7 @@ class FlowerApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         locale: const Locale('en'),
         navigatorKey: navKey,
-        initialRoute: PageRouteName.splash, // Splash screen is the initial route
+        initialRoute: PageRouteName.productDetails, // Splash screen is the initial route
         onGenerateRoute: AppRoute.onGenerateRoute,
         themeMode: ThemeMode.light,
         // theme: AppTheme.appTheme,

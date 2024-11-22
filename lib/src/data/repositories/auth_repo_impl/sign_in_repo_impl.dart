@@ -17,7 +17,6 @@ class SignInRepositoryImpl implements SignInRepo {
 
   @override
   Future<Either<String, UserEntity>> getLoggedUserData() {
-    // TODO: implement getLoggedUserData
     throw UnimplementedError();
   }
 
