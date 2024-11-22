@@ -1,4 +1,4 @@
-import '../../models/usr_model_dto.dart';
+import '../../models/auth/usr_model_dto.dart';
 
 abstract class SignInOfflineDataSource {
   Future<UserModelDTO> getCachedLoggedUser();

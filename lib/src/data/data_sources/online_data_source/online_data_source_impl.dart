@@ -2,11 +2,11 @@ import 'package:flower_app/config/helpers/shared_pre_keys.dart';
 import 'package:flower_app/config/helpers/shared_pref_helper.dart';
 import 'package:flower_app/src/data/api/api_services.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/signin_request_body.dart';
-import 'package:flower_app/src/data/api/core/response_model/signin_response_model.dart';
+import 'package:flower_app/src/data/api/core/response_model/auth_response_models/signin_response_model.dart';
 import 'package:flower_app/src/data/data_sources/online_data_source/online_data_source.dart';
 import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
-import 'package:flower_app/src/data/models/usr_model_dto.dart';
+import 'package:flower_app/src/data/models/auth/usr_model_dto.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../common/api_execute.dart';

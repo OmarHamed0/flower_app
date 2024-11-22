@@ -1,5 +1,5 @@
-import 'package:flower_app/src/data/api/core/response_model/signin_response_model.dart';
-import 'package:flower_app/src/data/models/usr_model_dto.dart';
+import 'package:flower_app/src/data/api/core/response_model/auth_response_models/signin_response_model.dart';
+import 'package:flower_app/src/data/models/auth/usr_model_dto.dart';
 
 import '../../../../common/api_result.dart';
 import '../../models/auth/signup/request/sign_up_user_body.dart';

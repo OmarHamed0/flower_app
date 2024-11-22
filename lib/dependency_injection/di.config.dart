@@ -23,6 +23,10 @@ import '../src/data/data_sources/online_data_source/online_data_source.dart'
     as _i787;
 import '../src/data/data_sources/online_data_source/online_data_source_impl.dart'
     as _i824;
+import '../src/data/data_sources/online_data_source/product_data_source/product_online_data_source.dart'
+    as _i866;
+import '../src/data/data_sources/online_data_source/product_data_source/product_online_data_source_impl.dart'
+    as _i352;
 import '../src/data/repositories/auth_repo_impl.dart' as _i566;
 import '../src/data/repositories/auth_repo_impl/sign_in_repo_impl.dart'
     as _i940;
@@ -61,7 +65,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
     gh.factory<_i787.SignInOnlineDataSource>(
         () => _i824.SignInOnlineDataSourceImpl(gh<_i687.ApiServices>()));
-    gh.factory<_i170.ProductRepo>(() => _i974.ProductRepoImpl());
     gh.factory<_i862.AuthRepository>(() => _i566.AuthRepositoryImpl(
           gh<_i136.SignInOfflineDataSource>(),
           gh<_i787.SignInOnlineDataSource>(),
@@ -72,8 +75,12 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
+    gh.factory<_i866.ProductOnlineDataSource>(
+        () => _i352.ProductOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i207.SignInUseCase>(
         () => _i207.SignInUseCase(gh<_i209.SignInRepo>()));
+    gh.factory<_i170.ProductRepo>(
+        () => _i974.ProductRepoImpl(gh<_i866.ProductOnlineDataSource>()));
     gh.factory<_i1042.ProductByIdUseCase>(
         () => _i1042.ProductByIdUseCase(gh<_i170.ProductRepo>()));
     gh.factory<_i1070.SignUpViewModel>(
