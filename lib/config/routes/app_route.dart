@@ -18,6 +18,14 @@ class AppRoute {
             settings: settings,
             widget: const SplashScreen()
         );
+      case PageRouteName.signup:
+        return _handelMaterialPageRoute(
+          settings: settings,
+          widget: BlocProvider(
+            create: (context) => getIt<SignUpViewModel>(),
+            child: const SignUpView(),
+          ),
+        );
       case PageRouteName.signIn:
         return MaterialPageRoute(builder: (_) => SignInScreen());
       case PageRouteName.home:
