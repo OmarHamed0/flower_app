@@ -3,11 +3,11 @@ import 'package:flower_app/src/domain/entities/product_entity/product_entity.dar
 import 'package:flower_app/src/domain/repositories/product_repo/product_repo.dart';
 import 'package:injectable/injectable.dart';
 
-@injectable
-class ProductByIdUseCase{
-  ProductRepo _productRepo;
-  ProductByIdUseCase(this._productRepo);
-  Future<ApiResult<ProductEntity>> getProductById(String id) async{
-    return await _productRepo.getProductById(id);
+@Injectable(as: ProductRepo)
+class ProductRepoImpl implements ProductRepo{
+  @override
+  Future<ApiResult<ProductEntity>> getProductById(String id) {
+    // TODO: implement getProductById
+    throw UnimplementedError();
   }
 }
