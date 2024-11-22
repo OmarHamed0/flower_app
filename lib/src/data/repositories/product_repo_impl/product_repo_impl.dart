@@ -7,14 +7,17 @@ import 'package:flower_app/src/domain/repositories/product_repo/product_repo.dar
 import 'package:injectable/injectable.dart';
 
 @Injectable(as: ProductRepo)
-class ProductRepoImpl implements ProductRepo{
+class ProductRepoImpl implements ProductRepo {
   final ProductOnlineDataSource _productOnlineDataSource;
+
   ProductRepoImpl(this._productOnlineDataSource);
+
   @override
-  Future<ApiResult<ProductEntity>> getProductById(String id) async{
-     return await executeApi(apiCall: () async{
-        var response = await _productOnlineDataSource.getProductById(id);
-        return ProductModelDto().toDomain(response);
-     });
+  Future<ApiResult<ProductEntity>> getProductById(String id) async {
+    return await executeApi<ProductEntity>(apiCall: <ProductEntity>()
+    async{
+      var response = await _productOnlineDataSource.getProductById(id);
+      return ProductModelDto().toDomain(response);
+    });
   }
 }

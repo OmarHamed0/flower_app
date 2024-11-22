@@ -51,7 +51,6 @@ class Product {
   final String? createdAt;
   @JsonKey(name: "updatedAt")
   final String? updatedAt;
-  @JsonKey(name: "__v")
   @JsonKey(name: "id")
   final String? id;
 

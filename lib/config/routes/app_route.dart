@@ -15,9 +15,7 @@ class AppRoute {
     switch (settings.name) {
       case PageRouteName.splash:
         return _handelMaterialPageRoute(
-            settings: settings,
-            widget: const SplashScreen()
-        );
+            settings: settings, widget: const SplashScreen());
       case PageRouteName.signup:
         return _handelMaterialPageRoute(
           settings: settings,
@@ -30,13 +28,15 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => SignInScreen());
       case PageRouteName.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
+      case PageRouteName.productDetails:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: ProductDetails());
       default:
         return _handelMaterialPageRoute(
-            settings: settings,
-            widget: const Scaffold()
-        );
+            settings: settings, widget: const Scaffold());
     }
   }
+
   static MaterialPageRoute<dynamic> _handelMaterialPageRoute(
       {required Widget widget, required RouteSettings settings}) {
     return MaterialPageRoute(builder: (context) => widget, settings: settings);

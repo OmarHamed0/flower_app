@@ -1,4 +1,6 @@
+import 'package:flower_app/config/routes/app_route.dart';
 import 'package:flower_app/core/styles/app_radius.dart';
+import 'package:flower_app/src/presentation/managers/product_details/product_details_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/images/app_images.dart';
@@ -7,6 +9,7 @@ import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/src/presentation/pages/product_details/product_price_and_statue_row.dart';
 import 'package:flower_app/src/presentation/widgets/app_text_button.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductDetailsBody extends StatelessWidget {
@@ -14,6 +17,8 @@ class ProductDetailsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<ProductDetailsViewModel>();
+    final productEntity = viewModel.productEntity;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -29,12 +34,12 @@ class ProductDetailsBody extends StatelessWidget {
                 return FlexibleSpaceBar(
                   title: isCollapsed
                       ? Text(
-                    "15 Pink Rose Bouquet",
+                    productEntity?.title ?? "",
                     style: AppTextStyles.font20WeightBold,
                   )
                       : null,
-                  background: Image.asset(
-                    AppImages.productDetailsTestImage,
+                  background: Image.network(
+                    productEntity!.imageCover!,
                     fit: BoxFit.cover,
                   ),
                   centerTitle: true,
@@ -57,7 +62,7 @@ class ProductDetailsBody extends StatelessWidget {
                   ),
                   verticalSpace(4),
                   Text(
-                    "15 Pink Rose Bouquet",
+                    productEntity?.title ?? "",
                     style: AppTextStyles.font16WeightMedium,
                   ),
                   verticalSpace(24),
@@ -67,7 +72,7 @@ class ProductDetailsBody extends StatelessWidget {
                   ),
                   verticalSpace(8),
                   Text(
-                    "Description contentDescription content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content...Description content Description contentDescription contentDescription contentDescription content... Description contentDescription contentDescription contentDescription content...",
+                    productEntity?.description ?? "",
                     style: AppTextStyles.font14WeightNormal.copyWith(color: AppColors.kBlack),
                   ),
                   verticalSpace(24),

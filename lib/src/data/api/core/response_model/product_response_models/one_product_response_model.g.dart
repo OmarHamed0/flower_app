@@ -37,7 +37,7 @@ Product _$ProductFromJson(Map<String, dynamic> json) => Product(
       occasion: json['occasion'] as String?,
       createdAt: json['createdAt'] as String?,
       updatedAt: json['updatedAt'] as String?,
-      id: json['__v'] as String?,
+      id: json['id'] as String?,
     );
 
 Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
@@ -54,5 +54,5 @@ Map<String, dynamic> _$ProductToJson(Product instance) => <String, dynamic>{
       'occasion': instance.occasion,
       'createdAt': instance.createdAt,
       'updatedAt': instance.updatedAt,
-      '__v': instance.id,
+      'id': instance.id,
     };
