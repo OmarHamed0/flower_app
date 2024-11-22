@@ -13,5 +13,11 @@
   "dontHaveAccount" : "Don't have account? ",
   "signUp": "Sign up",
   "emailNotValid" : "Email is not valid",
-  "invalidPassword": "invalid Password"
+  "invalidPassword": "invalid Password",
+  "addToCart": "Add to cart",
+  "description":"Description",
+  "allPricesIncludeTax":"All prices include Tax",
+  "bouquetInclude":"Bouquet include",
+  "egp":"EGP",
+  "statue":"Statue"
 }
