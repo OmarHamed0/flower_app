@@ -1,8 +1,12 @@
 import 'package:flower_app/config/routes/page_route_name.dart';
+import 'package:flower_app/dependency_injection/di.dart';
+import 'package:flower_app/src/presentation/auth/signup/manager/signup_viewmodel.dart';
+import 'package:flower_app/src/presentation/auth/signup/views/sign_up_view.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../src/presentation/pages/product_details/product_details.dart';
 
@@ -18,8 +22,6 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => SignInScreen());
       case PageRouteName.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
-      case PageRouteName.productDetails:
-         return _handelMaterialPageRoute(widget: ProductDetails(), settings: settings);
       default:
         return _handelMaterialPageRoute(
             settings: settings,
