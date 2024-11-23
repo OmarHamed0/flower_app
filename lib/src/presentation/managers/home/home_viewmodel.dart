@@ -1,3 +1,6 @@
+import 'package:flower_app/common/api_result.dart';
+import 'package:flower_app/src/data/api/core/error/error_handler.dart';
+import 'package:flower_app/src/domain/entities/home/HomeResponseModel.dart';
 import 'package:flower_app/src/presentation/managers/home/home_actions.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -20,7 +23,21 @@ class HomeViewModel extends Cubit<HomeState> {
   }
 
   void _loadHomeData() async {
-    var result = await _homeUseCase.getHomeData();
-    print(result);
+    emit(const HomeStateLoading());
+    final result = await _homeUseCase.getHomeData();
+    switch (result) {
+      case Success<HomeResponseModel>():
+        final homeData = result.data;
+        emit(HomeStateSuccess(
+          products: homeData?.products ?? [],
+          bestSeller: homeData?.bestSeller ?? [],
+          occasions: homeData?.occasions ?? [],
+        ));
+        break;
+      case Failures<HomeResponseModel>():
+        final error = ErrorHandler.fromException(result.exception);
+        emit(HomeStateFailure(error.errorMassage));
+        break;
+    }
   }
 }

@@ -13,5 +13,14 @@
   "dontHaveAccount" : "Don't have account? ",
   "signUp": "Sign up",
   "emailNotValid" : "Email is not valid",
-  "invalidPassword": "invalid Password"
+  "invalidPassword": "invalid Password",
+  "categories": "Categories",
+  "best_Seller": "Best Seller",
+  "occasions": "Occasions",
+    "search": "Search",
+  "noProducts": "No products available",
+  "somethingWentWrong": "Something went wrong",
+  "giftNow": "Gift Now",
+  "discoverNew": "Discover something new"
+
 }
