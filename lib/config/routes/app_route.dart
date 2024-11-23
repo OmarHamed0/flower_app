@@ -30,7 +30,7 @@ class AppRoute {
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case PageRouteName.productDetails:
         return _handelMaterialPageRoute(
-            settings: settings, widget: ProductDetails());
+            settings: settings, widget: ProductDetails(productId: "",));
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

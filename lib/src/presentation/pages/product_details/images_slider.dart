@@ -36,7 +36,7 @@ class _ImagesSliderState extends State<ImagesSlider> {
             height: 400.h,
             enlargeCenterPage: true,
             autoPlay: true,
-            autoPlayInterval: const Duration(seconds: 3),
+            autoPlayInterval: const Duration(seconds: 7),
             aspectRatio: 16 / 9,
             viewportFraction: 1.1,
             onPageChanged: (index, reason) {

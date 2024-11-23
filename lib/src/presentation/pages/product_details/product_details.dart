@@ -7,16 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProductDetails extends StatelessWidget {
-
-
-  ProductDetails({super.key});
+  final String productId;
+  ProductDetails({super.key,required this.productId});
   final viewModel = getIt.get<ProductDetailsViewModel>();
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        viewModel.doAction(GetProductByIdAction("673e1cd711599201718280fb"));
+        viewModel.doAction(GetProductByIdAction(productId));
         return viewModel;
       },
       child: Scaffold(
