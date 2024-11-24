@@ -21,7 +21,7 @@ class SignInScreenButtons extends StatelessWidget {
     return Column(
       children: [
         AppTextButton(
-          borderRadius: AppBorderRadius.xxl,
+          borderRadius:  const BorderRadius.all(AppRadius.xxl),
           buttonText: AppLocalizations.of(context)!.login,
           textStyle: AppTextStyles.font16WeightMedium
               .copyWith(color: AppColors.kWhiteBase),
@@ -32,7 +32,7 @@ class SignInScreenButtons extends StatelessWidget {
         ),
         verticalSpace(16),
         AppTextButton(
-          borderRadius: AppBorderRadius.xxl,
+          borderRadius:  const BorderRadius.all(AppRadius.xxl),
           buttonText: AppLocalizations.of(context)!.continueAsGuest,
           textStyle: AppTextStyles.font16WeightMedium
               .copyWith(color: AppColors.kGray),

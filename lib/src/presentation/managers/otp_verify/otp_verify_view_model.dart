@@ -13,6 +13,7 @@ import 'package:injectable/injectable.dart';
 class OtpVerifyViewModel extends Cubit<OtpVerifyViewState> {
   final OtpVerifyUseCase _otpVerifyUseCase;
   GlobalKey<FormState> otpFormKey = GlobalKey<FormState>();
+  String? email = '';
 
   final List<TextEditingController> controllers = List.generate(
     6,
@@ -27,13 +28,13 @@ class OtpVerifyViewModel extends Cubit<OtpVerifyViewState> {
       case OnCompleteCodeVerifyAction():
         {
           _checkAndSubmitOtp();
+          break;
         }
       case FormDataChangedAction():
       case OtpResendAction():
       // TODO: Handle this case.
 
-      case DisableTimerAction():
-      // TODO: Handle this case.
+
     }
   }
 

@@ -30,7 +30,7 @@ class FlowerApp extends StatelessWidget {
         locale: const Locale('en'),
         navigatorKey: navKey,
         initialRoute:
-            PageRouteName.splash, // Splash screen is the initial route
+            PageRouteName.forgetPassword, // Splash screen is the initial route
         onGenerateRoute: AppRoute.onGenerateRoute,
         themeMode: ThemeMode.light,
         // theme: AppTheme.appTheme,

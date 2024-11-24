@@ -70,7 +70,8 @@ class AppTextField extends StatelessWidget {
       obscureText: obscureText,
       onChanged: onChanged,
       autovalidateMode: autovalidateMode,
-      validator: validator, // Now properly typed
+      validator: validator,
+      // Now properly typed
       maxLines: maxLines,
       cursorHeight: 16,
       decoration: InputDecoration(
@@ -88,33 +89,33 @@ class AppTextField extends StatelessWidget {
         fillColor: AppColors.kWhiteBase,
         hoverColor: Colors.transparent,
         focusColor: Colors.transparent,
-        enabledBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
+        enabledBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
             color: AppColors.kGray,
             width: 1.5,
           ),
-          borderRadius: AppBorderRadius.xs,
+          borderRadius: BorderRadius.all(AppRadius.xs),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
             color: AppColors.kGray,
             width: 1.5,
           ),
-          borderRadius: AppBorderRadius.xs,
+          borderRadius: BorderRadius.all(AppRadius.xs),
         ),
-        errorBorder: OutlineInputBorder(
+        errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(
             color: AppColors.error,
             width: 1.5,
           ),
-          borderRadius: AppBorderRadius.xs,
+          borderRadius: BorderRadius.all(AppRadius.xs),
         ),
-        focusedErrorBorder: OutlineInputBorder(
-          borderSide: const BorderSide(
+        focusedErrorBorder: const OutlineInputBorder(
+          borderSide: BorderSide(
             color: AppColors.kError,
             width: 1.5,
           ),
-          borderRadius: AppBorderRadius.xs,
+          borderRadius: BorderRadius.all(AppRadius.xs),
         ),
       ),
     );

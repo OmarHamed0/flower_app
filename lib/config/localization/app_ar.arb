@@ -18,5 +18,8 @@
   "emailVerification": "التحقق من البريد الإلكتروني",
   "pleaseEnterYourCodeThatSendToYourEmailAddress": "الرجاء إدخال الرمز الخاص بك الذي سيتم إرساله إلى عنوان بريدك الإلكتروني",
   "didNotReceiveCode": "لم أتلق الرمز؟",
-  "resend": "Resend"
+  "resend": "Resend",
+  "resetPassword" : "إعادة تعيين كلمة المرور",
+  "passwordMustNotBeEmpty": "يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف بأحرف كبيرة ورقم واحد على الأقل",
+  "emailSentSuccessfully" : "تم إرسال البريد الإلكتروني بنجاح"
 }

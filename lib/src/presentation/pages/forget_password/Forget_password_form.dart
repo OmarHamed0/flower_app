@@ -47,7 +47,7 @@ class ForgetPasswordForm extends StatelessWidget {
             ),
             verticalSpace(16),
             AppTextField(
-              autoValidateMode: AutovalidateMode.onUserInteraction,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: viewModel.emailController,
               labelText: AppLocalizations.of(context)!.email,
               hintText: AppLocalizations.of(context)!.enterYourEmail,
@@ -67,7 +67,7 @@ class ForgetPasswordForm extends StatelessWidget {
             ),
             verticalSpace(48),
             AppTextButton(
-              borderRadius: AppBorderRadius.xxl,
+              borderRadius: const BorderRadius.all(AppRadius.xxl),
               buttonText: AppLocalizations.of(context)!.confirm,
               textStyle: AppTextStyles.font16WeightMedium
                   .copyWith(color: AppColors.kWhiteBase),

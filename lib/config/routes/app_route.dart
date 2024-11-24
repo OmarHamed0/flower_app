@@ -1,7 +1,11 @@
 import 'package:flower_app/config/routes/page_route_name.dart';
+import 'package:flower_app/dependency_injection/di.dart';
+import 'package:flower_app/src/presentation/auth/signup/manager/signup_viewmodel.dart';
+import 'package:flower_app/src/presentation/auth/signup/views/sign_up_view.dart';
 import 'package:flower_app/src/presentation/pages/forget_password/forget_password_view.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/otp_verify/otp_verify_view.dart';
+import 'package:flower_app/src/presentation/pages/reset_password/reset_password_view.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -31,18 +35,17 @@ class AppRoute {
           widget: const HomeScreen(),
         );
       case PageRouteName.splash:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
             settings: settings, widget: const SplashScreen());
-      case PageRouteName.signIn:
-        return MaterialPageRoute(builder: (_) => SignInScreen());
-      case PageRouteName.home:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
       case PageRouteName.forgetPassword:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
             widget: const ForgetPasswordView(), settings: settings);
       case PageRouteName.otpVerify:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
             widget: const OtpVerifyView(), settings: settings);
+      case PageRouteName.resetPassword:
+        return _handleMaterialPageRoute(
+            widget: const ResetPasswordView(), settings: settings);
       default:
         return _handleMaterialPageRoute(
           settings: settings,
@@ -55,7 +58,7 @@ class AppRoute {
     }
   }
 
-  static MaterialPageRoute<dynamic> _handleMaterialPageRoute({
+  static MaterialPageRoute<MaterialPageRoute> _handleMaterialPageRoute({
     required Widget widget,
     required RouteSettings settings,
   }) {

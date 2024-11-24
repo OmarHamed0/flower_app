@@ -45,9 +45,6 @@ class AppFonts {
     fontWeight: FontWeight.w500,
     color: AppColors.mainColor,
   );
-class AppFonts {
-  AppFonts._();
-
   static const String kPrimaryFont = "Inter";
   static TextStyle font20Black500Weight = TextStyle(
     fontSize: 20.sp,
@@ -59,5 +56,4 @@ class AppFonts {
     fontWeight: FontWeight.w500,
     color: AppColors.kGray,
   );
-  static const String kPrimaryFont = "Inter";
 }

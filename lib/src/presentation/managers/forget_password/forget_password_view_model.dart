@@ -20,7 +20,6 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordViewState> {
 
   final TextEditingController emailController = TextEditingController();
   bool valid = false;
-  String? email = '';
 
   String? validateEmail() {
     String? email = emailController.text;
@@ -36,10 +35,12 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordViewState> {
       case FormDataChangedAction():
         {
           _updateValidationState();
+          break;
         }
       case ForgetPasswordAction():
         {
           _forgetPassword();
+          break;
         }
     }
   }
@@ -53,14 +54,11 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordViewState> {
     emit(ForgetPasswordLoadingState());
     var response = await _forgetPasswordUseCase
         .callForgetPasswordUseCase(ForgetPasswordRequest(email: email));
-    emit(PopDialogState());
     switch (response) {
       case Success<ForgetPasswordResponse>():
-        emit(PopDialogState());
         emit(ForgetPasswordSuccessState());
         break;
       case Failures<ForgetPasswordResponse>():
-        emit(PopDialogState());
         final error = ErrorHandler.fromException(response.exception);
         emit(ForgetPasswordFailState(error.errorMassage));
         break;

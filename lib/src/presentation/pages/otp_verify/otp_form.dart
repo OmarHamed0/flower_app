@@ -16,6 +16,7 @@ class OtpForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var viewModel = getIt.get<OtpVerifyViewModel>();
+    viewModel.email = ModalRoute.of(context)!.settings.arguments as String?;
     return Form(
       autovalidateMode: AutovalidateMode.onUserInteraction,
       key: viewModel.otpFormKey,
@@ -85,7 +86,7 @@ class OtpForm extends StatelessWidget {
             ],
           ),
           AppTextButton(
-            borderRadius: AppBorderRadius.xxl,
+            borderRadius: const BorderRadius.all(AppRadius.xxl),
             buttonText: AppLocalizations.of(context)!.confirm,
             textStyle: AppTextStyles.font16WeightMedium
                 .copyWith(color: AppColors.kWhiteBase),

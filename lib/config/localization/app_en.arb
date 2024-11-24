@@ -18,5 +18,8 @@
   "emailVerification": "Email Verification",
   "pleaseEnterYourCodeThatSendToYourEmailAddress": "Please enter your code that send to your email address",
   "didNotReceiveCode": "Didn't Receive Code?",
-  "resend": "Resend"
+  "resend": "Resend",
+  "resetPassword": "Reset password",
+  "passwordMustNotBeEmpty": "Password must not be empty and must contain 6 characters with upper case letter and one number at least",
+  "emailSentSuccessfully" : "Email Sent Successfully"
 }

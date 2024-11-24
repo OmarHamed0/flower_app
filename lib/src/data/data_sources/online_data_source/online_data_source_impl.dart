@@ -9,6 +9,8 @@ import 'package:flower_app/src/data/data_sources/online_data_source/online_data_
 import 'package:flower_app/src/data/dto/auth_request_dto/forget_password_request_dto.dart';
 import 'package:flower_app/src/data/dto/auth_request_dto/otp_verify_request_dto.dart';
 import 'package:flower_app/src/data/dto/auth_request_dto/reset_password_request_dto.dart';
+import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
+import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
 import 'package:flower_app/src/data/models/usr_model_dto.dart';
 import 'package:flower_app/src/domain/entities/auth_request/forget_password_request.dart';
 import 'package:flower_app/src/domain/entities/auth_request/otp_verify_request.dart';
@@ -20,7 +22,7 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: SignInOnlineDataSource)
 class SignInOnlineDataSourceImpl implements SignInOnlineDataSource {
-  ApiServices _apiServices;
+  final ApiServices _apiServices;
 
   SignInOnlineDataSourceImpl(this._apiServices);
 
@@ -42,28 +44,6 @@ class SignInOnlineDataSourceImpl implements SignInOnlineDataSource {
     );
   }
 
-  Future<SignInResponseModel> signIn(String email, String password) async {
-    var response = await _apiServices
-        .signIn(SignInRequestBody(email: email, password: password));
-    return response;
-  }
-  @override
-  Future<ApiResult<ResetPasswordResponse>> resetPassword(
-      ResetPasswordRequest request) {
-    return executeApi(apiCall: () async {
-      var response = await _apiServices.resetPassword(ResetPasswordRequestDto(
-          email: request.email, newPassword: request.newPassword));
-      return response.toDomain();
-    });
-  }
-
-  @override
-  Future<UserModelDTO> getLoggedUserData() async {
-    String token = SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
-    var response = await _apiServices.getLoggedUserData(token);
-    return UserModelDTO.fromResponse(response);
-  }
-
   @override
   Future<SignInResponseModel> signIn(String email, String password) async {
     var response = await _apiServices
@@ -77,6 +57,7 @@ class SignInOnlineDataSourceImpl implements SignInOnlineDataSource {
     var response = await executeApi<ForgetPasswordResponse>(apiCall: () async {
       var response = await _apiServices
           .forgetPassword(ForgetPasswordRequestDto.fromDomain(requestBody));
+      print(response);
       return response.toDomain();
     });
     return response;
@@ -91,5 +72,15 @@ class SignInOnlineDataSourceImpl implements SignInOnlineDataSource {
       return response.toDomain();
     });
     return response;
+  }
+
+  @override
+  Future<ApiResult<ResetPasswordResponse>> resetPassword(
+      ResetPasswordRequest request) {
+    return executeApi(apiCall: () async {
+      var response = await _apiServices.resetPassword(ResetPasswordRequestDto(
+          email: request.email, newPassword: request.newPassword));
+      return response.toDomain();
+    });
   }
 }
