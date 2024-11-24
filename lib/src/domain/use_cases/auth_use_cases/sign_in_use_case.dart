@@ -1,5 +1,5 @@
 import 'package:flower_app/common/api_result.dart';
-import 'package:flower_app/src/domain/entities/sign_in_entity.dart';
+import 'package:flower_app/src/domain/entities/auth/sign_in_entity.dart';
 import 'package:flower_app/src/domain/repositories/auth_repo/sign_in_repo.dart';
 import 'package:injectable/injectable.dart';
 

@@ -21,6 +21,12 @@
     "noProducts": "لا يوجد منتجات متاحة",
     "somethingWentWrong": "حدث خطأ ما",
     "giftNow": "قدم هدية",
-    "discoverNew": "اكتشف شيئا جديدا"
+    "discoverNew": "اكتشف شيئا جديدا",
 
+  "addToCart": "اضف الى السلة",
+  "description": "الوصف",
+  "allPricesIncludeTax": "جميع الاسعار تشمل الضريبة",
+  "bouquetInclude": "الباقة تشمل",
+  "egp": "جنيه مصري",
+  "statue":"الحالة"
 }

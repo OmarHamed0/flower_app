@@ -13,7 +13,6 @@
   "dontHaveAccount" : "Don't have account? ",
   "signUp": "Sign up",
   "emailNotValid" : "Email is not valid",
-  "invalidPassword": "invalid Password",
   "categories": "Categories",
   "best_Seller": "Best Seller",
   "occasions": "Occasions",
@@ -21,6 +20,13 @@
   "noProducts": "No products available",
   "somethingWentWrong": "Something went wrong",
   "giftNow": "Gift Now",
-  "discoverNew": "Discover something new"
+  "discoverNew": "Discover something new",
 
+  "invalidPassword": "invalid Password",
+  "addToCart": "Add to cart",
+  "description":"Description",
+  "allPricesIncludeTax":"All prices include Tax",
+  "bouquetInclude":"Bouquet include",
+  "egp":"EGP",
+  "statue":"Statue"
 }

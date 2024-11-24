@@ -9,11 +9,16 @@ import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../src/presentation/pages/product_details/product_details.dart';
+
 class AppRoute {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
+      case PageRouteName.splash:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: const SplashScreen());
       case PageRouteName.signup:
-        return _handleMaterialPageRoute(
+        return _handelMaterialPageRoute(
           settings: settings,
           widget: BlocProvider(
             create: (context) => getIt<SignUpViewModel>(),
@@ -22,11 +27,7 @@ class AppRoute {
         );
 
       case PageRouteName.signIn:
-        return _handleMaterialPageRoute(
-          settings: settings,
-          widget: SignInScreen(),
-        );
-
+        return MaterialPageRoute(builder: (_) => SignInScreen());
       case PageRouteName.home:
         return _handleMaterialPageRoute(
           settings: settings,
@@ -42,21 +43,13 @@ class AppRoute {
         );
 
       default:
-        return _handleMaterialPageRoute(
-          settings: settings,
-          widget: const Scaffold(
-            body: Center(
-              child: Text('Page not found'),
-            ),
-          ),
-        );
+        return _handelMaterialPageRoute(
+            settings: settings, widget: const Scaffold());
     }
   }
 
-  static MaterialPageRoute<dynamic> _handleMaterialPageRoute({
-    required Widget widget,
-    required RouteSettings settings,
-  }) {
-    return MaterialPageRoute(builder: (_) => widget, settings: settings);
+  static MaterialPageRoute<dynamic> _handelMaterialPageRoute(
+      {required Widget widget, required RouteSettings settings}) {
+    return MaterialPageRoute(builder: (context) => widget, settings: settings);
   }
 }
