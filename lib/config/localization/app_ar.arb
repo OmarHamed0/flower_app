@@ -13,5 +13,11 @@
   "continueAsGuest": "الاستمرار كضيف",
   "dontHaveAccount": "لا تمتلك حساب؟ ",
   "emailNotValid": "هذا البريد غير صالح",
-  "invalidPassword": "كلمة سر غير صالحة"
+  "invalidPassword": "كلمة سر غير صالحة",
+  "addToCart": "اضف الى السلة",
+  "description": "الوصف",
+  "allPricesIncludeTax": "جميع الاسعار تشمل الضريبة",
+  "bouquetInclude": "الباقة تشمل",
+  "egp": "جنيه مصري",
+  "statue":"الحالة"
 }

@@ -1,6 +1,6 @@
 abstract class ApisEndPoints {
-  static const String signin = "signin";
-  static const String loggedUserData = "profile-data";
-
-  static const String signup = "signup";
+  static const String signin = "auth/signin";
+  static const String loggedUserData = "auth/profile-data";
+  static const String products = 'products';
+  static const String signup = "auth/signup";
 }

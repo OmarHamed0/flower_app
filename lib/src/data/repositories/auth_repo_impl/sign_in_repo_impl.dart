@@ -2,9 +2,9 @@ import 'package:either_dart/src/either.dart';
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/src/data/data_sources/offline_data_source/offline_data_source.dart';
 import 'package:flower_app/src/data/data_sources/online_data_source/online_data_source.dart';
-import 'package:flower_app/src/data/models/sign_in_response_dto.dart';
-import 'package:flower_app/src/domain/entities/sign_in_entity.dart';
-import 'package:flower_app/src/domain/entities/user_entity.dart';
+import 'package:flower_app/src/data/models/auth/sign_in_response_dto.dart';
+import 'package:flower_app/src/domain/entities/auth/sign_in_entity.dart';
+import 'package:flower_app/src/domain/entities/auth/user_entity.dart';
 import 'package:flower_app/src/domain/repositories/auth_repo/sign_in_repo.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,7 +17,6 @@ class SignInRepositoryImpl implements SignInRepo {
 
   @override
   Future<Either<String, UserEntity>> getLoggedUserData() {
-    // TODO: implement getLoggedUserData
     throw UnimplementedError();
   }
 
