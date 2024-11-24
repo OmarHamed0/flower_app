@@ -1,4 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../dependency_injection/di.dart';
+import '../../managers/home/home_actions.dart';
+import '../../managers/home/home_viewmodel.dart';
+import '../../widgets/home/app_bar/custom_appbar_home.dart';
+import '../../widgets/home/app_bar/location_widget.dart';
+import '../../widgets/home/best_seller/best_seller_row.dart';
+import '../../widgets/home/category/category_row.dart';
+import '../../widgets/home/occasion/occasions_row.dart';
+import '../../widgets/home/products/products_widget.dart';
+import '../../widgets/home/view_all_row.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

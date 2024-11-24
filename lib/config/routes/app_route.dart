@@ -9,8 +9,6 @@ import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../src/presentation/pages/product_details/product_details.dart';
-
 class AppRoute {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
@@ -29,7 +27,7 @@ class AppRoute {
       case PageRouteName.signIn:
         return MaterialPageRoute(builder: (_) => SignInScreen());
       case PageRouteName.home:
-        return _handleMaterialPageRoute(
+        return _handelMaterialPageRoute(
           settings: settings,
           widget: BlocProvider(
             create: (context) => getIt<HomeViewModel>(),
@@ -37,7 +35,7 @@ class AppRoute {
           ),
         );
       case PageRouteName.splash:
-        return _handleMaterialPageRoute(
+        return _handelMaterialPageRoute(
           settings: settings,
           widget: SplashScreen(),
         );

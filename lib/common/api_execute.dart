@@ -6,6 +6,6 @@ Future<ApiResult<T>> executeApi<T>(
     final result = await apiCall();
     return Success(data: result);
   } catch (e) {
-      return Failures(exception: e as Exception);
+    return Failures(exception: e as Exception);
   }
 }

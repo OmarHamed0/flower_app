@@ -10,14 +10,13 @@ import 'core/requestes_models/signin_request_body.dart';
 import 'core/response_model/auth_response_models/logged_user_data_reponse_model.dart';
 import 'core/response_model/auth_response_models/signin_response_model.dart';
 import 'core/response_model/home_response/home_response.dart';
-import 'core/response_model/logged_user_data_reponse_model.dart';
-import 'core/response_model/signin_response_model.dart';
+import 'core/response_model/product_response_models/one_product_response_model.dart';
 
 part 'api_services.g.dart';
 
 @singleton
 @injectable
-@RestApi(baseUrl: ApisBaseurl.authBaseUrl)
+@RestApi(baseUrl: ApisBaseurl.baseUrl)
 abstract class ApiServices {
   @factoryMethod
   factory ApiServices(Dio dio) = _ApiServices;
@@ -33,7 +32,6 @@ abstract class ApiServices {
 
   @GET(ApisEndPoints.home)
   Future<HomeResponse> getHomeData();
-
 
   @GET("${ApisEndPoints.products}/{id}")
   Future<OneProductResponseModel> getProductById(@Path("id") String id);
