@@ -1,4 +1,5 @@
 
+import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/src/domain/entities/product_entity/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -93,13 +94,13 @@ class ProductItemWidget extends StatelessWidget {
                   flex: 5,
                   child: Row(
                     children: [
-                      Text("EGP\t ", style: AppFonts.font14BlackBase400Weight),
+                      Text("EGP\t ", style: AppFonts.font14BlackBase500Weight),
                       Expanded(
                         child: FittedBox(
                           fit: BoxFit.fill,
                           child: Text(
                             productEntity.price.toString(),
-                            style: AppFonts.font14BlackBase400Weight,
+                            style: AppFonts.font14BlackBase500Weight,
                           ),
                         ),
                       )
@@ -109,7 +110,8 @@ class ProductItemWidget extends StatelessWidget {
                 SizedBox(width: 8.w),
                 Flexible(
                   flex: 2,
-                  child: Text("0",
+                  child: Text(
+                      (productEntity.price! /~ productEntity.priceAfterDiscount!).toString(),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppFonts.font12Gray400Weight.copyWith(
@@ -122,7 +124,14 @@ class ProductItemWidget extends StatelessWidget {
                   child: Text(productEntity.priceAfterDiscount.toString(),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: AppFonts.font12BlackBase400Weight),
+                      style: AppFonts.font12BlackBase400Weight.copyWith(color: AppColors.kSuccess)),
+                ),
+                Flexible(
+                  flex: 2,
+                  child: Text("%",
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppFonts.font12BlackBase400Weight.copyWith(color: AppColors.kSuccess)),
                 ),
               ],
             ),
