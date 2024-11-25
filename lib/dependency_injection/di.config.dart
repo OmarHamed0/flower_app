@@ -49,6 +49,8 @@ import '../src/domain/use_cases/product_use_cases/product_by_id_use_case.dart'
     as _i1042;
 import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
+import '../src/presentation/managers/base_screen/base_screen_viewmodel.dart'
+    as _i450;
 import '../src/presentation/managers/home/home_viewmodel.dart' as _i363;
 import '../src/presentation/managers/product_details/product_details_view_model.dart'
     as _i196;
@@ -66,6 +68,7 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioProvider = _$DioProvider();
+    gh.factory<_i450.BaseScreenViewmodel>(() => _i450.BaseScreenViewmodel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.factory<_i136.SignInOfflineDataSource>(

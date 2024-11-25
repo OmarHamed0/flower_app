@@ -38,17 +38,22 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: 24),
                   ViewAllRow(
                     title: AppLocalizations.of(context)!.categories,
+                    onPressed: () {},
                   ),
                   SizedBox(height: 16),
                   CategoryRow(),
                   SizedBox(height: 24),
                   ViewAllRow(
                     title: AppLocalizations.of(context)!.best_Seller,
+                    onPressed: () {},
                   ),
                   SizedBox(height: 16),
                   BestSellerRow(),
                   SizedBox(height: 24),
-                  ViewAllRow(title: AppLocalizations.of(context)!.occasions),
+                  ViewAllRow(
+                    title: AppLocalizations.of(context)!.occasions,
+                    onPressed: () {},
+                  ),
                   SizedBox(height: 16),
                   OccasionsRow(),
                 ],

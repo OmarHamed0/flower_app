@@ -28,5 +28,6 @@
   "allPricesIncludeTax": "جميع الاسعار تشمل الضريبة",
   "bouquetInclude": "الباقة تشمل",
   "egp": "جنيه مصري",
-  "statue":"الحالة"
+  "statue":"الحالة",
+    "viewAll":"عرض الكل"
 }
