@@ -12,13 +12,9 @@ class HomeStateLoading extends HomeState {
 }
 
 class HomeStateSuccess extends HomeState {
-  final List<ProductsModel>? products;
-  final List<BestSellerModel>? bestSeller;
-  final List<OccasionsModel>? occasions;
+  final ProductLists? products;
   const HomeStateSuccess({
     this.products,
-    this.bestSeller,
-    this.occasions,
   });
 }
 
@@ -28,3 +24,14 @@ class HomeStateFailure extends HomeState {
 }
 
 class PopDialogState extends HomeState {}
+
+class ProductLists {
+  final List<ProductsModel>? products;
+  final List<BestSellerModel>? bestSeller;
+  final List<OccasionsModel>? occasions;
+  ProductLists({
+    this.products,
+    this.bestSeller,
+    this.occasions,
+  });
+}

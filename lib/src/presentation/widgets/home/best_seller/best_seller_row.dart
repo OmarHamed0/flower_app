@@ -15,21 +15,26 @@ class BestSellerRow extends StatelessWidget {
         if (state is HomeStateLoading) {
           return const Center(child: CircularProgressIndicator());
         }
+
         if (state is HomeStateSuccess) {
-          if (state.bestSeller != null && state.bestSeller!.isNotEmpty) {
+          final bestSellerProducts = state.products?.bestSeller;
+
+          if (bestSellerProducts != null && bestSellerProducts.isNotEmpty) {
             return SizedBox(
               height: 210,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: state.bestSeller!.length,
+                itemCount: bestSellerProducts.length,
                 itemBuilder: (context, index) {
-                  final bestSeller = state.bestSeller![index];
+                  final bestSeller = bestSellerProducts[index];
                   return Container(
                     margin: const EdgeInsets.only(right: 16),
                     child: HomeProductItem(
-                      imageUrl: bestSeller.imgCover ?? "",
-                      title: bestSeller.title ?? "",
-                      price: bestSeller.price ?? 0,
+                      imageUrl:
+                          bestSeller.imgCover ?? "", // Ensure default value
+                      title: bestSeller.title ??
+                          "Unknown Product", // Fallback title
+                      price: bestSeller.price ?? 0, // Fallback price
                     ),
                   );
                 },
@@ -37,12 +42,16 @@ class BestSellerRow extends StatelessWidget {
             );
           } else {
             return Center(
-              child: Text(AppLocalizations.of(context)!.noProducts),
+              child: Text(AppLocalizations.of(context)?.noProducts ??
+                  "No products available."),
             );
           }
         }
+
+        // Default fallback for other states
         return Center(
-          child: Text(AppLocalizations.of(context)!.somethingWentWrong),
+          child: Text(AppLocalizations.of(context)?.somethingWentWrong ??
+              "Something went wrong."),
         );
       },
     );

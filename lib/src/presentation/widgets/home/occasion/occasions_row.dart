@@ -16,14 +16,16 @@ class OccasionsRow extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         }
         if (state is HomeStateSuccess) {
-          if (state.occasions != null && state.occasions!.isNotEmpty) {
+          final occasionProduct = state.products?.occasions;
+
+          if (occasionProduct != null && occasionProduct.isNotEmpty) {
             return SizedBox(
               height: 200,
               child: ListView.builder(
                 scrollDirection: Axis.horizontal,
-                itemCount: state.occasions!.length,
+                itemCount: occasionProduct.length,
                 itemBuilder: (context, index) {
-                  final occasions = state.occasions![index];
+                  final occasions = occasionProduct[index];
                   return Container(
                     margin: const EdgeInsets.only(right: 16),
                     child: HomeProductItem(

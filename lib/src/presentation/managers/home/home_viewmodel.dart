@@ -28,10 +28,13 @@ class HomeViewModel extends Cubit<HomeState> {
     switch (result) {
       case Success<HomeResponseModel>():
         final homeData = result.data;
+        ProductLists productLists = ProductLists(
+          products: homeData?.products,
+          occasions: homeData?.occasions,
+          bestSeller: homeData?.bestSeller,
+        );
         emit(HomeStateSuccess(
-          products: homeData?.products ?? [],
-          bestSeller: homeData?.bestSeller ?? [],
-          occasions: homeData?.occasions ?? [],
+          products: productLists,
         ));
         break;
       case Failures<HomeResponseModel>():

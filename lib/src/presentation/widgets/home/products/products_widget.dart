@@ -32,12 +32,14 @@ class ProductsWidget extends StatelessWidget {
               }
 
               if (state is HomeStateSuccess) {
-                if (state.products != null && state.products!.isNotEmpty) {
+                final productsHome = state.products?.products;
+
+                if (productsHome != null && productsHome.isNotEmpty) {
                   return ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: state.products!.length,
+                    itemCount: productsHome.length,
                     itemBuilder: (context, index) {
-                      final product = state.products![index];
+                      final product = productsHome[index];
                       return DiscoverProductItem(
                         title: product.title ?? 'Unknown Product',
                         imageUrl: product.imgCover ?? '',
