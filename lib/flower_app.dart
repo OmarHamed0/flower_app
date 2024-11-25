@@ -1,5 +1,8 @@
 import 'dart:developer';
 import 'package:flower_app/config/localization/l10n.dart';
+import 'package:flower_app/src/domain/use_cases/product_use_cases/get_product_use_case.dart';
+import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
+import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -30,10 +33,12 @@ class FlowerApp extends StatelessWidget {
         supportedLocales: L10n.all,
         debugShowCheckedModeBanner: false,
         locale: const Locale('en'),
+
         navigatorKey: navKey,
         initialRoute:
-            PageRouteName.home, // Splash screen is the initial route
+            PageRouteName.product, // Splash screen is the initial route
         onGenerateRoute: AppRoute.onGenerateRoute,
+
         themeMode: ThemeMode.light,
         // theme: AppTheme.appTheme,
       ),

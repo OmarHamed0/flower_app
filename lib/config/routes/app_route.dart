@@ -3,6 +3,7 @@ import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/auth/signup/manager/signup_viewmodel.dart';
 import 'package:flower_app/src/presentation/auth/signup/views/sign_up_view.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
+import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,9 @@ class AppRoute {
       case PageRouteName.productDetails:
         return _handelMaterialPageRoute(
             settings: settings, widget: ProductDetails(productId: "",));
+      case PageRouteName.product:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: ProductView());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());
