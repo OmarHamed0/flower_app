@@ -1,24 +1,24 @@
+import 'package:flower_app/src/domain/entities/home/category_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../data/static/category_list.dart';
 import 'categories_column.dart';
 
 class CategoryRow extends StatelessWidget {
-  const CategoryRow({super.key});
-
+  const CategoryRow({super.key, required this.categories});
+  final List<CategoryModel>? categories;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 100,
+      height: 110,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
-        itemCount: categoryList.length,
+        itemCount: categories?.length ?? 0,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 16.0),
             child: CategoriesColumn(
-              imageAsset: categoryList[index]['imageAsset'],
-              title: categoryList[index]['title'],
+              imageAsset: categories![index].image,
+              title: categories?[index].name,
             ),
           );
         },
