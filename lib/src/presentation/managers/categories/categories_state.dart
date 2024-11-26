@@ -15,7 +15,7 @@ class CategoriesError extends CategoriesState {
   CategoriesError(this.message);
 }
 
-class ChangeCategory extends CategoriesState {
+class ChangeCategoryState extends CategoriesState {
   String? id;
-  ChangeCategory(this.id);
+  ChangeCategoryState(this.id);
 }

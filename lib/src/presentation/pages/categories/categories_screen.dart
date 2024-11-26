@@ -32,7 +32,7 @@ class CategoriesScreen extends StatelessWidget {
                 return const Center(
                   child: CircularProgressIndicator(),
                 );
-              } else if(state is CategoriesLoaded || state is ChangeCategory){
+              } else if(state is CategoriesLoaded){
                 return const CategoriesScreenBody();
               } else if(state is CategoriesError){
                 return Center(

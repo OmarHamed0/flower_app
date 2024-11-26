@@ -38,7 +38,7 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
       case GetCategoriesAction():
         _getCategories();
       case ChangeCategoryAction():
-        emit(ChangeCategory(categories[action.index].id));
+        emit(ChangeCategoryState(categories[action.index].id));
     }
   }
 }

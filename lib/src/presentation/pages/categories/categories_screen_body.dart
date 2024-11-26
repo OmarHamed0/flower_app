@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/config/routes/app_route.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
@@ -36,7 +38,7 @@ class CategoriesScreenBody extends StatelessWidget {
                         borderSide: const BorderSide(color: AppColors.kWhite70),
                       ),
                       contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 10),
+                      const EdgeInsets.symmetric(horizontal: 10),
                     ),
                   ),
                 ),
@@ -60,12 +62,21 @@ class CategoriesScreenBody extends StatelessWidget {
         CategoryBar(
             categories: viewModel.categories.map((e) => e.name).toList()),
         verticalSpace(24),
-        Expanded(
-          child: ProductView(
-            productEndPoints: ProductEndPoints.products,
-            productId: viewModel.categories[viewModel.selectedIndex].id,
-            productQuery: ProductQuery.category,
-          ),
+        BlocBuilder<CategoriesViewModel, CategoriesState>(
+          builder: (context, state) {
+            int currentIndex = viewModel.selectedIndex;
+            if(state is ChangeCategoryState){
+              int currentIndex = viewModel.selectedIndex;
+              log("Category inddex $currentIndex");
+            }
+            return Expanded(
+              child: ProductView(
+                productEndPoints: ProductEndPoints.products,
+                productId: viewModel.categories[currentIndex].id,
+                productQuery: ProductQuery.category,
+              ),
+            );
+          },
         ),
       ],
     );
