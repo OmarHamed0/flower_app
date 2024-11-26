@@ -1,3 +1,4 @@
+import 'package:flower_app/core/widgets/cached_network_image%20_widget.dart';
 import 'package:flutter/material.dart';
 
 class HomeProductItem extends StatelessWidget {
@@ -12,12 +13,13 @@ class HomeProductItem extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image.network(
-          imageUrl,
-          width: 130,
-          height: 150,
-          fit: BoxFit.cover,
-        ),
+        CachedNetworkImageWidget(imageUrl: imageUrl, width: 130, height: 130),
+        // Image.network(
+        //   imageUrl,
+        //   width: 130,
+        //   height: 150,
+        //   fit: BoxFit.cover,
+        // ),
         const SizedBox(height: 8),
         Text(
           title,
