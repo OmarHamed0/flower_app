@@ -1,3 +1,4 @@
+import 'package:flower_app/src/data/models/home/category_dto.dart';
 import 'package:flower_app/src/data/models/home/product_dto.dart';
 import 'package:flower_app/src/domain/entities/home/HomeResponseModel.dart';
 
@@ -10,11 +11,13 @@ class HomeResponseDto {
     List<ProductsDto>? products,
     List<BestSellerDto>? bestSeller,
     List<OccasionsDto>? occasions,
+    List<CategoriesDto>? categories,
   }) {
     _message = message;
     _products = products;
     _bestSeller = bestSeller;
     _occasions = occasions;
+    _categories = categories;
   }
 
   HomeResponseDto.fromJson(dynamic json) {
@@ -31,6 +34,12 @@ class HomeResponseDto {
         _bestSeller?.add(BestSellerDto.fromJson(v));
       });
     }
+    if (json['categories'] != null) {
+      _categories = [];
+      json['categories'].forEach((v) {
+        _categories?.add(CategoriesDto.fromJson(v));
+      });
+    }
     if (json['occasions'] != null) {
       _occasions = [];
       json['occasions'].forEach((v) {
@@ -42,11 +51,13 @@ class HomeResponseDto {
   List<ProductsDto>? _products;
   List<BestSellerDto>? _bestSeller;
   List<OccasionsDto>? _occasions;
+  List<CategoriesDto>? _categories;
 
   String? get message => _message;
   List<ProductsDto>? get products => _products;
   List<BestSellerDto>? get bestSeller => _bestSeller;
   List<OccasionsDto>? get occasions => _occasions;
+  List<CategoriesDto>? get categories => _categories;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -60,6 +71,9 @@ class HomeResponseDto {
     if (_occasions != null) {
       map['occasions'] = _occasions?.map((v) => v.toJson()).toList();
     }
+    if (_categories != null) {
+      map['categories'] = _categories?.map((v) => v.toJson()).toList();
+    }
     return map;
   }
 
@@ -69,6 +83,7 @@ class HomeResponseDto {
       products: homeResponseDto.products?.map((e) => e.toModel(e)).toList(),
       bestSeller: homeResponseDto.bestSeller?.map((e) => e.toModel(e)).toList(),
       occasions: homeResponseDto.occasions?.map((e) => e.toModel(e)).toList(),
+      categories: homeResponseDto.categories?.map((e) => e.toModel()).toList(),
     );
   }
 }

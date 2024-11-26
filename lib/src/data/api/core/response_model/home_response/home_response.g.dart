@@ -17,11 +17,15 @@ HomeResponse _$HomeResponseFromJson(Map<String, dynamic> json) => HomeResponse(
       occasions: (json['occasions'] as List<dynamic>?)
           ?.map((e) => Occasions.fromJson(e as Map<String, dynamic>))
           .toList(),
+      categories: (json['categories'] as List<dynamic>?)
+          ?.map((e) => Categories.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$HomeResponseToJson(HomeResponse instance) =>
     <String, dynamic>{
       'message': instance.message,
+      'categories': instance.categories,
       'products': instance.products,
       'bestSeller': instance.bestSeller,
       'occasions': instance.occasions,

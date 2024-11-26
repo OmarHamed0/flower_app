@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../core/styles/colors/app_colors.dart';
+import '../../../../../core/widgets/cached_network_image _widget.dart';
 
 class CategoryCard extends StatelessWidget {
   const CategoryCard({super.key, required this.imageAsset});
@@ -10,17 +12,20 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 68,
-      height: 68,
+      width: 68.w, // Using screenutil for responsiveness
+      height: 68.h, // Using screenutil for responsiveness
       decoration: BoxDecoration(
         color: AppColors.kLightPink,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius:
+            BorderRadius.circular(20.r), // Rounded corners with screenutil
       ),
       child: Center(
-        child: ImageIcon(
-          AssetImage(imageAsset),
-          size: 24,
-          color: AppColors.kBaseColor,
+        child: ClipOval(
+          child: CachedNetworkImageWidget(
+            imageUrl: imageAsset,
+            width: 24.w, // Adjust icon size with screenutil
+            height: 24.h, // Adjust icon size with screenutil
+          ),
         ),
       ),
     );
