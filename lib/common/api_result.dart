@@ -2,7 +2,7 @@ sealed class ApiResult<T> {}
 
 class Success<T> extends ApiResult<T> {
   final T? data;
-  Success({required this.data});
+  Success({ this.data});
 }
 
 class Failures<T> extends ApiResult<T> {
