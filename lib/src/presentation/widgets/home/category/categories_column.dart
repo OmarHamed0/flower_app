@@ -9,18 +9,18 @@ class CategoriesColumn extends StatelessWidget {
     required this.title,
   });
 
-  final String imageAsset;
-  final String title;
+  final String? imageAsset;
+  final String? title;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        CategoryCard(imageAsset: imageAsset),
+        CategoryCard(imageAsset: imageAsset!),
         const SizedBox(height: 8),
         Text(
-          title,
+          title!,
           style: const TextStyle(
             fontSize: 14,
             color: Colors.black87,

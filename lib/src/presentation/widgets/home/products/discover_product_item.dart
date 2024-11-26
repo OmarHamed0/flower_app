@@ -2,6 +2,9 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../../core/widgets/cached_network_image _widget.dart';
 
 class DiscoverProductItem extends StatelessWidget {
   const DiscoverProductItem(
@@ -12,24 +15,29 @@ class DiscoverProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 224,
-      margin: const EdgeInsets.only(right: 16),
+      width: 200.w, // Decreased the width of the entire container
+      margin: EdgeInsets.only(right: 16.w),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(10),
-        image: DecorationImage(
-          image: NetworkImage(imageUrl),
-          fit: BoxFit.cover,
-        ),
+        borderRadius: BorderRadius.circular(10.r),
       ),
       child: Stack(
         children: [
+          // Cached Network Image with full width
+          ClipRRect(
+            borderRadius: BorderRadius.circular(10.r),
+            child: CachedNetworkImageWidget(
+              imageUrl: imageUrl,
+              width: double.infinity, // Take up full width
+              height: double.infinity, // Adjust height as needed
+            ),
+          ),
           // Blurred Bottom Section
           Align(
             alignment: Alignment.bottomCenter,
             child: ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(10.r),
+                bottomRight: Radius.circular(10.r),
               ),
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
@@ -37,29 +45,29 @@ class DiscoverProductItem extends StatelessWidget {
                   width: double.infinity,
                   color: Colors.black.withOpacity(0.5),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         title,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.white,
-                          fontSize: 14,
+                          fontSize: 14.sp,
                           fontWeight: FontWeight.w500,
                         ),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 8.h),
                       ElevatedButton(
                         onPressed: () {},
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.transparent,
                           elevation: 0,
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
+                            borderRadius: BorderRadius.circular(8.r),
                             side: const BorderSide(
                               color: Colors.white,
                               width: 1,
@@ -70,7 +78,7 @@ class DiscoverProductItem extends StatelessWidget {
                           AppLocalizations.of(context)!.giftNow,
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16,
+                            fontSize: 16.sp,
                           ),
                         ),
                       ),

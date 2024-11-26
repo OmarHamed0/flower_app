@@ -19,6 +19,10 @@ import '../src/data/data_sources/offline_data_source/offline_data_source.dart'
     as _i136;
 import '../src/data/data_sources/offline_data_source/offline_data_source_impl.dart'
     as _i649;
+import '../src/data/data_sources/online_data_source/catigories_online_data_source/categories_online_data_source_impl.dart'
+    as _i98;
+import '../src/data/data_sources/online_data_source/catigories_online_data_source/catigories_data_source.dart'
+    as _i838;
 import '../src/data/data_sources/online_data_source/home_online_datasource.dart'
     as _i902;
 import '../src/data/data_sources/online_data_source/home_online_datasource_impl.dart'
@@ -34,16 +38,21 @@ import '../src/data/data_sources/online_data_source/product_data_source/product_
 import '../src/data/repositories/auth_repo_impl.dart' as _i566;
 import '../src/data/repositories/auth_repo_impl/sign_in_repo_impl.dart'
     as _i940;
+import '../src/data/repositories/categories_repo/categories_repo_impl.dart'
+    as _i545;
 import '../src/data/repositories/home_repository_impl.dart' as _i283;
 import '../src/data/repositories/product_repo_impl/product_repo_impl.dart'
     as _i974;
 import '../src/domain/repositories/auth_repo.dart' as _i862;
 import '../src/domain/repositories/auth_repo/sign_in_repo.dart' as _i209;
+import '../src/domain/repositories/categories_repo/categories_repo.dart'
+    as _i139;
 import '../src/domain/repositories/home_repository.dart' as _i781;
 import '../src/domain/repositories/product_repo/product_repo.dart' as _i170;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/domain/use_cases/auth_use_cases/signup_user_use_case.dart'
     as _i625;
+import '../src/domain/use_cases/category_use_case.dart' as _i551;
 import '../src/domain/use_cases/home_usecase.dart' as _i729;
 import '../src/domain/use_cases/product_use_cases/get_product_use_case.dart'
     as _i902;
@@ -53,6 +62,8 @@ import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
 import '../src/presentation/managers/base_screen/base_screen_viewmodel.dart'
     as _i450;
+import '../src/presentation/managers/categories/categories_view_model.dart'
+    as _i822;
 import '../src/presentation/managers/home/home_viewmodel.dart' as _i363;
 import '../src/presentation/managers/product/product_cubit.dart' as _i699;
 import '../src/presentation/managers/product_details/product_details_view_model.dart'
@@ -79,6 +90,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
     gh.factory<_i787.SignInOnlineDataSource>(
         () => _i824.SignInOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i838.CategoriesOnlineDataSource>(
+        () => _i98.CategoriesOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i139.CategoriesRepo>(
+        () => _i545.CategoriesRepoImpl(gh<_i838.CategoriesOnlineDataSource>()));
     gh.factory<_i862.AuthRepository>(() => _i566.AuthRepositoryImpl(
           gh<_i136.SignInOfflineDataSource>(),
           gh<_i787.SignInOnlineDataSource>(),
@@ -87,6 +102,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i136.SignInOfflineDataSource>(),
           gh<_i787.SignInOnlineDataSource>(),
         ));
+    gh.factory<_i551.CategoryUseCase>(
+        () => _i551.CategoryUseCase(gh<_i139.CategoriesRepo>()));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i866.ProductOnlineDataSource>(
@@ -107,6 +124,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.SignUpViewModel(gh<_i625.SignupUserUseCase>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i822.CategoriesViewModel>(
+        () => _i822.CategoriesViewModel(gh<_i551.CategoryUseCase>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(
         homeDataSource: gh<_i902.HomeOnlineDataSource>()));
     gh.factory<_i196.ProductDetailsViewModel>(
