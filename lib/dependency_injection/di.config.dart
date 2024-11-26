@@ -62,6 +62,8 @@ import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
 import '../src/presentation/managers/base_screen/base_screen_viewmodel.dart'
     as _i450;
+import '../src/presentation/managers/categories/categories_view_model.dart'
+    as _i822;
 import '../src/presentation/managers/home/home_viewmodel.dart' as _i363;
 import '../src/presentation/managers/product/product_cubit.dart' as _i699;
 import '../src/presentation/managers/product_details/product_details_view_model.dart'
@@ -122,6 +124,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.SignUpViewModel(gh<_i625.SignupUserUseCase>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i822.CategoriesViewModel>(
+        () => _i822.CategoriesViewModel(gh<_i551.CategoryUseCase>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(
         homeDataSource: gh<_i902.HomeOnlineDataSource>()));
     gh.factory<_i196.ProductDetailsViewModel>(
