@@ -26,7 +26,7 @@ class BaseScreenViewmodel extends Cubit<BaseHomeState> {
 
   final List<Widget> _screens = [
     const HomeScreen(),
-    const CategoriesScreen(),
+    CategoriesScreen(),
     const CartScreen(),
     const ProfileScreen(),
   ];

@@ -13,7 +13,7 @@ part 'categories_state.dart';
 class CategoriesViewModel extends Cubit<CategoriesState> {
   final CategoryUseCase _categoryUseCase;
   List<CategoryEntity> categories = [];
-
+  int selectedIndex = 0;
   CategoriesViewModel(this._categoryUseCase) : super(CategoriesInitial());
 
   void _getCategories() async {
@@ -37,6 +37,8 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
     switch (action) {
       case GetCategoriesAction():
         _getCategories();
+      case ChangeCategoryAction():
+        emit(ChangeCategory(categories[action.index].id));
     }
   }
 }
