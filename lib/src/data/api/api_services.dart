@@ -11,6 +11,7 @@ import 'core/requestes_models/signin_request_body.dart';
 import 'core/response_model/auth_response_models/logged_user_data_reponse_model.dart';
 import 'core/response_model/auth_response_models/signin_response_model.dart';
 import 'core/response_model/beset_seller/beset_seller_model.dart';
+import 'core/response_model/get_catigories/get_catigories_resonse_model.dart';
 import 'core/response_model/home_response/home_response.dart';
 import 'core/response_model/product/product_response_model.dart';
 
@@ -46,4 +47,7 @@ abstract class ApiServices {
   @GET(ApisEndPoints.bestSeller)
   Future<BesetSellerModel> getProductBesetSeller(
       {@Queries() Map<String, dynamic>? query});
+
+  @GET(ApisEndPoints.categories)
+  Future<GetCatigoriesResponseModel> getCategories();
 }

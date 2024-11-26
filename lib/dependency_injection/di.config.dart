@@ -19,6 +19,10 @@ import '../src/data/data_sources/offline_data_source/offline_data_source.dart'
     as _i136;
 import '../src/data/data_sources/offline_data_source/offline_data_source_impl.dart'
     as _i649;
+import '../src/data/data_sources/online_data_source/catigories_online_data_source/categories_online_data_source_impl.dart'
+    as _i98;
+import '../src/data/data_sources/online_data_source/catigories_online_data_source/catigories_data_source.dart'
+    as _i838;
 import '../src/data/data_sources/online_data_source/home_online_datasource.dart'
     as _i902;
 import '../src/data/data_sources/online_data_source/home_online_datasource_impl.dart'
@@ -79,6 +83,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
     gh.factory<_i787.SignInOnlineDataSource>(
         () => _i824.SignInOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i838.CategoriesOnlineDataSource>(
+        () => _i98.CategoriesOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i862.AuthRepository>(() => _i566.AuthRepositoryImpl(
           gh<_i136.SignInOfflineDataSource>(),
           gh<_i787.SignInOnlineDataSource>(),

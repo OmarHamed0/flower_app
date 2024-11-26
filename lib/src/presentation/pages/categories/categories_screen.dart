@@ -1,11 +1,13 @@
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
+import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
+import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flutter/material.dart';
 import 'category_bar.dart';
 
 class CategoriesScreen extends StatelessWidget {
   const CategoriesScreen({super.key});
-
+  final String productId = "673c46fd1159920171827c85";
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -25,13 +27,16 @@ class CategoriesScreen extends StatelessWidget {
                           hintText: "Search",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide:  const BorderSide(color:AppColors.kWhite70),
+                            borderSide:
+                                const BorderSide(color: AppColors.kWhite70),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(color: AppColors.kWhite70),
+                            borderSide:
+                                const BorderSide(color: AppColors.kWhite70),
                           ),
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 10),
                         ),
                       ),
                     ),
@@ -45,9 +50,7 @@ class CategoriesScreen extends StatelessWidget {
                       ),
                       child: IconButton(
                         icon: const Icon(Icons.filter_list),
-                        onPressed: () {
-
-                        },
+                        onPressed: () {},
                       ),
                     ),
                   ],
@@ -56,7 +59,13 @@ class CategoriesScreen extends StatelessWidget {
             ),
             const CategoryBar(),
             verticalSpace(24),
-
+            Expanded(
+              child: ProductView(
+                productEndPoints: ProductEndPoints.products,
+                productId: "",
+                productQuery: ProductQuery.category,
+              ),
+            ),
           ],
         ),
       ),
