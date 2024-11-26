@@ -15,19 +15,19 @@ class DiscoverProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 224.w,
+      width: 200.w, // Decreased the width of the entire container
       margin: EdgeInsets.only(right: 16.w),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10.r),
       ),
       child: Stack(
         children: [
-          // Cached Network Image
+          // Cached Network Image with full width
           ClipRRect(
             borderRadius: BorderRadius.circular(10.r),
             child: CachedNetworkImageWidget(
               imageUrl: imageUrl,
-              width: 224,
+              width: double.infinity, // Take up full width
               height: double.infinity, // Adjust height as needed
             ),
           ),
