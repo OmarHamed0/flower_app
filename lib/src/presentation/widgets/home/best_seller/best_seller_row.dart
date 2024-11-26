@@ -1,6 +1,9 @@
+import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/domain/entities/home/best_seller_model.dart';
 import 'package:flower_app/src/presentation/widgets/home/home_product_item.dart';
 import 'package:flutter/material.dart';
+
+import '../../../pages/product_details/product_details.dart';
 
 class BestSellerRow extends StatelessWidget {
   const BestSellerRow({super.key, required this.bestSellerProducts});
@@ -20,6 +23,14 @@ class BestSellerRow extends StatelessWidget {
               imageUrl: bestSeller?.imgCover ?? "", // Ensure default value
               title: bestSeller?.title ?? "Unknown Product", // Fallback title
               price: bestSeller?.price ?? 0, // Fallback price
+              onPressed: () {
+                navKey.currentState!.push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ProductDetails(productId: bestSeller?.id ?? ""),
+                  ),
+                );
+              },
             ),
           );
         },

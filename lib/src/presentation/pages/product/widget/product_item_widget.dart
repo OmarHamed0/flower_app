@@ -1,5 +1,5 @@
-
 import 'package:flower_app/core/styles/colors/app_colors.dart';
+import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/domain/entities/product_entity/product_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,6 +7,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/functions/spacing.dart';
 import '../../../../../core/styles/fonts/app_fonts.dart';
 import '../../../../../core/widgets/cached_network_image _widget.dart';
+import '../../product_details/product_details.dart';
 
 class ProductItemWidget extends StatelessWidget {
   final ProductEntity productEntity;
@@ -20,9 +21,23 @@ class ProductItemWidget extends StatelessWidget {
       padding: EdgeInsets.all(8.r),
       child: Column(
         children: [
-          _buildProductImage(),
-          SizedBox(height: 8.h),
-          _buildProductDetails(),
+          InkWell(
+            onTap: () {
+              navKey.currentState!.push(
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ProductDetails(productId: productEntity.id ?? ""),
+                ),
+              );
+            },
+            child: Column(
+              children: [
+                _buildProductImage(),
+                SizedBox(height: 8.h),
+                _buildProductDetails(),
+              ],
+            ),
+          ),
           SizedBox(height: 8.h),
           _buildAddToCartButton(),
         ],
@@ -111,7 +126,9 @@ class ProductItemWidget extends StatelessWidget {
                 Flexible(
                   flex: 2,
                   child: Text(
-                      (productEntity.price! /~ productEntity.priceAfterDiscount!).toString(),
+                      (productEntity.price! /
+                              ~productEntity.priceAfterDiscount!)
+                          .toString(),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                       style: AppFonts.font12Gray400Weight.copyWith(
@@ -124,14 +141,16 @@ class ProductItemWidget extends StatelessWidget {
                   child: Text(productEntity.priceAfterDiscount.toString(),
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: AppFonts.font12BlackBase400Weight.copyWith(color: AppColors.kSuccess)),
+                      style: AppFonts.font12BlackBase400Weight
+                          .copyWith(color: AppColors.kSuccess)),
                 ),
                 Flexible(
                   flex: 2,
                   child: Text("%",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: AppFonts.font12BlackBase400Weight.copyWith(color: AppColors.kSuccess)),
+                      style: AppFonts.font12BlackBase400Weight
+                          .copyWith(color: AppColors.kSuccess)),
                 ),
               ],
             ),
