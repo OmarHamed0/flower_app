@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  AppColors._();
-
   static const Color kWightBase = Color(0xFFF9F9F9);
   static const Color kWight10 = Color(0xFFfefefe);
   static const Color kWight20 = Color(0xFFfdfdfd);

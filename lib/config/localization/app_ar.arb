@@ -14,10 +14,20 @@
   "dontHaveAccount": "لا تمتلك حساب؟ ",
   "emailNotValid": "هذا البريد غير صالح",
   "invalidPassword": "كلمة سر غير صالحة",
+    "categories": "الاقسام",
+    "best_Seller": "الاكثر مبيعا",
+    "occasions": "المناسبات",
+    "search": "بحث",
+    "noProducts": "لا يوجد منتجات متاحة",
+    "somethingWentWrong": "حدث خطأ ما",
+    "giftNow": "قدم هدية",
+    "discoverNew": "اكتشف شيئا جديدا",
+
   "addToCart": "اضف الى السلة",
   "description": "الوصف",
   "allPricesIncludeTax": "جميع الاسعار تشمل الضريبة",
   "bouquetInclude": "الباقة تشمل",
   "egp": "جنيه مصري",
-  "statue":"الحالة"
+  "statue":"الحالة",
+    "viewAll":"عرض الكل"
 }
