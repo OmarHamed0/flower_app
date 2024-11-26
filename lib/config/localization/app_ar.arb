@@ -29,5 +29,7 @@
   "bouquetInclude": "الباقة تشمل",
   "egp": "جنيه مصري",
   "statue":"الحالة",
-    "viewAll":"عرض الكل"
+    "viewAll":"عرض الكل",
+  "bestSeller": "الأكثر مبيعًا",
+  "bloomWithOurExquisiteBestSellers": "ازدهر مع منتجاتنا الأكثر تميزًا"
 }

@@ -1,3 +1,4 @@
+import 'package:flower_app/core/functions/extensions.dart';
 import 'package:flower_app/flower_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -49,7 +50,7 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: 24),
                   ViewAllRow(
                     title: AppLocalizations.of(context)!.best_Seller,
-                    onPressed: () {},
+                    onPressed: () =>goNextToBestScreen(),
                   ),
                   SizedBox(height: 16),
                   BestSellerRow(),
@@ -58,8 +59,8 @@ class HomeScreen extends StatelessWidget {
                     title: AppLocalizations.of(context)!.occasions,
                     onPressed: () {},
                   ),
-                  SizedBox(height: 16),
-                  OccasionsRow(),
+                  const SizedBox(height: 16),
+                  const OccasionsRow(),
                 ],
               ),
             ),
@@ -67,5 +68,9 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void goNextToBestScreen(){
+    navKey.currentContext!.pushName(PageRouteName.besetScreen);
   }
 }

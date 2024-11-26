@@ -29,5 +29,9 @@
   "bouquetInclude":"Bouquet include",
   "egp":"EGP",
   "statue":"Statue",
-  "viewAll":"View All"
+  "viewAll":"View All",
+  "bestSeller": "Best seller",
+  "bloomWithOurExquisiteBestSellers": "Bloom with our exquisite best sellers"
+
+
 }
