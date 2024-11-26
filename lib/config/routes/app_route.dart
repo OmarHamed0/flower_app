@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../src/presentation/pages/base_screen/base_screen.dart';
+import '../../src/presentation/pages/product_details/product_details.dart';
 
 class AppRoute {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -42,18 +43,22 @@ class AppRoute {
           settings: settings,
           widget: SplashScreen(),
         );
-      case PageRouteName.baseScreen:
+      case PageRouteName.productDetails:
         return _handelMaterialPageRoute(
-            settings: settings, widget: ProductDetails(productId: "",));
+            settings: settings,
+            widget: ProductDetails(
+              productId: "",
+            ));
       case PageRouteName.product:
         return _handelMaterialPageRoute(
             settings: settings, widget: ProductView());
-          settings: settings,
-          widget: BlocProvider(
-            create: (context) => getIt<HomeViewModel>(),
-            child: const BaseScreen(),
-          ),
-        );
+      case PageRouteName.baseScreen:
+        return _handelMaterialPageRoute(
+            settings: settings,
+            widget: BlocProvider(
+              create: (context) => getIt<HomeViewModel>(),
+              child: const BaseScreen(),
+            ));
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

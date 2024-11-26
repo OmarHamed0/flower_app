@@ -1,7 +1,9 @@
+import 'package:flower_app/flower_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import '../../../../config/routes/page_route_name.dart';
 import '../../../../dependency_injection/di.dart';
 import '../../managers/home/home_actions.dart';
 import '../../managers/home/home_viewmodel.dart';
@@ -38,11 +40,13 @@ class HomeScreen extends StatelessWidget {
                   SizedBox(height: 24),
                   ViewAllRow(
                     title: AppLocalizations.of(context)!.categories,
-                    onPressed: () {},
+                    onPressed: () {
+                      navKey.currentState!.pushNamed(PageRouteName.product);
+                    },
                   ),
                   SizedBox(height: 16),
                   CategoryRow(),
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   ViewAllRow(
                     title: AppLocalizations.of(context)!.best_Seller,
                     onPressed: () {},
