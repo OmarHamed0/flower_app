@@ -32,6 +32,7 @@ class HomeViewModel extends Cubit<HomeState> {
           products: homeData?.products,
           occasions: homeData?.occasions,
           bestSeller: homeData?.bestSeller,
+          categories: homeData?.categories,
         );
         emit(HomeStateSuccess(
           products: productLists,
