@@ -38,13 +38,10 @@ import '../src/domain/repositories/product_repo/product_repo.dart' as _i170;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/domain/use_cases/auth_use_cases/signup_user_use_case.dart'
     as _i625;
-import '../src/domain/use_cases/product_use_cases/get_product_use_case.dart'
-    as _i902;
 import '../src/domain/use_cases/product_use_cases/product_by_id_use_case.dart'
     as _i1042;
 import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
-import '../src/presentation/managers/product/product_cubit.dart' as _i699;
 import '../src/presentation/managers/product_details/product_details_view_model.dart'
     as _i196;
 import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
@@ -84,12 +81,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i207.SignInUseCase(gh<_i209.SignInRepo>()));
     gh.factory<_i170.ProductRepo>(
         () => _i974.ProductRepoImpl(gh<_i866.ProductOnlineDataSource>()));
-    gh.factory<_i902.GetProductUseCase>(
-        () => _i902.GetProductUseCase(gh<_i170.ProductRepo>()));
     gh.factory<_i1042.ProductByIdUseCase>(
         () => _i1042.ProductByIdUseCase(gh<_i170.ProductRepo>()));
-    gh.factory<_i699.ProductCubit>(
-        () => _i699.ProductCubit(gh<_i902.GetProductUseCase>()));
     gh.factory<_i1070.SignUpViewModel>(
         () => _i1070.SignUpViewModel(gh<_i625.SignupUserUseCase>()));
     gh.factory<_i558.SignInViewModel>(
