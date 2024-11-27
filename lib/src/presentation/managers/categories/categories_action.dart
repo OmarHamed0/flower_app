@@ -5,3 +5,4 @@ class ChangeCategoryAction extends CategoriesAction{
   int index;
   ChangeCategoryAction(this.index);
 }
+class ResetCategoriesAction extends CategoriesAction {}

@@ -33,19 +33,17 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
   }
 
   void doAction(CategoriesAction action) {
-    if (isClosed) return; // Prevent actions on a closed Cubit
-
     switch (action) {
       case GetCategoriesAction():
         _getCategories();
         break;
+      case ResetCategoriesAction():
+        emit(CategoriesInitial());
+        _getCategories();
+        break;
       case ChangeCategoryAction():
-        if (action.index >= 0 && action.index < categories.length) {
-          selectedIndex = action.index;
-          emit(ChangeCategoryState(categories[action.index].id));
-        } else {
-          emit(CategoriesError("Invalid category index"));
-        }
+        selectedIndex = action.index!;
+        emit(ChangeCategoryState(categories[action.index].id));
         break;
     }
   }

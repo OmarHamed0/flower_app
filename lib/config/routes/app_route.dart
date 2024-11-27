@@ -2,6 +2,8 @@ import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/auth/signup/manager/signup_viewmodel.dart';
 import 'package:flower_app/src/presentation/auth/signup/views/sign_up_view.dart';
+import 'package:flower_app/src/presentation/managers/categories/categories_action.dart';
+import 'package:flower_app/src/presentation/managers/categories/categories_view_model.dart';
 import 'package:flower_app/src/presentation/managers/home/home_viewmodel.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
@@ -55,8 +57,11 @@ class AppRoute {
       case PageRouteName.baseScreen:
         return _handelMaterialPageRoute(
             settings: settings,
-            widget: BlocProvider(
-              create: (context) => getIt<HomeViewModel>(),
+            widget: MultiBlocProvider(
+              providers: [
+                BlocProvider(create: (context) => getIt<HomeViewModel>()),
+                BlocProvider(create: (context)=> getIt<CategoriesViewModel>()..doAction(GetCategoriesAction()),)
+              ],
               child: const BaseScreen(),
             ));
       default:

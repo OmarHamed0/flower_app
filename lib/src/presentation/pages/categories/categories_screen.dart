@@ -14,9 +14,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => viewModel..doAction(GetCategoriesAction()),
-      child: SafeArea(
+    return SafeArea(
         child: Scaffold(
           body: BlocBuilder<CategoriesViewModel, CategoriesState>(
             builder: (context, state) {
@@ -32,7 +30,6 @@ class CategoriesScreen extends StatelessWidget {
             },
           ),
         ),
-      ),
     );
   }
 }

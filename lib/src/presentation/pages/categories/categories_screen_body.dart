@@ -72,9 +72,15 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
           ),
         ),
         SliverFillRemaining(
-          child: widget.productId == null?
-          ProductView(productEndPoints: ProductEndPoints.products, productQuery: ProductQuery.category,):
-          ProductView(productId: widget.productId, productEndPoints: ProductEndPoints.products, productQuery: ProductQuery.category),
+          child: BlocBuilder<CategoriesViewModel,CategoriesState>(
+              builder:(context, state){
+                if(state is ChangeCategoryState){
+                   log("rebuild with new product id os : ${widget.productId}");
+                   return ProductView(productQuery: ProductQuery.category, productEndPoints: ProductEndPoints.products,productId:widget.productId,);
+                }
+                return ProductView();
+              }
+          ),
         )
       ],
     );

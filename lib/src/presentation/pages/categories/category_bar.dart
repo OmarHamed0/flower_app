@@ -1,4 +1,3 @@
-import 'package:flower_app/config/routes/app_route.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/fonts/app_font_weight.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_view_model.dart';
@@ -21,7 +20,6 @@ class CategoryBar extends StatelessWidget {
       child: BlocBuilder<CategoriesViewModel, CategoriesState>(
         builder: (context, state) {
           int selectedIndex = viewModel.selectedIndex;
-
           return ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: categories.length,
