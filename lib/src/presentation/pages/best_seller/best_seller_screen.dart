@@ -1,12 +1,10 @@
 import 'package:flower_app/core/styles/fonts/app_fonts.dart';
 import 'package:flower_app/core/styles/spaceing.dart';
 import 'package:flower_app/flower_app.dart';
-import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 class BestSellerScreen extends StatelessWidget {
   const BestSellerScreen({super.key});
 
@@ -15,7 +13,7 @@ class BestSellerScreen extends StatelessWidget {
     var local = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(local!.bestSeller,style: AppFonts.font20Black500Weight,),
+        title: Text(local!.bestSeller, style: AppFonts.font20Black500Weight,),
         leading: IconButton(
           onPressed: () => _navigateToBack(),
           icon: const Icon(Icons.arrow_back_ios),
@@ -32,9 +30,8 @@ class BestSellerScreen extends StatelessWidget {
             ),
           ),
           verticalSpace(8),
-          Expanded(
+          const Expanded(
             child: ProductView(
-              productEndPoints: ProductEndPoints.besetSeller,
             ),
           ),
         ],

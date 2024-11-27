@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flower_app/src/presentation/managers/product/product_event.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../common/api_result.dart';
@@ -13,9 +14,11 @@ part 'product_state.dart';
 @injectable
 class ProductCubit extends Cubit<ProductState> {
   final GetProductUseCase _getProductUseCase;
-
   ProductCubit(this._getProductUseCase,)
       : super(ProductInitial());
+
+    static ProductCubit of(context)=>BlocProvider.of(context);
+
 
   Future<void> doAction(ProductEvent productEvent) async {
     switch (productEvent) {

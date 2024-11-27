@@ -5,6 +5,8 @@ import 'package:flower_app/src/presentation/auth/signup/views/sign_up_view.dart'
 import 'package:flower_app/src/presentation/managers/categories/categories_action.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_view_model.dart';
 import 'package:flower_app/src/presentation/managers/home/home_viewmodel.dart';
+import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
+import 'package:flower_app/src/presentation/managers/product/product_event.dart';
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
@@ -13,6 +15,7 @@ import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../src/presentation/managers/product/product_cubit.dart';
 import '../../src/presentation/pages/base_screen/base_screen.dart';
 import '../../src/presentation/pages/product_details/product_details.dart';
 
@@ -30,11 +33,15 @@ class AppRoute {
             child: const SignUpView(),
           ),
         );
-      case PageRouteName.besetScreen:
+      case PageRouteName.besetSellerScreen:
         return _handelMaterialPageRoute(
-          settings: settings,
-          widget:const BestSellerScreen()
-        );
+            settings: settings,
+            widget: BlocProvider(
+                create: (context) => getIt<ProductCubit>()
+                  ..doAction(GetProductEvent(
+                      productQueryParameters: ProductQueryParameters(
+                          productEndPoints: ProductEndPoints.besetSeller))),
+                child: const BestSellerScreen()));
 
       case PageRouteName.signIn:
         return MaterialPageRoute(builder: (_) => SignInScreen());
@@ -66,7 +73,11 @@ class AppRoute {
             widget: MultiBlocProvider(
               providers: [
                 BlocProvider(create: (context) => getIt<HomeViewModel>()),
-                BlocProvider(create: (context)=> getIt<CategoriesViewModel>()..doAction(GetCategoriesAction()),)
+                BlocProvider(
+                  create: (context) => getIt<CategoriesViewModel>()
+                    ..doAction(GetCategoriesAction()),
+                ),
+                BlocProvider(create: (context) => getIt<ProductCubit>())
               ],
               child: const BaseScreen(),
             ));

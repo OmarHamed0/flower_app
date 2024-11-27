@@ -1,6 +1,7 @@
 import 'package:flower_app/core/functions/extensions.dart';
 import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/presentation/managers/home/home_state.dart';
+import 'package:flower_app/src/presentation/managers/product/product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -11,6 +12,8 @@ import '../../../../core/styles/images/app_images.dart';
 import '../../../../dependency_injection/di.dart';
 import '../../managers/home/home_actions.dart';
 import '../../managers/home/home_viewmodel.dart';
+import '../../managers/product/core/product_core.dart';
+import '../../managers/product/product_event.dart';
 import '../../widgets/home/app_bar/custom_appbar_home.dart';
 import '../../widgets/home/app_bar/location_widget.dart';
 import '../../widgets/home/best_seller/best_seller_row.dart';
@@ -25,6 +28,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeViewModel = getIt<HomeViewModel>();
+    final productViewModel = context.read<ProductCubit>();
 
     return SafeArea(
       child: Scaffold(
@@ -66,9 +70,8 @@ class HomeScreen extends StatelessWidget {
                         const SizedBox(height: 24),
                         ViewAllRow(
                           title: AppLocalizations.of(context)!.best_Seller,
-                          onPressed: () {},
-                        ),
-                        SizedBox(height: 16),
+                          onPressed: () =>goNextToBestScreen(context)),
+                            const SizedBox(height: 16),
                         BestSellerRow(
                           bestSellerProducts: bestSeller,
                         ),
@@ -96,7 +99,8 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void goNextToBestScreen(){
-    navKey.currentContext!.pushName(PageRouteName.besetScreen);
+  void goNextToBestScreen(BuildContext context){
+    navKey.currentContext!.pushName(PageRouteName.besetSellerScreen);
+
   }
 }
