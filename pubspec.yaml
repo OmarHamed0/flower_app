@@ -21,7 +21,7 @@ dependencies:
   dio:
   retrofit:
   logger:
-  json_annotation:
+  json_annotation: ^4.9.0
   bloc:
   flutter_bloc:
   get_it:
@@ -42,10 +42,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  injectable_generator:
-  build_runner:
+  injectable_generator: ^2.4.0
+  build_runner: ^2.4.13
   retrofit_generator:
-  json_serializable:
+  json_serializable: ^6.8.0
 
   flutter_lints: ^3.0.0
 

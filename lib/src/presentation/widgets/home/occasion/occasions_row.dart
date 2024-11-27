@@ -1,4 +1,6 @@
+import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/domain/entities/home/occasion_model.dart';
+import 'package:flower_app/src/presentation/pages/product_details/product_details.dart';
 import 'package:flower_app/src/presentation/widgets/home/home_product_item.dart';
 import 'package:flutter/material.dart';
 
@@ -17,6 +19,14 @@ class OccasionsRow extends StatelessWidget {
           return Container(
             margin: const EdgeInsets.only(right: 16),
             child: HomeProductItem(
+              onPressed: () {
+                navKey.currentState!.push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        ProductDetails(productId: occasions?.id ?? ''),
+                  ),
+                );
+              },
               imageUrl: occasions?.image ?? "",
               title: occasions?.name ?? "",
             ),
