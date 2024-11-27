@@ -1,3 +1,4 @@
+
 import 'package:flower_app/core/styles/fonts/app_fonts.dart';
 import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/managers/product/product_cubit.dart';
@@ -12,28 +13,46 @@ import '../../../managers/product/core/product_core.dart';
 import '../../../managers/product/product_event.dart';
 import '../widget/product_list_widget.dart';
 
-class ProductView extends StatelessWidget {
-  var productViewModel = getIt.get<ProductCubit>();
-   String ? productId;
-   ProductQuery ? productQuery;
-   ProductEndPoints ? productEndPoints;
-  ProductView({super.key,
-    this.productEndPoints=ProductEndPoints.products,
-    this.productQuery,
-    this.productId
+class ProductView extends StatefulWidget {
+  String? productId;
+  ProductQuery? productQuery;
+  ProductEndPoints? productEndPoints;
 
-  });
+  ProductView(
+      {super.key,
+      this.productEndPoints = ProductEndPoints.products,
+      this.productQuery,
+      this.productId});
+
+  @override
+  State<ProductView> createState() => _ProductViewState();
+}
+
+class _ProductViewState extends State<ProductView> {
+  var productViewModel = getIt.get<ProductCubit>();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    productViewModel.doAction(GetProductEvent(
+      productQueryParameters: ProductQueryParameters(
+          productEndPoints: widget.productEndPoints!,
+          productQuery: widget.productQuery,
+          productId: widget.productId),
+    ),);
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => productViewModel
         ..doAction(
-          GetProductEvent(productQueryParameters:
-          ProductQueryParameters(
-            productEndPoints: productEndPoints!,
-            productQuery: productQuery,
-            productId: productId
-          )),
+          GetProductEvent(
+            productQueryParameters: ProductQueryParameters(
+                productEndPoints: widget.productEndPoints!,
+                productQuery: widget.productQuery,
+                productId: widget.productId),
+          ),
         ),
       child: Scaffold(
           body: Padding(
@@ -41,7 +60,7 @@ class ProductView extends StatelessWidget {
               child: BlocBuilder<ProductCubit, ProductState>(
                   builder: (context, state) {
                 return _handleBlocBuilder(state, context);
-              }))),
+              },),)),
     );
   }
 

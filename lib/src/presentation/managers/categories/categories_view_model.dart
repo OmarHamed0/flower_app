@@ -12,15 +12,14 @@ part 'categories_state.dart';
 @injectable
 class CategoriesViewModel extends Cubit<CategoriesState> {
   final CategoryUseCase _categoryUseCase;
-  List<CategoryEntity> categories = [];
-  int selectedIndex = 0;
   CategoriesViewModel(this._categoryUseCase) : super(CategoriesInitial());
-
+  List<CategoryEntity> categories = [CategoryEntity(name: "All")];
+  int selectedIndex = 0;
   void _getCategories() async {
     var response = await _categoryUseCase.getCategory();
     switch (response) {
       case Success<List<CategoryEntity>>():
-        categories = response.data!;
+        categories.addAll(response.data!);
         emit(CategoriesLoaded(categories));
         break;
       case Failures<List<CategoryEntity>>():
@@ -37,8 +36,15 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
     switch (action) {
       case GetCategoriesAction():
         _getCategories();
+        break;
+      case ResetCategoriesAction():
+        emit(CategoriesInitial());
+        _getCategories();
+        break;
       case ChangeCategoryAction():
+        selectedIndex = action.index!;
         emit(ChangeCategoryState(categories[action.index].id));
+        break;
     }
   }
 }

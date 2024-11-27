@@ -1,4 +1,3 @@
-import 'package:flower_app/config/routes/app_route.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/fonts/app_font_weight.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_view_model.dart';
@@ -7,43 +6,39 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../managers/categories/categories_action.dart';
 
-class CategoryBar extends StatefulWidget {
-    List<String?> categories = [];
-   CategoryBar({super.key, required this.categories});
+class CategoryBar extends StatelessWidget {
+  final List<String?> categories;
 
-  @override
-  State<CategoryBar> createState() => _CategoryBarState();
-}
-
-class _CategoryBarState extends State<CategoryBar> {
-
-  int selectedIndex = 0;
+  const CategoryBar({super.key, required this.categories});
 
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<CategoriesViewModel>();
-    selectedIndex = viewModel.selectedIndex;
+
     return SizedBox(
-      height: 50, // Adjust the height as needed
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: widget.categories!.length,
-        itemBuilder: (context, index) {
-          return _buildCategoryItem(index,viewModel);
+      height: 50,
+      child: BlocBuilder<CategoriesViewModel, CategoriesState>(
+        builder: (context, state) {
+          int selectedIndex = viewModel.selectedIndex;
+          return ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemCount: categories.length,
+            itemBuilder: (context, index) {
+              bool isSelected = selectedIndex == index;
+              return _buildCategoryItem(index, isSelected, viewModel);
+            },
+          );
         },
       ),
     );
   }
 
-  Widget _buildCategoryItem(int index,viewModel) {
-    bool isSelected = selectedIndex == index;
+  Widget _buildCategoryItem(int index, bool isSelected, CategoriesViewModel viewModel) {
     return GestureDetector(
       onTap: () {
-        viewModel.doAction(ChangeCategoryAction(index));
-        setState(() {
-          viewModel.selectedIndex = index;
-          selectedIndex = index;
-        });
+        if (viewModel.selectedIndex != index) {
+          viewModel.doAction(ChangeCategoryAction(index));
+        }
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -51,9 +46,9 @@ class _CategoryBarState extends State<CategoryBar> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              widget.categories[index]??"",
+              categories[index] ?? "",
               style: TextStyle(
-                color: isSelected ? AppColors.kBaseColor :AppColors.kWhite70,
+                color: isSelected ? AppColors.kBaseColor : AppColors.kWhite70,
                 fontWeight: isSelected ? AppFontWeights.bold : AppFontWeights.normal,
                 fontSize: 16,
               ),
