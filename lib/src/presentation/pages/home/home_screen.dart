@@ -1,3 +1,4 @@
+import 'package:flower_app/core/functions/extensions.dart';
 import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/presentation/managers/home/home_state.dart';
 import 'package:flutter/material.dart';
@@ -93,5 +94,9 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  void goNextToBestScreen(){
+    navKey.currentContext!.pushName(PageRouteName.besetScreen);
   }
 }

@@ -5,6 +5,7 @@ import 'package:flower_app/src/presentation/auth/signup/views/sign_up_view.dart'
 import 'package:flower_app/src/presentation/managers/categories/categories_action.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_view_model.dart';
 import 'package:flower_app/src/presentation/managers/home/home_viewmodel.dart';
+import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
@@ -28,6 +29,11 @@ class AppRoute {
             create: (context) => getIt<SignUpViewModel>(),
             child: const SignUpView(),
           ),
+        );
+      case PageRouteName.besetScreen:
+        return _handelMaterialPageRoute(
+          settings: settings,
+          widget:const BestSellerScreen()
         );
 
       case PageRouteName.signIn:
