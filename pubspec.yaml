@@ -42,10 +42,10 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  injectable_generator: ^2.4.0
-  build_runner: ^2.4.13
+  injectable_generator:
+  build_runner:
   retrofit_generator:
-  json_serializable: ^6.8.0
+  json_serializable:
 
   flutter_lints: ^3.0.0
 

@@ -38,3 +38,5 @@ class ProductLists {
     this.categories,
   });
 }
+
+class GoNextBesetSellerState extends HomeState{}

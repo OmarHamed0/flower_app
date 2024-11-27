@@ -13,7 +13,7 @@ class ProductListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return DynamicHeightGridView(
          shrinkWrap: true,
-         physics: const NeverScrollableScrollPhysics(),
+         physics: const BouncingScrollPhysics(),
         itemCount: products.length,
         crossAxisCount: 2,
         crossAxisSpacing: 17.w,
