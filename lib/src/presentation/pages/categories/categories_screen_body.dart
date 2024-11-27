@@ -3,10 +3,13 @@ import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_view_model.dart';
 import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
+import 'package:flower_app/src/presentation/managers/product/product_cubit.dart';
 import 'package:flower_app/src/presentation/pages/categories/category_bar.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../managers/product/product_event.dart';
 
 class CategoriesScreenBody extends StatefulWidget {
   final String? productId;
@@ -21,6 +24,7 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<CategoriesViewModel>();
+    final productViewModel = context.read<ProductCubit>();
     log("in new screen product id is : ${widget.productId}");
     return CustomScrollView(
       slivers: [
@@ -75,10 +79,27 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
           child: BlocBuilder<CategoriesViewModel,CategoriesState>(
               builder:(context, state){
                 if(state is ChangeCategoryState){
-                   log("rebuild with new product id os : ${widget.productId}");
-                   return ProductView(productQuery: ProductQuery.category, productEndPoints: ProductEndPoints.products,productId:widget.productId,);
+                  productViewModel.doAction(
+                   GetProductEvent(
+                      productQueryParameters: ProductQueryParameters(
+                          productEndPoints:  ProductEndPoints.products,
+                          productQuery: ProductQuery.category,
+                          productId: widget.productId,
+                      )
+                  ));
+                   return ProductView();
+
+                }else{
+                  productViewModel.doAction(
+                      GetProductEvent(
+                        productQueryParameters: ProductQueryParameters(
+                            productEndPoints:  ProductEndPoints.products
+                        ),
+
+
+                      ));
+                  return ProductView();
                 }
-                return ProductView();
               }
           ),
         )
