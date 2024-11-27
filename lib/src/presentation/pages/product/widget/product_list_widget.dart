@@ -12,6 +12,8 @@ class ProductListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DynamicHeightGridView(
+         shrinkWrap: true,
+         physics: const NeverScrollableScrollPhysics(),
         itemCount: products.length,
         crossAxisCount: 2,
         crossAxisSpacing: 17.w,

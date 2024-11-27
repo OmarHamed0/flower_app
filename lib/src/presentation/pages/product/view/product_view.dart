@@ -14,26 +14,27 @@ import '../widget/product_list_widget.dart';
 
 class ProductView extends StatelessWidget {
   var productViewModel = getIt.get<ProductCubit>();
-   String ? productId;
-   ProductQuery ? productQuery;
-   ProductEndPoints ? productEndPoints;
-  ProductView({super.key,
-    this.productEndPoints=ProductEndPoints.products,
-    this.productQuery,
-    this.productId
+  String? productId;
+  ProductQuery? productQuery;
+  ProductEndPoints? productEndPoints;
 
-  });
+  ProductView(
+      {super.key,
+      this.productEndPoints = ProductEndPoints.products,
+      this.productQuery,
+      this.productId});
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => productViewModel
         ..doAction(
-          GetProductEvent(productQueryParameters:
-          ProductQueryParameters(
-            productEndPoints: productEndPoints!,
-            productQuery: productQuery,
-            productId: productId
-          )),
+          GetProductEvent(
+            productQueryParameters: ProductQueryParameters(
+                productEndPoints: productEndPoints!,
+                productQuery: productQuery,
+                productId: productId),
+          ),
         ),
       child: Scaffold(
           body: Padding(
@@ -41,7 +42,7 @@ class ProductView extends StatelessWidget {
               child: BlocBuilder<ProductCubit, ProductState>(
                   builder: (context, state) {
                 return _handleBlocBuilder(state, context);
-              }))),
+              },),)),
     );
   }
 
