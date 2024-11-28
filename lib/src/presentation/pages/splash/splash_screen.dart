@@ -1,6 +1,11 @@
 import 'dart:async';
 import 'package:flower_app/core/animations/app_animation.dart';
+import 'package:flower_app/dependency_injection/di.dart';
+import 'package:flower_app/src/presentation/managers/splash/splash_actions.dart';
+import 'package:flower_app/src/presentation/managers/splash/splash_states.dart';
+import 'package:flower_app/src/presentation/managers/splash/splash_view_model.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:flower_app/config/helpers/shared_pre_keys.dart';
@@ -15,36 +20,31 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
+  final viewModel = getIt.get<SplashViewModel>();
+
   @override
   void initState() {
     super.initState();
-    _navigateBasedOnToken();
-  }
-
-  Future<void> _navigateBasedOnToken() async {
-    await Future.delayed(const Duration(seconds: 4));
-
-    final userToken =
-    await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
-
-
-    final nextRoute = (userToken != null && userToken.isNotEmpty)
-        ? PageRouteName.home
-        : PageRouteName.signIn;
-
-    Navigator.pushReplacementNamed(context, nextRoute);
   }
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    return BlocProvider(
+      create: (_) => viewModel..doAction(GetNextRouteAction()),
       child: Scaffold(
-        body: Center(
-          child: Lottie.asset(
-            AppAnimations.loading,
-            width: 300.w,
-            height: 300.h,
-            fit: BoxFit.fill,
+        body: BlocListener<SplashViewModel, SplashStates>(
+          listener: (context, state) {
+            if(state is NavigateToNextScreen){
+              Navigator.pushReplacementNamed(context, state.nextRoute);
+            }
+          },
+          child: Center(
+            child: Lottie.asset(
+              AppAnimations.loading,
+              width: 300.w,
+              height: 300.h,
+              fit: BoxFit.fill,
+            ),
           ),
         ),
       ),

@@ -14,7 +14,7 @@ class OccasionScreen extends StatelessWidget {
               Navigator.of(context).pop();
             },
           ),
-          title: Text(LocalizationHelper.localizations.occasions),
+          title: Text(AppLocalizations.of(context)!.occasion),
         ),
       ),
     );
