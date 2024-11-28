@@ -25,10 +25,10 @@ class BaseScreenViewmodel extends Cubit<BaseHomeState> {
   ];
 
   final List<Widget> _screens = [
-    const HomeScreen(),
-    CategoriesScreen(),
-    const CartScreen(),
     const ProfileScreen(),
+    const HomeScreen(),
+    const CartScreen(),
+    CategoriesScreen(),
   ];
 
   String get currentTitle => _titles[_currentIndex];

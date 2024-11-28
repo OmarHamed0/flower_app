@@ -1,3 +1,4 @@
+import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/config/helpers/shared_pre_keys.dart';
 import 'package:flower_app/config/helpers/shared_pref_helper.dart';
 import 'package:flower_app/src/data/data_sources/offline_data_source/offline_data_source.dart';
@@ -14,8 +15,9 @@ class SignInOfflineDataSourceImpl implements SignInOfflineDataSource {
 
   @override
   Future<bool> isLoggedUser() async {
-    var token = SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
-    return (token.isNullOrEmpty() == true);
+    var token =
+        await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
+    return (token?.isNullOrEmpty() == true);
   }
 
   @override

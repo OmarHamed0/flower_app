@@ -32,7 +32,7 @@ abstract class ApiServices {
 
   @GET(ApisEndPoints.loggedUserData)
   Future<LoggedUserDataResponseModel> getLoggedUserData(
-      @Header("token") String token);
+      @Header("Authorization") String token);
 
   @GET(ApisEndPoints.home)
   Future<HomeResponse> getHomeData();
