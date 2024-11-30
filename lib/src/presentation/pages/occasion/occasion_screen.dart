@@ -1,6 +1,5 @@
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/core/functions/spacing.dart';
-import 'package:flower_app/core/styles/fonts/app_fonts.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/managers/occasion/occasion_states.dart';
@@ -53,7 +52,6 @@ class OccasionScreen extends StatelessWidget {
               return _handelCurrentScreenView(state);
             },
           ),
-          title: Text(AppLocalizations.of(context)!.occasion),
         ),
       ),
     );
