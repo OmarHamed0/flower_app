@@ -5,7 +5,9 @@ Future<ApiResult<T>> executeApi<T>(
   try {
     final result = await apiCall();
     return Success(data: result);
-  } catch (e) {
-    return Failures(exception: e as Exception);
+  } catch (e, stackTrace) {
+    return Failures(
+      exception: e is Exception ? e : Exception("Unknown error occurred: $e"),
+    );
   }
 }

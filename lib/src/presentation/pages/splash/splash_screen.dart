@@ -1,4 +1,8 @@
 import 'dart:async';
+
+import 'package:flower_app/config/helpers/shared_pre_keys.dart';
+import 'package:flower_app/config/helpers/shared_pref_helper.dart';
+import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/core/animations/app_animation.dart';
 import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/managers/splash/splash_actions.dart';
@@ -22,10 +26,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   final viewModel = getIt.get<SplashViewModel>();
 
-  @override
-  void initState() {
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {

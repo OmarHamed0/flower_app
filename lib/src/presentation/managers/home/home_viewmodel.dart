@@ -12,7 +12,7 @@ import 'home_state.dart';
 class HomeViewModel extends Cubit<HomeState> {
   final HomeUseCase _homeUseCase;
 
-  HomeViewModel(this._homeUseCase) : super(const HomeStateLoading());
+  HomeViewModel(this._homeUseCase) : super(const HomeStateInitial());
 
   void doAction(HomeAction action) {
     switch (action) {
