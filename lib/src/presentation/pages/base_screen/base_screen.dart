@@ -68,10 +68,10 @@ class _HomeScreenState extends State<BaseScreen> {
                 type: BottomNavigationBarType.fixed,
                 elevation: 15,
                 items: [
-                  _buildBottomNavItem(Icons.person_outline, "Profile"),
                   _buildBottomNavItem(Icons.home, "Home"),
                   _buildBottomNavItem(Icons.category_outlined, "Categories"),
                   _buildBottomNavItem(Icons.shopping_cart_outlined, "Cart"),
+                  _buildBottomNavItem(Icons.person_outline, "Profile"),
                 ],
               ),
             ),
