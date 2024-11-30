@@ -1,4 +1,7 @@
 import 'package:flower_app/common/common.dart';
+import 'package:flower_app/core/functions/spacing.dart';
+import 'package:flower_app/core/styles/fonts/app_fonts.dart';
+import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/managers/occasion/occasion_states.dart';
 import 'package:flower_app/src/presentation/managers/occasion/occasions_view_model.dart';
@@ -31,12 +34,19 @@ class OccasionScreen extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             leading: IconButton(
-              icon: const Icon(Icons.arrow_back),
+              icon: const Icon(Icons.arrow_back_ios_new),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
-            title: Text(AppLocalizations.of(context)!.occasion),
+            title: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                verticalSpace(16),
+                Text(AppLocalizations.of(context)!.occasion),
+                Text(AppLocalizations.of(context)!.bloomWithOurExquisiteBestSellers, style: AppTextStyles.font13White70Weight500,),
+              ],
+            ),
           ),
           body: BlocBuilder<OccasionViewModel, OccasionsStates>(
             builder: (context, state) {
