@@ -61,6 +61,7 @@ import '../src/domain/use_cases/auth_use_cases/signup_user_use_case.dart'
     as _i625;
 import '../src/domain/use_cases/category_use_case.dart' as _i551;
 import '../src/domain/use_cases/home_usecase.dart' as _i729;
+import '../src/domain/use_cases/occasions_use_case.dart' as _i845;
 import '../src/domain/use_cases/product_use_cases/get_product_use_case.dart'
     as _i902;
 import '../src/domain/use_cases/product_use_cases/product_by_id_use_case.dart'
@@ -141,6 +142,8 @@ extension GetItInjectableX on _i174.GetIt {
         homeDataSource: gh<_i902.HomeOnlineDataSource>()));
     gh.factory<_i196.ProductDetailsViewModel>(
         () => _i196.ProductDetailsViewModel(gh<_i1042.ProductByIdUseCase>()));
+    gh.factory<_i845.OccasionUseCase>(
+        () => _i845.OccasionUseCase(gh<_i492.OccasionRepo>()));
     gh.factory<_i729.HomeUseCase>(
         () => _i729.HomeUseCase(gh<_i781.HomeRepository>()));
     gh.factory<_i363.HomeViewModel>(
