@@ -13,6 +13,7 @@ import 'core/response_model/auth_response_models/signin_response_model.dart';
 import 'core/response_model/beset_seller/beset_seller_model.dart';
 import 'core/response_model/get_catigories/get_catigories_resonse_model.dart';
 import 'core/response_model/home_response/home_response.dart';
+import 'core/response_model/logout/Logout_response.dart';
 import 'core/response_model/product/product_response_model.dart';
 
 part 'api_services.g.dart';
@@ -32,7 +33,7 @@ abstract class ApiServices {
 
   @GET(ApisEndPoints.loggedUserData)
   Future<LoggedUserDataResponseModel> getLoggedUserData(
-      @Header("token") String token);
+      @Header("Authorization") String token);
 
   @GET(ApisEndPoints.home)
   Future<HomeResponse> getHomeData();
@@ -50,4 +51,6 @@ abstract class ApiServices {
 
   @GET(ApisEndPoints.categories)
   Future<GetCatigoriesResponseModel> getCategories();
+  @GET(ApisEndPoints.logout)
+  Future<LogOutResponse> logout(@Header("Authorization") String token);
 }
