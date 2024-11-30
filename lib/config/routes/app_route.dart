@@ -84,7 +84,7 @@ class AppRoute {
             ));
        case PageRouteName.occasions:
         return _handelMaterialPageRoute(
-            settings: settings, widget: const OccasionScreen());
+            settings: settings, widget:  OccasionScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

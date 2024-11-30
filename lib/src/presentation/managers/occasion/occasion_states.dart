@@ -12,3 +12,8 @@ class ErrorState extends OccasionsStates{
   final String message;
   ErrorState({required this.message});
 }
+
+class ChangeOccasionState extends OccasionsStates{
+  final String id;
+  ChangeOccasionState({required this.id});
+}
