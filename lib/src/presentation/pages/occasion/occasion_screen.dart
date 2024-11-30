@@ -53,6 +53,7 @@ class OccasionScreen extends StatelessWidget {
               return _handelCurrentScreenView(state);
             },
           ),
+          title: Text(AppLocalizations.of(context)!.occasion),
         ),
       ),
     );
