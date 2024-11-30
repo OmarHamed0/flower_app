@@ -6,4 +6,5 @@ abstract class ApisEndPoints {
   static const String  categories = "categories";
   static const String signup = "auth/signup";
   static const String home = "home";
+  static const String occassions = "occasions";
 }
