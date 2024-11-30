@@ -1,7 +1,5 @@
-import 'dart:math';
-
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flower_app/common/awesome_dialoge.dart';
+import 'package:flower_app/common/awesome_dialog.dart';
 import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/presentation/managers/forget_password/forget_password_contract.dart';
@@ -20,44 +18,28 @@ class ForgetPasswordBody extends StatelessWidget {
     return BlocConsumer<ForgetPasswordViewModel, ForgetPasswordViewState>(
         listener: (context, state) {
           if (state is ForgetPasswordLoadingState) {
-            print("in loading state");
+            LoadingDialog.show(context);
+          } else if (state is ForgetPasswordSuccessState) {
             showAwesomeDialog(
               context,
               title: AppLocalizations.of(context)!.emailSentSuccessfully,
-              desc: "Loading",
-              dialogType: DialogType.question,
-              onOk: () => navKey.currentState?.pushNamedAndRemoveUntil(
-                PageRouteName.otpVerify,
-                arguments: context.read<ForgetPasswordViewModel>().emailController.text,
-                    (route) => false,
-              ),
-            );
-          } else
-          if (state is ForgetPasswordSuccessState) {
-            print("in success state"); // Small delay for smooth transition
-            showAwesomeDialog(
-              context,
-              title: AppLocalizations.of(context)!.emailSentSuccessfully,
-              desc: "Description",
+              desc: AppLocalizations.of(context)!.verificationCodeIsSentToYourEmail,
               dialogType: DialogType.success,
               onOk: () => navKey.currentState?.pushNamedAndRemoveUntil(
                 PageRouteName.otpVerify,
-                arguments: context.read<ForgetPasswordViewModel>().emailController.text,
-                    (route) => false,
+                arguments: context
+                    .read<ForgetPasswordViewModel>()
+                    .emailController
+                    .text,
+                (route) => false,
               ),
             );
-            SuccessDialog.show(context);
-
-             // Wait for the animation
-            SuccessDialog.hide(context);
-
-            // Navigate after showing the success dialog
-
           } else if (state is ForgetPasswordFailState) {
-            print("in fail state");
-            LoadingDialog.hide(context);
-            ErrorDialog.show(context); // Wait for the error animation
-            ErrorDialog.hide(context);
+            showAwesomeDialog(context,
+                title: 'Error',
+                desc: state.message,
+                onOk: () {},
+                dialogType: DialogType.error);
           } else if (state is PopDialogState) {
             LoadingDialog.hide(context);
           }

@@ -21,5 +21,6 @@
   "resend": "Resend",
   "resetPassword": "Reset password",
   "passwordMustNotBeEmpty": "Password must not be empty and must contain 6 characters with upper case letter and one number at least",
-  "emailSentSuccessfully" : "Email Sent Successfully"
+  "emailSentSuccessfully" : "Email Sent Successfully",
+  "verificationCodeIsSentToYourEmail" : "Verification Code has been sent to your email"
 }

@@ -1,3 +1,4 @@
+import 'package:flower_app/config/routes/app_route.dart';
 import 'package:flower_app/core/styles/app_radius.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
@@ -6,6 +7,7 @@ import 'package:flower_app/src/presentation/managers/otp_verify/otp_verify_actio
 import 'package:flower_app/src/presentation/managers/otp_verify/otp_verify_view_model.dart';
 import 'package:flower_app/src/presentation/widgets/app_text_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class OtpForm extends StatelessWidget {
@@ -15,9 +17,10 @@ class OtpForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var viewModel = getIt.get<OtpVerifyViewModel>();
+    final viewModel = context.read<OtpVerifyViewModel>();
     viewModel.email = ModalRoute.of(context)!.settings.arguments as String?;
     return Form(
+
       autovalidateMode: AutovalidateMode.onUserInteraction,
       key: viewModel.otpFormKey,
       child: ListView(

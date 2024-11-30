@@ -33,8 +33,6 @@ class OtpVerifyViewModel extends Cubit<OtpVerifyViewState> {
       case FormDataChangedAction():
       case OtpResendAction():
       // TODO: Handle this case.
-
-
     }
   }
 
@@ -56,7 +54,6 @@ class OtpVerifyViewModel extends Cubit<OtpVerifyViewState> {
       return;
     }
     emit(OtpVerifyLoadingState());
-
     var response = await _otpVerifyUseCase
         .callOtpVerifyUseCase(OtpVerifyRequest(resetCode: otpCode));
 
@@ -64,10 +61,14 @@ class OtpVerifyViewModel extends Cubit<OtpVerifyViewState> {
 
     switch (response) {
       case Success<OtpVerifyResponse>():
-        emit(OtpSuccessState());
+        {
+          emit(OtpSuccessState());
+        }
       case Failures<OtpVerifyResponse>():
-        final errorMessage = ErrorHandler.fromException(response.exception);
-        emit(OtpFailState(errorMessage.errorMassage));
+        {
+          final errorMessage = ErrorHandler.fromException(response.exception);
+          emit(OtpFailState(errorMessage.errorMassage));
+        }
     }
   }
 }

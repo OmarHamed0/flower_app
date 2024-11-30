@@ -19,6 +19,7 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordViewState> {
   bool isObscureText = true;
   String? email = '';
   bool valid = false;
+
   ResetPasswordViewModel(this._resetPasswordUseCase)
       : super(InitialResetPasswordView());
 
@@ -35,30 +36,29 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordViewState> {
           break;
         }
       case FormDataChangedAction():
-      {
-        _updateValidationState();
-        break;
-      }
+        {
+          _updateValidationState();
+          break;
+        }
     }
   }
 
   void _resetPassword() async {
-    if (resetPasswordFormKey.currentState!.validate()) {
-      emit(ResetPasswordLoadingState());
-      var response = await _resetPasswordUseCase.callResetPasswordUseCase(
-          ResetPasswordRequest(
-              email: email, newPassword: passwordController.text));
-      switch (response) {
-        case Success<ResetPasswordResponse>():
-          emit(PopDialogState());
-          emit(ResetPasswordSuccessState());
-          break;
-        case Failures<ResetPasswordResponse>():
-          emit(PopDialogState());
-          final error = ErrorHandler.fromException(response.exception);
-          emit(ResetPasswordFailedState(error.errorMassage));
-          break;
-      }
+    if (!resetPasswordFormKey.currentState!.validate()) {
+      emit(FormErrorState());
+      return;
+    }
+    emit(ResetPasswordLoadingState());
+    var response = await _resetPasswordUseCase.callResetPasswordUseCase(
+        ResetPasswordRequest(
+            email: email, newPassword: passwordController.text));
+    if (response is Success<ResetPasswordResponse>) {
+      emit(PopDialogState());
+      emit(ResetPasswordSuccessState());
+    } else if (response is Failures<ResetPasswordResponse>) {
+      emit(PopDialogState());
+      final error = ErrorHandler.fromException(response.exception);
+      emit(ResetPasswordFailedState(error.errorMassage));
     }
   }
 

@@ -52,35 +52,27 @@ class SignInOnlineDataSourceImpl implements SignInOnlineDataSource {
   }
 
   @override
-  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
+  Future<ForgetPasswordResponse> forgetPassword(
       ForgetPasswordRequest requestBody) async {
-    var response = await executeApi<ForgetPasswordResponse>(apiCall: () async {
-      var response = await _apiServices
-          .forgetPassword(ForgetPasswordRequestDto.fromDomain(requestBody));
-      print(response);
-      return response.toDomain();
-    });
-    return response;
+    var response = await _apiServices
+        .forgetPassword(ForgetPasswordRequestDto(email: requestBody.email));
+
+    return response.toDomain();
   }
 
   @override
-  Future<ApiResult<VerifyResetCodeResponse>> verifyResetCode(
+  Future<VerifyResetCodeResponse> verifyResetCode(
       OtpVerifyRequest resetCode) async {
-    var response = executeApi<VerifyResetCodeResponse>(apiCall: () async {
-      var response = await _apiServices
-          .verifyResetCode(OtpVerifyRequestDto(resetCode: resetCode.resetCode));
-      return response.toDomain();
-    });
-    return response;
+    var response = await _apiServices
+        .verifyResetCode(OtpVerifyRequestDto(resetCode: resetCode.resetCode));
+    return response.toDomain();
   }
 
   @override
-  Future<ApiResult<ResetPasswordResponse>> resetPassword(
-      ResetPasswordRequest request) {
-    return executeApi(apiCall: () async {
-      var response = await _apiServices.resetPassword(ResetPasswordRequestDto(
-          email: request.email, newPassword: request.newPassword));
-      return response.toDomain();
-    });
+  Future<ResetPasswordResponse> resetPassword(
+      ResetPasswordRequest request) async{
+    var response = await _apiServices.resetPassword(ResetPasswordRequestDto(
+        email: request.email, newPassword: request.newPassword));
+    return response.toDomain();
   }
 }

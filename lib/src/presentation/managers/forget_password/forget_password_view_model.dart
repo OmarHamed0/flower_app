@@ -35,33 +35,37 @@ class ForgetPasswordViewModel extends Cubit<ForgetPasswordViewState> {
       case FormDataChangedAction():
         {
           _updateValidationState();
-          break;
         }
       case ForgetPasswordAction():
         {
           _forgetPassword();
-          break;
         }
     }
   }
 
   void _forgetPassword() async {
     String email = emailController.text;
+
+    // Validate the form
     if (!forgetPasswordFormKey.currentState!.validate()) {
       emit(FormErrorState());
       return;
     }
+
+    // Show loading state
     emit(ForgetPasswordLoadingState());
+
+    // Call the use case
     var response = await _forgetPasswordUseCase
         .callForgetPasswordUseCase(ForgetPasswordRequest(email: email));
-    switch (response) {
-      case Success<ForgetPasswordResponse>():
-        emit(ForgetPasswordSuccessState());
-        break;
-      case Failures<ForgetPasswordResponse>():
-        final error = ErrorHandler.fromException(response.exception);
-        emit(ForgetPasswordFailState(error.errorMassage));
-        break;
+    // Handle response
+    if (response is Success<ForgetPasswordResponse>) {
+      emit(PopDialogState());
+      emit(ForgetPasswordSuccessState());
+    } else if (response is Failures<ForgetPasswordResponse>) {
+      emit(PopDialogState());
+      final error = ErrorHandler.fromException(response.exception);
+      emit(ForgetPasswordFailState(error.errorMassage));
     }
   }
 

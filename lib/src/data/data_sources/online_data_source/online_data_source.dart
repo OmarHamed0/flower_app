@@ -19,12 +19,12 @@ abstract class SignInOnlineDataSource {
   Future<ApiResult<SignupResponseDto>> signUp(
       SignUpRequestBody signUpRequestBody);
 
-  Future<ApiResult<ForgetPasswordResponse>> forgetPassword(
+  Future<ForgetPasswordResponse> forgetPassword(
       ForgetPasswordRequest requestBody);
 
-  Future<ApiResult<VerifyResetCodeResponse>> verifyResetCode(
+  Future<VerifyResetCodeResponse> verifyResetCode(
       OtpVerifyRequest resetCode);
 
-  Future<ApiResult<ResetPasswordResponse>> resetPassword(
+  Future<ResetPasswordResponse> resetPassword(
       ResetPasswordRequest request);
 }

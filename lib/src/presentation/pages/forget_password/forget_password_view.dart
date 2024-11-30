@@ -20,7 +20,7 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => viewModel,
+      create: (_) => viewModel,
       child: Scaffold(
         backgroundColor: AppColors.kWhiteBase,
         appBar: AppBar(

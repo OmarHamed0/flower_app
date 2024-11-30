@@ -2,6 +2,7 @@ import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/src/data/data_sources/online_data_source/online_data_source.dart';
 import 'package:flower_app/src/data/dto/auth_response_dto/forget_password_response_dto.dart';
 import 'package:flower_app/src/data/dto/auth_response_dto/otp_verify_response_dto.dart';
+import 'package:flower_app/src/data/dto/auth_response_dto/reset_password_response_dto.dart';
 import 'package:flower_app/src/domain/entities/auth_request/forget_password_request.dart';
 import 'package:flower_app/src/domain/entities/auth_request/otp_verify_request.dart';
 import 'package:flower_app/src/domain/entities/auth_request/reset_password_request.dart';
@@ -42,7 +43,11 @@ class ForgetPasswordRepositoryImpl implements ForgetPasswordRepository {
   @override
   Future<ApiResult<ResetPasswordResponse>> resetPassword(
       ResetPasswordRequest request) async {
-    var response = await _onlineDataSource.resetPassword(request);
-    return response;
+    try{
+      await _onlineDataSource.resetPassword(request);
+      return Success(data: ResetPasswordResponseDto().toDomain());
+    }on Exception catch (ex){
+      return Failures(exception: ex);
+    }
   }
 }

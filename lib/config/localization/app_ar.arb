@@ -21,5 +21,6 @@
   "resend": "Resend",
   "resetPassword" : "إعادة تعيين كلمة المرور",
   "passwordMustNotBeEmpty": "يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف بأحرف كبيرة ورقم واحد على الأقل",
-  "emailSentSuccessfully" : "تم إرسال البريد الإلكتروني بنجاح"
+  "emailSentSuccessfully" : "تم إرسال البريد الإلكتروني بنجاح",
+  "verificationCodeIsSentToYourEmail" : "تم إرسال رمز التحقق إلى بريدك الإلكتروني"
 }

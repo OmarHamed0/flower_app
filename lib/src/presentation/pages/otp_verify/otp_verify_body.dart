@@ -1,5 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flower_app/common/awesome_dialoge.dart';
+import 'package:flower_app/common/awesome_dialog.dart';
 import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/presentation/managers/otp_verify/otp_verify_states.dart';
@@ -28,20 +28,19 @@ class OtpVerifyBody extends StatelessWidget {
             desc: "Description",
             dialogType: DialogType.success,
             onOk: () => navKey.currentState?.pushNamedAndRemoveUntil(
-              PageRouteName.otpVerify,
+              PageRouteName.resetPassword,
               arguments: context.read<OtpVerifyViewModel>().email,
                   (route) => false,
             ),
           );
         } else if (state is OtpFailState) {
-          LoadingDialog.hide(context);
-          await Future.delayed(const Duration(milliseconds: 500));
-          ErrorDialog.show(context);
-
-          await Future.delayed(
-              const Duration(seconds: 2)); // Wait for the error animation
-          ErrorDialog.hide(context);
+          showAwesomeDialog(context,
+              title: 'Error',
+              desc: state.message,
+              onOk: () {},
+              dialogType: DialogType.error);
         } else if (state is PopDialogState) {
+          LoadingDialog.hide(context);
           LoadingDialog.hide(context);
         }
       },
