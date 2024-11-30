@@ -31,8 +31,8 @@ class SignInScreenBody extends StatelessWidget {
         } else if (state is SignInSuccessState) {
           showAwesomeDialog(context,
               title: 'Success', desc: 'You Signed in successfully', onOk: () {
-            navKey.currentState!
-                .pushNamedAndRemoveUntil(PageRouteName.home, (route) => false);
+            navKey.currentState!.pushNamedAndRemoveUntil(
+                PageRouteName.baseScreen, (route) => false);
           }, dialogType: DialogType.success);
         } else if (state is SignInFailedState) {
           showAwesomeDialog(context,
@@ -85,5 +85,5 @@ class SignInScreenBody extends StatelessWidget {
 }
 
 Future<void> _goNextHome(BuildContext context) {
-  return Navigator.pushNamed(context, PageRouteName.home);
+  return Navigator.pushNamed(context, PageRouteName.baseScreen);
 }

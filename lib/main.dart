@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flower_app/config/helpers/localization_helper.dart';
 import 'package:flutter/material.dart';
 
 import 'core/utils/bloc_observer/bloc_observer.dart';

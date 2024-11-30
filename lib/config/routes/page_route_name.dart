@@ -1,9 +1,12 @@
 class PageRouteName {
   static const String splash = "splash";
-  static const String signup = "signup";
-
   static const String signIn = "signIn";
   static const String home = "home";
+
+  static const String product = "product";
+  static const String productDetails = "product_detail";
+  static const String baseScreen = "baseScreen";
+  static const String besetSellerScreen="besetScreen";
   static const String forgetPassword = "forget_password";
   static const String otpVerify = "otp_verify";
   static const String resetPassword = "reset_password";

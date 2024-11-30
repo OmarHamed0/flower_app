@@ -14,7 +14,12 @@ class AppTextStyles{
     fontFamily: AppFonts.kPrimaryFont,
     color: AppColors.kBlack
   );
-
+  static TextStyle font20WeightBold = TextStyle(
+      fontWeight: AppFontWeights.bold,
+      fontSize: 20.sp,
+      fontFamily: AppFonts.kPrimaryFont,
+      color: AppColors.kBlack
+  );
   static TextStyle font16WeightMedium = TextStyle(
       fontSize: 16.sp,
       fontFamily: AppFonts.kPrimaryFont,
