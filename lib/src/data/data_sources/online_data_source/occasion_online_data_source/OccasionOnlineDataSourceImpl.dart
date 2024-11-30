@@ -8,7 +8,7 @@ class OccasionOnlineDataSourceImpl implements OccasionOnlineDataSource {
   final ApiServices _apiServices;
   OccasionOnlineDataSourceImpl(this._apiServices);
   @override
-  Future<OccasionResponseModel> getOccasions() {
-    return _apiServices.getOccasions();
+  Future<OccasionResponseModel> getOccasions() async {
+    return await _apiServices.getOccasions();
   }
 }
