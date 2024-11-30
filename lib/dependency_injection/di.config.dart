@@ -45,6 +45,8 @@ import '../src/data/repositories/auth_repo_impl/sign_in_repo_impl.dart'
 import '../src/data/repositories/categories_repo/categories_repo_impl.dart'
     as _i545;
 import '../src/data/repositories/home_repository_impl.dart' as _i283;
+import '../src/data/repositories/occasion_repo_impl/OccasionRepoImpl.dart'
+    as _i475;
 import '../src/data/repositories/product_repo_impl/product_repo_impl.dart'
     as _i974;
 import '../src/domain/repositories/auth_repo.dart' as _i862;
@@ -52,6 +54,7 @@ import '../src/domain/repositories/auth_repo/sign_in_repo.dart' as _i209;
 import '../src/domain/repositories/categories_repo/categories_repo.dart'
     as _i139;
 import '../src/domain/repositories/home_repository.dart' as _i781;
+import '../src/domain/repositories/occasion_repo/OccasionRepo.dart' as _i492;
 import '../src/domain/repositories/product_repo/product_repo.dart' as _i170;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/domain/use_cases/auth_use_cases/signup_user_use_case.dart'
@@ -130,6 +133,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.SignUpViewModel(gh<_i625.SignupUserUseCase>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i492.OccasionRepo>(
+        () => _i475.OccasionsRepoImpl(gh<_i241.OccasionOnlineDataSource>()));
     gh.factory<_i822.CategoriesViewModel>(
         () => _i822.CategoriesViewModel(gh<_i551.CategoryUseCase>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(
