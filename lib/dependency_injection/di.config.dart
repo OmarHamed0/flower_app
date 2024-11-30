@@ -27,6 +27,10 @@ import '../src/data/data_sources/online_data_source/home_online_datasource.dart'
     as _i902;
 import '../src/data/data_sources/online_data_source/home_online_datasource_impl.dart'
     as _i1054;
+import '../src/data/data_sources/online_data_source/occasion_online_data_source/OccasionOnlineDataSource.dart'
+    as _i241;
+import '../src/data/data_sources/online_data_source/occasion_online_data_source/OccasionOnlineDataSourceImpl.dart'
+    as _i491;
 import '../src/data/data_sources/online_data_source/online_data_source.dart'
     as _i787;
 import '../src/data/data_sources/online_data_source/online_data_source_impl.dart'
@@ -104,6 +108,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i551.CategoryUseCase>(
         () => _i551.CategoryUseCase(gh<_i139.CategoriesRepo>()));
+    gh.factory<_i241.OccasionOnlineDataSource>(
+        () => _i491.OccasionOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i866.ProductOnlineDataSource>(
