@@ -65,4 +65,12 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<bool> isLoggedUser() async {
     return _offlineDataSource.isLoggedUser();
   }
+
+  @override
+  Future<ApiResult<void>> logOut() async {
+    return executeApi<void>(apiCall: () async {
+      await _onlineDataSource.logOut();
+      await _offlineDataSource.deleteToken();
+    });
+  }
 }

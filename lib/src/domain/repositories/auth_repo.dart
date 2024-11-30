@@ -10,4 +10,5 @@ abstract class AuthRepository {
   Future<ApiResult<SignInEntity>> signIn(String email, String password);
   Future<bool> isLoggedUser();
   Future<ApiResult<UserEntity>> getLoggedUserData();
+  Future<ApiResult<void>> logOut();
 }

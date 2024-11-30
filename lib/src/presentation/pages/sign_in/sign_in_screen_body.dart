@@ -83,5 +83,5 @@ class SignInScreenBody extends StatelessWidget {
 }
 
 Future<void> _goNextHome(BuildContext context) {
-  return Navigator.pushNamed(context, PageRouteName.home);
+  return Navigator.pushNamed(context, PageRouteName.baseScreen);
 }

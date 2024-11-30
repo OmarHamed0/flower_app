@@ -1,4 +1,5 @@
 import 'package:flower_app/core/functions/extensions.dart';
+import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/presentation/managers/home/home_state.dart';
 import 'package:flutter/material.dart';
@@ -47,11 +48,11 @@ class HomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const CustomAppbarHome(),
-                        const SizedBox(height: 16),
+                        verticalSpace(16),
                         const LocationWidget(),
-                        const SizedBox(height: 24),
+                        verticalSpace(24),
                         ProductsWidget(productsHome: products),
-                        const SizedBox(height: 24),
+                        verticalSpace(24),
                         ViewAllRow(
                           title: AppLocalizations.of(context)!.categories,
                           onPressed: () {
@@ -59,24 +60,24 @@ class HomeScreen extends StatelessWidget {
                                 .pushNamed(PageRouteName.product);
                           },
                         ),
-                        const SizedBox(height: 16),
+                        verticalSpace(16),
                         CategoryRow(
                           categories: categories,
                         ),
-                        const SizedBox(height: 24),
+                        verticalSpace(24),
                         ViewAllRow(
                             title: AppLocalizations.of(context)!.best_Seller,
                             onPressed: () => goNextToBestScreen(context)),
-                        const SizedBox(height: 16),
+                        verticalSpace(16),
                         BestSellerRow(
                           bestSellerProducts: bestSeller,
                         ),
-                        const SizedBox(height: 24),
+                        verticalSpace(24),
                         ViewAllRow(
                           title: AppLocalizations.of(context)!.occasions,
                           onPressed: () {},
                         ),
-                        const SizedBox(height: 16),
+                        verticalSpace(16),
                         OccasionsRow(
                           occasionProduct: occasion,
                         ),

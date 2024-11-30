@@ -1,6 +1,7 @@
 import 'package:flower_app/core/styles/icons/app_icons.dart';
 import 'package:flower_app/core/styles/images/app_images.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAppBarProfile extends StatelessWidget {
   const CustomAppBarProfile({super.key});
@@ -13,8 +14,8 @@ class CustomAppBarProfile extends StatelessWidget {
         children: [
           Image.asset(
             AppImages.logo,
-            width: 90,
-            height: 25,
+            width: 90.w,
+            height: 25.h,
           ),
           const Spacer(),
           IconButton(

@@ -13,16 +13,31 @@ class ProfileScreenViewModel extends Cubit<ProfileScreenState> {
 
   ProfileScreenViewModel(this._profileUseCase)
       : super(const ProfileScreenLoading());
-
   void getUserData() async {
-    emit(ProfileScreenLoading()); // emit loading state
+    emit(ProfileScreenLoading());
+
     var result = await _profileUseCase.getUserData();
+
+    if (result is Success<UserEntity>) {
+      final user = result.data;
+      if (user?.firstName == 'Guest') {
+        emit(ProfileGuestScreenLoadedState(user: user));
+        return;
+      }
+      emit(ProfileScreenLoaded(user: user));
+    } else if (result is Failures<UserEntity>) {
+      final error = ErrorHandler.fromException(result.exception);
+      emit(ProfileScreenError(error.errorMassage));
+    }
+  }
+
+  void logOut() async {
+    var result = await _profileUseCase.logOut();
     switch (result) {
-      case Success<UserEntity>():
-        final user = result.data;
-        emit(ProfileScreenLoaded(user: user));
+      case Success<void>():
+        emit(const ProfileScreenLogout());
         break;
-      case Failures<UserEntity>():
+      case Failures<void>():
         print(result.exception);
         final error = ErrorHandler.fromException(result.exception);
         emit(ProfileScreenError(error.errorMassage));

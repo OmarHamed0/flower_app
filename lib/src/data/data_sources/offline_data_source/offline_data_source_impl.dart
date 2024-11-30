@@ -22,6 +22,7 @@ class SignInOfflineDataSourceImpl implements SignInOfflineDataSource {
 
   @override
   Future<void> deleteToken() async {
+    print('====================deleteToken');
     await SharedPrefHelper.removeSecureString(SharedPrefKeys.userToken);
   }
 

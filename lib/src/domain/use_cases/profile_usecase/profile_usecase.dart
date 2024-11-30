@@ -11,4 +11,8 @@ class ProfileUseCase {
   Future<ApiResult<UserEntity>> getUserData() async {
     return await _signInRepo.getLoggedUserData();
   }
+
+  Future<ApiResult<void>> logOut() async {
+    return await _signInRepo.logOut();
+  }
 }
