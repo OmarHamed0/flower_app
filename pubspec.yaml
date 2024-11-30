@@ -26,6 +26,8 @@ dependencies:
   flutter_bloc:
   get_it:
   injectable:
+  flutter_svg:
+  flutter_switch: ^0.3.2
 
   cupertino_icons:
   either_dart:
