@@ -12,6 +12,10 @@ class HomeStateLoading extends HomeState {
   const HomeStateLoading();
 }
 
+class HomeStateInitial extends HomeState {
+  const HomeStateInitial();
+}
+
 class HomeStateSuccess extends HomeState {
   final ProductLists? products;
   const HomeStateSuccess({
@@ -39,4 +43,4 @@ class ProductLists {
   });
 }
 
-class GoNextBesetSellerState extends HomeState{}
+class GoNextBesetSellerState extends HomeState {}

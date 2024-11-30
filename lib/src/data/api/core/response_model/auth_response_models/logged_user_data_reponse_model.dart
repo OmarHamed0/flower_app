@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../../models/auth/usr_model_dto.dart';
+
 part 'logged_user_data_reponse_model.g.dart';
 
 @JsonSerializable()
@@ -9,7 +11,7 @@ class LoggedUserDataResponseModel {
   @JsonKey(name: "user")
   final User? user;
 
-  LoggedUserDataResponseModel ({
+  LoggedUserDataResponseModel({
     this.message,
     this.user,
   });
@@ -20,6 +22,18 @@ class LoggedUserDataResponseModel {
 
   Map<String, dynamic> toJson() {
     return _$LoggedUserDataResponseModelToJson(this);
+  }
+
+  UserModelDTO fromResponse() {
+    return UserModelDTO(
+        id: user?.Id,
+        firstName: user?.firstName,
+        lastName: user?.lastName,
+        email: user?.email,
+        gender: user?.gender,
+        phone: user?.phone,
+        role: user?.role,
+        photo: user?.photo);
   }
 }
 
@@ -44,7 +58,7 @@ class User {
   @JsonKey(name: "createdAt")
   final String? createdAt;
 
-  User ({
+  User({
     this.Id,
     this.firstName,
     this.lastName,
@@ -64,5 +78,3 @@ class User {
     return _$UserToJson(this);
   }
 }
-
-

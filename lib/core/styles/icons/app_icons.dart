@@ -7,4 +7,10 @@ class AppIcons {
   static const String cardIcon = '$_rootIcons/card_icon.png';
   static const String giftIcon = '$_rootIcons/gift_icon.png';
   static const String jewelleryIcon = '$_rootIcons/jewellery_icon.png';
+  static const String notificationIcon = '$_rootIcons/notification.png';
+  static const String penIcon = '$_rootIcons/pen.svg';
+  static const String orderIcon = '$_rootIcons/order_icon.png';
+  static const String localeIcon = '$_rootIcons/local_icon.png';
+  static const String noProfilePhoto =
+      '$_rootIcons/man-user-circle-black-icon.png';
 }
