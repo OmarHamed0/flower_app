@@ -69,6 +69,7 @@ import '../src/presentation/managers/product_details/product_details_view_model.
 import '../src/presentation/managers/profile/profile_screen_viewmodel.dart'
     as _i855;
 import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
+import '../src/presentation/managers/splash/splash_view_model.dart' as _i992;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -83,6 +84,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final dioProvider = _$DioProvider();
     gh.factory<_i450.BaseScreenViewmodel>(() => _i450.BaseScreenViewmodel());
+    gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.factory<_i136.SignInOfflineDataSource>(
