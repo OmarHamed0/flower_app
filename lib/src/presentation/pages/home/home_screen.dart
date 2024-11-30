@@ -1,7 +1,7 @@
 import 'package:flower_app/core/functions/extensions.dart';
+import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/presentation/managers/home/home_state.dart';
-import 'package:flower_app/src/presentation/managers/product/product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -12,8 +12,6 @@ import '../../../../core/styles/images/app_images.dart';
 import '../../../../dependency_injection/di.dart';
 import '../../managers/home/home_actions.dart';
 import '../../managers/home/home_viewmodel.dart';
-import '../../managers/product/core/product_core.dart';
-import '../../managers/product/product_event.dart';
 import '../../widgets/home/app_bar/custom_appbar_home.dart';
 import '../../widgets/home/app_bar/location_widget.dart';
 import '../../widgets/home/best_seller/best_seller_row.dart';
@@ -28,14 +26,13 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final homeViewModel = getIt<HomeViewModel>();
-    final productViewModel = context.read<ProductCubit>();
 
     return SafeArea(
       child: Scaffold(
         body: BlocProvider(
           create: (context) => homeViewModel..doAction(LoadHomeDataAction()),
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: SingleChildScrollView(
               child: BlocBuilder<HomeViewModel, HomeState>(
                 builder: (context, state) {
@@ -50,12 +47,12 @@ class HomeScreen extends StatelessWidget {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomAppbarHome(),
-                        SizedBox(height: 16),
-                        LocationWidget(),
-                        SizedBox(height: 24),
+                        const CustomAppbarHome(),
+                        verticalSpace(16),
+                        const LocationWidget(),
+                        verticalSpace(24),
                         ProductsWidget(productsHome: products),
-                        SizedBox(height: 24),
+                        verticalSpace(24),
                         ViewAllRow(
                           title: AppLocalizations.of(context)!.categories,
                           onPressed: () {
@@ -63,24 +60,24 @@ class HomeScreen extends StatelessWidget {
                                 .pushNamed(PageRouteName.product);
                           },
                         ),
-                        SizedBox(height: 16),
+                        verticalSpace(16),
                         CategoryRow(
                           categories: categories,
                         ),
-                        const SizedBox(height: 24),
+                        verticalSpace(24),
                         ViewAllRow(
-                          title: AppLocalizations.of(context)!.best_Seller,
-                          onPressed: () =>goNextToBestScreen(context)),
-                            const SizedBox(height: 16),
+                            title: AppLocalizations.of(context)!.best_Seller,
+                            onPressed: () => goNextToBestScreen(context)),
+                        verticalSpace(16),
                         BestSellerRow(
                           bestSellerProducts: bestSeller,
                         ),
-                        SizedBox(height: 24),
+                        verticalSpace(24),
                         ViewAllRow(
                           title: AppLocalizations.of(context)!.occasions,
                           onPressed: () {},
                         ),
-                        SizedBox(height: 16),
+                        verticalSpace(16),
                         OccasionsRow(
                           occasionProduct: occasion,
                         ),
@@ -99,8 +96,7 @@ class HomeScreen extends StatelessWidget {
     );
   }
 
-  void goNextToBestScreen(BuildContext context){
+  void goNextToBestScreen(BuildContext context) {
     navKey.currentContext!.pushName(PageRouteName.besetSellerScreen);
-
   }
 }

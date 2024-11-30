@@ -31,7 +31,15 @@
   "statue":"Statue",
   "viewAll":"View All",
   "bestSeller": "Best seller",
-  "bloomWithOurExquisiteBestSellers": "Bloom with our exquisite best sellers"
-
+  "bloomWithOurExquisiteBestSellers": "Bloom with our exquisite best sellers",
+  "notification": "Notification",
+  "language": "Language",
+  "aboutUs": "About Us",
+  "termsAndConditions": "Terms & Conditions",
+  "myOrders": "My Orders",
+  "savedAddresses": "Saved Addresses",
+  "logout": "Log Out",
+  "logOut": "LOGOUT",
+  "confirmLogout": "Are you sure you want to logout?"
 
 }
