@@ -32,8 +32,8 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
           } else if (state is ResetPasswordSuccessState) {
             showAwesomeDialog(
               context,
-              title: AppLocalizations.of(context)!.emailSentSuccessfully,
-              desc: "Description",
+              title: AppLocalizations.of(context)!.success,
+              desc: AppLocalizations.of(context)!.passwordResetSuccessfully,
               dialogType: DialogType.success,
               onOk: () => navKey.currentState?.pushNamedAndRemoveUntil(
                 PageRouteName.signIn,
@@ -42,8 +42,8 @@ class _ResetPasswordViewState extends State<ResetPasswordView> {
             );
           } else if (state is ResetPasswordFailedState) {
             showAwesomeDialog(context,
-                title: 'Error',
-                desc: "Description",
+                title: AppLocalizations.of(context)!.error,
+                desc: state.message!,
                 onOk: () {},
                 dialogType: DialogType.error);
           } else if (state is PopDialogState) {

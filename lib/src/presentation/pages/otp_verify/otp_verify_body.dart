@@ -24,8 +24,8 @@ class OtpVerifyBody extends StatelessWidget {
         } else if (state is OtpSuccessState) {
           showAwesomeDialog(
             context,
-            title: AppLocalizations.of(context)!.emailSentSuccessfully,
-            desc: "Description",
+            title: AppLocalizations.of(context)!.success,
+            desc: AppLocalizations.of(context)!.otpVerified,
             dialogType: DialogType.success,
             onOk: () => navKey.currentState?.pushNamedAndRemoveUntil(
               PageRouteName.resetPassword,
@@ -35,7 +35,7 @@ class OtpVerifyBody extends StatelessWidget {
           );
         } else if (state is OtpFailState) {
           showAwesomeDialog(context,
-              title: 'Error',
+              title: AppLocalizations.of(context)!.error,
               desc: state.message,
               onOk: () {},
               dialogType: DialogType.error);

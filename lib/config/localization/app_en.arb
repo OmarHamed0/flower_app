@@ -22,5 +22,9 @@
   "resetPassword": "Reset password",
   "passwordMustNotBeEmpty": "Password must not be empty and must contain 6 characters with upper case letter and one number at least",
   "emailSentSuccessfully" : "Email Sent Successfully",
-  "verificationCodeIsSentToYourEmail" : "Verification Code has been sent to your email"
+  "verificationCodeIsSentToYourEmail" : "Verification Code has been sent to your email",
+  "error" : "Error",
+  "passwordResetSuccessfully" : "Password reset Successfully",
+  "otpVerified" : "Otp verified successfully",
+  "success" : "Success"
 }

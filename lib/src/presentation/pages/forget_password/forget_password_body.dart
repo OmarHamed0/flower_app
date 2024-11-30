@@ -36,7 +36,7 @@ class ForgetPasswordBody extends StatelessWidget {
             );
           } else if (state is ForgetPasswordFailState) {
             showAwesomeDialog(context,
-                title: 'Error',
+                title: AppLocalizations.of(context)!.error,
                 desc: state.message,
                 onOk: () {},
                 dialogType: DialogType.error);

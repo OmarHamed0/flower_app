@@ -22,5 +22,9 @@
   "resetPassword" : "إعادة تعيين كلمة المرور",
   "passwordMustNotBeEmpty": "يجب ألا تكون كلمة المرور فارغة ويجب أن تحتوي على 6 أحرف بأحرف كبيرة ورقم واحد على الأقل",
   "emailSentSuccessfully" : "تم إرسال البريد الإلكتروني بنجاح",
-  "verificationCodeIsSentToYourEmail" : "تم إرسال رمز التحقق إلى بريدك الإلكتروني"
+  "verificationCodeIsSentToYourEmail" : "تم إرسال رمز التحقق إلى بريدك الإلكتروني",
+  "error" : "حدث خطأ",
+  "passwordResetSuccessfully" : "تم إعادة تعيين كلمة المرور بنجاح",
+  "otpVerified" : "تم التحقق من Otp بنجاح",
+  "success" : "نجاح"
 }
