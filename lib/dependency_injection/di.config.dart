@@ -69,6 +69,8 @@ import '../src/presentation/managers/product_details/product_details_view_model.
     as _i196;
 import '../src/presentation/managers/profile/profile_screen_viewmodel.dart'
     as _i855;
+import '../src/presentation/managers/reset_password/reset_password_view_model.dart'
+    as _i545;
 import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
 import '../src/presentation/managers/splash/splash_view_model.dart' as _i992;
 
@@ -139,6 +141,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.SignUpViewModel(gh<_i625.SignupUserUseCase>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i545.ResetPasswordViewModel>(
+        () => _i545.ResetPasswordViewModel(gh<_i448.ResetPasswordUseCase>()));
     return this;
   }
 }
