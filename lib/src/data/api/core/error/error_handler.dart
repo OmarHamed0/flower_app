@@ -6,6 +6,7 @@ import 'error_massage.dart';
 class ErrorHandler {
   final String errorMassage;
   final int? code;
+
   ErrorHandler({required this.errorMassage, this.code});
 
   static ErrorHandler fromException(Exception exception) {

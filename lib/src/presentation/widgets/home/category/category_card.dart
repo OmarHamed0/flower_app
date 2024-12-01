@@ -15,7 +15,7 @@ class CategoryCard extends StatelessWidget {
       width: 68.w, // Using screenutil for responsiveness
       height: 68.h, // Using screenutil for responsiveness
       decoration: BoxDecoration(
-        color: AppColors.kLightPink,
+        color: AppColors.kLightBink,
         borderRadius:
             BorderRadius.circular(20.r), // Rounded corners with screenutil
       ),

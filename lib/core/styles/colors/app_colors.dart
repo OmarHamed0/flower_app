@@ -34,7 +34,6 @@ class AppColors {
   static const Color kSuccess = Color(0xFF0CB359);
   static const Color kLightBink = Color(0xFFF9ECF0);
 
-  // Black Shades
   static const Color kBlack = Color(0xFF000000);
   static const Color kBlack10 = Color(0xFFcecfd0);
   static const Color kBlack20 = Color(0xFFaeafb1);
@@ -47,12 +46,4 @@ class AppColors {
   static const Color kBlack80 = Color(0xFF06080b);
   static const Color kBlack90 = Color(0xFF040507);
   static const Color kBlack100 = Color(0xFF020304);
-
-  // Grayscale
-
-  // Semantic Colors
-  static const Color kRed = Color(0xFFB3261E);
-
-  // Others
-  static const Color kLightPink = Color(0xFFF9ECF0);
 }

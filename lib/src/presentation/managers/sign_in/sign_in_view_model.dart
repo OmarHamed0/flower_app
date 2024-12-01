@@ -7,12 +7,14 @@ import 'package:flower_app/src/domain/use_cases/auth_use_cases/sign_in_use_case.
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_actions.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @injectable
 class SignInViewModel extends Cubit<SignInStates>{
   final SignInUseCase _signInUseCase;
+
   SignInViewModel(this._signInUseCase) : super(SignInInitialState());
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -46,7 +48,9 @@ class SignInViewModel extends Cubit<SignInStates>{
 
   void _changePasswordVisibility(){
     isObscureText = !isObscureText;
-    isObscureText ? emit(NonVisiblePasswordState()):emit(VisiblePasswordState());
+    isObscureText
+        ? emit(NonVisiblePasswordState())
+        : emit(VisiblePasswordState());
   }
 
   void _checkBox(){
@@ -56,7 +60,8 @@ class SignInViewModel extends Cubit<SignInStates>{
 
   String? validateEmail(){
     String? email = emailController.text;
-    if(email.isNullOrEmpty() || !AppRegex.emailValidationRegex.hasMatch(email)){
+    if (email.isNullOrEmpty() ||
+        !AppRegex.emailValidationRegex.hasMatch(email)) {
       return "This Email is not valid";
     }
     return null;
@@ -67,7 +72,8 @@ class SignInViewModel extends Cubit<SignInStates>{
     if(password.length < 8){
       return "Password must be more than 8";
     }
-    if(password.isNullOrEmpty() || !AppRegex.passwordValidationRegex.hasMatch(password)){
+    if (password.isNullOrEmpty() ||
+        !AppRegex.passwordValidationRegex.hasMatch(password)) {
       return "invalid Password";
     }
 

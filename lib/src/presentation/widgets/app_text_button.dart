@@ -14,6 +14,7 @@ class AppTextButton extends StatelessWidget {
   final String buttonText;
   final TextStyle textStyle;
   final VoidCallback onPressed;
+
   const AppTextButton({
     super.key,
     this.borderRadius,
@@ -34,7 +35,7 @@ class AppTextButton extends StatelessWidget {
       style: ButtonStyle(
         shape: WidgetStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
-            borderRadius: borderRadius?? AppBorderRadius.s,
+            borderRadius: borderRadius??  const BorderRadius.all(AppRadius.s),
           ),
         ),
         backgroundColor: WidgetStatePropertyAll(

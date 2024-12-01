@@ -23,21 +23,18 @@ class AppTextStyles{
   static TextStyle font16WeightMedium = TextStyle(
       fontSize: 16.sp,
       fontFamily: AppFonts.kPrimaryFont,
-      fontWeight: AppFontWeights.medium
-  );
+      fontWeight: AppFontWeights.medium);
 
   static TextStyle font13WeightNormal =  TextStyle(
       fontWeight: AppFontWeights.normal,
       fontFamily: AppFonts.kPrimaryFont,
       color: AppColors.kBlack,
-      fontSize: 13.sp
-  );
-  static TextStyle font12WeightNormal =  TextStyle(
+      fontSize: 13.sp);
+  static TextStyle font12WeightNormal = TextStyle(
       fontWeight: AppFontWeights.normal,
       fontFamily: AppFonts.kPrimaryFont,
       color: AppColors.kGray,
-      fontSize: 12.sp
-  );
+      fontSize: 12.sp);
 
   static TextStyle font14WeightNormal =  TextStyle(
     fontFamily: AppFonts.kPrimaryFont,

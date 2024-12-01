@@ -3,6 +3,8 @@ import 'package:flower_app/core/styles/spaceing.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../core/styles/colors/app_colors.dart';
 import '../../../../core/styles/texts/app_text_styles.dart';
 import '../../managers/sign_in/sign_in_actions.dart';
@@ -19,7 +21,7 @@ class SignInScreenButtons extends StatelessWidget {
     return Column(
       children: [
         AppTextButton(
-          borderRadius: AppBorderRadius.xxl,
+          borderRadius:  const BorderRadius.all(AppRadius.xxl),
           buttonText: AppLocalizations.of(context)!.login,
           textStyle: AppTextStyles.font16WeightMedium
               .copyWith(color: AppColors.kWhiteBase),
@@ -30,7 +32,7 @@ class SignInScreenButtons extends StatelessWidget {
         ),
         verticalSpace(16),
         AppTextButton(
-          borderRadius: AppBorderRadius.xxl,
+          borderRadius:  const BorderRadius.all(AppRadius.xxl),
           buttonText: AppLocalizations.of(context)!.continueAsGuest,
           textStyle: AppTextStyles.font16WeightMedium
               .copyWith(color: AppColors.kGray),

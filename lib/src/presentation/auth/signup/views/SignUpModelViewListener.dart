@@ -1,4 +1,4 @@
-import 'package:flower_app/common/awesome_dialoge.dart';
+import 'package:flower_app/common/awesome_dialog.dart';
 import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/presentation/auth/signup/manager/signup_states.dart';

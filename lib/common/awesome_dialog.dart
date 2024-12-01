@@ -6,8 +6,9 @@ showAwesomeDialog(BuildContext context,
     required String desc,
     required void Function() onOk,
     void Function()? onCancel, // Made onCancel optional
-    required DialogType dialogType}) {
+    required DialogType dialogType , bool dismiss = false}) {
   AwesomeDialog(
+    dismissOnTouchOutside: dismiss,
     context: context,
     dialogType: dialogType,
     animType: AnimType.rightSlide,

@@ -4,12 +4,18 @@ import 'package:flower_app/src/presentation/auth/signup/manager/signup_viewmodel
 import 'package:flower_app/src/presentation/auth/signup/views/sign_up_view.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_action.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_view_model.dart';
+import 'package:flower_app/src/presentation/managers/forget_password/forget_password_view_model.dart';
 import 'package:flower_app/src/presentation/managers/home/home_viewmodel.dart';
+import 'package:flower_app/src/presentation/managers/otp_verify/otp_verify_view_model.dart';
 import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
 import 'package:flower_app/src/presentation/managers/product/product_event.dart';
+import 'package:flower_app/src/presentation/managers/reset_password/reset_password_view_model.dart';
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
+import 'package:flower_app/src/presentation/pages/forget_password/forget_password_view.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
+import 'package:flower_app/src/presentation/pages/otp_verify/otp_verify_view.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
+import 'package:flower_app/src/presentation/pages/reset_password/reset_password_view.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -20,13 +26,13 @@ import '../../src/presentation/pages/base_screen/base_screen.dart';
 import '../../src/presentation/pages/product_details/product_details.dart';
 
 class AppRoute {
-  static Route<dynamic> onGenerateRoute(RouteSettings settings) {
+  static Route<MaterialPageRoute> onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case PageRouteName.splash:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
             settings: settings, widget: const SplashScreen());
       case PageRouteName.signup:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
           settings: settings,
           widget: BlocProvider(
             create: (context) => getIt<SignUpViewModel>(),
@@ -34,7 +40,7 @@ class AppRoute {
           ),
         );
       case PageRouteName.besetSellerScreen:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
             settings: settings,
             widget: BlocProvider(
                 create: (context) => getIt<ProductCubit>()
@@ -46,29 +52,48 @@ class AppRoute {
       case PageRouteName.signIn:
         return MaterialPageRoute(builder: (_) => SignInScreen());
       case PageRouteName.home:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
           settings: settings,
           widget: BlocProvider(
             create: (context) => getIt<HomeViewModel>(),
             child: const HomeScreen(),
           ),
         );
-      case PageRouteName.splash:
-        return _handelMaterialPageRoute(
+      case PageRouteName.forgetPassword:
+        return _handleMaterialPageRoute(
           settings: settings,
-          widget: SplashScreen(),
-        );
+          widget: BlocProvider(
+            create: (context) => getIt<ForgetPasswordViewModel>(),
+            child: const ForgetPasswordView(),
+          ),
+        );case PageRouteName.otpVerify:
+      return _handleMaterialPageRoute(
+        settings: settings,
+        widget: BlocProvider(
+          create: (context) => getIt<OtpVerifyViewModel>(),
+          child: const OtpVerifyView(),
+        ),
+      );
+      case PageRouteName.resetPassword:
+      return _handleMaterialPageRoute(
+        settings: settings,
+        widget: BlocProvider(
+          create: (context) => getIt<ResetPasswordViewModel>(),
+          child: const ResetPasswordView(),
+        ),
+      );
+
       case PageRouteName.productDetails:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
             settings: settings,
             widget: ProductDetails(
               productId: "",
             ));
       case PageRouteName.product:
-        return _handelMaterialPageRoute(
-            settings: settings, widget: ProductView());
+        return _handleMaterialPageRoute(
+            settings: settings, widget: const ProductView());
       case PageRouteName.baseScreen:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
             settings: settings,
             widget: MultiBlocProvider(
               providers: [
@@ -82,13 +107,15 @@ class AppRoute {
               child: const BaseScreen(),
             ));
       default:
-        return _handelMaterialPageRoute(
+        return _handleMaterialPageRoute(
             settings: settings, widget: const Scaffold());
     }
   }
 
-  static MaterialPageRoute<dynamic> _handelMaterialPageRoute(
-      {required Widget widget, required RouteSettings settings}) {
-    return MaterialPageRoute(builder: (context) => widget, settings: settings);
+  static MaterialPageRoute<MaterialPageRoute> _handleMaterialPageRoute({
+    required Widget widget,
+    required RouteSettings settings,
+  }) {
+    return MaterialPageRoute(builder: (_) => widget, settings: settings);
   }
 }

@@ -3,6 +3,8 @@ import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 import '../../../../core/styles/texts/app_text_styles.dart';
 import '../../managers/sign_in/sign_in_view_model.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -36,10 +38,14 @@ class RememberMeForgetPasswordRow extends StatelessWidget {
             )
           ],
         ),
-        Text(
-          AppLocalizations.of(context)!.forgetPassword,
-          style: AppTextStyles.font13WeightNormal
-              .copyWith(decoration: TextDecoration.underline),
+        TextButton(
+          onPressed: () {},
+          // Todo Navigate TO Forget Password Screen , add action
+          child: Text(
+            AppLocalizations.of(context)!.forgetPassword,
+            style: AppTextStyles.font13WeightNormal
+                .copyWith(decoration: TextDecoration.underline),
+          ),
         )
       ],
     );

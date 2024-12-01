@@ -7,4 +7,7 @@ abstract class ApisEndPoints {
   static const String signup = "auth/signup";
   static const String home = "home";
   static const String logout = "auth/logout";
+  static const String forgetPasswordEndpoint = "auth/forgotPassword";
+  static const String verifyRestCodeEndPoint = "auth/verifyResetCode";
+  static const String resetPasswordEndpoint = "auth/resetPassword";
 }

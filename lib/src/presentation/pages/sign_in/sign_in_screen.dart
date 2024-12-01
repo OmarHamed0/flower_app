@@ -11,6 +11,7 @@ class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
   final signInViewModel = getIt.get<SignInViewModel>();
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
