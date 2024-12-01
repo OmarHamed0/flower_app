@@ -15,4 +15,8 @@ class ProfileUseCase {
   Future<ApiResult<void>> logOut() async {
     return await _signInRepo.logOut();
   }
+
+  // Future<ApiResult<void>> uploadPhoto(File path) async {
+  //   return await _signInRepo.uploadPhoto(path);
+  // }
 }

@@ -1,11 +1,13 @@
+import 'dart:io';
+
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/src/domain/entities/auth/user_entity.dart';
-import 'package:flower_app/src/presentation/managers/profile/profile_screen_state.dart';
+import 'package:flower_app/src/presentation/managers/profile/profile_viewmodel/profile_screen_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../data/api/core/error/error_handler.dart';
-import '../../../domain/use_cases/profile_usecase/profile_usecase.dart';
+import '../../../../data/api/core/error/error_handler.dart';
+import '../../../../domain/use_cases/profile_usecase/profile_usecase.dart';
 
 @injectable
 class ProfileScreenViewModel extends Cubit<ProfileScreenState> {
@@ -13,12 +15,21 @@ class ProfileScreenViewModel extends Cubit<ProfileScreenState> {
 
   ProfileScreenViewModel(this._profileUseCase)
       : super(const ProfileScreenLoading());
+
+  var currentImageUrl;
+  UserEntity? currentUser;
+  File? image;
+  set setImage(File? value) {
+    image = value;
+  }
+
   void getUserData() async {
     emit(ProfileScreenLoading());
 
     var result = await _profileUseCase.getUserData();
 
     if (result is Success<UserEntity>) {
+      currentUser = result.data;
       final user = result.data;
       if (user?.firstName == 'Guest') {
         emit(ProfileGuestScreenLoadedState(user: user));

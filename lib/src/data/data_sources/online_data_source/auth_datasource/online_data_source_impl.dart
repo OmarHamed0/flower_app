@@ -66,4 +66,35 @@ class SignInOnlineDataSourceImpl implements AuthOnlineDataSource {
     var response = await _apiServices.logout(tokenWithBarrier);
     return response;
   }
+
+  // Future<String> uploadPhoto(File photo) async {
+  //   String? token =
+  //       await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
+  //   if (token == null) {
+  //     throw Exception('User token is null');
+  //   }
+  //
+  //   // Validate file type
+  //   if (!['.jpg', '.jpeg', '.png']
+  //       .contains(photo.path.split('.').last.toLowerCase())) {
+  //     throw Exception('Invalid file type. Only image files are allowed.');
+  //   }
+  //
+  //   String tokenWithBearer = "Bearer $token";
+  //
+  //   try {
+  //     // Prepare the file for upload
+  //     List<MultipartFile> files = [
+  //       MultipartFile.fromFileSync(photo.path,
+  //           filename: 'photo.${photo.path.split('.').last}')
+  //     ];
+  //
+  //     // Call the API to upload the photo
+  //     var response = await _apiServices.uploadPhotos(tokenWithBearer, files[0]);
+  //     return response; // Return the server response
+  //   } catch (e) {
+  //     print('Error uploading photo: $e');
+  //     throw Exception('Failed to upload photo');
+  //   }
+  // }
 }

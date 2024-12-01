@@ -73,4 +73,11 @@ class AuthRepositoryImpl implements AuthRepository {
       await _offlineDataSource.deleteToken();
     });
   }
+
+  // @override
+  // Future<ApiResult<void>> uploadPhoto(File path) async {
+  //   return executeApi<void>(apiCall: () async {
+  //     await _onlineDataSource.uploadPhoto(path);
+  //   });
+  // }
 }

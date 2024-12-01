@@ -28,6 +28,7 @@ dependencies:
   injectable:
   flutter_svg:
   flutter_switch: ^0.3.2
+  image_picker:
 
   cupertino_icons:
   either_dart:

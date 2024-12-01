@@ -53,4 +53,15 @@ abstract class ApiServices {
   Future<GetCatigoriesResponseModel> getCategories();
   @GET(ApisEndPoints.logout)
   Future<LogOutResponse> logout(@Header("Authorization") String token);
+
+  @PUT(ApisEndPoints.editProfile)
+  Future<LoggedUserDataResponseModel> editProfile(
+      @Header("Authorization") String token);
+
+  // @PUT(ApisEndPoints.uploadPhoto)
+  // @MultiPart()
+  // Future<String> uploadPhotos(
+  //   @Header("Authorization") String token,
+  //   @Part(name: "photo") MultipartFile files,
+  // );
 }

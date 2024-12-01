@@ -11,4 +11,5 @@ abstract class AuthRepository {
   Future<bool> isLoggedUser();
   Future<ApiResult<UserEntity>> getLoggedUserData();
   Future<ApiResult<void>> logOut();
+  // Future<ApiResult<void>> uploadPhoto(File path);
 }

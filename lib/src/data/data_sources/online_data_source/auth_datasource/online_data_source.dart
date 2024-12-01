@@ -15,4 +15,5 @@ abstract class AuthOnlineDataSource {
       SignUpRequestBody signUpRequestBody);
 
   Future<LogOutResponse> logOut();
+  // Future<String> uploadPhoto(File photo);
 }
