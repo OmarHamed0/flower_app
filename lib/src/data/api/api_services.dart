@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
+import 'package:flower_app/src/data/api/core/response_model/auth_response_models/reset_password_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/product_response_models/one_product_response_model.dart';
 import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
@@ -53,4 +55,8 @@ abstract class ApiServices {
   Future<GetCatigoriesResponseModel> getCategories();
   @GET(ApisEndPoints.logout)
   Future<LogOutResponse> logout(@Header("Authorization") String token);
+
+  @PATCH(ApisEndPoints.changePassword)
+  Future<ResetPasswordResponseModel> resetPassword(@Header("Authorization") String token, @Body() ResetPasswordRequestModel requestBody);
+
 }
