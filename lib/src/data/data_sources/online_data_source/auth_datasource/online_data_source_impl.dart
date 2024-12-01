@@ -1,7 +1,9 @@
 import 'package:flower_app/config/helpers/shared_pre_keys.dart';
 import 'package:flower_app/config/helpers/shared_pref_helper.dart';
 import 'package:flower_app/src/data/api/api_services.dart';
+import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/signin_request_body.dart';
+import 'package:flower_app/src/data/api/core/response_model/auth_response_models/reset_password_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/auth_response_models/signin_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/logout/Logout_response.dart';
 import 'package:flower_app/src/data/data_sources/online_data_source/auth_datasource/online_data_source.dart';
@@ -14,10 +16,10 @@ import '../../../../../common/api_result.dart';
 import '../../../models/auth/usr_model_dto.dart';
 
 @Injectable(as: AuthOnlineDataSource)
-class SignInOnlineDataSourceImpl implements AuthOnlineDataSource {
-  ApiServices _apiServices;
+class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
+  final ApiServices _apiServices;
 
-  SignInOnlineDataSourceImpl(this._apiServices);
+  AuthOnlineDataSourceImpl(this._apiServices);
 
   @override
   Future<UserModelDTO> getLoggedUserData() async {
@@ -65,5 +67,10 @@ class SignInOnlineDataSourceImpl implements AuthOnlineDataSource {
     String tokenWithBarrier = "Bearer $token";
     var response = await _apiServices.logout(tokenWithBarrier);
     return response;
+  }
+
+  @override
+  Future<ResetPasswordResponseModel> resetPassword(String token, ResetPasswordRequestModel resetPasswordRequestModel) async{
+    return await _apiServices.resetPassword(token, resetPasswordRequestModel);
   }
 }

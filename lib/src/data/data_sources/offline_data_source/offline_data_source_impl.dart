@@ -5,8 +5,8 @@ import 'package:flower_app/src/data/data_sources/offline_data_source/offline_dat
 import 'package:flower_app/src/data/models/auth/usr_model_dto.dart';
 import 'package:injectable/injectable.dart';
 
-@Injectable(as: SignInOfflineDataSource)
-class SignInOfflineDataSourceImpl implements SignInOfflineDataSource {
+@Injectable(as: AuthOfflineDataSource)
+class AuthOfflineDataSourceImpl implements AuthOfflineDataSource {
   @override
   Future<UserModelDTO> getCachedLoggedUser() {
     // TODO: implement getCachedLoggedUser
@@ -29,5 +29,10 @@ class SignInOfflineDataSourceImpl implements SignInOfflineDataSource {
   @override
   Future<void> saveToken(String token) async {
     await SharedPrefHelper.setSecureString(SharedPrefKeys.userToken, token);
+  }
+
+  @override
+  Future<String?> getToken() async{
+    return await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
   }
 }
