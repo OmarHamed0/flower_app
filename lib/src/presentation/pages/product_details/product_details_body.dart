@@ -95,7 +95,7 @@ class ProductDetailsBody extends StatelessWidget {
                 verticalSpace(24),
                 FadeInUp(
                   child: AppTextButton(
-                    borderRadius: AppBorderRadius.xxl,
+                    borderRadius: const BorderRadius.all(AppRadius.xxl),
                     buttonText: AppLocalizations.of(context)!.addToCart,
                     textStyle: AppTextStyles.font16WeightMedium
                         .copyWith(color: AppColors.kWhiteBase),

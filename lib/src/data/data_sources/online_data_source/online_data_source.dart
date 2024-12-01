@@ -1,5 +1,5 @@
-import 'package:flower_app/src/data/api/core/response_model/signin_response_model.dart';
-import 'package:flower_app/src/data/models/usr_model_dto.dart';
+import 'package:flower_app/src/data/api/core/response_model/auth_response_models/signin_response_model.dart';
+import 'package:flower_app/src/data/models/auth/usr_model_dto.dart';
 import 'package:flower_app/src/domain/entities/auth_request/forget_password_request.dart';
 import 'package:flower_app/src/domain/entities/auth_request/otp_verify_request.dart';
 import 'package:flower_app/src/domain/entities/auth_request/reset_password_request.dart';

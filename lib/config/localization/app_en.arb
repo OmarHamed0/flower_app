@@ -10,7 +10,6 @@
   "continueAsGuest": "Continue as guest",
   "dontHaveAccount": "Don't have account? ",
   "signUp": "Sign up",
-  "emailNotValid" : "Email is not valid",
   "categories": "Categories",
   "best_Seller": "Best Seller",
   "occasions": "Occasions",
@@ -19,8 +18,6 @@
   "somethingWentWrong": "Something went wrong",
   "giftNow": "Gift Now",
   "discoverNew": "Discover something new",
-
-  "invalidPassword": "invalid Password",
   "addToCart": "Add to cart",
   "description":"Description",
   "allPricesIncludeTax":"All prices include Tax",
@@ -40,8 +37,7 @@
   "savedAddresses": "Saved Addresses",
   "logout": "Log Out",
   "logOut": "LOGOUT",
-  "confirmLogout": "Are you sure you want to logout?"
-
+  "confirmLogout": "Are you sure you want to logout?",
   "emailNotValid": "Email is not valid",
   "invalidPassword": "invalid Password",
   "pleaseEnterYourEmailAssociatedToYourAccount": "Please enter your email associated to your account",

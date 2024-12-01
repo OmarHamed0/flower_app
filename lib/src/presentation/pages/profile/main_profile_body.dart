@@ -1,5 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flower_app/common/awesome_dialoge.dart';
+import 'package:flower_app/common/awesome_dialog.dart';
 import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/icons/app_icons.dart';
@@ -93,7 +93,7 @@ class MainProfileBody extends StatelessWidget {
                   );
                 },
               ),
-              Spacer(),
+              const Spacer(),
               const Text(
                 'v 6.3.0 - (446)',
                 style: TextStyle(

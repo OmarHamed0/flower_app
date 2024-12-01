@@ -344,7 +344,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'forgotPassword',
+          'auth/forgotPassword',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -379,7 +379,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'verifyResetCode',
+          'auth/verifyResetCode',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -414,7 +414,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'resetPassword',
+          'auth/resetPassword',
           queryParameters: queryParameters,
           data: _data,
         )
