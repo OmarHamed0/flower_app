@@ -31,9 +31,6 @@
   "statue":"Statue",
   "viewAll":"View All",
   "bestSeller": "Best seller",
-  "occasion" : "Occasion",
-
-  "bloomWithOurExquisiteBestSellers": "Bloom with our exquisite best sellers",
   "notification": "Notification",
   "language": "Language",
   "aboutUs": "About Us",
@@ -42,6 +39,8 @@
   "savedAddresses": "Saved Addresses",
   "logout": "Log Out",
   "logOut": "LOGOUT",
-  "confirmLogout": "Are you sure you want to logout?"
+  "confirmLogout": "Are you sure you want to logout?",
+  "bloomWithOurExquisiteBestSellers": "Bloom with our exquisite best sellers",
+  "occasion" : "Occasion"
 
 }

@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flower_app/src/data/api/core/response_model/occasions/occasion_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/product_response_models/one_product_response_model.dart';
 import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
@@ -51,6 +52,8 @@ abstract class ApiServices {
 
   @GET(ApisEndPoints.categories)
   Future<GetCatigoriesResponseModel> getCategories();
+  @GET(ApisEndPoints.occassions)
+  Future<OccasionResponseModel> getOccasions();
   @GET(ApisEndPoints.logout)
   Future<LogOutResponse> logout(@Header("Authorization") String token);
 }
