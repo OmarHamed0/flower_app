@@ -19,9 +19,6 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  int currentPasswordFieldId = 0;
-  int newPasswordFieldId = 1;
-  int confirmPasswordFieldId = 2;
   List<bool> _isObscure = [true, true, true];
 
   void setObscure() {
