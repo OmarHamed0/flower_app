@@ -41,6 +41,18 @@
   "logOut": "LOGOUT",
   "confirmLogout": "Are you sure you want to logout?",
   "bloomWithOurExquisiteBestSellers": "Bloom with our exquisite best sellers",
-  "occasion" : "Occasion"
-
+  "occasion" : "Occasion",
+  "english": "English",
+  "changePassword": "Change Password",
+  "success": "Success",
+  "profileUpdated": "Profile updated Successfully",
+  "error": "Error",
+  "enterYourFirstName": "Enter your first name",
+  "enterYourLastName": "Enter your last name",
+    "enterYourPhone": "Enter your phone",
+  "firstName": "First name",
+    "lastName": "Last name",
+    "phone": "Phone",
+  "phoneError": "Phone number must be at least 10 characters",
+  "update": "Update"
 }

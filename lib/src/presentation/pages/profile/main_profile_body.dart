@@ -75,6 +75,11 @@ class MainProfileBody extends StatelessWidget {
                   const Divider(),
                   verticalSpace(16),
                   ProfileRowItem(
+                    title: AppLocalizations.of(context)!.changePassword,
+                    icon: AppIcons.notificationIcon,
+                  ),
+                  verticalSpace(16),
+                  ProfileRowItem(
                     title: AppLocalizations.of(context)!.language,
                     icon: AppIcons.localeIcon,
                   ),
@@ -119,8 +124,8 @@ class MainProfileBody extends StatelessWidget {
                 child: Text(state.message),
               );
             } else {
-              return const Center(
-                child: Text('Something went wrong'),
+              return Center(
+                child: Text(AppLocalizations.of(context)!.somethingWentWrong),
               );
             }
           },

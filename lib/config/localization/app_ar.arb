@@ -41,5 +41,18 @@
     "logOut": "تسجيل الخروج",
     "confirmLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
   "bloomWithOurExquisiteBestSellers": "ازدهر مع منتجاتنا الأكثر تميزًا",
-  "occasion": "مناسبة"
+  "occasion": "مناسبة",
+  "english": "الإنجليزية",
+    "changePassword": "تغيير كلمة السر",
+    "success": "نجاح",
+    "profileUpdated": "تم تحديث الملف الشخصي بنجاح",
+    "error": "خطأ",
+    "enterYourFirstName": "ادخل اسمك الاول",
+    "enterYourLastName": "ادخل اسمك الاخير",
+    "enterYourPhone": "ادخل رقم هاتفك",
+    "firstName": "الاسم الاول",
+    "lastName": "الاسم الاخير",
+    "phone": "رقم الهاتف",
+    "phoneError": "يجب أن يكون رقم الهاتف على الأقل 10 أحرف"
+
 }

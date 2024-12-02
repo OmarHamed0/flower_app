@@ -1,15 +1,18 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flower_app/common/awesome_dialoge.dart';
+import 'package:flower_app/common/common.dart';
 import 'package:flower_app/config/helpers/me/validations.dart';
-import 'package:flower_app/core/widgets/app_button.dart';
+import 'package:flower_app/core/styles/colors/app_colors.dart';
+import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/src/presentation/managers/profile/edit_profile_viewmodel/edit_profile_state.dart';
 import 'package:flower_app/src/presentation/managers/profile/edit_profile_viewmodel/edit_profile_viewmodel.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/dialogs/app_dialogs.dart';
 import '../../../../core/functions/spacing.dart';
 import '../../../../core/widgets/custom_auth_text_feild.dart';
+import '../../auth/signup/widgets/gender_selection.dart';
+import '../../widgets/app_text_button.dart';
 import '../../widgets/profile/custom_app_bar_edit_profile.dart';
 import '../../widgets/profile/profile_image.dart';
 
@@ -32,8 +35,8 @@ class EditProfileBody extends StatelessWidget {
           context.read<EditProfileViewModel>().getUserData();
           showAwesomeDialog(
             context,
-            title: 'Success',
-            desc: 'Profile updated Successfully',
+            title: AppLocalizations.of(context)!.success,
+            desc: AppLocalizations.of(context)!.profileUpdated,
             onOk: () async {
               onBack(); // Navigate back
             },
@@ -41,7 +44,7 @@ class EditProfileBody extends StatelessWidget {
           );
         } else if (state is EditProfileError) {
           showAwesomeDialog(context,
-              title: 'Error',
+              title: AppLocalizations.of(context)!.error,
               desc: state.message,
               onOk: () {},
               dialogType: DialogType.error);
@@ -61,7 +64,9 @@ class EditProfileBody extends StatelessWidget {
               padding: const EdgeInsets.all(16),
               child: Column(
                 children: [
-                  CustomAppBarEditProfile(),
+                  CustomAppBarEditProfile(
+                    onBack: onBack,
+                  ),
                   verticalSpace(8),
                   Center(
                     child: ProfileImage(
@@ -74,8 +79,9 @@ class EditProfileBody extends StatelessWidget {
                     children: [
                       Expanded(
                         child: CustomTextFormField(
-                          hintText: 'Enter your first name',
-                          labelText: 'First name',
+                          hintText:
+                              AppLocalizations.of(context)!.enterYourFirstName,
+                          labelText: AppLocalizations.of(context)!.firstName,
                           controller: _viewModel.firstNameController,
                           validator: (val) {
                             return validateName(val);
@@ -86,8 +92,9 @@ class EditProfileBody extends StatelessWidget {
                       horizontalSpace(16),
                       Expanded(
                         child: CustomTextFormField(
-                          hintText: 'Enter your last name',
-                          labelText: 'Last name',
+                          hintText:
+                              AppLocalizations.of(context)!.enterYourLastName,
+                          labelText: AppLocalizations.of(context)!.lastName,
                           controller: _viewModel.lastNameController,
                           validator: (val) {
                             return validateName(val);
@@ -99,52 +106,44 @@ class EditProfileBody extends StatelessWidget {
                   ),
                   verticalSpace(24),
                   CustomTextFormField(
-                    hintText: 'Enter your email',
+                    hintText: AppLocalizations.of(context)!.enterYourEmail,
                     keyboardType: TextInputType.emailAddress,
                     controller: _viewModel.emailController,
-                    labelText: 'Email Address',
+                    labelText: AppLocalizations.of(context)!.email,
                     validator: (val) {
                       return validateEmail(val);
                     },
                   ),
                   verticalSpace(24),
                   CustomTextFormField(
-                    hintText: 'Enter your phone number',
+                    hintText: AppLocalizations.of(context)!.enterYourPhone,
                     keyboardType: TextInputType.phone,
                     controller: _viewModel.phoneController,
-                    labelText: 'Phone Number',
+                    labelText: AppLocalizations.of(context)!.phone,
                     validator: (val) {
                       if (val!.length < 10 && val.isNotEmpty) {
                         {
-                          return 'Phone number must be at least 10 characters';
+                          return AppLocalizations.of(context)!.phoneError;
                         }
                       }
                       return null;
                     },
                   ),
                   verticalSpace(24),
-                  CustomTextFormField(
-                    changePasswordTap: () {},
-                    isPasswordVisible: false,
-                    // showPassword: () {},
-                    hintText: 'Enter your password',
-                    keyboardType: TextInputType.visiblePassword,
-                    controller: TextEditingController(),
-                    labelText: 'Password',
-                    validator: (val) {
-                      return validatePassword(val);
-                    },
+                  GenderSelection(
+                    selectedGender: state.user!.gender,
                   ),
                   verticalSpace(24),
-                  // GenderSelection(
-                  //   selectedGender: state.user!.gender,
-                  // ),
-                  verticalSpace(24),
-                  AppButton(
-                      text: 'Update',
-                      onPressed: () {
-                        _viewModel.editProfile();
-                      }),
+                  AppTextButton(
+                    buttonText: AppLocalizations.of(context)!.update,
+                    onPressed: () {
+                      _viewModel.editProfile();
+                    },
+                    textStyle: AppTextStyles.font16WeightMedium.copyWith(
+                      color: AppColors.kWhiteBase,
+                    ),
+                    borderRadius: BorderRadius.circular(100),
+                  ),
                 ],
               ),
             ),

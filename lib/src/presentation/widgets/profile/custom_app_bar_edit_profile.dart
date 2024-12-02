@@ -3,15 +3,18 @@ import 'package:flower_app/core/styles/icons/app_icons.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBarEditProfile extends StatelessWidget {
-  const CustomAppBarEditProfile({super.key});
-
+  const CustomAppBarEditProfile({super.key, required this.onBack});
+  final void Function() onBack;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Icon(
-          Icons.arrow_back_ios,
-          color: Colors.black,
+        InkWell(
+          onTap: onBack,
+          child: Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
         ),
         horizontalSpace(4),
         const Text(
