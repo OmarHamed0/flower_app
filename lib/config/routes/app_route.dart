@@ -11,6 +11,7 @@ import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/occasion/occasion_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
+import 'package:flower_app/src/presentation/pages/reset_passowrd/reset_password_screen.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
@@ -85,6 +86,9 @@ class AppRoute {
        case PageRouteName.occasions:
         return _handelMaterialPageRoute(
             settings: settings, widget:  OccasionScreen());
+      case PageRouteName.resetPassword:
+        return _handelMaterialPageRoute(
+            settings: settings, widget:  ResetPasswordScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

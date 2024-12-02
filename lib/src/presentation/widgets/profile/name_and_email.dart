@@ -1,5 +1,7 @@
+import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/icons/app_icons.dart';
+import 'package:flower_app/flower_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -25,7 +27,9 @@ class NameAndEmail extends StatelessWidget {
             ),
             horizontalSpace(4),
             InkWell(
-              onTap: onEdit,
+              onTap: (){
+                navKey.currentState!.pushNamed(PageRouteName.resetPassword);
+              },
               child: SvgPicture.asset(
                 AppIcons.penIcon,
                 width: 24.0.w,

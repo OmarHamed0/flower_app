@@ -39,8 +39,18 @@
   "savedAddresses": "Saved Addresses",
   "logout": "Log Out",
   "logOut": "LOGOUT",
-  "confirmLogout": "Are you sure you want to logout?",
   "bloomWithOurExquisiteBestSellers": "Bloom with our exquisite best sellers",
-  "occasion" : "Occasion"
+  "occasion" : "Occasion",
+  "confirmLogout": "Are you sure you want to logout?",
+  "resetPassword": "Reset Password",
+  "currentPassword": "Current password",
+  "newPassword": "New password",
+  "confirmPassword": "Confirm password",
+  "passwordNotMatch": "Password not match",
+  "passwordChangedSuccessfully": "Password changed successfully",
+  "passwordNotChanged": "Password not changed",
+  "passwordChangedFailed": "Password changed failed",
+  "update": "Update"
+
 
 }

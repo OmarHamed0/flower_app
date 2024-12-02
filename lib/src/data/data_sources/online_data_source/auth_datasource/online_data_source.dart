@@ -1,3 +1,5 @@
+import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
+import 'package:flower_app/src/data/api/core/response_model/auth_response_models/reset_password_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/auth_response_models/signin_response_model.dart';
 
 import '../../../../../common/api_result.dart';
@@ -15,4 +17,7 @@ abstract class AuthOnlineDataSource {
       SignUpRequestBody signUpRequestBody);
 
   Future<LogOutResponse> logOut();
+
+  Future<ResetPasswordResponseModel> resetPassword(String token,ResetPasswordRequestModel resetPasswordRequestModel);
+
 }

@@ -4,12 +4,6 @@
 		"domain":"https://api.apifox.com",
 		"syncAfterSave":false
 	},
-	"dataList":[
-		{
-			"hostGroup":[],
-			"name":"flower_app"
-		}
-	],
 	"envList":[],
 	"headerList":[],
 	"ignoreParseFieldList":[],
@@ -17,9 +11,6 @@
 	"pmCollectionId":"",
 	"postScript":"",
 	"preScript":"",
-	"projectList":[
-		"flower_app"
-	],
 	"syncModel":{
 		"branch":"master",
 		"domain":"https://github.com",
