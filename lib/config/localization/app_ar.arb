@@ -43,5 +43,14 @@
     "logout": "تسجيل الخروج",
     "logOut": "تسجيل الخروج",
     "confirmLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
-    "resetPassword": "إعادة تعيين كلمة المرور"
+    "resetPassword": "إعادة تعيين كلمة المرور",
+    "currentPassword": "كلمة المرور الحالية",
+  "newPassword": "كلمة المرور الجديدة",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "passwordNotMatch": "كلمة المرور غير متطابقة",
+  "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
+  "passwordNotChanged": "لم يتم تغيير كلمة المرور",
+  "passwordChangedFailed": "فشل تغيير كلمة المرور",
+  "update": "تحديث"
+
 }
