@@ -25,3 +25,11 @@ class EditProfileError extends EditProfileState {
     this.message,
   );
 }
+
+class EditProfileSuccessState extends EditProfileState {
+  const EditProfileSuccessState();
+}
+
+class EditProfileLoadingState extends EditProfileState {
+  const EditProfileLoadingState();
+}

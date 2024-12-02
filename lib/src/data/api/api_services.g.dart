@@ -330,12 +330,16 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<LoggedUserDataResponseModel> editProfile(String token) async {
+  Future<LoggedUserDataResponseModel> editProfile(
+    String token,
+    EditProfileRequest body,
+  ) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
-    const Map<String, dynamic>? _data = null;
+    final _data = <String, dynamic>{};
+    _data.addAll(body.toJson());
     final _options = _setStreamType<LoggedUserDataResponseModel>(Options(
       method: 'PUT',
       headers: _headers,

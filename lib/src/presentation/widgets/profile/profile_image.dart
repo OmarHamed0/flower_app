@@ -1,3 +1,4 @@
+import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/icons/app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -49,15 +50,17 @@ class ProfileImage extends StatelessWidget {
                 showImagePicker!(context);
               },
               child: Container(
+                width: 24.w,
+                height: 24.h,
                 padding: EdgeInsets.all(4.r),
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Colors.black.withOpacity(0.6),
+                  color: AppColors.kLightBink,
                 ),
                 child: Icon(
-                  Icons.camera_alt,
-                  color: Colors.white,
-                  size: 18.sp,
+                  Icons.camera_alt_outlined,
+                  color: AppColors.kWhite90,
+                  size: 16.sp,
                 ),
               ),
             ),

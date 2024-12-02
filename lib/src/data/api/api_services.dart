@@ -7,6 +7,7 @@ import 'package:retrofit/retrofit.dart';
 
 import 'core/constants/apis_baseurl.dart';
 import 'core/constants/apis_end_points.dart';
+import 'core/requestes_models/edit_profile_request.dart';
 import 'core/requestes_models/signin_request_body.dart';
 import 'core/response_model/auth_response_models/logged_user_data_reponse_model.dart';
 import 'core/response_model/auth_response_models/signin_response_model.dart';
@@ -56,7 +57,7 @@ abstract class ApiServices {
 
   @PUT(ApisEndPoints.editProfile)
   Future<LoggedUserDataResponseModel> editProfile(
-      @Header("Authorization") String token);
+      @Header("Authorization") String token, @Body() EditProfileRequest body);
 
   // @PUT(ApisEndPoints.uploadPhoto)
   // @MultiPart()

@@ -5,15 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GenderSelection extends StatefulWidget {
-  const GenderSelection({Key? key}) : super(key: key);
-
+  GenderSelection({Key? key, this.selectedGender = 'female'}) : super(key: key);
+  String? selectedGender;
   @override
   _GenderSelectionState createState() => _GenderSelectionState();
 }
 
 class _GenderSelectionState extends State<GenderSelection> {
-  String selectedGender = 'female';
-
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,11 +26,11 @@ class _GenderSelectionState extends State<GenderSelection> {
             children: [
               Radio<String>(
                 value: 'female',
-                groupValue: selectedGender,
+                groupValue: widget.selectedGender,
                 // activeColor: AppColors.mainColor,
                 onChanged: (value) {
                   setState(() {
-                    selectedGender = value!;
+                    widget.selectedGender = value!;
                   });
                 },
               ),
@@ -47,11 +45,11 @@ class _GenderSelectionState extends State<GenderSelection> {
             children: [
               Radio<String>(
                 value: 'male',
-                groupValue: selectedGender,
+                groupValue: widget.selectedGender,
                 activeColor: AppColors.mainColor,
                 onChanged: (value) {
                   setState(() {
-                    selectedGender = value!;
+                    widget.selectedGender = value!;
                   });
                 },
               ),

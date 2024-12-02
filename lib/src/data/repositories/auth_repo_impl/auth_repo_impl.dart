@@ -1,9 +1,9 @@
 import 'package:flower_app/common/api_execute.dart';
-import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/src/data/data_sources/offline_data_source/offline_data_source.dart';
 import 'package:flower_app/src/data/data_sources/online_data_source/auth_datasource/online_data_source.dart';
 import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
+import 'package:flower_app/src/domain/entities/auth/edit_profile_model.dart';
 import 'package:flower_app/src/domain/entities/auth/sign_in_entity.dart';
 import 'package:flower_app/src/domain/entities/auth/signup/sign_up_response.dart';
 import 'package:flower_app/src/domain/entities/auth/signup/sign_up_user.dart';
@@ -11,6 +11,7 @@ import 'package:flower_app/src/domain/entities/auth/user_entity.dart';
 import 'package:flower_app/src/domain/repositories/auth_repo.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../common/api_result.dart';
 import '../../models/auth/sign_in_response_dto.dart';
 
 @Injectable(as: AuthRepository)
@@ -71,6 +72,23 @@ class AuthRepositoryImpl implements AuthRepository {
     return executeApi<void>(apiCall: () async {
       await _onlineDataSource.logOut();
       await _offlineDataSource.deleteToken();
+    });
+  }
+
+  @override
+  Future<ApiResult<UserEntity>> editProfile(EditProfileModel user) async {
+    return await executeApi<UserEntity>(apiCall: () async {
+      var response = await _onlineDataSource.editProfile(user.toRequest());
+      UserEntity userEntity = UserEntity(
+        email: response.email,
+        firstName: response.firstName,
+        lastName: response.lastName,
+        id: response.id,
+        gender: response.gender,
+        phone: response.phone,
+        photo: response.photo,
+      );
+      return userEntity;
     });
   }
 

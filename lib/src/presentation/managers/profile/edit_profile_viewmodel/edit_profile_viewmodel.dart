@@ -1,10 +1,12 @@
 import 'package:flower_app/src/domain/entities/auth/user_entity.dart';
 import 'package:flower_app/src/presentation/managers/profile/edit_profile_viewmodel/edit_profile_state.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../common/api_result.dart';
 import '../../../../data/api/core/error/error_handler.dart';
+import '../../../../domain/entities/auth/edit_profile_model.dart';
 import '../../../../domain/use_cases/profile_usecase/profile_usecase.dart';
 
 @injectable
@@ -14,13 +16,59 @@ class EditProfileViewModel extends Cubit<EditProfileState> {
   EditProfileViewModel(this._profileUseCase)
       : super(const EditProfileLoading());
 
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+
   void getUserData() async {
     var result = await _profileUseCase.getUserData();
 
     if (result is Success<UserEntity>) {
       final user = result.data;
+      if (user != null) {
+        // Ensure that user is not null
+        firstNameController.value =
+            TextEditingValue(text: user.firstName ?? '');
+        lastNameController.value = TextEditingValue(
+            text:
+                user.lastName ?? ''); // Set default value if last name is null
+        emailController.value = TextEditingValue(
+            text: user.email ?? ''); // Default to empty if email is null
+        phoneController.value = TextEditingValue(
+            text: user.phone ?? ''); // Default to empty if phone is null
+        emit(EditProfileLoaded(user: user));
+      } else {
+        emit(const EditProfileError('User data is null'));
+      }
+    } else if (result is Failures<UserEntity>) {
+      final error = ErrorHandler.fromException(result.exception);
+      emit(EditProfileError(error.errorMassage));
+    }
+  }
 
-      emit(EditProfileLoaded(user: user));
+  @override
+  Future<void> close() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    phoneController.dispose();
+    return super.close();
+  }
+
+  void editProfile() async {
+    if (isClosed) return;
+    // emit(const EditProfileLoadingState());
+    final user = EditProfileModel(
+      firstName: firstNameController.text,
+      lastName: lastNameController.text,
+      email: emailController.text,
+      phone: phoneController.text,
+    );
+    var result = await _profileUseCase.editProfile(user);
+    if (isClosed) return; // Double-check after async operation
+    if (result is Success<UserEntity>) {
+      emit(const EditProfileSuccessState());
     } else if (result is Failures<UserEntity>) {
       final error = ErrorHandler.fromException(result.exception);
       emit(EditProfileError(error.errorMassage));

@@ -1,6 +1,7 @@
 import 'package:flower_app/config/helpers/shared_pre_keys.dart';
 import 'package:flower_app/config/helpers/shared_pref_helper.dart';
 import 'package:flower_app/src/data/api/api_services.dart';
+import 'package:flower_app/src/data/api/core/requestes_models/edit_profile_request.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/signin_request_body.dart';
 import 'package:flower_app/src/data/api/core/response_model/auth_response_models/signin_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/logout/Logout_response.dart';
@@ -65,6 +66,15 @@ class SignInOnlineDataSourceImpl implements AuthOnlineDataSource {
     String tokenWithBarrier = "Bearer $token";
     var response = await _apiServices.logout(tokenWithBarrier);
     return response;
+  }
+
+  @override
+  Future<UserModelDTO> editProfile(EditProfileRequest body) async {
+    String? token =
+        await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
+    String tokenWithBarrier = "Bearer $token";
+    var response = await _apiServices.editProfile(tokenWithBarrier, body);
+    return response.fromResponse();
   }
 
   // Future<String> uploadPhoto(File photo) async {

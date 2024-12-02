@@ -1,6 +1,7 @@
 import 'package:flower_app/src/data/api/core/response_model/auth_response_models/signin_response_model.dart';
 
 import '../../../../../common/api_result.dart';
+import '../../../api/core/requestes_models/edit_profile_request.dart';
 import '../../../api/core/response_model/logout/Logout_response.dart';
 import '../../../models/auth/signup/request/sign_up_user_body.dart';
 import '../../../models/auth/signup/response/sign_up_response.dart';
@@ -16,4 +17,6 @@ abstract class AuthOnlineDataSource {
 
   Future<LogOutResponse> logOut();
   // Future<String> uploadPhoto(File photo);
+
+  Future<UserModelDTO> editProfile(EditProfileRequest body);
 }
