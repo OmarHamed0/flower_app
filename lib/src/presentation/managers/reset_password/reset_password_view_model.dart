@@ -22,12 +22,17 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
   int currentPasswordFieldId = 0;
   int newPasswordFieldId = 1;
   int confirmPasswordFieldId = 2;
-  List<bool> isObscure = [true, true, true];
+  List<bool> _isObscure = [true, true, true];
+
   void setObscure() {
-    isObscure = [true, true, true];
+    _isObscure = [true, true, true];
   }
-  void _changePasswordVisibility(int id) {
-    isObscure[id] = !isObscure[id];
+
+  bool getIsObscure(PasswordFieldId id) {
+    return _isObscure[id.index];
+  }
+  void _changePasswordVisibility(PasswordFieldId id) {
+    _isObscure[id.index] = !_isObscure[id.index];
     emit(ChangePasswordVisibilityState());
   }
 
@@ -122,4 +127,8 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
   }
 }
 
-
+enum PasswordFieldId {
+  currentPassword,
+  newPassword,
+  confirmPassword,
+}

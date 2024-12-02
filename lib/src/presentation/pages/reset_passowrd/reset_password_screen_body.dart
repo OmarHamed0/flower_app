@@ -35,11 +35,11 @@ class ResetPasswordScreenBody extends StatelessWidget {
                     suffixIcon: IconButton(
                         onPressed: () {
                           viewModel.doActin(ChangePasswordVisibilityAction(
-                              fieldId: viewModel.currentPasswordFieldId));
+                              fieldId: PasswordFieldId.currentPassword));
                         },
                         icon: const Icon(Icons.remove_red_eye)),
                     obscureText:
-                        viewModel.isObscure[viewModel.currentPasswordFieldId],
+                        viewModel.getIsObscure(PasswordFieldId.currentPassword),
                     onChanged: (value) {
                       viewModel.doActin(ActiveUpdateButtonAction());
                     },
@@ -58,11 +58,11 @@ class ResetPasswordScreenBody extends StatelessWidget {
                     suffixIcon: IconButton(
                         onPressed: () {
                           viewModel.doActin(ChangePasswordVisibilityAction(
-                              fieldId: viewModel.newPasswordFieldId));
+                              fieldId: PasswordFieldId.newPassword));
                         },
                         icon: const Icon(Icons.remove_red_eye)),
                     obscureText:
-                        viewModel.isObscure[viewModel.newPasswordFieldId],
+                        viewModel.getIsObscure(PasswordFieldId.newPassword),
                     onChanged: (value) {
                       viewModel.doActin(ActiveUpdateButtonAction());
                     },
@@ -81,11 +81,11 @@ class ResetPasswordScreenBody extends StatelessWidget {
                     suffixIcon: IconButton(
                         onPressed: () {
                           viewModel.doActin(ChangePasswordVisibilityAction(
-                              fieldId: viewModel.confirmPasswordFieldId));
+                              fieldId: PasswordFieldId.confirmPassword));
                         },
                         icon: const Icon(Icons.remove_red_eye)),
                     obscureText:
-                        viewModel.isObscure[viewModel.confirmPasswordFieldId],
+                        viewModel.getIsObscure(PasswordFieldId.confirmPassword),
                     onChanged: (value) {
                       viewModel.doActin(ActiveUpdateButtonAction());
                     },
