@@ -31,9 +31,6 @@
   "statue":"الحالة",
     "viewAll":"عرض الكل",
   "bestSeller": "الأكثر مبيعًا",
-
-  "occasion": "مناسبة",
-  "bloomWithOurExquisiteBestSellers": "ازدهر مع منتجاتنا الأكثر تميزًا",
     "notification": "الإشعارات",
     "language": "اللغة",
     "aboutUs": "معلومات عنا",
@@ -42,6 +39,8 @@
     "savedAddresses": "العناوين المحفوظة",
     "logout": "تسجيل الخروج",
     "logOut": "تسجيل الخروج",
+  "bloomWithOurExquisiteBestSellers": "ازدهر مع منتجاتنا الأكثر تميزًا",
+  "occasion": "مناسبة",
     "confirmLogout": "هل أنت متأكد أنك تريد تسجيل الخروج؟",
     "resetPassword": "إعادة تعيين كلمة المرور",
     "currentPassword": "كلمة المرور الحالية",

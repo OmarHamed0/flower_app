@@ -16,6 +16,7 @@ import 'core/response_model/beset_seller/beset_seller_model.dart';
 import 'core/response_model/get_catigories/get_catigories_resonse_model.dart';
 import 'core/response_model/home_response/home_response.dart';
 import 'core/response_model/logout/Logout_response.dart';
+import 'core/response_model/occasions/occasion_response_model.dart';
 import 'core/response_model/product/product_response_model.dart';
 
 part 'api_services.g.dart';
@@ -53,6 +54,8 @@ abstract class ApiServices {
 
   @GET(ApisEndPoints.categories)
   Future<GetCatigoriesResponseModel> getCategories();
+  @GET(ApisEndPoints.occassions)
+  Future<OccasionResponseModel> getOccasions();
   @GET(ApisEndPoints.logout)
   Future<LogOutResponse> logout(@Header("Authorization") String token);
 

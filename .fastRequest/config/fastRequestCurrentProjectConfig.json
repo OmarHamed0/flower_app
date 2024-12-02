@@ -4,7 +4,6 @@
 		"domain":"https://api.apifox.com",
 		"syncAfterSave":false
 	},
-	"dataList":[],
 	"envList":[],
 	"headerList":[],
 	"ignoreParseFieldList":[],
@@ -12,7 +11,6 @@
 	"pmCollectionId":"",
 	"postScript":"",
 	"preScript":"",
-	"projectList":[],
 	"syncModel":{
 		"branch":"master",
 		"domain":"https://github.com",
