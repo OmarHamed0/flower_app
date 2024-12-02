@@ -19,7 +19,17 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
   TextEditingController newPasswordController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  int currentPasswordFieldId = 0;
+  int newPasswordFieldId = 1;
+  int confirmPasswordFieldId = 2;
+  List<bool> isObscure = [true, true, true];
+  void setObscure() {
+    isObscure = [true, true, true];
+  }
+  void _changePasswordVisibility(int id) {
+    isObscure[id] = !isObscure[id];
+    emit(ChangePasswordVisibilityState());
+  }
 
   void _activeUpdateButton(){
     if (formKey.currentState!.validate()) {
@@ -72,6 +82,7 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
     emit(LoadingState());
     var response = await _resetPasswordUseCase.resetPassword(
         currentPasswordController.text, newPasswordController.text);
+    emit(PopLoadingDialogState());
     switch (response) {
       case Success<ResetPasswordEntity>():
         emit(SuccessState());
@@ -87,6 +98,11 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
     return errorMessage;
   }
 
+
+  void _logout() async{
+    await _resetPasswordUseCase.logout();
+  }
+
   void doActin(ResetPasswordActions action) {
     switch (action) {
       case UpdatePasswordAction():
@@ -96,6 +112,14 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
       case ActiveUpdateButtonAction():
         _activeUpdateButton();
         break;
+      case LogoutAction():
+        _logout();
+        break;
+      case ChangePasswordVisibilityAction():
+        _changePasswordVisibility(action.fieldId);
+        break;
     }
   }
 }
+
+
