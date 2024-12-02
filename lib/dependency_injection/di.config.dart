@@ -31,6 +31,10 @@ import '../src/data/data_sources/online_data_source/home_online_datasource.dart'
     as _i902;
 import '../src/data/data_sources/online_data_source/home_online_datasource_impl.dart'
     as _i1054;
+import '../src/data/data_sources/online_data_source/occasion_online_data_source/OccasionOnlineDataSource.dart'
+    as _i241;
+import '../src/data/data_sources/online_data_source/occasion_online_data_source/OccasionOnlineDataSourceImpl.dart'
+    as _i491;
 import '../src/data/data_sources/online_data_source/product_data_source/product_online_data_source.dart'
     as _i866;
 import '../src/data/data_sources/online_data_source/product_data_source/product_online_data_source_impl.dart'
@@ -39,18 +43,22 @@ import '../src/data/repositories/auth_repo_impl/auth_repo_impl.dart' as _i531;
 import '../src/data/repositories/categories_repo/categories_repo_impl.dart'
     as _i545;
 import '../src/data/repositories/home_repository_impl.dart' as _i283;
+import '../src/data/repositories/occasion_repo_impl/OccasionRepoImpl.dart'
+    as _i475;
 import '../src/data/repositories/product_repo_impl/product_repo_impl.dart'
     as _i974;
 import '../src/domain/repositories/auth_repo.dart' as _i862;
 import '../src/domain/repositories/categories_repo/categories_repo.dart'
     as _i139;
 import '../src/domain/repositories/home_repository.dart' as _i781;
+import '../src/domain/repositories/occasion_repo/OccasionRepo.dart' as _i492;
 import '../src/domain/repositories/product_repo/product_repo.dart' as _i170;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/domain/use_cases/auth_use_cases/signup_user_use_case.dart'
     as _i625;
 import '../src/domain/use_cases/category_use_case.dart' as _i551;
 import '../src/domain/use_cases/home_usecase.dart' as _i729;
+import '../src/domain/use_cases/occasions_use_case.dart' as _i845;
 import '../src/domain/use_cases/product_use_cases/get_product_use_case.dart'
     as _i902;
 import '../src/domain/use_cases/product_use_cases/product_by_id_use_case.dart'
@@ -63,12 +71,17 @@ import '../src/presentation/managers/base_screen/base_screen_viewmodel.dart'
 import '../src/presentation/managers/categories/categories_view_model.dart'
     as _i822;
 import '../src/presentation/managers/home/home_viewmodel.dart' as _i363;
+import '../src/presentation/managers/occasion/occasions_view_model.dart'
+    as _i1022;
 import '../src/presentation/managers/product/product_cubit.dart' as _i699;
 import '../src/presentation/managers/product_details/product_details_view_model.dart'
     as _i196;
-import '../src/presentation/managers/profile/profile_screen_viewmodel.dart'
-    as _i855;
+import '../src/presentation/managers/profile/edit_profile_viewmodel/edit_profile_viewmodel.dart'
+    as _i1044;
+import '../src/presentation/managers/profile/profile_viewmodel/profile_screen_viewmodel.dart'
+    as _i3;
 import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
+import '../src/presentation/managers/splash/splash_view_model.dart' as _i992;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -83,6 +96,7 @@ extension GetItInjectableX on _i174.GetIt {
     );
     final dioProvider = _$DioProvider();
     gh.factory<_i450.BaseScreenViewmodel>(() => _i450.BaseScreenViewmodel());
+    gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.factory<_i136.SignInOfflineDataSource>(
@@ -94,6 +108,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i545.CategoriesRepoImpl(gh<_i838.CategoriesOnlineDataSource>()));
     gh.factory<_i551.CategoryUseCase>(
         () => _i551.CategoryUseCase(gh<_i139.CategoriesRepo>()));
+    gh.factory<_i241.OccasionOnlineDataSource>(
+        () => _i491.OccasionOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i557.AuthOnlineDataSource>(
         () => _i808.SignInOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i866.ProductOnlineDataSource>(
@@ -112,6 +128,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i699.ProductCubit>(
         () => _i699.ProductCubit(gh<_i902.GetProductUseCase>()));
+    gh.factory<_i492.OccasionRepo>(
+        () => _i475.OccasionsRepoImpl(gh<_i241.OccasionOnlineDataSource>()));
     gh.factory<_i822.CategoriesViewModel>(
         () => _i822.CategoriesViewModel(gh<_i551.CategoryUseCase>()));
     gh.factory<_i207.SignInUseCase>(
@@ -124,8 +142,12 @@ extension GetItInjectableX on _i174.GetIt {
         homeDataSource: gh<_i902.HomeOnlineDataSource>()));
     gh.factory<_i196.ProductDetailsViewModel>(
         () => _i196.ProductDetailsViewModel(gh<_i1042.ProductByIdUseCase>()));
-    gh.factory<_i855.ProfileScreenViewModel>(
-        () => _i855.ProfileScreenViewModel(gh<_i346.ProfileUseCase>()));
+    gh.factory<_i1044.EditProfileViewModel>(
+        () => _i1044.EditProfileViewModel(gh<_i346.ProfileUseCase>()));
+    gh.factory<_i3.ProfileScreenViewModel>(
+        () => _i3.ProfileScreenViewModel(gh<_i346.ProfileUseCase>()));
+    gh.factory<_i845.OccasionUseCase>(
+        () => _i845.OccasionUseCase(gh<_i492.OccasionRepo>()));
     gh.factory<_i729.HomeUseCase>(
         () => _i729.HomeUseCase(gh<_i781.HomeRepository>()));
     gh.factory<_i363.HomeViewModel>(
@@ -134,6 +156,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.SignUpViewModel(gh<_i625.SignupUserUseCase>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i1022.OccasionViewModel>(
+        () => _i1022.OccasionViewModel(gh<_i845.OccasionUseCase>()));
     return this;
   }
 }
