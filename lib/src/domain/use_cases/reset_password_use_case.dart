@@ -13,4 +13,8 @@ class ResetPasswordUseCase{
   Future<ApiResult<ResetPasswordEntity>> resetPassword(String oldPassword,String newPassword) async {
     return await _authRepository.resetPassword(oldPassword, newPassword);
   }
+
+  Future<ApiResult<void>> logout() async {
+     return await _authRepository.logOut();
+  }
 }

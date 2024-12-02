@@ -80,6 +80,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<ApiResult<ResetPasswordEntity>> resetPassword(String oldPassword, String newPassword)async {
     String currentToken = await _offlineDataSource.getToken()??"";
+    currentToken = "Bearer $currentToken";
     String? newToken;
     ResetPasswordRequestModel resetPasswordRequestModel = ResetPasswordRequestModel(
       password: oldPassword,

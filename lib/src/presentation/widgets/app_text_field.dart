@@ -59,9 +59,7 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 24),
-      child: TextFormField(
+    return TextFormField(
         keyboardType: keyboardType,
         inputFormatters: inputFormatters,
         onEditingComplete: onEditingComplete,
@@ -119,7 +117,6 @@ class AppTextField extends StatelessWidget {
             borderRadius: AppBorderRadius.xs,
           ),
         ),
-      ),
     );
   }
 }
