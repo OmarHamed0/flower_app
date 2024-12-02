@@ -30,7 +30,7 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
   }
   void _changePasswordVisibility(PasswordFieldId id) {
     _isObscure[id.index] = !_isObscure[id.index];
-    emit(ChangePasswordVisibilityState());
+    emit(ChangePasswordVisibilityState(fieldId: id));
   }
 
   void _activeUpdateButton(){
