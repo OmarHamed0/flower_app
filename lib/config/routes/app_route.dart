@@ -9,6 +9,7 @@ import 'package:flower_app/src/presentation/managers/product/core/product_core.d
 import 'package:flower_app/src/presentation/managers/product/product_event.dart';
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
+import 'package:flower_app/src/presentation/pages/occasion/occasion_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
@@ -81,6 +82,9 @@ class AppRoute {
               ],
               child: const BaseScreen(),
             ));
+       case PageRouteName.occasions:
+        return _handelMaterialPageRoute(
+            settings: settings, widget:  OccasionScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());
