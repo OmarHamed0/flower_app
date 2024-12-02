@@ -28,11 +28,9 @@ class FlowerApp extends StatelessWidget {
         supportedLocales: L10n.all,
         debugShowCheckedModeBanner: false,
         locale: const Locale('en'),
-
         navigatorKey: navKey,
         initialRoute: PageRouteName.splash,
         onGenerateRoute: AppRoute.onGenerateRoute,
-
         themeMode: ThemeMode.light,
         // theme: AppTheme.appTheme,
       ),
