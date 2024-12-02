@@ -10,8 +10,8 @@ extension StringExtenstion on String?{
 extension ContextExtension on BuildContext {
   /// Get height of context screen
   /// usage: context.height
-  get height => MediaQuery.of(this).size.height;
+  double get height => MediaQuery.of(this).size.height;
   /// Get width of context screen
   /// usage: context.width
-  get width => MediaQuery.of(this).size.width;
+  double get width => MediaQuery.of(this).size.width;
 }

@@ -6,3 +6,5 @@ class ErrorState extends ResetPasswordStates{
   String? message;
   ErrorState({this.message});
 }
+class ActiveButtonState extends ResetPasswordStates{}
+class DeActiveButtonState extends ResetPasswordStates{}

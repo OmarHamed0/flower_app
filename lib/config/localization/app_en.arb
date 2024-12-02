@@ -42,6 +42,7 @@
   "savedAddresses": "Saved Addresses",
   "logout": "Log Out",
   "logOut": "LOGOUT",
-  "confirmLogout": "Are you sure you want to logout?"
+  "confirmLogout": "Are you sure you want to logout?",
+  "resetPassword": "Reset Password"
 
 }

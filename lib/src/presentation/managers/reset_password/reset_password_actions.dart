@@ -1,2 +1,3 @@
 sealed class ResetPasswordActions{}
-class ResetPasswordAction extends ResetPasswordActions {}
+class UpdatePasswordAction extends ResetPasswordActions {}
+class ActiveUpdateButtonAction extends ResetPasswordActions {}
