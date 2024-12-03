@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/auth_response_models/reset_password_response_model.dart';
+import 'package:flower_app/src/data/api/core/response_model/cart/add_cart_response_model/add_cart_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/product_response_models/one_product_response_model.dart';
 import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
@@ -9,6 +10,7 @@ import 'package:retrofit/retrofit.dart';
 
 import 'core/constants/apis_baseurl.dart';
 import 'core/constants/apis_end_points.dart';
+import 'core/requestes_models/cart/add_cart_request.dart';
 import 'core/requestes_models/signin_request_body.dart';
 import 'core/response_model/auth_response_models/logged_user_data_reponse_model.dart';
 import 'core/response_model/auth_response_models/signin_response_model.dart';
@@ -62,4 +64,10 @@ abstract class ApiServices {
   @PATCH(ApisEndPoints.changePassword)
   Future<ResetPasswordResponseModel> resetPassword(@Header("Authorization") String token, @Body() ResetPasswordRequestModel requestBody);
 
+
+  @POST(ApisEndPoints.cart)
+  Future<AddCartResponseModel> addProductCart({
+    @Header("Authorization") required String token,
+    @Body() required AddCartRequest addCartProductRequest,
+  });
 }
