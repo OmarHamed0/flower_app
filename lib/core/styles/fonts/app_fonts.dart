@@ -14,7 +14,11 @@ class AppFonts {
     color: AppColors.kBlackBase,
   );
 
-
+  static TextStyle font20KGrayBase400Weight =  TextStyle(
+      fontSize: 20.sp,
+       fontWeight: FontWeight.w500,
+        color: const Color((0xFF535353))
+  );
 
   static TextStyle font12BlackBase600Weight = TextStyle(
     fontSize: 12.sp,
@@ -47,10 +51,21 @@ class AppFonts {
     color: AppColors.kBlackBase,
     fontFamily: kPrimaryFont
   );
+  static TextStyle font14BlackBase600Weight = TextStyle(
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w600,
+      color: AppColors.kBlackBase,
+      fontFamily: kPrimaryFont
+  );
   static TextStyle font16White500Weight = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.kWightBase,
+  );
+  static TextStyle font1kBlack500Weight = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.kBlackBase,
   );
   static TextStyle font16BlackBase400Weight = TextStyle(
     fontSize: 16.sp,
@@ -72,6 +87,22 @@ class AppFonts {
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.kGray,
+  );
+  static TextStyle font18Wight500Weight = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.kWhiteBase,
+  );
+  static TextStyle font18Black500Weight = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.kBlackBase,
+  );
+
+  static TextStyle font16Grey500Weight = TextStyle(
+    fontSize: 16.sp,
+            fontWeight: FontWeight.w500,
+             color: AppColors.kGray
   );
   static const String kPrimaryFont = "Inter";
 }

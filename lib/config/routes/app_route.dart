@@ -17,6 +17,7 @@ import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../src/presentation/managers/cart/cart_view_model.dart';
 import '../../src/presentation/managers/product/product_cubit.dart';
 import '../../src/presentation/pages/base_screen/base_screen.dart';
 import '../../src/presentation/pages/product_details/product_details.dart';
@@ -55,11 +56,6 @@ class AppRoute {
             child: const HomeScreen(),
           ),
         );
-      case PageRouteName.splash:
-        return _handelMaterialPageRoute(
-          settings: settings,
-          widget: SplashScreen(),
-        );
       case PageRouteName.productDetails:
         return _handelMaterialPageRoute(
             settings: settings,
@@ -68,7 +64,7 @@ class AppRoute {
             ));
       case PageRouteName.product:
         return _handelMaterialPageRoute(
-            settings: settings, widget: ProductView());
+            settings: settings, widget: const ProductView());
       case PageRouteName.baseScreen:
         return _handelMaterialPageRoute(
             settings: settings,
@@ -79,16 +75,16 @@ class AppRoute {
                   create: (context) => getIt<CategoriesViewModel>()
                     ..doAction(GetCategoriesAction()),
                 ),
-                BlocProvider(create: (context) => getIt<ProductCubit>())
+                BlocProvider(create: (context) => getIt<ProductCubit>()),
               ],
               child: const BaseScreen(),
             ));
-       case PageRouteName.occasions:
+      case PageRouteName.occasions:
         return _handelMaterialPageRoute(
-            settings: settings, widget:  OccasionScreen());
+            settings: settings, widget: OccasionScreen());
       case PageRouteName.resetPassword:
         return _handelMaterialPageRoute(
-            settings: settings, widget:  ResetPasswordScreen());
+            settings: settings, widget: ResetPasswordScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

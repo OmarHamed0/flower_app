@@ -8,6 +8,7 @@ import '../../../../../core/functions/spacing.dart';
 import '../../../../../core/styles/fonts/app_fonts.dart';
 import '../../../../../core/widgets/cached_network_image _widget.dart';
 import '../../product_details/product_details.dart';
+import 'add_to_cart_button_widget.dart';
 
 class ProductItemWidget extends StatelessWidget {
   final ProductEntity productEntity;
@@ -39,40 +40,8 @@ class ProductItemWidget extends StatelessWidget {
             ),
           ),
           SizedBox(height: 8.h),
-          _buildAddToCartButton(),
+           AddToCartButtonWidget(productId:  productEntity.id  ?? "",)
         ],
-      ),
-    );
-  }
-
-  Widget _buildAddToCartButton() {
-    return InkWell(
-      onTap: () {},
-      child: Container(
-        alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(vertical: 10.r, horizontal: 24.r),
-        width: double.infinity,
-        height: 40.h,
-        decoration: BoxDecoration(
-          color: const Color(0xFFD21E6A),
-          borderRadius: BorderRadius.circular(24.r),
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Icon(Icons.shopping_cart_outlined,
-                size: 15, color: Colors.white),
-            SizedBox(width: 8.w),
-            Text(
-              "Add Cart",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 13.sp,
-                fontWeight: FontWeight.w500,
-              ),
-            )
-          ],
-        ),
       ),
     );
   }

@@ -15,6 +15,10 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
 import '../src/data/api/api_services.dart' as _i687;
 import '../src/data/api/network_factory.dart' as _i13;
+import '../src/data/data_sources/offline_data_source/cart/cart_offline_data_source.dart'
+    as _i732;
+import '../src/data/data_sources/offline_data_source/cart/cart_offline_data_source_impl.dart'
+    as _i817;
 import '../src/data/data_sources/offline_data_source/offline_data_source.dart'
     as _i136;
 import '../src/data/data_sources/offline_data_source/offline_data_source_impl.dart'
@@ -23,6 +27,10 @@ import '../src/data/data_sources/online_data_source/auth_datasource/online_data_
     as _i557;
 import '../src/data/data_sources/online_data_source/auth_datasource/online_data_source_impl.dart'
     as _i808;
+import '../src/data/data_sources/online_data_source/cart_online_data_source/cart_online_data_source.dart'
+    as _i130;
+import '../src/data/data_sources/online_data_source/cart_online_data_source/cart_online_data_source_impl.dart'
+    as _i1063;
 import '../src/data/data_sources/online_data_source/catigories_online_data_source/categories_online_data_source_impl.dart'
     as _i98;
 import '../src/data/data_sources/online_data_source/catigories_online_data_source/catigories_data_source.dart'
@@ -40,6 +48,7 @@ import '../src/data/data_sources/online_data_source/product_data_source/product_
 import '../src/data/data_sources/online_data_source/product_data_source/product_online_data_source_impl.dart'
     as _i352;
 import '../src/data/repositories/auth_repo_impl/auth_repo_impl.dart' as _i531;
+import '../src/data/repositories/cart_repo_impl/cart_repo_impl.dart' as _i474;
 import '../src/data/repositories/categories_repo/categories_repo_impl.dart'
     as _i545;
 import '../src/data/repositories/home_repository_impl.dart' as _i283;
@@ -48,6 +57,7 @@ import '../src/data/repositories/occasion_repo_impl/OccasionRepoImpl.dart'
 import '../src/data/repositories/product_repo_impl/product_repo_impl.dart'
     as _i974;
 import '../src/domain/repositories/auth_repo.dart' as _i862;
+import '../src/domain/repositories/cart_repo/cart_repo.dart' as _i1032;
 import '../src/domain/repositories/categories_repo/categories_repo.dart'
     as _i139;
 import '../src/domain/repositories/home_repository.dart' as _i781;
@@ -56,6 +66,13 @@ import '../src/domain/repositories/product_repo/product_repo.dart' as _i170;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/domain/use_cases/auth_use_cases/signup_user_use_case.dart'
     as _i625;
+import '../src/domain/use_cases/cart/add_cart_use_case.dart' as _i634;
+import '../src/domain/use_cases/cart/get_logged_user_cart_use_case.dart'
+    as _i493;
+import '../src/domain/use_cases/cart/remove_specific_cart_item_use_case.dart'
+    as _i336;
+import '../src/domain/use_cases/cart/update_quantity_cart_use_case.dart'
+    as _i413;
 import '../src/domain/use_cases/category_use_case.dart' as _i551;
 import '../src/domain/use_cases/home_usecase.dart' as _i729;
 import '../src/domain/use_cases/occasions_use_case.dart' as _i845;
@@ -69,6 +86,7 @@ import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
 import '../src/presentation/managers/base_screen/base_screen_viewmodel.dart'
     as _i450;
+import '../src/presentation/managers/cart/cart_view_model.dart' as _i871;
 import '../src/presentation/managers/categories/categories_view_model.dart'
     as _i822;
 import '../src/presentation/managers/home/home_viewmodel.dart' as _i363;
@@ -100,15 +118,28 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
+    gh.factory<_i732.CartOfflineDataSource>(
+        () => _i817.CartOfflineDataSourceImpl());
     gh.factory<_i136.AuthOfflineDataSource>(
         () => _i649.AuthOfflineDataSourceImpl());
     gh.singleton<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
+    gh.factory<_i130.CartOnlineDataSource>(
+        () => _i1063.CartOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i838.CategoriesOnlineDataSource>(
         () => _i98.CategoriesOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i139.CategoriesRepo>(
         () => _i545.CategoriesRepoImpl(gh<_i838.CategoriesOnlineDataSource>()));
+    gh.factory<_i1032.CartRepo>(() => _i474.CartRepoImpl(
+          cartOnlineDataSource: gh<_i130.CartOnlineDataSource>(),
+          cartOfflineDataSource: gh<_i732.CartOfflineDataSource>(),
+        ));
+    gh.factory<_i336.RemoveSpecificCartItemUseCase>(() =>
+        _i336.RemoveSpecificCartItemUseCase(
+            cartRepository: gh<_i1032.CartRepo>()));
     gh.factory<_i551.CategoryUseCase>(
         () => _i551.CategoryUseCase(gh<_i139.CategoriesRepo>()));
+    gh.factory<_i634.AddCartUseCase>(
+        () => _i634.AddCartUseCase(cartRepo: gh<_i1032.CartRepo>()));
     gh.factory<_i241.OccasionOnlineDataSource>(
         () => _i491.OccasionOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i557.AuthOnlineDataSource>(
@@ -123,6 +154,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1042.ProductByIdUseCase(gh<_i170.ProductRepo>()));
     gh.factory<_i902.HomeOnlineDataSource>(
         () => _i1054.HomeOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i493.GetLoggedUserCartUseCase>(
+        () => _i493.GetLoggedUserCartUseCase(gh<_i1032.CartRepo>()));
+    gh.factory<_i413.UpdateQuantityCartUseCase>(
+        () => _i413.UpdateQuantityCartUseCase(gh<_i1032.CartRepo>()));
+    gh.factory<_i871.CartViewModel>(() => _i871.CartViewModel(
+          gh<_i634.AddCartUseCase>(),
+          gh<_i493.GetLoggedUserCartUseCase>(),
+          gh<_i336.RemoveSpecificCartItemUseCase>(),
+          gh<_i413.UpdateQuantityCartUseCase>(),
+        ));
     gh.factory<_i862.AuthRepository>(() => _i531.AuthRepositoryImpl(
           gh<_i136.AuthOfflineDataSource>(),
           gh<_i557.AuthOnlineDataSource>(),
@@ -133,10 +174,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i475.OccasionsRepoImpl(gh<_i241.OccasionOnlineDataSource>()));
     gh.factory<_i822.CategoriesViewModel>(
         () => _i822.CategoriesViewModel(gh<_i551.CategoryUseCase>()));
-    gh.factory<_i346.ProfileUseCase>(
-        () => _i346.ProfileUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i207.SignInUseCase>(
         () => _i207.SignInUseCase(gh<_i862.AuthRepository>()));
+    gh.factory<_i346.ProfileUseCase>(
+        () => _i346.ProfileUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(
