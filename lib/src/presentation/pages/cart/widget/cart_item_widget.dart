@@ -51,23 +51,15 @@ class CartItemWidget extends StatelessWidget {
                                 cartProductEntity.title.toString(),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 1,
-                                style: TextStyle(
-                                    fontSize: 16.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.kBlackBase),
+                                style: AppFonts.font1kBlack500Weight,
                               ),
                               verticalSpace(
                                 4.h,
                               ),
-                              Text(
-                                cartProductEntity.description.toString(),
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                                style: TextStyle(
-                                    fontSize: 13.sp,
-                                    fontWeight: FontWeight.w500,
-                                    color: AppColors.kGray),
-                              ),
+                              Text(cartProductEntity.description.toString(),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                  style: AppFonts.font13GrayWeight500),
                             ],
                           ),
                         ),

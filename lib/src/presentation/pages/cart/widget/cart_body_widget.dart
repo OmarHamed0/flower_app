@@ -27,6 +27,7 @@ class _CartBodyWidgetState extends State<CartBodyWidget> {
         return Scaffold(
           backgroundColor: AppColors.kWhiteBase,
           appBar: AppBar(
+            backgroundColor: AppColors.kWhiteBase,
             title: _titleAppBar(viewModel.cartProduct.length ?? 0),
           ),
           body: Padding(
@@ -62,7 +63,7 @@ class _CartBodyWidgetState extends State<CartBodyWidget> {
           AppFonts.font20Black500Weight
         ),
         Text(
-          "($length ${AppLocalizations.of(context)!.items} ",
+          "($length ${AppLocalizations.of(context)!.items}) ",
           style: AppFonts.font20KGrayBase400Weight,
         ),
       ],
