@@ -28,7 +28,6 @@ dependencies:
   injectable:
   flutter_svg:
   flutter_switch: ^0.3.2
-  image_picker:
 
   cupertino_icons:
   either_dart:
@@ -69,6 +68,9 @@ flutter:
     - assets/animations/
     - assets/animations/eYr0JZUKw0.json
     - assets/animations/success.json
+    - assets/animations/cart_empty.json
+    - assets/animations/invalid_token.json
+    - assets/animations/error.json
     - assets/images/
     - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
