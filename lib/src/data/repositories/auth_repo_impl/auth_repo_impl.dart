@@ -40,7 +40,9 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<ApiResult<UserEntity>> getLoggedUserData() async {
     return await executeApi<UserEntity>(apiCall: () async {
-      var response = await _onlineDataSource.getLoggedUserData();
+      var token = await _offlineDataSource.getToken();
+
+      var response = await _onlineDataSource.getLoggedUserData(token ?? '');
       UserEntity userEntity = UserEntity(
         email: response.email,
         firstName: response.firstName,

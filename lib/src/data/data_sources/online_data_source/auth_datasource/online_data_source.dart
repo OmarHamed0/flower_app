@@ -12,7 +12,7 @@ import '../../../models/auth/usr_model_dto.dart';
 abstract class AuthOnlineDataSource {
   Future<SignInResponseModel> signIn(String email, String password);
 
-  Future<UserModelDTO> getLoggedUserData();
+  Future<UserModelDTO> getLoggedUserData(String token);
 
   Future<ApiResult<SignupResponseDto>> signUp(
       SignUpRequestBody signUpRequestBody);

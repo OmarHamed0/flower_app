@@ -28,23 +28,25 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
   bool getIsObscure(PasswordFieldId id) {
     return _isObscure[id.index];
   }
+
   void _changePasswordVisibility(PasswordFieldId id) {
     _isObscure[id.index] = !_isObscure[id.index];
     emit(ChangePasswordVisibilityState(fieldId: id));
   }
 
-  void _activeUpdateButton(){
+  void _activeUpdateButton() {
     if (formKey.currentState!.validate()) {
-      if (newPasswordController.text.length != confirmPasswordController.text.length) {
+      if (newPasswordController.text.length !=
+          confirmPasswordController.text.length) {
         emit(DeActiveButtonState());
-      }
-      else if(newPasswordController.text.length == confirmPasswordController.text.length && newPasswordController.text != confirmPasswordController.text ){
+      } else if (newPasswordController.text.length ==
+              confirmPasswordController.text.length &&
+          newPasswordController.text != confirmPasswordController.text) {
         emit(DeActiveButtonState());
-      }
-     else {
+      } else {
         emit(ActiveButtonState());
       }
-     return;
+      return;
     }
     emit(DeActiveButtonState());
   }
@@ -53,34 +55,33 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
     return formKey.currentState!.validate();
   }
 
-
-  String? validatePassword(String password){
-    if(password.length < 8){
+  String? validatePassword(String password) {
+    if (password.length < 8) {
       return "Password must be more than 8";
     }
-    if(password.isNullOrEmpty() || !AppRegex.passwordValidationRegex.hasMatch(password)){
+    if (password.isNullOrEmpty() || !AppRegExp.isPasswordValid(password)) {
       return "invalid Password";
     }
     return null;
   }
 
-
-  String? validateConfirmPassword(String password){
-    if(password.length < 8){
+  String? validateConfirmPassword(String password) {
+    if (password.length < 8) {
       return "Password must be more than 8";
     }
-    if(password.isNullOrEmpty() || !AppRegex.passwordValidationRegex.hasMatch(password)){
+    if (password.isNullOrEmpty() || !AppRegExp.isPasswordValid(password)) {
       return "invalid Password";
     }
-     if(newPasswordController.text.length == confirmPasswordController.text.length && newPasswordController.text != confirmPasswordController.text ){
-       return "Password does not match";
+    if (newPasswordController.text.length ==
+            confirmPasswordController.text.length &&
+        newPasswordController.text != confirmPasswordController.text) {
+      return "Password does not match";
     }
     return null;
   }
-
 
   void _updatePassword() async {
-    if(_validateInput() == false) return;
+    if (_validateInput() == false) return;
     emit(LoadingState());
     var response = await _resetPasswordUseCase.resetPassword(
         currentPasswordController.text, newPasswordController.text);
@@ -100,8 +101,7 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
     return errorMessage;
   }
 
-
-  void _logout() async{
+  void _logout() async {
     await _resetPasswordUseCase.logout();
   }
 

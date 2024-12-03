@@ -23,20 +23,8 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   AuthOnlineDataSourceImpl(this._apiServices);
 
   @override
-  Future<UserModelDTO> getLoggedUserData() async {
-    String? token =
-        await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
-    if (token == null) {
-      return UserModelDTO(
-        email: "",
-        firstName: "Guest",
-        lastName: "",
-        id: "",
-      );
-    }
+  Future<UserModelDTO> getLoggedUserData(String token) async {
     String tokenWithBarrier = "Bearer $token";
-
-    print(tokenWithBarrier);
 
     var response = await _apiServices.getLoggedUserData(tokenWithBarrier);
     print(response);

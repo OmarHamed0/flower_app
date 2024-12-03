@@ -25,8 +25,8 @@ class GuestProfile extends StatelessWidget {
           ),
           verticalSpace(16),
           NameAndEmail(
-            name: user!.firstName,
-            email: user!.email,
+            name: user?.firstName ?? 'Guest',
+            email: user?.email ?? '',
           ),
           verticalSpace(16),
           const Divider(),
