@@ -15,6 +15,10 @@ import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
 import '../src/data/api/api_services.dart' as _i687;
 import '../src/data/api/network_factory.dart' as _i13;
+import '../src/data/data_sources/offline_data_source/cart/cart_offline_data_source.dart'
+    as _i732;
+import '../src/data/data_sources/offline_data_source/cart/cart_offline_data_source_impl.dart'
+    as _i817;
 import '../src/data/data_sources/offline_data_source/offline_data_source.dart'
     as _i136;
 import '../src/data/data_sources/offline_data_source/offline_data_source_impl.dart'
@@ -23,6 +27,10 @@ import '../src/data/data_sources/online_data_source/auth_datasource/online_data_
     as _i557;
 import '../src/data/data_sources/online_data_source/auth_datasource/online_data_source_impl.dart'
     as _i808;
+import '../src/data/data_sources/online_data_source/cart_online_data_source/cart_online_data_source.dart'
+    as _i130;
+import '../src/data/data_sources/online_data_source/cart_online_data_source/cart_online_data_source_impl.dart'
+    as _i1063;
 import '../src/data/data_sources/online_data_source/catigories_online_data_source/categories_online_data_source_impl.dart'
     as _i98;
 import '../src/data/data_sources/online_data_source/catigories_online_data_source/catigories_data_source.dart'
@@ -40,6 +48,7 @@ import '../src/data/data_sources/online_data_source/product_data_source/product_
 import '../src/data/data_sources/online_data_source/product_data_source/product_online_data_source_impl.dart'
     as _i352;
 import '../src/data/repositories/auth_repo_impl/auth_repo_impl.dart' as _i531;
+import '../src/data/repositories/cart_repo_impl/cart_repo_impl.dart' as _i474;
 import '../src/data/repositories/categories_repo/categories_repo_impl.dart'
     as _i545;
 import '../src/data/repositories/home_repository_impl.dart' as _i283;
@@ -48,6 +57,7 @@ import '../src/data/repositories/occasion_repo_impl/OccasionRepoImpl.dart'
 import '../src/data/repositories/product_repo_impl/product_repo_impl.dart'
     as _i974;
 import '../src/domain/repositories/auth_repo.dart' as _i862;
+import '../src/domain/repositories/cart_repo/cart_repo.dart' as _i1032;
 import '../src/domain/repositories/categories_repo/categories_repo.dart'
     as _i139;
 import '../src/domain/repositories/home_repository.dart' as _i781;
@@ -100,13 +110,21 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
+    gh.factory<_i732.CartOfflineDataSource>(
+        () => _i817.CartOfflineDataSourceImpl());
     gh.factory<_i136.AuthOfflineDataSource>(
         () => _i649.AuthOfflineDataSourceImpl());
     gh.singleton<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
+    gh.factory<_i130.CartOnlineDataSource>(
+        () => _i1063.CartOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i838.CategoriesOnlineDataSource>(
         () => _i98.CategoriesOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i139.CategoriesRepo>(
         () => _i545.CategoriesRepoImpl(gh<_i838.CategoriesOnlineDataSource>()));
+    gh.factory<_i1032.CartRepo>(() => _i474.CartRepoImpl(
+          cartOnlineDataSource: gh<_i130.CartOnlineDataSource>(),
+          cartOfflineDataSource: gh<_i732.CartOfflineDataSource>(),
+        ));
     gh.factory<_i551.CategoryUseCase>(
         () => _i551.CategoryUseCase(gh<_i139.CategoriesRepo>()));
     gh.factory<_i241.OccasionOnlineDataSource>(
