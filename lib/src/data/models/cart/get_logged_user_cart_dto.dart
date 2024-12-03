@@ -7,7 +7,7 @@ class GetLoggedUserCartDto{
   GetLoggedUserCartDto({this.message});
 
 
-  static CartEntity toDomain({required GetAllCartResponseModel getLoggedUsrCart}){
+   CartEntity toDomain({required GetAllCartResponseModel getLoggedUsrCart}){
     return  CartEntity(
         numOfCartItems: getLoggedUsrCart.numOfCartItems,
         totalPrice: getLoggedUsrCart.cart?.totalPrice,
@@ -16,7 +16,7 @@ class GetLoggedUserCartDto{
   }
 
 
- static List<CartProductEntity> _toCartItemList(Cart? carts) {
+  List<CartProductEntity> _toCartItemList(Cart? carts) {
     if (carts?.cartItems == null) {
       return [];
     } else {
@@ -30,7 +30,7 @@ class GetLoggedUserCartDto{
     }
   }
 
-  static  CartProductEntity _cartProductEntity(CartItems cartItems) {
+    CartProductEntity _cartProductEntity(CartItems cartItems) {
     return CartProductEntity(
       id: cartItems.product?.id,
       title: cartItems.product?.title,

@@ -12,10 +12,12 @@ import 'package:retrofit/retrofit.dart';
 import 'core/constants/apis_baseurl.dart';
 import 'core/constants/apis_end_points.dart';
 import 'core/requestes_models/cart/add_cart_request.dart';
+import 'core/requestes_models/cart/cart_quantity_request.dart';
 import 'core/requestes_models/signin_request_body.dart';
 import 'core/response_model/auth_response_models/logged_user_data_reponse_model.dart';
 import 'core/response_model/auth_response_models/signin_response_model.dart';
 import 'core/response_model/beset_seller/beset_seller_model.dart';
+import 'core/response_model/cart/remove_cart_response/remove_cart_respone_model.dart';
 import 'core/response_model/get_catigories/get_catigories_resonse_model.dart';
 import 'core/response_model/home_response/home_response.dart';
 import 'core/response_model/logout/Logout_response.dart';
@@ -63,8 +65,9 @@ abstract class ApiServices {
   Future<LogOutResponse> logout(@Header("Authorization") String token);
 
   @PATCH(ApisEndPoints.changePassword)
-  Future<ResetPasswordResponseModel> resetPassword(@Header("Authorization") String token, @Body() ResetPasswordRequestModel requestBody);
-
+  Future<ResetPasswordResponseModel> resetPassword(
+      @Header("Authorization") String token,
+      @Body() ResetPasswordRequestModel requestBody);
 
   @POST(ApisEndPoints.cart)
   Future<AddCartResponseModel> addProductCart({
@@ -72,8 +75,20 @@ abstract class ApiServices {
     @Body() required AddCartRequest addCartProductRequest,
   });
 
-
   @GET(ApisEndPoints.cart)
   Future<GetAllCartResponseModel> getLoggedUserCart(
       {@Header("Authorization") required String token});
+
+  @DELETE("${ApisEndPoints.cart}/{id}")
+  Future<RemoveCartResponseModel> removeSpecificCartItem(
+      {@Header("Authorization") required String token,
+      @Path("id") required String id});
+
+
+  @PUT("${ApisEndPoints.cart}/{id}")
+  Future<GetAllCartResponseModel> updateQuantity({
+    @Header("Authorization") required String token,
+    @Path("id") required String id,
+    @Body() required CartQuantityRequest cartQuantityRequest,
+  });
 }

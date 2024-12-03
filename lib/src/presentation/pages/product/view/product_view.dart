@@ -7,7 +7,7 @@ import 'package:lottie/lottie.dart';
 import '../../../../../common/common.dart';
 import '../../../../../core/styles/images/app_images.dart';
 import '../../../../domain/entities/product_entity/product_entity.dart';
-import '../../cart/widget/handle_add_cart-state.dart';
+import '../../cart/widget/handle_state/handle_add_cart-state.dart';
 import '../widget/product_list_widget.dart';
 
 class ProductView extends StatelessWidget {

@@ -13,3 +13,35 @@ class AddCartErrorState extends CartState{
 
 
 
+class GetLoggedUserCartLoadingState extends CartState{}
+class GetLoggedUserCartSuccessState extends CartState{}
+class GetLoggedUserCartErrorState extends CartState{
+  final ErrorHandler errorHandler;
+  GetLoggedUserCartErrorState({required this.errorHandler});
+}
+
+
+
+
+
+class RemoveSpecificCartLoadingState extends CartState{}
+class RemoveSpecificCartSuccessState extends CartState{}
+class RemoveSpecificCartErrorState extends CartState{
+  final ErrorHandler errorHandler;
+  RemoveSpecificCartErrorState({required this.errorHandler});
+}
+
+
+
+class UpdateQuantityState extends CartState{}
+
+
+class UpdateQuantityLoadingState extends CartState{}
+class UpdateQuantitySuccessState extends CartState{}
+class UpdateQuantityErrorState extends CartState{
+  final ErrorHandler errorHandler;
+  UpdateQuantityErrorState({required this.errorHandler});
+}
+
+
+

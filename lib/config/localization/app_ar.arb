@@ -54,6 +54,14 @@
   "cartAddedSuccessfully": "تمت إضافة المنتج إلى السلة بنجاح",
   "error": "حدث خطأ",
   "unauthorizedAccessPleaseLogin": "الوصول غير مصرح به. يرجى تسجيل الدخول",
-  "pleaseEnterLogin": "من فضلك قم بتسجيل الدخول"
+  "pleaseEnterLogin": "من فضلك قم بتسجيل الدخول",
+  "subTotal": "المجموع الفرعي",
+  "deliveryFee": "رسوم التوصيل",
+  "total": "الإجمالي",
+  "cart": "سلة",
+  "items": "عنصر",
+  "yourCartIsEmpty": "سلة التسوق الخاصة بك فارغة",
+  "addCart": "إضافة إلى السلة"
+
 
 }

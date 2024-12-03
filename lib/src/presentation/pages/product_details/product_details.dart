@@ -3,10 +3,11 @@ import 'package:flower_app/src/presentation/managers/cart/cart_view_model.dart';
 import 'package:flower_app/src/presentation/managers/product_details/product_details_actions.dart';
 import 'package:flower_app/src/presentation/managers/product_details/product_details_states.dart';
 import 'package:flower_app/src/presentation/managers/product_details/product_details_view_model.dart';
-import 'package:flower_app/src/presentation/pages/cart/widget/handle_add_cart-state.dart';
 import 'package:flower_app/src/presentation/pages/product_details/product_details_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../cart/widget/handle_state/handle_add_cart-state.dart';
 
 class ProductDetails extends StatelessWidget {
   final String productId;

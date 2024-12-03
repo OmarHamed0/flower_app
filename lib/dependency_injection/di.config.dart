@@ -67,6 +67,12 @@ import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/domain/use_cases/auth_use_cases/signup_user_use_case.dart'
     as _i625;
 import '../src/domain/use_cases/cart/add_cart_use_case.dart' as _i634;
+import '../src/domain/use_cases/cart/get_logged_user_cart_use_case.dart'
+    as _i493;
+import '../src/domain/use_cases/cart/remove_specific_cart_item_use_case.dart'
+    as _i336;
+import '../src/domain/use_cases/cart/update_quantity_cart_use_case.dart'
+    as _i413;
 import '../src/domain/use_cases/category_use_case.dart' as _i551;
 import '../src/domain/use_cases/home_usecase.dart' as _i729;
 import '../src/domain/use_cases/occasions_use_case.dart' as _i845;
@@ -127,6 +133,9 @@ extension GetItInjectableX on _i174.GetIt {
           cartOnlineDataSource: gh<_i130.CartOnlineDataSource>(),
           cartOfflineDataSource: gh<_i732.CartOfflineDataSource>(),
         ));
+    gh.factory<_i336.RemoveSpecificCartItemUseCase>(() =>
+        _i336.RemoveSpecificCartItemUseCase(
+            cartRepository: gh<_i1032.CartRepo>()));
     gh.factory<_i551.CategoryUseCase>(
         () => _i551.CategoryUseCase(gh<_i139.CategoriesRepo>()));
     gh.factory<_i634.AddCartUseCase>(
@@ -145,14 +154,22 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1042.ProductByIdUseCase(gh<_i170.ProductRepo>()));
     gh.factory<_i902.HomeOnlineDataSource>(
         () => _i1054.HomeOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i493.GetLoggedUserCartUseCase>(
+        () => _i493.GetLoggedUserCartUseCase(gh<_i1032.CartRepo>()));
+    gh.factory<_i413.UpdateQuantityCartUseCase>(
+        () => _i413.UpdateQuantityCartUseCase(gh<_i1032.CartRepo>()));
+    gh.factory<_i871.CartViewModel>(() => _i871.CartViewModel(
+          gh<_i634.AddCartUseCase>(),
+          gh<_i493.GetLoggedUserCartUseCase>(),
+          gh<_i336.RemoveSpecificCartItemUseCase>(),
+          gh<_i413.UpdateQuantityCartUseCase>(),
+        ));
     gh.factory<_i862.AuthRepository>(() => _i531.AuthRepositoryImpl(
           gh<_i136.AuthOfflineDataSource>(),
           gh<_i557.AuthOnlineDataSource>(),
         ));
     gh.factory<_i699.ProductCubit>(
         () => _i699.ProductCubit(gh<_i902.GetProductUseCase>()));
-    gh.factory<_i871.CartViewModel>(
-        () => _i871.CartViewModel(gh<_i634.AddCartUseCase>()));
     gh.factory<_i492.OccasionRepo>(
         () => _i475.OccasionsRepoImpl(gh<_i241.OccasionOnlineDataSource>()));
     gh.factory<_i822.CategoriesViewModel>(
