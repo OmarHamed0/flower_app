@@ -1,12 +1,13 @@
 import 'package:flower_app/core/styles/fonts/app_fonts.dart';
+import 'package:flower_app/src/presentation/managers/cart/cart_view_model.dart';
 import 'package:flower_app/src/presentation/managers/product/product_cubit.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 
+import '../../../../../common/common.dart';
 import '../../../../../core/styles/images/app_images.dart';
 import '../../../../domain/entities/product_entity/product_entity.dart';
+import '../../cart/widget/handle_add_cart-state.dart';
 import '../widget/product_list_widget.dart';
 
 class ProductView extends StatelessWidget {
@@ -17,10 +18,14 @@ class ProductView extends StatelessWidget {
     return Scaffold(
         body: Padding(
       padding: EdgeInsets.all(16.0.r),
-      child: BlocBuilder<ProductCubit, ProductState>(
-        builder: (context, state) {
-          return _handleBlocBuilder(state, context);
-        },
+      child: BlocListener<CartViewModel, CartState>(
+        listener: (context, state) =>
+            HandleAddCartState().handleBlocListenerAddCartState(context, state),
+        child: BlocBuilder<ProductCubit, ProductState>(
+          builder: (context, state) {
+            return _handleBlocBuilder(state, context);
+          },
+        ),
       ),
     ));
   }
@@ -30,10 +35,9 @@ class ProductView extends StatelessWidget {
       return _buildLoadingProductState();
     } else if (state is GetProductErrorState) {
       return _buildErrorProductState(errorMassage: state.errorMassage);
-    } else if (state is GetProductSuccessState) {
-      return _buildSuccessProduct(state.products);
     } else {
-      return _productEmptyWidget();
+      return _buildSuccessProduct(
+          BlocProvider.of<ProductCubit>(context).products);
     }
   }
 

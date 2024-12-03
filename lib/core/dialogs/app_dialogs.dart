@@ -7,7 +7,6 @@ class LoadingDialog {
     showDialog(
       context: context,
       barrierDismissible: false,
-      // Prevent dismissing the dialog by tapping outside
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: Colors.white,
@@ -26,7 +25,6 @@ class LoadingDialog {
   }
 
   static void hide(BuildContext context) {
-    // Pop the dialog if it is still displayed
     if (Navigator.of(context).canPop()) {
       Navigator.of(context).pop();
     }

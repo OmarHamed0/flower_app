@@ -12,9 +12,9 @@ import '../../../domain/use_cases/cart/add_cart_use_case.dart';
 part 'cart_state.dart';
 
 @injectable
-class CartCubit extends Cubit<CartState> {
+class CartViewModel extends Cubit<CartState> {
   final AddCartUseCase addCartUseCase;
-  CartCubit(this.addCartUseCase) : super(CartInitial());
+  CartViewModel(this.addCartUseCase) : super(CartInitial());
 
   Future<void> doAction(CartAction cartAction) async {
     switch (cartAction) {
@@ -26,6 +26,7 @@ class CartCubit extends Cubit<CartState> {
 
   Future<void> addCart(
       {required String productId, required int quantity}) async {
+   emit(AddCartLoadingState());
     AddCartRequest addCartRequest =
         AddCartRequest(id: productId, quantity: quantity);
     var result = await addCartUseCase.invoke(addCartRequest: addCartRequest);
