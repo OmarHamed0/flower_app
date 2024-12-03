@@ -63,6 +63,18 @@
   "passwordChangedSuccessfully": "تم تغيير كلمة المرور بنجاح",
   "passwordNotChanged": "لم يتم تغيير كلمة المرور",
   "passwordChangedFailed": "فشل تغيير كلمة المرور",
-  "update": "تحديث"
+  "update": "تحديث",
+  "cartAddedSuccessfully": "تمت إضافة المنتج إلى السلة بنجاح",
+  "error": "حدث خطأ",
+  "unauthorizedAccessPleaseLogin": "الوصول غير مصرح به. يرجى تسجيل الدخول",
+  "pleaseEnterLogin": "من فضلك قم بتسجيل الدخول",
+  "subTotal": "المجموع الفرعي",
+  "deliveryFee": "رسوم التوصيل",
+  "total": "الإجمالي",
+  "cart": "سلة",
+  "items": "عنصر",
+  "yourCartIsEmpty": "سلة التسوق الخاصة بك فارغة",
+  "addCart": "إضافة إلى السلة"
+
 
 }

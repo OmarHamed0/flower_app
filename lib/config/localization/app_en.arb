@@ -62,7 +62,16 @@
   "passwordChangedSuccessfully": "Password changed successfully",
   "passwordNotChanged": "Password not changed",
   "passwordChangedFailed": "Password changed failed",
-  "update": "Update"
-
-
+  "update": "Update",
+  "cartAddedSuccessfully" : "Cart Added Successfully",
+  "error": "Error",
+  "unauthorizedAccessPleaseLogin": "Unauthorized access. Please login",
+   "pleaseEnterLogin": "please enter login",
+    "subTotal": "Sub Total",
+    "deliveryFee": "Delivery Fee",
+     "total": "Total",
+    "cart": "Cart",
+    "items": "items",
+     "yourCartIsEmpty":"Your cart is empty",
+      "addCart": "Add Cart"
 }

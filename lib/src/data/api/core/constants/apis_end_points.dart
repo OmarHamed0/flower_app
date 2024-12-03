@@ -11,4 +11,5 @@ abstract class ApisEndPoints {
   static const String uploadPhoto = "auth/upload-photo";
   static const String occassions = "occasions";
   static const String changePassword = "auth/change-password";
+  static const String cart = "cart";
 }

@@ -3,8 +3,12 @@ import 'package:flower_app/core/styles/spaceing.dart';
 import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../managers/cart/cart_action.dart';
+import '../../managers/cart/cart_view_model.dart';
 class BestSellerScreen extends StatelessWidget {
   const BestSellerScreen({super.key});
 
@@ -15,7 +19,7 @@ class BestSellerScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(local!.bestSeller, style: AppFonts.font20Black500Weight,),
         leading: IconButton(
-          onPressed: () => _navigateToBack(),
+          onPressed: () => _navigateToBack(context),
           icon: const Icon(Icons.arrow_back_ios),
         ),
       ),
@@ -39,9 +43,10 @@ class BestSellerScreen extends StatelessWidget {
     );
   }
 
-  void _navigateToBack() {
+  void _navigateToBack(BuildContext context) {
     if (navKey.currentState!.canPop()) {
       navKey.currentState!.pop();
+      BlocProvider.of<CartViewModel>(context).doAction(GetLoggedUserCartAction());
     }
   }
 }

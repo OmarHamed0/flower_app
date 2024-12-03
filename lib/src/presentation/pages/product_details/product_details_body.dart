@@ -1,4 +1,6 @@
 import 'package:flower_app/core/styles/app_radius.dart';
+import 'package:flower_app/src/presentation/managers/cart/cart_action.dart';
+import 'package:flower_app/src/presentation/managers/cart/cart_view_model.dart';
 import 'package:flower_app/src/presentation/managers/product_details/product_details_view_model.dart';
 import 'package:flower_app/src/presentation/pages/product_details/images_slider.dart';
 import 'package:flutter/material.dart';
@@ -99,7 +101,7 @@ class ProductDetailsBody extends StatelessWidget {
                     buttonText: AppLocalizations.of(context)!.addToCart,
                     textStyle: AppTextStyles.font16WeightMedium
                         .copyWith(color: AppColors.kWhiteBase),
-                    onPressed: () {},
+                    onPressed: () =>BlocProvider.of<CartViewModel>(context).doAction(AddCartAction(productId: productEntity!.id!)),
                   ),
                 ),
                 verticalSpace(45)

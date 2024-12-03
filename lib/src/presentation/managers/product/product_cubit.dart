@@ -29,6 +29,8 @@ class ProductCubit extends Cubit<ProductState> {
     }
   }
 
+  List<ProductEntity> products=[];
+
   Future<void> _getProduct({
    required  ProductQueryParameters productQueryParameters
 }) async {
@@ -41,6 +43,7 @@ class ProductCubit extends Cubit<ProductState> {
 
     switch (result) {
       case Success<List<ProductEntity>>():
+         products=result.data ?? [];
            emit(GetProductSuccessState(products:result.data! ));
       case Failures<List<ProductEntity>>():
         String errorMassage = ErrorHandler.fromException(result.exception).errorMassage;
