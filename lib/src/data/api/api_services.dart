@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
-import 'package:flower_app/src/data/api/core/response_model/occasions/occasion_response_model.dart';
+import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
+import 'package:flower_app/src/data/api/core/response_model/auth_response_models/reset_password_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/product_response_models/one_product_response_model.dart';
 import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
@@ -16,6 +17,7 @@ import 'core/response_model/beset_seller/beset_seller_model.dart';
 import 'core/response_model/get_catigories/get_catigories_resonse_model.dart';
 import 'core/response_model/home_response/home_response.dart';
 import 'core/response_model/logout/Logout_response.dart';
+import 'core/response_model/occasions/occasion_response_model.dart';
 import 'core/response_model/product/product_response_model.dart';
 
 part 'api_services.g.dart';
@@ -68,4 +70,8 @@ abstract class ApiServices {
   //   @Header("Authorization") String token,
   //   @Part(name: "photo") MultipartFile files,
   // );
+
+  @PATCH(ApisEndPoints.changePassword)
+  Future<ResetPasswordResponseModel> resetPassword(@Header("Authorization") String token, @Body() ResetPasswordRequestModel requestBody);
+
 }

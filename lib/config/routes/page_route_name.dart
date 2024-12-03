@@ -8,4 +8,5 @@ class PageRouteName {
   static const String baseScreen = "baseScreen";
   static const String besetSellerScreen="besetScreen";
   static const String occasions = "occasions";
+  static const String resetPassword = "resetPassword";
 }
