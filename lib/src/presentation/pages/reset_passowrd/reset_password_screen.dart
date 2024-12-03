@@ -39,31 +39,26 @@ class ResetPasswordScreen extends StatelessWidget {
           ),
           body: BlocListener<ResetPasswordViewModel, ResetPasswordStates>(
             listener: (context, state) {
-              if(state is LoadingState){
+              if (state is LoadingState) {
                 LoadingDialog.show(context);
               }
-              if(state is PopLoadingDialogState){
+              if (state is PopLoadingDialogState) {
                 LoadingDialog.hide(context);
               }
               if (state is ErrorState) {
-                showAwesomeDialog(context,
-                    title: 'Error',
-                    desc: state.message!,
+                showAwesomeDialog(context, title: 'Error', desc: state.message!,
                     onOk: () {
-                     viewModel.doActin(LogoutAction());
-                      navKey.currentState!.pushNamedAndRemoveUntil(
-                          PageRouteName.signIn, (route) => false);
-                    },
-                    dialogType: DialogType.error);
-              }
-              else if(state is SuccessState){
+                  viewModel.doActin(LogoutAction());
+                  navKey.currentState!.pushNamedAndRemoveUntil(
+                      PageRouteName.signIn, (route) => false);
+                }, dialogType: DialogType.error);
+              } else if (state is SuccessState) {
                 showAwesomeDialog(context,
                     title: 'Success',
-                    desc: AppLocalizations.of(context)!.passwordChangedSuccessfully,
-                    onOk: () {
-                       Navigator.pop(context);
-                    },
-                    dialogType: DialogType.success);
+                    desc: AppLocalizations.of(context)!
+                        .passwordChangedSuccessfully, onOk: () {
+                  Navigator.pop(context);
+                }, dialogType: DialogType.success);
               }
             },
             child: ResetPasswordScreenBody(),

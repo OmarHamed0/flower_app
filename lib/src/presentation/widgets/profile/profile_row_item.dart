@@ -1,7 +1,7 @@
 import 'package:flower_app/core/styles/colors/app_colors.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+
+import '../../../../common/common.dart';
 
 class ProfileRowItem extends StatefulWidget {
   const ProfileRowItem({
@@ -68,19 +68,21 @@ class _ProfileRowItemState extends State<ProfileRowItem> {
                 ),
               ),
             ),
-            if (widget.title == 'Language')
-              const Text(
-                'English',
+            if (widget.title == AppLocalizations.of(context)!.language)
+              Text(
+                AppLocalizations.of(context)!.english,
                 style: TextStyle(
                   color: AppColors.kBaseColor,
                   fontSize: 14,
                 ),
               ),
-            if (widget.title == 'Logout') const Icon(Icons.logout),
-            if (widget.title == 'Login') const Icon(Icons.login),
-            if (widget.title != 'Language' &&
-                widget.title != 'Logout' &&
-                widget.title != 'Login')
+            if (widget.title == AppLocalizations.of(context)!.logout)
+              const Icon(Icons.logout),
+            if (widget.title == AppLocalizations.of(context)!.login)
+              const Icon(Icons.login),
+            if (widget.title != AppLocalizations.of(context)!.language &&
+                widget.title != AppLocalizations.of(context)!.logout &&
+                widget.title != AppLocalizations.of(context)!.login)
               const Icon(
                 Icons.arrow_forward_ios,
                 size: 24,

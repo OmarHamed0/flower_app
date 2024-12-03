@@ -13,6 +13,7 @@ import 'core/constants/apis_baseurl.dart';
 import 'core/constants/apis_end_points.dart';
 import 'core/requestes_models/cart/add_cart_request.dart';
 import 'core/requestes_models/cart/cart_quantity_request.dart';
+import 'core/requestes_models/edit_profile_request.dart';
 import 'core/requestes_models/signin_request_body.dart';
 import 'core/response_model/auth_response_models/logged_user_data_reponse_model.dart';
 import 'core/response_model/auth_response_models/signin_response_model.dart';
@@ -64,6 +65,17 @@ abstract class ApiServices {
   @GET(ApisEndPoints.logout)
   Future<LogOutResponse> logout(@Header("Authorization") String token);
 
+  @PUT(ApisEndPoints.editProfile)
+  Future<LoggedUserDataResponseModel> editProfile(
+      @Header("Authorization") String token, @Body() EditProfileRequest body);
+
+  // @PUT(ApisEndPoints.uploadPhoto)
+  // @MultiPart()
+  // Future<String> uploadPhotos(
+  //   @Header("Authorization") String token,
+  //   @Part(name: "photo") MultipartFile files,
+  // );
+
   @PATCH(ApisEndPoints.changePassword)
   Future<ResetPasswordResponseModel> resetPassword(
       @Header("Authorization") String token,
@@ -83,7 +95,6 @@ abstract class ApiServices {
   Future<RemoveCartResponseModel> removeSpecificCartItem(
       {@Header("Authorization") required String token,
       @Path("id") required String id});
-
 
   @PUT("${ApisEndPoints.cart}/{id}")
   Future<GetAllCartResponseModel> updateQuantity({

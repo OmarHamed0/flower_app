@@ -1,4 +1,5 @@
 import 'package:flower_app/common/api_result.dart';
+import 'package:flower_app/src/domain/entities/auth/edit_profile_model.dart';
 import 'package:flower_app/src/domain/entities/auth/user_entity.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,4 +16,11 @@ class ProfileUseCase {
   Future<ApiResult<void>> logOut() async {
     return await _signInRepo.logOut();
   }
+
+  Future<ApiResult<UserEntity>> editProfile(EditProfileModel user) async {
+    return await _signInRepo.editProfile(user);
+  }
+  // Future<ApiResult<void>> uploadPhoto(File path) async {
+  //   return await _signInRepo.uploadPhoto(path);
+  // }
 }

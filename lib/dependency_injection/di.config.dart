@@ -95,8 +95,10 @@ import '../src/presentation/managers/occasion/occasions_view_model.dart'
 import '../src/presentation/managers/product/product_cubit.dart' as _i699;
 import '../src/presentation/managers/product_details/product_details_view_model.dart'
     as _i196;
-import '../src/presentation/managers/profile/profile_screen_viewmodel.dart'
-    as _i855;
+import '../src/presentation/managers/profile/edit_profile_viewmodel/edit_profile_viewmodel.dart'
+    as _i1044;
+import '../src/presentation/managers/profile/profile_viewmodel/profile_screen_viewmodel.dart'
+    as _i3;
 import '../src/presentation/managers/reset_password/reset_password_view_model.dart'
     as _i545;
 import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
@@ -184,8 +186,10 @@ extension GetItInjectableX on _i174.GetIt {
         homeDataSource: gh<_i902.HomeOnlineDataSource>()));
     gh.factory<_i196.ProductDetailsViewModel>(
         () => _i196.ProductDetailsViewModel(gh<_i1042.ProductByIdUseCase>()));
-    gh.factory<_i855.ProfileScreenViewModel>(
-        () => _i855.ProfileScreenViewModel(gh<_i346.ProfileUseCase>()));
+    gh.factory<_i1044.EditProfileViewModel>(
+        () => _i1044.EditProfileViewModel(gh<_i346.ProfileUseCase>()));
+    gh.factory<_i3.ProfileScreenViewModel>(
+        () => _i3.ProfileScreenViewModel(gh<_i346.ProfileUseCase>()));
     gh.factory<_i448.ResetPasswordUseCase>(
         () => _i448.ResetPasswordUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i845.OccasionUseCase>(

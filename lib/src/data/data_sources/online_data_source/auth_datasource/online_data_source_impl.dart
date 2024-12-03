@@ -1,6 +1,7 @@
 import 'package:flower_app/config/helpers/shared_pre_keys.dart';
 import 'package:flower_app/config/helpers/shared_pref_helper.dart';
 import 'package:flower_app/src/data/api/api_services.dart';
+import 'package:flower_app/src/data/api/core/requestes_models/edit_profile_request.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/signin_request_body.dart';
 import 'package:flower_app/src/data/api/core/response_model/auth_response_models/reset_password_response_model.dart';
@@ -22,20 +23,8 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   AuthOnlineDataSourceImpl(this._apiServices);
 
   @override
-  Future<UserModelDTO> getLoggedUserData() async {
-    String? token =
-        await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
-    if (token == null) {
-      return UserModelDTO(
-        email: "",
-        firstName: "Guest",
-        lastName: "",
-        id: "",
-      );
-    }
+  Future<UserModelDTO> getLoggedUserData(String token) async {
     String tokenWithBarrier = "Bearer $token";
-
-    print(tokenWithBarrier);
 
     var response = await _apiServices.getLoggedUserData(tokenWithBarrier);
     print(response);
@@ -70,7 +59,48 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   }
 
   @override
-  Future<ResetPasswordResponseModel> resetPassword(String token, ResetPasswordRequestModel resetPasswordRequestModel) async{
+  Future<UserModelDTO> editProfile(EditProfileRequest body) async {
+    String? token =
+        await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
+    String tokenWithBarrier = "Bearer $token";
+    var response = await _apiServices.editProfile(tokenWithBarrier, body);
+    return response.fromResponse();
+  }
+
+  // Future<String> uploadPhoto(File photo) async {
+  //   String? token =
+  //       await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
+  //   if (token == null) {
+  //     throw Exception('User token is null');
+  //   }
+  //
+  //   // Validate file type
+  //   if (!['.jpg', '.jpeg', '.png']
+  //       .contains(photo.path.split('.').last.toLowerCase())) {
+  //     throw Exception('Invalid file type. Only image files are allowed.');
+  //   }
+  //
+  //   String tokenWithBearer = "Bearer $token";
+  //
+  //   try {
+  //     // Prepare the file for upload
+  //     List<MultipartFile> files = [
+  //       MultipartFile.fromFileSync(photo.path,
+  //           filename: 'photo.${photo.path.split('.').last}')
+  //     ];
+  //
+  //     // Call the API to upload the photo
+  //     var response = await _apiServices.uploadPhotos(tokenWithBearer, files[0]);
+  //     return response; // Return the server response
+  //   } catch (e) {
+  //     print('Error uploading photo: $e');
+  //     throw Exception('Failed to upload photo');
+  //   }
+  // }
+
+  @override
+  Future<ResetPasswordResponseModel> resetPassword(
+      String token, ResetPasswordRequestModel resetPasswordRequestModel) async {
     return await _apiServices.resetPassword(token, resetPasswordRequestModel);
   }
 }
