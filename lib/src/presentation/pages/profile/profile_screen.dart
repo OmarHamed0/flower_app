@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../dependency_injection/di.dart';
+import '../../managers/profile/profile_viewmodel/profile_actions.dart';
 import '../../managers/profile/profile_viewmodel/profile_screen_viewmodel.dart';
 import 'edit_profile_body.dart';
 import 'main_profile_body.dart';
@@ -30,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       _isEditing = !_isEditing;
     });
-    _viewModel.getUserData();
+    _viewModel.doAction(GetUserDataProfileAction());
   }
 
   @override

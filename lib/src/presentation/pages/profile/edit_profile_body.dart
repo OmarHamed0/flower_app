@@ -12,6 +12,7 @@ import '../../../../core/dialogs/app_dialogs.dart';
 import '../../../../core/functions/spacing.dart';
 import '../../../../core/widgets/custom_auth_text_feild.dart';
 import '../../auth/signup/widgets/gender_selection.dart';
+import '../../managers/profile/edit_profile_viewmodel/edit_profile_actions.dart';
 import '../../widgets/app_text_button.dart';
 import '../../widgets/profile/custom_app_bar_edit_profile.dart';
 import '../../widgets/profile/profile_image.dart';
@@ -32,7 +33,7 @@ class EditProfileBody extends StatelessWidget {
           LoadingDialog.show(context);
         } else if (state is EditProfileSuccessState) {
           LoadingDialog.hide(context);
-          context.read<EditProfileViewModel>().getUserData();
+          context.read<EditProfileViewModel>().doAction(GetUserDataAction());
           showAwesomeDialog(
             context,
             title: AppLocalizations.of(context)!.success,
@@ -54,11 +55,12 @@ class EditProfileBody extends StatelessWidget {
         final _viewModel = context.read<EditProfileViewModel>();
 
         if (state is EditProfileLoading) {
-          _viewModel.getUserData();
+          _viewModel.doAction(GetUserDataAction());
           return const Center(
             child: CircularProgressIndicator(),
           );
-        } else if (state is EditProfileLoaded) {
+        } else if (state is EditProfileLoaded ||
+            state is EditProfileSuccessState) {
           return SafeArea(
             child: Padding(
               padding: const EdgeInsets.all(16),
@@ -70,7 +72,7 @@ class EditProfileBody extends StatelessWidget {
                   verticalSpace(8),
                   Center(
                     child: ProfileImage(
-                      imageUrl: state.user?.photo,
+                      imageUrl: _viewModel.currentUser?.photo,
                       isEditable: true,
                     ),
                   ),
@@ -131,13 +133,13 @@ class EditProfileBody extends StatelessWidget {
                   ),
                   verticalSpace(24),
                   GenderSelection(
-                    selectedGender: state.user!.gender,
+                    selectedGender: _viewModel.currentUser?.gender,
                   ),
                   verticalSpace(24),
                   AppTextButton(
                     buttonText: AppLocalizations.of(context)!.update,
                     onPressed: () {
-                      _viewModel.editProfile();
+                      _viewModel.doAction(const EditProfileButtonAction());
                     },
                     textStyle: AppTextStyles.font16WeightMedium.copyWith(
                       color: AppColors.kWhiteBase,

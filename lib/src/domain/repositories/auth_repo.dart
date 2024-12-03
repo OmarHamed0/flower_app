@@ -15,5 +15,6 @@ abstract class AuthRepository {
   Future<ApiResult<void>> logOut();
   Future<ApiResult<UserEntity>> editProfile(EditProfileModel user);
   // Future<ApiResult<void>> uploadPhoto(File path);
-  Future<ApiResult<ResetPasswordEntity>> resetPassword(String oldPassword,String newPassword);
+  Future<ApiResult<ResetPasswordEntity>> resetPassword(
+      String oldPassword, String newPassword);
 }

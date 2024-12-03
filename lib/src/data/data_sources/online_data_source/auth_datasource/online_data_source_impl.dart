@@ -111,7 +111,8 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
   // }
 
   @override
-  Future<ResetPasswordResponseModel> resetPassword(String token, ResetPasswordRequestModel resetPasswordRequestModel) async{
+  Future<ResetPasswordResponseModel> resetPassword(
+      String token, ResetPasswordRequestModel resetPasswordRequestModel) async {
     return await _apiServices.resetPassword(token, resetPasswordRequestModel);
   }
 }

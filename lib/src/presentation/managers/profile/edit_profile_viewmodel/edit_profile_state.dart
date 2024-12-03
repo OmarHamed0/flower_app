@@ -33,3 +33,12 @@ class EditProfileSuccessState extends EditProfileState {
 class EditProfileLoadingState extends EditProfileState {
   const EditProfileLoadingState();
 }
+
+class PopLoadingDialogState extends EditProfileState {}
+
+class ValidateColorButtonState extends EditProfileState {
+  final bool validate;
+  const ValidateColorButtonState({
+    required this.validate,
+  });
+}

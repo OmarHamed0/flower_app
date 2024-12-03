@@ -13,6 +13,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../flower_app.dart';
+import '../../managers/profile/profile_viewmodel/profile_actions.dart';
 import '../../managers/profile/profile_viewmodel/profile_screen_viewmodel.dart';
 import 'guest_profile_screen.dart';
 
@@ -37,7 +38,7 @@ class MainProfileBody extends StatelessWidget {
           builder: (context, state) {
             final _viewModel = context.read<ProfileScreenViewModel>();
             if (state is ProfileScreenLoading) {
-              _viewModel.getUserData();
+              _viewModel.doAction(GetUserDataProfileAction());
               return const Center(
                 child: CircularProgressIndicator(),
               );
@@ -74,9 +75,15 @@ class MainProfileBody extends StatelessWidget {
                   verticalSpace(16),
                   const Divider(),
                   verticalSpace(16),
-                  ProfileRowItem(
-                    title: AppLocalizations.of(context)!.changePassword,
-                    icon: AppIcons.notificationIcon,
+                  InkWell(
+                    onTap: () {
+                      navKey.currentState!
+                          .pushNamed(PageRouteName.resetPassword);
+                    },
+                    child: ProfileRowItem(
+                      title: AppLocalizations.of(context)!.changePassword,
+                      icon: AppIcons.notificationIcon,
+                    ),
                   ),
                   verticalSpace(16),
                   ProfileRowItem(
@@ -99,7 +106,9 @@ class MainProfileBody extends StatelessWidget {
                         title: AppLocalizations.of(context)!.logOut,
                         desc: AppLocalizations.of(context)!.confirmLogout,
                         onOk: () {
-                          context.read<ProfileScreenViewModel>().logOut();
+                          context
+                              .read<ProfileScreenViewModel>()
+                              .doAction(const LogOutProfileAction());
                         },
                         dialogType: DialogType.warning,
                         onCancel: () {},

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/src/domain/entities/auth/user_entity.dart';
+import 'package:flower_app/src/presentation/managers/profile/profile_viewmodel/profile_actions.dart';
 import 'package:flower_app/src/presentation/managers/profile/profile_viewmodel/profile_screen_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -23,7 +24,16 @@ class ProfileScreenViewModel extends Cubit<ProfileScreenState> {
     image = value;
   }
 
-  void getUserData() async {
+  void doAction(ProfileAction action) {
+    switch (action) {
+      case GetUserDataProfileAction():
+        _getUserData();
+      case LogOutProfileAction():
+        _logOut();
+    }
+  }
+
+  void _getUserData() async {
     emit(ProfileScreenLoading());
 
     var result = await _profileUseCase.getUserData();
@@ -42,7 +52,7 @@ class ProfileScreenViewModel extends Cubit<ProfileScreenState> {
     }
   }
 
-  void logOut() async {
+  void _logOut() async {
     var result = await _profileUseCase.logOut();
     switch (result) {
       case Success<void>():

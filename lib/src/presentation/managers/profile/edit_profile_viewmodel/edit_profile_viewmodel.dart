@@ -8,6 +8,7 @@ import '../../../../../common/api_result.dart';
 import '../../../../data/api/core/error/error_handler.dart';
 import '../../../../domain/entities/auth/edit_profile_model.dart';
 import '../../../../domain/use_cases/profile_usecase/profile_usecase.dart';
+import 'edit_profile_actions.dart';
 
 @injectable
 class EditProfileViewModel extends Cubit<EditProfileState> {
@@ -20,27 +21,28 @@ class EditProfileViewModel extends Cubit<EditProfileState> {
   TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  UserEntity? currentUser;
+  void doAction(EditProfileAction action) {
+    switch (action) {
+      case EditProfileButtonAction():
+        _editProfile();
+        break;
+      case GetUserDataAction():
+        _getUserData();
+    }
+  }
 
-  void getUserData() async {
+  void _getUserData() async {
     var result = await _profileUseCase.getUserData();
 
     if (result is Success<UserEntity>) {
       final user = result.data;
-      if (user != null) {
-        // Ensure that user is not null
-        firstNameController.value =
-            TextEditingValue(text: user.firstName ?? '');
-        lastNameController.value = TextEditingValue(
-            text:
-                user.lastName ?? ''); // Set default value if last name is null
-        emailController.value = TextEditingValue(
-            text: user.email ?? ''); // Default to empty if email is null
-        phoneController.value = TextEditingValue(
-            text: user.phone ?? ''); // Default to empty if phone is null
-        emit(EditProfileLoaded(user: user));
-      } else {
-        emit(const EditProfileError('User data is null'));
-      }
+      firstNameController.value = TextEditingValue(text: user?.firstName ?? '');
+      lastNameController.value = TextEditingValue(text: user?.lastName ?? '');
+      emailController.value = TextEditingValue(text: user?.email ?? '');
+      phoneController.value = TextEditingValue(text: user?.phone ?? '');
+      currentUser = user;
+      emit(EditProfileLoaded(user: user));
     } else if (result is Failures<UserEntity>) {
       final error = ErrorHandler.fromException(result.exception);
       emit(EditProfileError(error.errorMassage));
@@ -56,7 +58,7 @@ class EditProfileViewModel extends Cubit<EditProfileState> {
     return super.close();
   }
 
-  void editProfile() async {
+  void _editProfile() async {
     if (isClosed) return;
     // emit(const EditProfileLoadingState());
     final user = EditProfileModel(

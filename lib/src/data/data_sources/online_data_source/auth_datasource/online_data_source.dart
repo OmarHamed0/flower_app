@@ -22,6 +22,6 @@ abstract class AuthOnlineDataSource {
 
   Future<UserModelDTO> editProfile(EditProfileRequest body);
 
-  Future<ResetPasswordResponseModel> resetPassword(String token,ResetPasswordRequestModel resetPasswordRequestModel);
-
+  Future<ResetPasswordResponseModel> resetPassword(
+      String token, ResetPasswordRequestModel resetPasswordRequestModel);
 }
