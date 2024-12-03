@@ -40,9 +40,6 @@ class Cart {
   final String? createdAt;
   @JsonKey(name: "updatedAt")
   final String? updatedAt;
-  @JsonKey(name: "__v")
-  final int? _V;
-
   Cart ({
     this.Id,
     this.user,
@@ -50,7 +47,6 @@ class Cart {
     this.totalPrice,
     this.createdAt,
     this.updatedAt,
-    this._V,
   });
 
   factory Cart.fromJson(Map<String, dynamic> json) {
