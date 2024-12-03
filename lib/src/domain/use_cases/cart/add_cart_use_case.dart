@@ -9,7 +9,7 @@ import '../../entities/cart/cart_entity.dart';
 class AddCartUseCase {
   final CartRepo cartRepo;
   AddCartUseCase({required this.cartRepo});
-  Future<ApiResult<CartEntity>> invoke(
+  Future<ApiResult<CartEntity>>invoke(
       {required AddCartRequest addCartRequest}) async {
     return await cartRepo.addCart(addCartRequest: addCartRequest);
   }
