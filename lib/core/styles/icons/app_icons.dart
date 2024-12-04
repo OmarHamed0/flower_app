@@ -13,4 +13,6 @@ class AppIcons {
   static const String localeIcon = '$_rootIcons/local_icon.png';
   static const String noProfilePhoto =
       '$_rootIcons/man-user-circle-black-icon.png';
+  static const String resetPassword =
+      '$_rootIcons/resey_password_icon.png';
 }
