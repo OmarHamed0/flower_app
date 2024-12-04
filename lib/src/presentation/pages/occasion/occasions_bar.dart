@@ -6,10 +6,15 @@ import 'package:flower_app/src/presentation/managers/occasion/occasions_actions.
 import 'package:flower_app/src/presentation/managers/occasion/occasions_view_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class OccasionsBar extends StatelessWidget {
+class OccasionsBar extends StatefulWidget {
   final List<String?> occasions;
   const OccasionsBar({super.key, required this.occasions});
 
+  @override
+  State<OccasionsBar> createState() => _OccasionsBarState();
+}
+
+class _OccasionsBarState extends State<OccasionsBar> {
   Widget build(BuildContext context) {
     final viewModel = context.read<OccasionViewModel>();
 
@@ -18,9 +23,13 @@ class OccasionsBar extends StatelessWidget {
       child: BlocBuilder<OccasionViewModel, OccasionsStates>(
         builder: (context, state) {
           int selectedIndex = viewModel.selectedIndex;
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            viewModel.scrollToIndex(selectedIndex);
+          });
           return ListView.builder(
+            controller: viewModel.scrollController,
             scrollDirection: Axis.horizontal,
-            itemCount: occasions.length,
+            itemCount: widget.occasions.length,
             itemBuilder: (context, index) {
               bool isSelected = selectedIndex == index;
               return _buildCategoryItem(index, isSelected, viewModel);
@@ -44,7 +53,7 @@ class OccasionsBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              occasions[index] ?? "",
+              widget.occasions[index] ?? "",
               style: TextStyle(
                 color: isSelected ? AppColors.kBaseColor : AppColors.kWhite70,
                 fontWeight: isSelected ? AppFontWeights.bold : AppFontWeights.normal,
