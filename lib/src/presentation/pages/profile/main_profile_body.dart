@@ -43,88 +43,89 @@ class MainProfileBody extends StatelessWidget {
                 child: CircularProgressIndicator(),
               );
             } else if (state is ProfileScreenLoaded) {
-              return Column(
-                children: [
-                  const CustomAppBarProfile(),
-                  Center(
-                    child: ProfileImage(
-                      imageUrl: state.user?.photo,
+              return SingleChildScrollView(
+                child: Column(
+                  children: [
+                    const CustomAppBarProfile(),
+                    Center(
+                      child: ProfileImage(
+                        imageUrl: state.user?.photo,
+                      ),
                     ),
-                  ),
-                  verticalSpace(8),
-                  NameAndEmail(
-                    name: state.user?.firstName,
-                    email: state.user?.email,
-                    onEdit: onEdit,
-                  ),
-                  verticalSpace(32),
-                  ProfileRowItem(
-                    title: AppLocalizations.of(context)!.myOrders,
-                    icon: AppIcons.orderIcon,
-                  ),
-                  verticalSpace(16),
-                  ProfileRowItem(
-                    title: AppLocalizations.of(context)!.savedAddresses,
-                    icon: AppIcons.locationIcon,
-                  ),
-                  verticalSpace(16),
-                  const Divider(),
-                  verticalSpace(16),
-                  ProfileRowItem(
-                      title: AppLocalizations.of(context)!.notification),
-                  verticalSpace(16),
-                  const Divider(),
-                  verticalSpace(16),
-                  InkWell(
-                    onTap: () {
-                      navKey.currentState!
-                          .pushNamed(PageRouteName.resetPassword);
-                    },
-                    child: ProfileRowItem(
-                      title: AppLocalizations.of(context)!.changePassword,
-                      icon: AppIcons.resetPasswordIcon,
+                    verticalSpace(8),
+                    NameAndEmail(
+                      name: state.user?.firstName,
+                      email: state.user?.email,
+                      onEdit: onEdit,
                     ),
-                  ),
-                  verticalSpace(16),
-                  ProfileRowItem(
-                    title: AppLocalizations.of(context)!.language,
-                    icon: AppIcons.localeIcon,
-                  ),
-                  verticalSpace(16),
-                  ProfileRowItem(title: AppLocalizations.of(context)!.aboutUs),
-                  verticalSpace(16),
-                  ProfileRowItem(
-                      title: AppLocalizations.of(context)!.termsAndConditions),
-                  verticalSpace(16),
-                  const Divider(),
-                  verticalSpace(16),
-                  ProfileRowItem(
-                    title: AppLocalizations.of(context)!.logout,
-                    onTap: () {
-                      showAwesomeDialog(
-                        context,
-                        title: AppLocalizations.of(context)!.logOut,
-                        desc: AppLocalizations.of(context)!.confirmLogout,
-                        onOk: () {
-                          context
-                              .read<ProfileScreenViewModel>()
-                              .doAction(const LogOutProfileAction());
-                        },
-                        dialogType: DialogType.warning,
-                        onCancel: () {},
-                      );
-                    },
-                  ),
-                  Spacer(),
-                  const Text(
-                    'v 6.3.0 - (446)',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 12,
+                    verticalSpace(32),
+                    ProfileRowItem(
+                      title: AppLocalizations.of(context)!.myOrders,
+                      icon: AppIcons.orderIcon,
                     ),
-                  ),
-                  verticalSpace(24),
-                ],
+                    verticalSpace(16),
+                    ProfileRowItem(
+                      title: AppLocalizations.of(context)!.savedAddresses,
+                      icon: AppIcons.locationIcon,
+                    ),
+                    verticalSpace(16),
+                    const Divider(),
+                    verticalSpace(16),
+                    ProfileRowItem(
+                        title: AppLocalizations.of(context)!.notification),
+                    verticalSpace(16),
+                    const Divider(),
+                    verticalSpace(16),
+                    InkWell(
+                      onTap: () {
+                        navKey.currentState!
+                            .pushNamed(PageRouteName.resetPassword);
+                      },
+                      child: ProfileRowItem(
+                        title: AppLocalizations.of(context)!.changePassword,
+                        icon: AppIcons.resetPassword,
+                      ),
+                    ),
+                    verticalSpace(16),
+                    ProfileRowItem(
+                      title: AppLocalizations.of(context)!.language,
+                      icon: AppIcons.localeIcon,
+                    ),
+                    verticalSpace(16),
+                    ProfileRowItem(title: AppLocalizations.of(context)!.aboutUs),
+                    verticalSpace(16),
+                    ProfileRowItem(
+                        title: AppLocalizations.of(context)!.termsAndConditions),
+                    verticalSpace(16),
+                    const Divider(),
+                    verticalSpace(16),
+                    ProfileRowItem(
+                      title: AppLocalizations.of(context)!.logout,
+                      onTap: () {
+                        showAwesomeDialog(
+                          context,
+                          title: AppLocalizations.of(context)!.logOut,
+                          desc: AppLocalizations.of(context)!.confirmLogout,
+                          onOk: () {
+                            context
+                                .read<ProfileScreenViewModel>()
+                                .doAction(const LogOutProfileAction());
+                          },
+                          dialogType: DialogType.warning,
+                          onCancel: () {},
+                        );
+                      },
+                    ),
+                    const Text(
+                      'v 6.3.0 - (446)',
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 12,
+                      ),
+                    ),
+                    verticalSpace(24),
+                  ],
+                ),
               );
             } else if (state is ProfileGuestScreenLoadedState) {
               return GuestProfile(user: state.user);
