@@ -17,53 +17,55 @@ class GuestProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-      child: Column(
-        children: [
-          const CustomAppBarProfile(),
-          Center(
-            child: ProfileImage(),
-          ),
-          verticalSpace(16),
-          NameAndEmail(
-            name: user?.firstName ?? 'Guest',
-            email: user?.email ?? '',
-          ),
-          verticalSpace(16),
-          const Divider(),
-          verticalSpace(16),
-          ProfileRowItem(title: AppLocalizations.of(context)!.notification),
-          verticalSpace(16),
-          const Divider(),
-          verticalSpace(16),
-          ProfileRowItem(
-            title: AppLocalizations.of(context)!.language,
-            icon: AppIcons.localeIcon,
-          ),
-          verticalSpace(16),
-          ProfileRowItem(title: AppLocalizations.of(context)!.aboutUs),
-          verticalSpace(16),
-          ProfileRowItem(
-              title: AppLocalizations.of(context)!.termsAndConditions),
-          verticalSpace(16),
-          const Divider(),
-          verticalSpace(16),
-          ProfileRowItem(
-            title: AppLocalizations.of(context)!.login,
-            onTap: () {
-              navKey.currentState!.pushNamedAndRemoveUntil(
-                  PageRouteName.signIn, (route) => false);
-            },
-          ),
-          Spacer(),
-          const Text(
-            'v 6.3.0 - (446)',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 12,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            const CustomAppBarProfile(),
+            const Center(
+              child: ProfileImage(),
             ),
-          ),
-          verticalSpace(24),
-        ],
+            verticalSpace(16),
+            NameAndEmail(
+              name: user?.firstName ?? 'Guest',
+              email: user?.email ?? '',
+            ),
+            verticalSpace(16),
+            const Divider(),
+            verticalSpace(16),
+            ProfileRowItem(title: AppLocalizations.of(context)!.notification),
+            verticalSpace(16),
+            const Divider(),
+            verticalSpace(16),
+            ProfileRowItem(
+              title: AppLocalizations.of(context)!.language,
+              icon: AppIcons.localeIcon,
+            ),
+            verticalSpace(16),
+            ProfileRowItem(title: AppLocalizations.of(context)!.aboutUs),
+            verticalSpace(16),
+            ProfileRowItem(
+                title: AppLocalizations.of(context)!.termsAndConditions),
+            verticalSpace(16),
+            const Divider(),
+            verticalSpace(16),
+            ProfileRowItem(
+              title: AppLocalizations.of(context)!.login,
+              onTap: () {
+                navKey.currentState!.pushNamedAndRemoveUntil(
+                    PageRouteName.signIn, (route) => false);
+              },
+            ),
+            Spacer(),
+            const Text(
+              'v 6.3.0 - (446)',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 12,
+              ),
+            ),
+            verticalSpace(24),
+          ],
+        ),
       ),
     );
   }

@@ -20,12 +20,12 @@ class OccasionsRow extends StatelessWidget {
             margin: const EdgeInsets.only(right: 16),
             child: HomeProductItem(
               onPressed: () {
-                navKey.currentState!.push(
-                  MaterialPageRoute(
-                    builder: (context) =>
-                        ProductDetails(productId: occasions?.id ?? ''),
-                  ),
-                );
+                // navKey.currentState!.push(
+                //   MaterialPageRoute(
+                //     builder: (context) =>
+                //         ProductDetails(productId: occasions?.id ?? ''),
+                //   ),
+                // );
               },
               imageUrl: occasions?.image ?? "",
               title: occasions?.name ?? "",

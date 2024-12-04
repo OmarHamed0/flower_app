@@ -29,29 +29,27 @@ class OccasionScreen extends StatelessWidget {
         ),
         BlocProvider<ProductCubit>(create: (_) => productCubit),
       ],
-      child: SafeArea(
-        child: Scaffold(
-          appBar: AppBar(
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back_ios_new),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            title: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                verticalSpace(16),
-                Text(AppLocalizations.of(context)!.occasion),
-                Text(AppLocalizations.of(context)!.bloomWithOurExquisiteBestSellers, style: AppTextStyles.font13White70Weight500,),
-              ],
-            ),
-          ),
-          body: BlocBuilder<OccasionViewModel, OccasionsStates>(
-            builder: (context, state) {
-              return _handelCurrentScreenView(state);
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios_new),
+            onPressed: () {
+              Navigator.of(context).pop();
             },
           ),
+          title: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              verticalSpace(16),
+              Text(AppLocalizations.of(context)!.occasion),
+              Text(AppLocalizations.of(context)!.bloomWithOurExquisiteBestSellers, style: AppTextStyles.font13White70Weight500,),
+            ],
+          ),
+        ),
+        body: BlocBuilder<OccasionViewModel, OccasionsStates>(
+          builder: (context, state) {
+            return _handelCurrentScreenView(state);
+          },
         ),
       ),
     );
