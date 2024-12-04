@@ -4,8 +4,8 @@ class SignInInitialState extends SignInStates{}
 class SignInLoadingState extends SignInStates{}
 class SignInSuccessState extends SignInStates{}
 class SignInFailedState extends SignInStates{
-  String? message;
-  SignInFailedState(this.message);
+  Exception ? exception;
+  SignInFailedState(this.exception);
 }
 class PopDialogState extends SignInStates{}
 class VisiblePasswordState extends SignInStates{}

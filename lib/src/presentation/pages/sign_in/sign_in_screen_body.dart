@@ -13,8 +13,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../common/awesome_dialoge.dart';
+import '../../../../common/common.dart';
 import '../../../../config/routes/page_route_name.dart';
 import '../../../../flower_app.dart';
+import '../../../data/api/core/error/error_handler.dart';
 
 class SignInScreenBody extends StatelessWidget {
   const SignInScreenBody({super.key});
@@ -33,9 +35,10 @@ class SignInScreenBody extends StatelessWidget {
                 PageRouteName.baseScreen, (route) => false);
           }, dialogType: DialogType.success);
         } else if (state is SignInFailedState) {
+          final errorHandler=ErrorHandler.fromException(state.exception!, AppLocalizations.of(context)!);
           showAwesomeDialog(context,
               title: 'Error',
-              desc: state.message!,
+              desc: errorHandler.errorMassage,
               onOk: () {},
               dialogType: DialogType.error);
         } else if (state is PopDialogState) {

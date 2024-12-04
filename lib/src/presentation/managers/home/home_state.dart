@@ -24,8 +24,8 @@ class HomeStateSuccess extends HomeState {
 }
 
 class HomeStateFailure extends HomeState {
-  final String message;
-  const HomeStateFailure(this.message);
+  final Exception exception;
+  const HomeStateFailure(this.exception);
 }
 
 class PopDialogState extends HomeState {}

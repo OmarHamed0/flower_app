@@ -1,4 +1,15 @@
 {
+  "connectionTimeout" : "Connection timed out. Please check your internet connection and try again.",
+  "sendTimeout" : "Sending data timed out. Please try again later.",
+  "receiveTimeout" : "Receiving data timed out. Please check your connection.",
+  "badCertificate" : "The server's certificate is not trusted. Please check your network security.",
+  "connectionError" : "Connection failed. Please check your network connection.",
+  "unknown" : "An unknown error occurred. Please try again",
+  "badRequest" : "Invalid request. Please check the data and try again.",
+  "unauthorized" : "Unauthorized access. Please log in and try again.",
+  "conflict" : "conflict detected. The resource already exists or conflicts with the current state.",
+  "notFount" : "Resource not found. The requested item does not exist",
+  "internalServerError" : "Internal server error. Please try again later",
   "@@locale": "en",
   "helloWorld": "hello World",
   "login": "Login",
@@ -73,5 +84,7 @@
     "cart": "Cart",
     "items": "items",
      "yourCartIsEmpty":"Your cart is empty",
-      "addCart": "Add Cart"
+      "addCart": "Add Cart",
+  "chooseLanguage": "Choose Language",
+  "arabic": "Arabic"
 }

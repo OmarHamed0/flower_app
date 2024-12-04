@@ -9,8 +9,8 @@ class LoadedState extends OccasionsStates{
   LoadedState({required this.occasions});
 }
 class ErrorState extends OccasionsStates{
-  final String message;
-  ErrorState({required this.message});
+  final Exception exception;
+  ErrorState({required this.exception});
 }
 
 class ChangeOccasionState extends OccasionsStates{

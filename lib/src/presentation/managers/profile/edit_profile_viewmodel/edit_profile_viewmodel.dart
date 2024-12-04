@@ -44,8 +44,7 @@ class EditProfileViewModel extends Cubit<EditProfileState> {
       currentUser = user;
       emit(EditProfileLoaded(user: user));
     } else if (result is Failures<UserEntity>) {
-      final error = ErrorHandler.fromException(result.exception);
-      emit(EditProfileError(error.errorMassage));
+      emit(EditProfileError(result.exception));
     }
   }
 
@@ -72,8 +71,7 @@ class EditProfileViewModel extends Cubit<EditProfileState> {
     if (result is Success<UserEntity>) {
       emit(const EditProfileSuccessState());
     } else if (result is Failures<UserEntity>) {
-      final error = ErrorHandler.fromException(result.exception);
-      emit(EditProfileError(error.errorMassage));
+      emit(EditProfileError(result.exception));
     }
   }
 }
