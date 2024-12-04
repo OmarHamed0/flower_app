@@ -82,7 +82,7 @@ class MainProfileBody extends StatelessWidget {
                     },
                     child: ProfileRowItem(
                       title: AppLocalizations.of(context)!.changePassword,
-                      icon: AppIcons.notificationIcon,
+                      icon: AppIcons.resetPasswordIcon,
                     ),
                   ),
                   verticalSpace(16),

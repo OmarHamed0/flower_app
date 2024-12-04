@@ -1,4 +1,4 @@
-import 'app_regexp.dart';
+import 'app_regex.dart';
 
 String? validateName(String? name) {
   if (name!.isEmpty || !AppRegExp.isNameValid(name)) {

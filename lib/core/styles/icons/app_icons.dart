@@ -11,6 +11,7 @@ class AppIcons {
   static const String penIcon = '$_rootIcons/pen.svg';
   static const String orderIcon = '$_rootIcons/order_icon.png';
   static const String localeIcon = '$_rootIcons/local_icon.png';
+  static const String resetPasswordIcon = '$_rootIcons/resey_password_icon.png';
   static const String noProfilePhoto =
       '$_rootIcons/man-user-circle-black-icon.png';
 }
