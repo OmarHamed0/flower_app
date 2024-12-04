@@ -12,7 +12,8 @@ import '../../managers/occasion/occasions_actions.dart';
 
 
 class OccasionScreen extends StatelessWidget {
-  OccasionScreen({super.key});
+  int? index;
+  OccasionScreen({super.key,  this.index});
 
   final OccasionViewModel occasionViewModel = getIt.get<OccasionViewModel>();
   final ProductCubit productCubit = getIt.get<ProductCubit>();
@@ -24,6 +25,7 @@ class OccasionScreen extends StatelessWidget {
         BlocProvider<OccasionViewModel>(
             create: (_){
               occasionViewModel.doAction(GetOccasionsAction());
+              occasionViewModel.selectedIndex = index??0;
               return occasionViewModel;
             }
         ),

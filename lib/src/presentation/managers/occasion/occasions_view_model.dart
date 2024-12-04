@@ -7,10 +7,24 @@ import 'package:flower_app/src/presentation/managers/occasion/occasions_actions.
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../../common/common.dart';
+
 @injectable
 class OccasionViewModel extends Cubit<OccasionsStates>{
   final OccasionUseCase _occasionUseCase;
+
+  ScrollController scrollController = ScrollController();
   OccasionViewModel(this._occasionUseCase): super(InitialState());
+
+  void scrollToIndex(int index) {
+    double position = index * 90.0;
+    scrollController.animateTo(
+      position,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
   int selectedIndex = 0;
   List<OccasionsEntity> occasionsList = [];
   void _getOccasions() async{

@@ -47,7 +47,7 @@ class OccasionBody extends StatelessWidget {
                     productQueryParameters: ProductQueryParameters(
                         productEndPoints: ProductEndPoints.products,
                         productQuery: ProductQuery.occasion,
-                        productId: viewModel.occasionsList.first.id),
+                        productId: viewModel.occasionsList[viewModel.selectedIndex].id),
                   ),
                 );
                 return const ProductView();
