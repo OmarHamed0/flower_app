@@ -11,8 +11,8 @@ class Assets {
   static const String assetsAnimationsError = 'assets/animations/error.json';
   static const String assetsAnimationsSuccess =
       'assets/animations/success.json';
-  static const String fontsInterVariableFontOpsz,
-      wght = 'assets/fonts/Inter-VariableFont_opsz,wght.ttf';
+  // static const String fontsInterVariableFontOpsz,
+  //     wght = 'assets/fonts/Inter-VariableFont_opsz,wght.ttf';
   static const String iconsArrowDownIcon = 'assets/icons/arrow_down_icon.png';
   static const String iconsCardIcon = 'assets/icons/card_icon.png';
   static const String iconsFlowerIcon = 'assets/icons/flower_icon.png';

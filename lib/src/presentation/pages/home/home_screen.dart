@@ -75,7 +75,11 @@ class HomeScreen extends StatelessWidget {
                         verticalSpace(24),
                         ViewAllRow(
                           title: AppLocalizations.of(context)!.occasions,
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context).pushNamed(
+                                PageRouteName.occasions,
+                            );
+                          },
                         ),
                         verticalSpace(16),
                         OccasionsRow(
