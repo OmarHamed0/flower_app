@@ -9,4 +9,5 @@ class PageRouteName {
   static const String besetSellerScreen="besetScreen";
   static const String occasions = "occasions";
   static const String resetPassword = "resetPassword";
+  static const String checkout = "checkout";
 }

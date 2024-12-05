@@ -8,6 +8,7 @@ import 'package:flower_app/src/presentation/managers/home/home_viewmodel.dart';
 import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
 import 'package:flower_app/src/presentation/managers/product/product_event.dart';
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
+import 'package:flower_app/src/presentation/pages/checkout/checkout_screen.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/occasion/occasion_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
@@ -85,6 +86,9 @@ class AppRoute {
       case PageRouteName.resetPassword:
         return _handelMaterialPageRoute(
             settings: settings, widget: ResetPasswordScreen());
+      case PageRouteName.checkout:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: CheckoutScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

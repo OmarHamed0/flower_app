@@ -73,5 +73,6 @@
     "cart": "Cart",
     "items": "items",
      "yourCartIsEmpty":"Your cart is empty",
-      "addCart": "Add Cart"
+      "addCart": "Add Cart",
+     "checkout": "Checkout"
 }
