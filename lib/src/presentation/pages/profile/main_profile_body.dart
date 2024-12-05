@@ -92,10 +92,12 @@ class MainProfileBody extends StatelessWidget {
                       icon: AppIcons.localeIcon,
                     ),
                     verticalSpace(16),
-                    ProfileRowItem(title: AppLocalizations.of(context)!.aboutUs),
+                    ProfileRowItem(
+                        title: AppLocalizations.of(context)!.aboutUs),
                     verticalSpace(16),
                     ProfileRowItem(
-                        title: AppLocalizations.of(context)!.termsAndConditions),
+                        title:
+                            AppLocalizations.of(context)!.termsAndConditions),
                     verticalSpace(16),
                     const Divider(),
                     verticalSpace(16),
