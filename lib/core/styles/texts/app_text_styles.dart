@@ -57,8 +57,6 @@ class AppTextStyles{
     color: AppColors.kBlackBase,
   );
 
-
-
   static TextStyle font12BlackBase600Weight = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w600,
@@ -115,6 +113,17 @@ class AppTextStyles{
     fontSize: 18.sp,
     fontWeight: FontWeight.w500,
     color: AppColors.kGray,
+  );
+
+  static TextStyle font18BlackMedium = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: AppFontWeights.medium,
+    color: AppColors.kBlack,
+  );
+  static TextStyle font18BaseColorSemiBold = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: AppFontWeights.semiBold,
+    color: AppColors.kBaseColor,
   );
 
 }
