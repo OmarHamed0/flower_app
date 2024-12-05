@@ -18,7 +18,7 @@ class CheckoutScreenBody extends StatelessWidget {
             verticalSpace(24),
             _deliveryTimeScheduleRow(context),
             verticalSpace(16),
-            _arriveTimeRow(),
+            _arriveTimeRow(context),
             verticalSpace(16),
             _deliveryAddress(context),
             verticalSpace(16),
@@ -45,7 +45,7 @@ class CheckoutScreenBody extends StatelessWidget {
     );
   }
 
-  Widget _arriveTimeRow() {
+  Widget _arriveTimeRow(BuildContext context) {
     return Row(
       children: [
         const Icon(
@@ -54,7 +54,7 @@ class CheckoutScreenBody extends StatelessWidget {
         ),
         horizontalSpace(4),
         Text(
-          'Instant,',
+          AppLocalizations.of(context)!.schedule,
           style: AppTextStyles.font14BlackBase400Weight,
         ),
         horizontalSpace(4),
@@ -74,7 +74,7 @@ class CheckoutScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            "Delivery address",
+           AppLocalizations.of(context)!.deliveryTime,
             style: AppTextStyles.font18BlackMedium,
           ),
           verticalSpace(16),
