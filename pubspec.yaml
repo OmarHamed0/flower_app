@@ -40,6 +40,9 @@ dependencies:
   carousel_slider:
   cached_network_image:
   dynamic_height_grid_view:
+  hive_flutter:
+  hive: ^2.2.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -48,7 +51,7 @@ dev_dependencies:
   build_runner:
   retrofit_generator:
   json_serializable:
-
+  hive_generator:
   flutter_lints: ^3.0.0
 
 

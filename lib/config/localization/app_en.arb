@@ -73,5 +73,9 @@
     "cart": "Cart",
     "items": "items",
      "yourCartIsEmpty":"Your cart is empty",
-      "addCart": "Add Cart"
+      "addCart": "Add Cart",
+  "addressDeleted": "Address deleted successfully",
+  "noAddressFound": "No Addresses Found",
+  "addNewAddress": "Add a new address to get started!",
+  "addAddress": "Add new address"
 }

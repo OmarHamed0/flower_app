@@ -74,7 +74,11 @@
   "cart": "سلة",
   "items": "عنصر",
   "yourCartIsEmpty": "سلة التسوق الخاصة بك فارغة",
-  "addCart": "إضافة إلى السلة"
+  "addCart": "إضافة إلى السلة",
+  "addressDeleted": "تم حذف العنوان بنجاح",
+  "noAddressFound": "لم يتم العثور على عناوين",
+  "addNewAddress": "أضف عنوانًا جديدًا للبدء!",
+    "addAddress": "أضف عنوانًا جديدًا"
 
 
 }

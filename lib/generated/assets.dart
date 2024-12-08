@@ -20,10 +20,10 @@ class Assets {
       'assets/animations/success.json';
   static const String fontsInterVariableFontOpszwght =
       'assets/fonts/Inter-VariableFont_opsz,wght.ttf';
-  // static const String fontsInterVariableFontOpsz,
-  //     wght = 'assets/fonts/Inter-VariableFont_opsz,wght.ttf';
   static const String iconsArrowDownIcon = 'assets/icons/arrow_down_icon.png';
   static const String iconsCardIcon = 'assets/icons/card_icon.png';
+  static const String iconsDeleteIcon = 'assets/icons/delete_icon.png';
+  static const String iconsEditIcon = 'assets/icons/edit_icon.png';
   static const String iconsFlowerIcon = 'assets/icons/flower_icon.png';
   static const String iconsGiftIcon = 'assets/icons/gift_icon.png';
   static const String iconsIconDelete4 = 'assets/icons/icon_delete4.png';
