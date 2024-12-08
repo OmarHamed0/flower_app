@@ -78,7 +78,13 @@
   "addressDeleted": "تم حذف العنوان بنجاح",
   "noAddressFound": "لم يتم العثور على عناوين",
   "addNewAddress": "أضف عنوانًا جديدًا للبدء!",
-    "addAddress": "أضف عنوانًا جديدًا"
+    "addAddress": "أضف عنوانًا جديدًا",
+  "addressAddedSuccessfully": "تمت إضافة العنوان بنجاح",
+  "street": "شارع",
+  "enterYourStreet": "أدخل شارعك",
+  "city": "مدينة",
+  "enterYourCity": "ادخل مدينتك"
+
 
 
 }

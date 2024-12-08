@@ -1,3 +1,5 @@
+import 'package:flower_app/src/data/models/address/address_request_dto.dart';
+
 class AddressModel {
   final String? street;
   final String? phone;
@@ -10,4 +12,12 @@ class AddressModel {
     this.city,
     this.id,
   });
+
+  AddressRequestDTO toDto() {
+    return AddressRequestDTO(
+      street: street!,
+      city: city!,
+      phone: phone!,
+    );
+  }
 }

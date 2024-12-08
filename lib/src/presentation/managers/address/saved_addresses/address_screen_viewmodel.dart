@@ -2,9 +2,9 @@ import 'package:bloc/bloc.dart';
 import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../common/api_result.dart';
-import '../../../domain/entities/address/address_model.dart';
-import '../../../domain/use_cases/address/address_usecase.dart';
+import '../../../../../common/api_result.dart';
+import '../../../../domain/entities/address/address_model.dart';
+import '../../../../domain/use_cases/address/address_usecase.dart';
 import 'address_screen_state.dart';
 
 @injectable

@@ -34,16 +34,27 @@ class AddressOfflineDataSourceImpl implements AddressOfflineDatasource {
 
   @override
   Future<void> saveCacheAddresses(AddressModel address) async {
-    final addressId = address.id;
     final Box<AddressHive> hiveBox = _hiveModule.addressBox;
 
-    final hiveAddress = AddressHive(
-      id: addressId,
-      street: address.street,
-      phone: address.phone,
-      city: address.city,
-    );
-    hiveBox.put(addressId, hiveAddress);
+    print('Address ID: ${address.id}');
+    // Ensure address ID is non-null
+    if (address.id == null) {
+      throw Exception('Address ID cannot be null');
+    }
+
+    final key = address.id.toString();
+
+    // Check if the address already exists
+    if (!hiveBox.containsKey(key)) {
+      final hiveAddress = AddressHive(
+        id: address.id,
+        street: address.street,
+        phone: address.phone,
+        city: address.city,
+      );
+
+      hiveBox.put(key, hiveAddress);
+    }
   }
 
   @override
@@ -61,5 +72,11 @@ class AddressOfflineDataSourceImpl implements AddressOfflineDatasource {
   Future<void> deleteAddress(String addressId) async {
     final Box<AddressHive> hiveBox = _hiveModule.addressBox;
     hiveBox.delete(addressId);
+  }
+
+  @override
+  Future<void> clearCache() async {
+    final Box<AddressHive> hiveBox = _hiveModule.addressBox;
+    await hiveBox.clear(); // Clear all cached addresses
   }
 }

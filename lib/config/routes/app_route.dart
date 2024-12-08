@@ -7,6 +7,7 @@ import 'package:flower_app/src/presentation/managers/categories/categories_view_
 import 'package:flower_app/src/presentation/managers/home/home_viewmodel.dart';
 import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
 import 'package:flower_app/src/presentation/managers/product/product_event.dart';
+import 'package:flower_app/src/presentation/pages/address/add_address_screen.dart';
 import 'package:flower_app/src/presentation/pages/address/saved_address_screen.dart';
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
@@ -66,6 +67,9 @@ class AppRoute {
       case PageRouteName.savedAddress:
         return _handelMaterialPageRoute(
             settings: settings, widget: SavedAddressScreen());
+      case PageRouteName.addAddress:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: AddAddressScreen());
       case PageRouteName.product:
         return _handelMaterialPageRoute(
             settings: settings, widget: const ProductView());

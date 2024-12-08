@@ -15,7 +15,7 @@ final getIt = GetIt.instance;
 void configureDependencies() async {
   getIt.init();
   getIt.registerSingletonAsync<Box<AddressHive>>(() async {
-    return await Hive.openBox<AddressHive>('saved_address');
+    return await Hive.openBox<AddressHive>('saved_address_v2');
   });
   await getIt.allReady();
 }

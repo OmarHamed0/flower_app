@@ -16,4 +16,8 @@ class AddressUsecase {
   Future<ApiResult<String?>> deleteAddress(String addressId) async {
     return await _addressRepository.deleteAddress(addressId);
   }
+
+  Future<ApiResult<String?>> addNewAddress(AddressModel addressModel) async {
+    return await _addressRepository.addNewAddress(addressModel);
+  }
 }

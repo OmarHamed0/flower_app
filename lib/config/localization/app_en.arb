@@ -77,5 +77,10 @@
   "addressDeleted": "Address deleted successfully",
   "noAddressFound": "No Addresses Found",
   "addNewAddress": "Add a new address to get started!",
-  "addAddress": "Add new address"
+  "addAddress": "Add new address",
+  "addressAddedSuccessfully": "Address added successfully",
+  "street": "Street",
+  "enterYourStreet": "Enter your Street",
+  "city": "City",
+    "enterYourCity": "Enter your City"
 }

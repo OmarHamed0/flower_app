@@ -7,6 +7,20 @@ String? validateName(String? name) {
   return null;
 }
 
+String? validateCity(String? city) {
+  if (city!.isEmpty || !AppRegExp.isNameValid(city)) {
+    return 'City is required';
+  }
+  return null;
+}
+
+String? validateStreet(String? street) {
+  if (street!.isEmpty || !AppRegExp.isNameValid(street)) {
+    return 'Street is required';
+  }
+  return null;
+}
+
 String? validateEmail(String? email) {
   if (email!.isEmpty || !AppRegExp.isEmailValid(email)) {
     return 'Email is required!';

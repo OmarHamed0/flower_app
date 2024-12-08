@@ -1,4 +1,5 @@
 import 'package:flower_app/src/data/api/api_services.dart';
+import 'package:flower_app/src/data/models/address/address_request_dto.dart';
 import 'package:flower_app/src/data/models/address/address_response_dto.dart';
 import 'package:injectable/injectable.dart';
 
@@ -19,6 +20,15 @@ class AddressOnlineDataSourceImpl implements AddressOnlineDatasource {
   Future<String?> deleteAddress(String token, String addressId) async {
     var tokenWithBearer = 'Bearer $token';
     var response = await _apiServices.deleteAddress(tokenWithBearer, addressId);
+    return response.message;
+  }
+
+  @override
+  Future<String?> addNewAddress(
+      String token, AddressRequestDTO addressRequestDTO) async {
+    var tokenWithBearer = 'Bearer $token';
+    var response = await _apiServices.addNewAddress(
+        tokenWithBearer, addressRequestDTO.toRequest());
     return response.message;
   }
 }

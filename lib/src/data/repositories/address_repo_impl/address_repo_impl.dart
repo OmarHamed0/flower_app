@@ -15,37 +15,19 @@ class AddressRepoImpl implements AddressRepository {
       this._addressOfflineDatasource, this._addressOnlineDatasource);
   @override
   Future<ApiResult<List<AddressModel>>> getSavedAddresses() async {
-    bool isAdded = await _addressOfflineDatasource.isAddressAdded();
-    if (!isAdded) {
-      try {
-        final cacheAddresses =
-            await _addressOfflineDatasource.getCacheAddresses();
-        return Success(data: cacheAddresses);
-      } catch (e) {
-        return Failures(exception: Exception(e));
-      }
-    } else {
-      return await executeApi<List<AddressModel>>(
-        apiCall: () async {
-          String? token = await _addressOfflineDatasource.getToken();
-          var response =
-              await _addressOnlineDatasource.getSavedAddresses(token!);
+    return await executeApi<List<AddressModel>>(
+      apiCall: () async {
+        String? token = await _addressOfflineDatasource.getToken();
+        var response = await _addressOnlineDatasource.getSavedAddresses(token!);
 
-          // Transform the DTO to Model
-          List<AddressModel> models = response.addresses
-                  ?.map((addressDto) => addressDto.toModel())
-                  .toList() ??
-              [];
+        List<AddressModel> models = response.addresses
+                ?.map((addressDto) => addressDto.toModel())
+                .toList() ??
+            [];
 
-          // Save to cache
-          for (var address in models) {
-            await _addressOfflineDatasource.saveCacheAddresses(address);
-          }
-
-          return models; // Return the list of AddressModel
-        },
-      );
-    }
+        return models;
+      },
+    );
   }
 
   @override
@@ -56,7 +38,18 @@ class AddressRepoImpl implements AddressRepository {
         var response =
             await _addressOnlineDatasource.deleteAddress(token!, addressId);
         await _addressOfflineDatasource.deleteAddress(addressId);
-        await _addressOfflineDatasource.setAddressAdded(true);
+        return response;
+      },
+    );
+  }
+
+  @override
+  Future<ApiResult<String?>> addNewAddress(AddressModel addressModel) async {
+    return executeApi<String?>(
+      apiCall: () async {
+        String? token = await _addressOfflineDatasource.getToken();
+        var response = await _addressOnlineDatasource.addNewAddress(
+            token!, addressModel.toDto());
         return response;
       },
     );

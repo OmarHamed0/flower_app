@@ -9,4 +9,5 @@ abstract interface class AddressOfflineDatasource {
   Future<bool> isAddressAdded();
   Future<void> setAddressAdded(bool isAdded);
   Future<void> deleteAddress(String addressId);
+  Future<void> clearCache();
 }

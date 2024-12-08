@@ -98,8 +98,10 @@ import '../src/domain/use_cases/profile_usecase/profile_usecase.dart' as _i346;
 import '../src/domain/use_cases/reset_password_use_case.dart' as _i448;
 import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
-import '../src/presentation/managers/address/address_screen_viewmodel.dart'
-    as _i598;
+import '../src/presentation/managers/address/add_address/add_address_screen_viewmodel.dart'
+    as _i309;
+import '../src/presentation/managers/address/saved_addresses/address_screen_viewmodel.dart'
+    as _i807;
 import '../src/presentation/managers/base_screen/base_screen_viewmodel.dart'
     as _i450;
 import '../src/presentation/managers/cart/cart_view_model.dart' as _i871;
@@ -207,8 +209,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i207.SignInUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i346.ProfileUseCase>(
         () => _i346.ProfileUseCase(gh<_i862.AuthRepository>()));
-    gh.factory<_i598.AddressScreenViewModel>(
-        () => _i598.AddressScreenViewModel(gh<_i811.AddressUsecase>()));
+    gh.factory<_i309.AddAddressScreenViewModel>(
+        () => _i309.AddAddressScreenViewModel(gh<_i811.AddressUsecase>()));
+    gh.factory<_i807.AddressScreenViewModel>(
+        () => _i807.AddressScreenViewModel(gh<_i811.AddressUsecase>()));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(

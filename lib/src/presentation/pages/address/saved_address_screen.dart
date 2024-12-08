@@ -3,12 +3,14 @@ import 'package:flower_app/common/awesome_dialoge.dart';
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/dependency_injection/di.dart';
-import 'package:flower_app/src/presentation/managers/address/address_screen_viewmodel.dart';
+import 'package:flower_app/flower_app.dart';
 import 'package:flower_app/src/presentation/widgets/app_text_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../config/routes/page_route_name.dart';
 import '../../../../core/styles/icons/app_icons.dart';
-import '../../managers/address/address_screen_state.dart';
+import '../../managers/address/saved_addresses/address_screen_state.dart';
+import '../../managers/address/saved_addresses/address_screen_viewmodel.dart';
 
 class SavedAddressScreen extends StatelessWidget {
   SavedAddressScreen({super.key});
@@ -27,12 +29,13 @@ class SavedAddressScreen extends StatelessWidget {
           child: BlocConsumer<AddressScreenViewModel, AddressScreenState>(
             listener: (context, state) {
               if (state is AddressScreenDeleted) {
+                _viewModel.getSavedAddresses();
+
                 showAwesomeDialog(context,
                     title: AppLocalizations.of(context)!.success,
                     desc: AppLocalizations.of(context)!.addressDeleted,
                     onOk: () {},
                     dialogType: DialogType.success);
-                _viewModel.getSavedAddresses();
               } else if (state is AddressScreenDeleteError) {
                 showAwesomeDialog(context,
                     title: AppLocalizations.of(context)!.error,
@@ -45,6 +48,10 @@ class SavedAddressScreen extends StatelessWidget {
               return current is AddressScreenLoaded ||
                   current is AddressScreenDeleted ||
                   current is AddressScreenError ||
+                  current is AddressScreenDeleteError ||
+                  current is AddressScreenDeleted ||
+                  current is AddressScreenDeleteError ||
+                  current is AddressScreenInitial ||
                   current is AddressScreenLoading;
             },
             builder: (context, state) {
@@ -90,7 +97,10 @@ class SavedAddressScreen extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                               ),
                               borderRadius: BorderRadius.circular(30),
-                              onPressed: () {}),
+                              onPressed: () {
+                                navKey.currentState!
+                                    .pushNamed(PageRouteName.addAddress);
+                              }),
                         ],
                       ),
                     ),
@@ -128,8 +138,12 @@ class SavedAddressScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                         borderRadius: BorderRadius.circular(30),
-                        onPressed: () {
-                          // Add action to navigate to add address screen
+                        onPressed: () async {
+                          final result = await navKey.currentState!
+                              .pushNamed(PageRouteName.addAddress);
+                          if (result == true) {
+                            _viewModel.getSavedAddresses(); // Refresh the list
+                          }
                         },
                       ),
                     ],

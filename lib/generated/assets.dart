@@ -18,8 +18,7 @@ class Assets {
       'assets/animations/invalid_token.json';
   static const String assetsAnimationsSuccess =
       'assets/animations/success.json';
-  static const String fontsInterVariableFontOpszwght =
-      'assets/fonts/Inter-VariableFont_opsz,wght.ttf';
+
   static const String iconsArrowDownIcon = 'assets/icons/arrow_down_icon.png';
   static const String iconsCardIcon = 'assets/icons/card_icon.png';
   static const String iconsDeleteIcon = 'assets/icons/delete_icon.png';
@@ -40,6 +39,7 @@ class Assets {
       'assets/icons/resey_password_icon.png';
   static const String iconsSearchIcon = 'assets/icons/search_icon.png';
   static const String imagesLogoFlower = 'assets/images/Logo_flower.png';
+  static const String imagesMapImage = 'assets/images/map_image.png';
   static const String imagesProdcutTest = 'assets/images/prodcutTest.png';
   static const String imagesProdeuctTestImage =
       'assets/images/prodeuctTestImage.png';
