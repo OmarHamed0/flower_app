@@ -64,9 +64,15 @@ class MainProfileBody extends StatelessWidget {
                       icon: AppIcons.orderIcon,
                     ),
                     verticalSpace(16),
-                    ProfileRowItem(
-                      title: AppLocalizations.of(context)!.savedAddresses,
-                      icon: AppIcons.locationIcon,
+                    InkWell(
+                      onTap: () {
+                        navKey.currentState!
+                            .pushNamed(PageRouteName.savedAddress);
+                      },
+                      child: ProfileRowItem(
+                        title: AppLocalizations.of(context)!.savedAddresses,
+                        icon: AppIcons.locationIcon,
+                      ),
                     ),
                     verticalSpace(16),
                     const Divider(),
@@ -92,10 +98,12 @@ class MainProfileBody extends StatelessWidget {
                       icon: AppIcons.localeIcon,
                     ),
                     verticalSpace(16),
-                    ProfileRowItem(title: AppLocalizations.of(context)!.aboutUs),
+                    ProfileRowItem(
+                        title: AppLocalizations.of(context)!.aboutUs),
                     verticalSpace(16),
                     ProfileRowItem(
-                        title: AppLocalizations.of(context)!.termsAndConditions),
+                        title:
+                            AppLocalizations.of(context)!.termsAndConditions),
                     verticalSpace(16),
                     const Divider(),
                     verticalSpace(16),

@@ -6,7 +6,9 @@ class PageRouteName {
   static const String product = "product";
   static const String productDetails = "product_detail";
   static const String baseScreen = "baseScreen";
-  static const String besetSellerScreen="besetScreen";
+  static const String besetSellerScreen = "besetScreen";
   static const String occasions = "occasions";
   static const String resetPassword = "resetPassword";
+  static const String savedAddress = "savedAddress";
+  static const String addAddress = "addAddress";
 }

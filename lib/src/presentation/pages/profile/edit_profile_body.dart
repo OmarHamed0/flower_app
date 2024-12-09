@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flower_app/common/awesome_dialoge.dart';
 import 'package:flower_app/common/common.dart';
-import 'package:flower_app/config/helpers/me/validations.dart';
+import 'package:flower_app/config/helpers/validations.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/src/presentation/managers/profile/edit_profile_viewmodel/edit_profile_state.dart';
