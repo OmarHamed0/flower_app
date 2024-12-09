@@ -1,3 +1,4 @@
+import 'package:flower_app/src/domain/entities/auth/signup/sign_up_response.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:flower_app/src/domain/entities/auth/signup/sign_up_user.dart';
 
@@ -39,4 +40,8 @@ class SignUpRequestBody {
       gender: user.gender,
     );
   }
+  SignupResponse toDomain() => SignupResponse(
+
+  );
+
 }
