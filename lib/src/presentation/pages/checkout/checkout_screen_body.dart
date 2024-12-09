@@ -158,7 +158,7 @@ class CheckoutScreenBody extends StatelessWidget {
                     Text("EGP 110", style: AppTextStyles.font18BlackMedium)
                   ],
                 ),
-                verticalSpace(48),
+                verticalSpace(24),
                 AppTextButton(
                   borderRadius: BorderRadius.circular(100),
                   backgroundColor: AppColors.kBaseColor,
