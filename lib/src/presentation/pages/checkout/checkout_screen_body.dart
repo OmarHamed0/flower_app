@@ -1,30 +1,176 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
+import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
+import 'package:flower_app/src/presentation/managers/checkout/checkout_view_model.dart';
 import 'package:flower_app/src/presentation/widgets/app_text_button.dart';
+import 'package:flower_app/src/presentation/widgets/app_text_field.dart';
+import 'package:flutter/gestures.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../managers/checkout/checkout_states.dart';
 
 class CheckoutScreenBody extends StatelessWidget {
   const CheckoutScreenBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: Column(
-          children: [
-            verticalSpace(24),
-            _deliveryTimeScheduleRow(context),
-            verticalSpace(16),
-            _arriveTimeRow(context),
-            verticalSpace(16),
-            _deliveryAddress(context),
-            verticalSpace(16),
-            _paymentMethod(context),
-          ],
-        ),
+    final viewModel = context.read<CheckoutViewModel>();
+    bool isSwitched = viewModel.isSwitched;
+    return SizedBox(
+      child: Column(
+        children: [
+          Expanded(
+            child: CustomScrollView(
+              controller: viewModel.scrollController, // Assigned here
+              scrollBehavior: const MaterialScrollBehavior(),
+              slivers: [
+                SliverToBoxAdapter(
+                    child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    children: [
+                      verticalSpace(24),
+                      _deliveryTimeScheduleRow(context),
+                      verticalSpace(16),
+                      _arriveTimeRow(context),
+                      verticalSpace(16),
+                      _deliveryAddress(context),
+                      verticalSpace(16),
+                      _paymentMethod(context),
+                      verticalSpace(16),
+                      BlocBuilder<CheckoutViewModel, CheckOutStates>(
+                        builder: (context, stata) {
+                          if (stata is SwitchToggleState) {
+                            isSwitched = stata.isSwitched;
+                          }
+                          if (isSwitched == true) {
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                                viewModel.scrollController.animateTo(
+                                  viewModel.scrollController.position.maxScrollExtent,
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeInOut,
+                                );
+
+                            });
+                            return Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    Switch(
+                                      dragStartBehavior: DragStartBehavior.down,
+                                      activeColor: AppColors.kWhiteBase,
+                                      activeTrackColor: AppColors.kBaseColor,
+                                      value: isSwitched,
+                                      onChanged: (value) {
+                                        viewModel
+                                            .doAction(SwitchToggleAction());
+                                      },
+                                    ),
+                                    Text(
+                                      "it is a gift",
+                                      style: AppTextStyles.font18BlackMedium,
+                                    )
+                                  ],
+                                ),
+                                FadeInLeft(
+                                  child: const AppTextField(
+                                    labelText: "name",
+                                    hintText: "Enter your name",
+                                    keyboardType: TextInputType.text,
+                                  ),
+                                ),
+                                verticalSpace(8),
+                                FadeInLeft(
+                                  child: const AppTextField(
+                                    labelText: "Phone Number",
+                                    hintText: "Enter the phone number",
+                                    keyboardType: TextInputType.text,
+                                  ),
+                                ),
+                                verticalSpace(16)
+                              ],
+                            );
+                          }
+                          return Row(
+                            children: [
+                              Switch(
+                                activeColor: AppColors.kWhiteBase,
+                                activeTrackColor: AppColors.kBaseColor,
+                                value: isSwitched,
+                                onChanged: (value) {
+                                  viewModel.doAction(SwitchToggleAction());
+                                },
+                              ),
+                              Text("it is a gift",
+                                  style: AppTextStyles.font18BlackMedium)
+                            ],
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+                ))
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              children: [
+                verticalSpace(16),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("subtotal",
+                        style: AppTextStyles.font16White500Weight
+                            .copyWith(color: AppColors.kWhite70)),
+                    Text("EGP 100",
+                        style: AppTextStyles.font16White500Weight
+                            .copyWith(color: AppColors.kWhite70))
+                  ],
+                ),
+                verticalSpace(8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Delivery fee",
+                        style: AppTextStyles.font16White500Weight
+                            .copyWith(color: AppColors.kWhite70)),
+                    Text("EGP 10",
+                        style: AppTextStyles.font16White500Weight
+                            .copyWith(color: AppColors.kWhite70))
+                  ],
+                ),
+                verticalSpace(16),
+                Container(
+                  height: 1,
+                  color: AppColors.kBlack,
+                ),
+                verticalSpace(8),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Total ", style: AppTextStyles.font18BlackMedium),
+                    Text("EGP 110", style: AppTextStyles.font18BlackMedium)
+                  ],
+                ),
+                verticalSpace(48),
+                AppTextButton(
+                  borderRadius: BorderRadius.circular(100),
+                  backgroundColor: AppColors.kBaseColor,
+                    buttonText: "Place order",
+                    textStyle: AppTextStyles.font16White500Weight,
+                    onPressed: () {},
+                ),
+                verticalSpace(16),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -74,12 +220,12 @@ class CheckoutScreenBody extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-           AppLocalizations.of(context)!.deliveryTime,
+            AppLocalizations.of(context)!.deliveryAddress,
             style: AppTextStyles.font18BlackMedium,
           ),
           verticalSpace(16),
           Container(
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: AppColors.kWhiteBase,
               border: const Border.fromBorderSide(
@@ -99,19 +245,28 @@ class CheckoutScreenBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       Row(
+                      Row(
                         children: [
                           Radio(
-                              value: 1, groupValue: "address", onChanged:(value){}),
-                          Text("Home",style: AppTextStyles.font16WeightMedium,),
+                              value: 1,
+                              groupValue: "address",
+                              onChanged: (value) {}),
+                          Text(
+                            "Home",
+                            style: AppTextStyles.font16WeightMedium,
+                          ),
                         ],
                       ),
                       verticalSpace(16),
-                      Text("2XVP+XC - Sheikh Zayed",style: AppTextStyles.font13WeightNormal,)
+                      Text(
+                        "2XVP+XC - Sheikh Zayed",
+                        style: AppTextStyles.font13WeightNormal,
+                      )
                     ],
                   ),
                 ),
@@ -124,7 +279,7 @@ class CheckoutScreenBody extends StatelessWidget {
           ),
           verticalSpace(16),
           Container(
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               borderRadius: const BorderRadius.all(Radius.circular(10)),
               color: AppColors.kWhiteBase,
               border: const Border.fromBorderSide(
@@ -144,19 +299,28 @@ class CheckoutScreenBody extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
                         children: [
                           Radio(
-                              value: 1, groupValue: "address", onChanged:(value){}),
-                          Text("Home",style: AppTextStyles.font16WeightMedium,),
+                              value: 1,
+                              groupValue: "address",
+                              onChanged: (value) {}),
+                          Text(
+                            "Home",
+                            style: AppTextStyles.font16WeightMedium,
+                          ),
                         ],
                       ),
                       verticalSpace(16),
-                      Text("2XVP+XC - Sheikh Zayed",style: AppTextStyles.font13WeightNormal,)
+                      Text(
+                        "2XVP+XC - Sheikh Zayed",
+                        style: AppTextStyles.font13WeightNormal,
+                      )
                     ],
                   ),
                 ),
@@ -169,7 +333,7 @@ class CheckoutScreenBody extends StatelessWidget {
           ),
           verticalSpace(16),
           AppTextButton(
-            buttonText: "Add new",
+            buttonText: AppLocalizations.of(context)!.addNew,
             textStyle: AppTextStyles.font14WeightNormal
                 .copyWith(color: AppColors.kBaseColor),
             onPressed: () {},
@@ -188,7 +352,10 @@ class CheckoutScreenBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text("Payment method",style: AppTextStyles.font18BlackMedium,),
+          Text(
+            AppLocalizations.of(context)!.paymentMethod,
+            style: AppTextStyles.font18BlackMedium,
+          ),
           verticalSpace(16),
           Container(
             decoration: BoxDecoration(
@@ -202,13 +369,16 @@ class CheckoutScreenBody extends StatelessWidget {
                 )
               ],
             ),
-            child:  Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Cash on delivery", style: AppTextStyles.font16WeightMedium,),
-                  Radio(value: 1, groupValue: "payment", onChanged: (value){})
+                  Text(
+                    AppLocalizations.of(context)!.cashOnDelivery,
+                    style: AppTextStyles.font16WeightMedium,
+                  ),
+                  Radio(value: 1, groupValue: "payment", onChanged: (value) {})
                 ],
               ),
             ),
@@ -226,13 +396,16 @@ class CheckoutScreenBody extends StatelessWidget {
                 )
               ],
             ),
-            child:  Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16,vertical: 8),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Credit card", style: AppTextStyles.font16WeightMedium,),
-                  Radio(value: 1, groupValue: "payment", onChanged: (value){})
+                  Text(
+                    AppLocalizations.of(context)!.creditCard,
+                    style: AppTextStyles.font16WeightMedium,
+                  ),
+                  Radio(value: 1, groupValue: "payment", onChanged: (value) {})
                 ],
               ),
             ),

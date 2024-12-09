@@ -75,7 +75,7 @@
   "checkout": "Checkout",
   "schedule": "Schedule",
   "deliveryTime": "Delivery Time",
-  "instant,": "Instant,",
+  "instant": "Instant,",
   "deliveryAddress": "Delivery address",
   "addNew": "Add new",
   "paymentMethod": "Payment method",
