@@ -7,6 +7,7 @@ import 'package:flower_app/src/presentation/managers/categories/categories_view_
 import 'package:flower_app/src/presentation/managers/home/home_viewmodel.dart';
 import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
 import 'package:flower_app/src/presentation/managers/product/product_event.dart';
+import 'package:flower_app/src/presentation/pages/about_app/about_app_view.dart';
 import 'package:flower_app/src/presentation/pages/address/add_address_screen.dart';
 import 'package:flower_app/src/presentation/pages/address/saved_address_screen.dart';
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
@@ -16,6 +17,7 @@ import 'package:flower_app/src/presentation/pages/product/view/product_view.dart
 import 'package:flower_app/src/presentation/pages/reset_passowrd/reset_password_screen.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
+import 'package:flower_app/src/presentation/pages/terms_and_conditions/terms_and_conditions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -93,6 +95,12 @@ class AppRoute {
       case PageRouteName.resetPassword:
         return _handelMaterialPageRoute(
             settings: settings, widget: ResetPasswordScreen());
+      case PageRouteName.aboutApp:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: const AboutAppView());
+      case PageRouteName.termsAndConditions:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: const TermsAndConditionsView());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

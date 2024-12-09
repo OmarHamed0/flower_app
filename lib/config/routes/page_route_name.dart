@@ -11,4 +11,6 @@ class PageRouteName {
   static const String resetPassword = "resetPassword";
   static const String savedAddress = "savedAddress";
   static const String addAddress = "addAddress";
+  static const String aboutApp = "aboutApp";
+  static const String termsAndConditions = "termsAndConditions";
 }
