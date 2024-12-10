@@ -1,4 +1,6 @@
 import 'package:flower_app/core/styles/colors/app_colors.dart';
+import 'package:flower_app/src/presentation/managers/localization/localization_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
 import '../../../../common/common.dart';
@@ -24,6 +26,7 @@ class _ProfileRowItemState extends State<ProfileRowItem> {
 
   @override
   Widget build(BuildContext context) {
+    var language = BlocProvider.of<LocalizationCubit>(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: InkWell(
@@ -70,8 +73,10 @@ class _ProfileRowItemState extends State<ProfileRowItem> {
             ),
             if (widget.title == AppLocalizations.of(context)!.language)
               Text(
-                AppLocalizations.of(context)!.english,
-                style: TextStyle(
+                language.isEnglishLanguage()
+                    ? AppLocalizations.of(context)!.english
+                    : AppLocalizations.of(context)!.arabic,
+                style: const TextStyle(
                   color: AppColors.kBaseColor,
                   fontSize: 14,
                 ),

@@ -22,8 +22,7 @@ class ProductDetailsViewModel extends Cubit<ProductDetailsStates> {
         productEntity = response.data;
         emit(SuccessState());
       case Failures<ProductEntity>():
-        var error = ErrorHandler.fromException(response.exception);
-        emit(FailedState(error: error.errorMassage));
+        emit(FailedState(exceptions:response.exception));
     }
   }
 

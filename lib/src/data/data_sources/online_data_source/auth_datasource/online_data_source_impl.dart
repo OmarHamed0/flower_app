@@ -27,7 +27,6 @@ class AuthOnlineDataSourceImpl implements AuthOnlineDataSource {
     String tokenWithBarrier = "Bearer $token";
 
     var response = await _apiServices.getLoggedUserData(tokenWithBarrier);
-    print(response);
     return response.fromResponse();
   }
 

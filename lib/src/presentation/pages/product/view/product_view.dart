@@ -6,6 +6,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../../../../common/common.dart';
 import '../../../../../core/styles/images/app_images.dart';
+import '../../../../data/api/core/error/error_handler.dart';
 import '../../../../domain/entities/product_entity/product_entity.dart';
 import '../../cart/widget/handle_state/handle_add_cart-state.dart';
 import '../widget/product_list_widget.dart';
@@ -34,7 +35,8 @@ class ProductView extends StatelessWidget {
     if (state is GetProductLoadingState) {
       return _buildLoadingProductState();
     } else if (state is GetProductErrorState) {
-      return _buildErrorProductState(errorMassage: state.errorMassage);
+      final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
+      return _buildErrorProductState(errorMassage: errorHandler.errorMassage);
     } else {
       return _buildSuccessProduct(
           BlocProvider.of<ProductCubit>(context).products);

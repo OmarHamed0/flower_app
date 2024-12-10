@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flower_app/common/awesome_dialoge.dart';
 import 'package:flower_app/common/common.dart';
-import 'package:flower_app/config/helpers/me/validations.dart';
+import 'package:flower_app/config/helpers/validations.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/src/presentation/managers/profile/edit_profile_viewmodel/edit_profile_state.dart';
@@ -11,6 +11,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/dialogs/app_dialogs.dart';
 import '../../../../core/functions/spacing.dart';
 import '../../../../core/widgets/custom_auth_text_feild.dart';
+import '../../../data/api/core/error/error_handler.dart';
 import '../../auth/signup/widgets/gender_selection.dart';
 import '../../managers/profile/edit_profile_viewmodel/edit_profile_actions.dart';
 import '../../widgets/app_text_button.dart';
@@ -44,9 +45,10 @@ class EditProfileBody extends StatelessWidget {
             dialogType: DialogType.success,
           );
         } else if (state is EditProfileError) {
+          final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
           showAwesomeDialog(context,
               title: AppLocalizations.of(context)!.error,
-              desc: state.message,
+              desc: errorHandler.errorMassage,
               onOk: () {},
               dialogType: DialogType.error);
         }
@@ -151,8 +153,9 @@ class EditProfileBody extends StatelessWidget {
             ),
           );
         } else if (state is EditProfileError) {
+          final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
           return Center(
-            child: Text(state.message),
+            child: Text(errorHandler.errorMassage),
           );
         } else {
           return const SizedBox();

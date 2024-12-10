@@ -1,5 +1,6 @@
 import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/managers/cart/cart_view_model.dart';
+import 'package:flower_app/src/presentation/managers/localization/localization_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,14 +18,21 @@ class FlowerApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt.get<CartViewModel>(),
-      child: ScreenUtilInit(
-        designSize: const Size(375, 812),
-        minTextAdapt: true,
-        splitScreenMode: true,
-        builder: (context, child) =>
-            MaterialApp(
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => getIt.get<CartViewModel>(),
+        ),
+        BlocProvider(
+            create: (context) => LocalizationCubit()..getSavedLanguage())
+      ],
+      child: BlocBuilder<LocalizationCubit, LocalizationState>(
+        builder: (context, state) {
+          return ScreenUtilInit(
+            designSize: const Size(375, 812),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (context, child) => MaterialApp(
               localizationsDelegates: const [
                 AppLocalizations.delegate,
                 GlobalMaterialLocalizations.delegate,
@@ -33,13 +41,16 @@ class FlowerApp extends StatelessWidget {
               ],
               supportedLocales: L10n.all,
               debugShowCheckedModeBanner: false,
-              locale: const Locale('en'),
+              locale: Locale(BlocProvider.of<LocalizationCubit>(context)
+                  .cachedLanguageCode),
               navigatorKey: navKey,
               initialRoute: PageRouteName.checkout,
               onGenerateRoute: AppRoute.onGenerateRoute,
               themeMode: ThemeMode.light,
               // theme: AppTheme.appTheme,
             ),
+          );
+        },
       ),
     );
   }

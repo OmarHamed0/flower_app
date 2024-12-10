@@ -34,22 +34,17 @@ class ProfileScreenViewModel extends Cubit<ProfileScreenState> {
   }
 
   void _getUserData() async {
-    emit(ProfileScreenLoading());
-
+    emit(const ProfileScreenLoading());
     var result = await _profileUseCase.getUserData();
-
     if (result is Success<UserEntity>) {
       currentUser = result.data;
       final user = result.data;
-
+      if(user?.firstName=="Gust"){
+        emit(const ProfileGuestScreenLoadedState());
+      }
       emit(ProfileScreenLoaded(user: user));
     } else if (result is Failures<UserEntity>) {
-      final error = ErrorHandler.fromException(result.exception);
-      if (error.code == 401) {
-        emit(const ProfileGuestScreenLoadedState());
-        return;
-      }
-      emit(ProfileScreenError(error.errorMassage));
+      emit(ProfileScreenError(result.exception));
     }
   }
 
@@ -61,9 +56,10 @@ class ProfileScreenViewModel extends Cubit<ProfileScreenState> {
         break;
       case Failures<void>():
         print(result.exception);
-        final error = ErrorHandler.fromException(result.exception);
-        emit(ProfileScreenError(error.errorMassage));
+        emit(ProfileScreenError(result.exception));
         break;
     }
   }
+
+
 }

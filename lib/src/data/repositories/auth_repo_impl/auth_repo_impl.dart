@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flower_app/common/api_execute.dart';
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
@@ -41,7 +43,9 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<ApiResult<UserEntity>> getLoggedUserData() async {
     return await executeApi<UserEntity>(apiCall: () async {
       var token = await _offlineDataSource.getToken();
-
+      if(token==null || token.isEmpty || token==""){
+        return UserEntity(firstName: "Gust",email: "",lastName: "",phone: "");
+      }
       var response = await _onlineDataSource.getLoggedUserData(token ?? '');
       UserEntity userEntity = UserEntity(
         email: response.email,
@@ -135,4 +139,5 @@ class AuthRepositoryImpl implements AuthRepository {
       // TODO: Handle this case.
     }
   }
+
 }

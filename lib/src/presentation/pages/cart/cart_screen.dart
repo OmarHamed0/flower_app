@@ -37,7 +37,8 @@ class _CartScreenState extends State<CartScreen> {
 
   Widget _handleBlocBuilderState(CartState state) {
     if (state is GetLoggedUserCartErrorState) {
-      return _buildErrorState(state.errorHandler);
+      final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
+      return _buildErrorState(errorHandler,);
     } else if (state is RemoveSpecificCartErrorState) {
       return _buildLoadingState();
     } else if (state is GetLoggedUserCartLoadingState) {

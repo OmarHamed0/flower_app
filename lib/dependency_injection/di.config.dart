@@ -13,8 +13,13 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
+import '../config/helpers/hive_module.dart' as _i387;
 import '../src/data/api/api_services.dart' as _i687;
 import '../src/data/api/network_factory.dart' as _i13;
+import '../src/data/data_sources/offline_data_source/address_offline_datasource/address_offline_datasouce.dart'
+    as _i334;
+import '../src/data/data_sources/offline_data_source/address_offline_datasource/address_offline_datasource_impl.dart'
+    as _i191;
 import '../src/data/data_sources/offline_data_source/cart/cart_offline_data_source.dart'
     as _i732;
 import '../src/data/data_sources/offline_data_source/cart/cart_offline_data_source_impl.dart'
@@ -89,8 +94,6 @@ import '../src/presentation/managers/base_screen/base_screen_viewmodel.dart'
 import '../src/presentation/managers/cart/cart_view_model.dart' as _i871;
 import '../src/presentation/managers/categories/categories_view_model.dart'
     as _i822;
-import '../src/presentation/managers/checkout/checkout_view_model.dart'
-    as _i123;
 import '../src/presentation/managers/home/home_viewmodel.dart' as _i363;
 import '../src/presentation/managers/occasion/occasions_view_model.dart'
     as _i1022;
@@ -120,7 +123,6 @@ extension GetItInjectableX on _i174.GetIt {
     final dioProvider = _$DioProvider();
     gh.factory<_i450.BaseScreenViewmodel>(() => _i450.BaseScreenViewmodel());
     gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
-    gh.factory<_i123.CheckoutViewModel>(() => _i123.CheckoutViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.factory<_i732.CartOfflineDataSource>(
@@ -179,10 +181,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i475.OccasionsRepoImpl(gh<_i241.OccasionOnlineDataSource>()));
     gh.factory<_i822.CategoriesViewModel>(
         () => _i822.CategoriesViewModel(gh<_i551.CategoryUseCase>()));
-    gh.factory<_i346.ProfileUseCase>(
-        () => _i346.ProfileUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i207.SignInUseCase>(
         () => _i207.SignInUseCase(gh<_i862.AuthRepository>()));
+    gh.factory<_i346.ProfileUseCase>(
+        () => _i346.ProfileUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(

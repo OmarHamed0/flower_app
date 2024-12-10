@@ -91,15 +91,15 @@ class ResetPasswordViewModel extends Cubit<ResetPasswordStates> {
         emit(SuccessState());
         break;
       case Failures<ResetPasswordEntity>():
-        emit(ErrorState(message: _getErrorMessage(response)));
+        emit(ErrorState( exception:  response.exception));
     }
   }
 
-  String _getErrorMessage(Failures<ResetPasswordEntity> response) {
-    var errorMessage =
-        ErrorHandler.fromException(response.exception).errorMassage;
-    return errorMessage;
-  }
+  // String _getErrorMessage(Failures<ResetPasswordEntity> response) {
+  //   var errorMessage =
+  //       ErrorHandler.fromException;
+  //   return errorMessage;
+  // }
 
   void _logout() async {
     await _resetPasswordUseCase.logout();
