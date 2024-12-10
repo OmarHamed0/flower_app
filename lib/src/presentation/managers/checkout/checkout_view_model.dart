@@ -5,12 +5,13 @@ import 'package:flower_app/src/presentation/managers/checkout/checkout_states.da
 import 'package:injectable/injectable.dart';
 
 @injectable
-class CheckoutViewModel extends Cubit<CheckOutStates>{
-  CheckoutViewModel(): super(InitialCheckOutState());
+class CheckoutViewModel extends Cubit<CheckOutStates> {
+  CheckoutViewModel() : super(InitialCheckOutState());
   bool isSwitched = false;
   final ScrollController scrollController = ScrollController();
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   Future<void> _dispose() async {
     nameController.dispose();
@@ -24,27 +25,43 @@ class CheckoutViewModel extends Cubit<CheckOutStates>{
     }
     return null;
   }
+
   String? validatePhone(String? value) {
     if (value == null || value.isEmpty) {
       return "The phone field is required";
     }
-    if (value.length < 11) {
-      return "The phone number must be at least 11 characters";
+    if (value.length != 11) {
+      return "The phone number must be 11 characters";
     }
     return null;
   }
 
-  void _switchToggle(){
+  void _switchToggle() {
     isSwitched = !isSwitched;
     emit(SwitchToggleState(isSwitched));
   }
-  void doAction(CheckoutActions action){
+
+  _placeOrder() {
+    if (isSwitched == true) {
+      if (formKey.currentState!.validate()) {
+        formKey.currentState!.save();
+        emit(PlaceOrderState());
+      }
+    }else{
+      emit(PlaceOrderState());
+    }
+  }
+
+  void doAction(CheckoutActions action) {
     switch (action) {
       case SwitchToggleAction():
         _switchToggle();
         break;
       case AddNewAddressAction():
-        // TODO: Handle this case.
+        break;
+      case PlaceOrderAction():
+        _placeOrder();
+        break;
     }
   }
 }

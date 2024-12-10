@@ -7,7 +7,7 @@ import 'package:flower_app/src/presentation/pages/checkout/delivery_time_schedul
 import 'package:flower_app/src/presentation/pages/checkout/is_gifted_toggle_form.dart';
 import 'package:flower_app/src/presentation/pages/checkout/payment_methods.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'total_container.dart';
+import 'total_place_order_container.dart';
 
 class CheckoutScreenBody extends StatelessWidget {
   const CheckoutScreenBody({super.key});
@@ -44,7 +44,7 @@ class CheckoutScreenBody extends StatelessWidget {
               ],
             ),
           ),
-          const TotalContainer(),
+          const TotalPlaceOrderContainer(),
         ],
       ),
     );

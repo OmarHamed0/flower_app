@@ -1,15 +1,19 @@
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
+import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
+import 'package:flower_app/src/presentation/managers/checkout/checkout_view_model.dart';
 import 'package:flower_app/src/presentation/widgets/app_text_button.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/functions/spacing.dart';
 
-class TotalContainer extends StatelessWidget {
-  const TotalContainer({super.key});
+class TotalPlaceOrderContainer extends StatelessWidget {
+  const TotalPlaceOrderContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<CheckoutViewModel>();
     return   Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
@@ -58,7 +62,9 @@ class TotalContainer extends StatelessWidget {
             backgroundColor: AppColors.kBaseColor,
             buttonText: AppLocalizations.of(context)!.placeOrder,
             textStyle: AppTextStyles.font16White500Weight,
-            onPressed: () {},
+            onPressed: () {
+              viewModel.doAction(PlaceOrderAction());
+            },
           ),
           verticalSpace(16),
         ],
