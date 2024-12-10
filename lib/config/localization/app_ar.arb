@@ -81,5 +81,12 @@
   "paymentMethod": "طريقة الدفع",
   "cashOnDelivery": "الدفع عند الاستلام",
   "creditCard": "بطاقة الائتمان",
-  "arriveBy": "يصل بواسطة"
+  "arriveBy": "يصل بواسطة",
+  "payment": "دفع",
+  "name": "اسم",
+  "phoneNumber": "رقم الهاتف",
+  "enterYourName": "ادخل اسمك",
+  "enterYourPhoneNumber": "ادخل رقم هاتفك",
+  "placeOrder": "اطلب",
+  "itsGift": "هدية"
 }
