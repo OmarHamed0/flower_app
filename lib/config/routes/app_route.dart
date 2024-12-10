@@ -7,6 +7,9 @@ import 'package:flower_app/src/presentation/managers/categories/categories_view_
 import 'package:flower_app/src/presentation/managers/home/home_viewmodel.dart';
 import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
 import 'package:flower_app/src/presentation/managers/product/product_event.dart';
+import 'package:flower_app/src/presentation/pages/about_app/about_app_view.dart';
+import 'package:flower_app/src/presentation/pages/address/add_address_screen.dart';
+import 'package:flower_app/src/presentation/pages/address/saved_address_screen.dart';
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/occasion/occasion_screen.dart';
@@ -14,10 +17,10 @@ import 'package:flower_app/src/presentation/pages/product/view/product_view.dart
 import 'package:flower_app/src/presentation/pages/reset_passowrd/reset_password_screen.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
+import 'package:flower_app/src/presentation/pages/terms_and_conditions/terms_and_conditions_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../src/presentation/managers/cart/cart_view_model.dart';
 import '../../src/presentation/managers/product/product_cubit.dart';
 import '../../src/presentation/pages/base_screen/base_screen.dart';
 import '../../src/presentation/pages/product_details/product_details.dart';
@@ -62,6 +65,13 @@ class AppRoute {
             widget: ProductDetails(
               productId: "",
             ));
+
+      case PageRouteName.savedAddress:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: SavedAddressScreen());
+      case PageRouteName.addAddress:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: AddAddressScreen());
       case PageRouteName.product:
         return _handelMaterialPageRoute(
             settings: settings, widget: const ProductView());
@@ -85,6 +95,12 @@ class AppRoute {
       case PageRouteName.resetPassword:
         return _handelMaterialPageRoute(
             settings: settings, widget: ResetPasswordScreen());
+      case PageRouteName.aboutApp:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: const AboutAppView());
+      case PageRouteName.termsAndConditions:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: const TermsAndConditionsView());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

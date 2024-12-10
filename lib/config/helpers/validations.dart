@@ -1,8 +1,22 @@
-import 'app_regexp.dart';
+import 'app_regex.dart';
 
 String? validateName(String? name) {
   if (name!.isEmpty || !AppRegExp.isNameValid(name)) {
     return 'Name is required';
+  }
+  return null;
+}
+
+String? validateCity(String? city) {
+  if (city!.isEmpty || !AppRegExp.isNameValid(city)) {
+    return 'City is required';
+  }
+  return null;
+}
+
+String? validateStreet(String? street) {
+  if (street!.isEmpty || !AppRegExp.isNameValid(street)) {
+    return 'Street is required';
   }
   return null;
 }

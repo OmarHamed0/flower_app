@@ -13,8 +13,13 @@ import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:pretty_dio_logger/pretty_dio_logger.dart' as _i528;
 
+import '../config/helpers/hive_module.dart' as _i387;
 import '../src/data/api/api_services.dart' as _i687;
 import '../src/data/api/network_factory.dart' as _i13;
+import '../src/data/data_sources/offline_data_source/address_offline_datasource/address_offline_datasouce.dart'
+    as _i334;
+import '../src/data/data_sources/offline_data_source/address_offline_datasource/address_offline_datasource_impl.dart'
+    as _i191;
 import '../src/data/data_sources/offline_data_source/cart/cart_offline_data_source.dart'
     as _i732;
 import '../src/data/data_sources/offline_data_source/cart/cart_offline_data_source_impl.dart'
@@ -23,6 +28,10 @@ import '../src/data/data_sources/offline_data_source/offline_data_source.dart'
     as _i136;
 import '../src/data/data_sources/offline_data_source/offline_data_source_impl.dart'
     as _i649;
+import '../src/data/data_sources/online_data_source/address_datasource/address_online_datasource.dart'
+    as _i509;
+import '../src/data/data_sources/online_data_source/address_datasource/address_online_datasource_impl.dart'
+    as _i668;
 import '../src/data/data_sources/online_data_source/auth_datasource/online_data_source.dart'
     as _i557;
 import '../src/data/data_sources/online_data_source/auth_datasource/online_data_source_impl.dart'
@@ -47,6 +56,8 @@ import '../src/data/data_sources/online_data_source/product_data_source/product_
     as _i866;
 import '../src/data/data_sources/online_data_source/product_data_source/product_online_data_source_impl.dart'
     as _i352;
+import '../src/data/repositories/address_repo_impl/address_repo_impl.dart'
+    as _i888;
 import '../src/data/repositories/auth_repo_impl/auth_repo_impl.dart' as _i531;
 import '../src/data/repositories/cart_repo_impl/cart_repo_impl.dart' as _i474;
 import '../src/data/repositories/categories_repo/categories_repo_impl.dart'
@@ -56,6 +67,8 @@ import '../src/data/repositories/occasion_repo_impl/OccasionRepoImpl.dart'
     as _i475;
 import '../src/data/repositories/product_repo_impl/product_repo_impl.dart'
     as _i974;
+import '../src/domain/repositories/address_repo/address_repository.dart'
+    as _i91;
 import '../src/domain/repositories/auth_repo.dart' as _i862;
 import '../src/domain/repositories/cart_repo/cart_repo.dart' as _i1032;
 import '../src/domain/repositories/categories_repo/categories_repo.dart'
@@ -63,6 +76,7 @@ import '../src/domain/repositories/categories_repo/categories_repo.dart'
 import '../src/domain/repositories/home_repository.dart' as _i781;
 import '../src/domain/repositories/occasion_repo/OccasionRepo.dart' as _i492;
 import '../src/domain/repositories/product_repo/product_repo.dart' as _i170;
+import '../src/domain/use_cases/address/address_usecase.dart' as _i811;
 import '../src/domain/use_cases/auth_use_cases/sign_in_use_case.dart' as _i207;
 import '../src/domain/use_cases/auth_use_cases/signup_user_use_case.dart'
     as _i625;
@@ -84,6 +98,10 @@ import '../src/domain/use_cases/profile_usecase/profile_usecase.dart' as _i346;
 import '../src/domain/use_cases/reset_password_use_case.dart' as _i448;
 import '../src/presentation/auth/signup/manager/signup_viewmodel.dart'
     as _i1070;
+import '../src/presentation/managers/address/add_address/add_address_screen_viewmodel.dart'
+    as _i309;
+import '../src/presentation/managers/address/saved_addresses/address_screen_viewmodel.dart'
+    as _i807;
 import '../src/presentation/managers/base_screen/base_screen_viewmodel.dart'
     as _i450;
 import '../src/presentation/managers/cart/cart_view_model.dart' as _i871;
@@ -116,10 +134,13 @@ extension GetItInjectableX on _i174.GetIt {
       environmentFilter,
     );
     final dioProvider = _$DioProvider();
+    gh.factory<_i387.HiveModule>(() => _i387.HiveModule());
     gh.factory<_i450.BaseScreenViewmodel>(() => _i450.BaseScreenViewmodel());
     gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
+    gh.factory<_i334.AddressOfflineDatasource>(
+        () => _i191.AddressOfflineDataSourceImpl(gh<_i387.HiveModule>()));
     gh.factory<_i732.CartOfflineDataSource>(
         () => _i817.CartOfflineDataSourceImpl());
     gh.factory<_i136.AuthOfflineDataSource>(
@@ -129,6 +150,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1063.CartOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i838.CategoriesOnlineDataSource>(
         () => _i98.CategoriesOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i509.AddressOnlineDatasource>(
+        () => _i668.AddressOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i139.CategoriesRepo>(
         () => _i545.CategoriesRepoImpl(gh<_i838.CategoriesOnlineDataSource>()));
     gh.factory<_i1032.CartRepo>(() => _i474.CartRepoImpl(
@@ -146,10 +169,16 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i491.OccasionOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i557.AuthOnlineDataSource>(
         () => _i808.AuthOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i91.AddressRepository>(() => _i888.AddressRepoImpl(
+          gh<_i334.AddressOfflineDatasource>(),
+          gh<_i509.AddressOnlineDatasource>(),
+        ));
     gh.factory<_i866.ProductOnlineDataSource>(
         () => _i352.ProductOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i170.ProductRepo>(
         () => _i974.ProductRepoImpl(gh<_i866.ProductOnlineDataSource>()));
+    gh.factory<_i811.AddressUsecase>(
+        () => _i811.AddressUsecase(gh<_i91.AddressRepository>()));
     gh.factory<_i902.GetProductUseCase>(
         () => _i902.GetProductUseCase(gh<_i170.ProductRepo>()));
     gh.factory<_i1042.ProductByIdUseCase>(
@@ -180,6 +209,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i207.SignInUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i346.ProfileUseCase>(
         () => _i346.ProfileUseCase(gh<_i862.AuthRepository>()));
+    gh.factory<_i309.AddAddressScreenViewModel>(
+        () => _i309.AddAddressScreenViewModel(gh<_i811.AddressUsecase>()));
+    gh.factory<_i807.AddressScreenViewModel>(
+        () => _i807.AddressScreenViewModel(gh<_i811.AddressUsecase>()));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(

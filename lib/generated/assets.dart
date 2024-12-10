@@ -2,21 +2,30 @@
 class Assets {
   Assets._();
 
+  static const String animationsCartEmpty = 'assets/animations/cart_empty.json';
   static const String animationsEYr0JZUKw0 =
       'assets/animations/eYr0JZUKw0.json';
   static const String animationsError = 'assets/animations/error.json';
+  static const String animationsInvalidToken =
+      'assets/animations/invalid_token.json';
   static const String animationsSuccess = 'assets/animations/success.json';
+  static const String assetsAnimationsCartEmpty =
+      'assets/animations/cart_empty.json';
   static const String assetsAnimationsEYr0JZUKw0 =
       'assets/animations/eYr0JZUKw0.json';
   static const String assetsAnimationsError = 'assets/animations/error.json';
+  static const String assetsAnimationsInvalidToken =
+      'assets/animations/invalid_token.json';
   static const String assetsAnimationsSuccess =
       'assets/animations/success.json';
-  // static const String fontsInterVariableFontOpsz,
-  //     wght = 'assets/fonts/Inter-VariableFont_opsz,wght.ttf';
+
   static const String iconsArrowDownIcon = 'assets/icons/arrow_down_icon.png';
   static const String iconsCardIcon = 'assets/icons/card_icon.png';
+  static const String iconsDeleteIcon = 'assets/icons/delete_icon.png';
+  static const String iconsEditIcon = 'assets/icons/edit_icon.png';
   static const String iconsFlowerIcon = 'assets/icons/flower_icon.png';
   static const String iconsGiftIcon = 'assets/icons/gift_icon.png';
+  static const String iconsIconDelete4 = 'assets/icons/icon_delete4.png';
   static const String iconsJewelleryIcon = 'assets/icons/jewellery_icon.png';
   static const String iconsLocalIcon = 'assets/icons/local_icon.png';
   static const String iconsLocationIcon = 'assets/icons/location_icon.png';
@@ -26,8 +35,11 @@ class Assets {
   static const String iconsOrderIcon = 'assets/icons/order_icon.png';
   static const String iconsPen = 'assets/icons/pen.svg';
   static const String iconsPenIcon = 'assets/icons/pen_icon.png';
+  static const String iconsReseyPasswordIcon =
+      'assets/icons/resey_password_icon.png';
   static const String iconsSearchIcon = 'assets/icons/search_icon.png';
   static const String imagesLogoFlower = 'assets/images/Logo_flower.png';
+  static const String imagesMapImage = 'assets/images/map_image.png';
   static const String imagesProdcutTest = 'assets/images/prodcutTest.png';
   static const String imagesProdeuctTestImage =
       'assets/images/prodeuctTestImage.png';
