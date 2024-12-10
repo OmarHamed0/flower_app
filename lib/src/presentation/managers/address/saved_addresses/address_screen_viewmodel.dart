@@ -20,8 +20,7 @@ class AddressScreenViewModel extends Cubit<AddressScreenState> {
         emit(AddressScreenLoaded(result.data!));
         break;
       case Failures<List<AddressModel>>():
-        var error = ErrorHandler.fromException(result.exception);
-        emit(AddressScreenError(error.errorMassage));
+        emit(AddressScreenError(result.exception));
         break;
     }
   }
@@ -34,8 +33,7 @@ class AddressScreenViewModel extends Cubit<AddressScreenState> {
         emit(AddressScreenDeleted(result.data!));
         break;
       case Failures<String?>():
-        var error = ErrorHandler.fromException(result.exception);
-        emit(AddressScreenDeleteError(error.errorMassage));
+        emit(AddressScreenDeleteError(result.exception));
         break;
     }
   }

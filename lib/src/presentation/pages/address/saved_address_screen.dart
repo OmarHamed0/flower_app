@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../config/routes/page_route_name.dart';
 import '../../../../core/styles/icons/app_icons.dart';
+import '../../../data/api/core/error/error_handler.dart';
 import '../../managers/address/saved_addresses/address_screen_state.dart';
 import '../../managers/address/saved_addresses/address_screen_viewmodel.dart';
 
@@ -37,9 +38,10 @@ class SavedAddressScreen extends StatelessWidget {
                     onOk: () {},
                     dialogType: DialogType.success);
               } else if (state is AddressScreenDeleteError) {
+                final errorHandler=ErrorHandler.fromException(state.exception!, AppLocalizations.of(context)!);
                 showAwesomeDialog(context,
                     title: AppLocalizations.of(context)!.error,
-                    desc: state.message,
+                    desc: errorHandler.errorMassage,
                     onOk: () {},
                     dialogType: DialogType.error);
               }
@@ -150,7 +152,8 @@ class SavedAddressScreen extends StatelessWidget {
                   ),
                 );
               } else if (state is AddressScreenError) {
-                return Text(state.message);
+                final ErrorHandler errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
+                return Text(errorHandler.errorMassage);
               } else {
                 return Text(AppLocalizations.of(context)!.noAddressFound);
               }
