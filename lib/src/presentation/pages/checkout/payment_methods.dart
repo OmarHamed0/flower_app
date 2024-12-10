@@ -1,17 +1,24 @@
+import 'package:flower_app/common/common.dart';
 import 'package:flower_app/config/extensions/extensions.dart';
+import 'package:flower_app/core/styles/texts/app_text_styles.dart';
+import 'package:flower_app/src/presentation/managers/checkout/checkout_view_model.dart';
 import 'package:flower_app/src/presentation/pages/checkout/payment_method_item_card.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../common/common.dart';
-import '../../../../core/functions/spacing.dart';
-import '../../../../core/styles/colors/app_colors.dart';
-import '../../../../core/styles/texts/app_text_styles.dart';
+import '../../../../core/styles/spaceing.dart';
 
-class PaymentMethods extends StatelessWidget {
+class PaymentMethods extends StatefulWidget {
   const PaymentMethods({super.key});
 
   @override
+  State<PaymentMethods> createState() => _PaymentMethodsState();
+}
+
+class _PaymentMethodsState extends State<PaymentMethods> {
+  @override
   Widget build(BuildContext context) {
-    return   SizedBox(
+    final viewModel = context.read<CheckoutViewModel>();
+    return SizedBox(
       width: context.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -21,34 +28,29 @@ class PaymentMethods extends StatelessWidget {
             style: AppTextStyles.font18BlackMedium,
           ),
           verticalSpace(16),
-          Container(
-            decoration: BoxDecoration(
-              color: AppColors.kWhiteBase,
-              borderRadius: BorderRadius.circular(10),
-              boxShadow: [
-                BoxShadow(
-                  color: AppColors.kBlackBase.withOpacity(0.1),
-                  spreadRadius: 0,
-                  blurRadius: 24,
-                )
-              ],
-            ),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    AppLocalizations.of(context)!.cashOnDelivery,
-                    style: AppTextStyles.font16WeightMedium,
-                  ),
-                  Radio(value: 1, groupValue: "payment", onChanged: (value) {})
-                ],
-              ),
-            ),
+          PaymentMethodItemCard(
+            paymentMethod: AppLocalizations.of(context)!.cashOnDelivery,
+            value: PaymentMethodEnum.cash,
+            groupValue: viewModel.selectedPaymentMethod,
+            onChanged: (PaymentMethodEnum? value) {
+              setState(() {
+                viewModel.selectedPaymentMethod = value!;
+              });
+            },
           ),
           verticalSpace(16),
-          PaymentMethodItemCard(paymentMethod: AppLocalizations.of(context)!.creditCard)
+          PaymentMethodItemCard(
+            paymentMethod: AppLocalizations.of(context)!.creditCard,
+            value: PaymentMethodEnum.creditCard,
+            groupValue: viewModel.selectedPaymentMethod,
+            onChanged: (PaymentMethodEnum? value) {
+              setState(
+                () {
+                  viewModel.selectedPaymentMethod = value!;
+                },
+              );
+            },
+          )
         ],
       ),
     );

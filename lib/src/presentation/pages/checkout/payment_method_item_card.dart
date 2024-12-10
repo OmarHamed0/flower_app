@@ -1,23 +1,34 @@
 import '../../../../common/common.dart';
 import '../../../../core/styles/colors/app_colors.dart';
 import '../../../../core/styles/texts/app_text_styles.dart';
+import '../../managers/checkout/checkout_view_model.dart';
 
 class PaymentMethodItemCard extends StatelessWidget {
   final String paymentMethod;
-  const PaymentMethodItemCard({super.key, required this.paymentMethod});
+  final PaymentMethodEnum value;
+  final PaymentMethodEnum groupValue;
+  final ValueChanged<PaymentMethodEnum?> onChanged;
+
+  const PaymentMethodItemCard({
+    super.key,
+    required this.paymentMethod,
+    required this.value,
+    required this.groupValue,
+    required this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return    Container(
+    return Container(
       decoration: BoxDecoration(
-        color: AppColors.kWhiteBase,
+        color: Colors.white, // Replace with AppColors.kWhiteBase if needed
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: AppColors.kBlackBase.withOpacity(0.1),
+            color: Colors.black.withOpacity(0.1), // Replace with AppColors.kBlackBase if needed
             spreadRadius: 0,
             blurRadius: 24,
-          )
+          ),
         ],
       ),
       child: Padding(
@@ -26,10 +37,15 @@ class PaymentMethodItemCard extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              AppLocalizations.of(context)!.creditCard,
-              style: AppTextStyles.font16WeightMedium,
+              paymentMethod,
+              style:  AppTextStyles.font16WeightMedium,// Replace with AppTextStyles if needed
             ),
-            Radio(value: 1, groupValue: "payment", onChanged: (value) {})
+            Radio<PaymentMethodEnum>(
+              activeColor: AppColors.kBaseColor,
+              value: value,
+              groupValue: groupValue,
+              onChanged: onChanged,
+            ),
           ],
         ),
       ),

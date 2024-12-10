@@ -12,6 +12,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
   TextEditingController nameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  PaymentMethodEnum selectedPaymentMethod = PaymentMethodEnum.cash;
 
   Future<void> _dispose() async {
     nameController.dispose();
@@ -47,7 +48,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
         formKey.currentState!.save();
         emit(PlaceOrderState());
       }
-    }else{
+    } else {
       emit(PlaceOrderState());
     }
   }
@@ -65,3 +66,5 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
     }
   }
 }
+
+enum PaymentMethodEnum { cash, creditCard }
