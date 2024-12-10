@@ -64,9 +64,15 @@ class MainProfileBody extends StatelessWidget {
                       icon: AppIcons.orderIcon,
                     ),
                     verticalSpace(16),
-                    ProfileRowItem(
-                      title: AppLocalizations.of(context)!.savedAddresses,
-                      icon: AppIcons.locationIcon,
+                    InkWell(
+                      onTap: () {
+                        navKey.currentState!
+                            .pushNamed(PageRouteName.savedAddress);
+                      },
+                      child: ProfileRowItem(
+                        title: AppLocalizations.of(context)!.savedAddresses,
+                        icon: AppIcons.locationIcon,
+                      ),
                     ),
                     verticalSpace(16),
                     const Divider(),
@@ -92,10 +98,22 @@ class MainProfileBody extends StatelessWidget {
                       icon: AppIcons.localeIcon,
                     ),
                     verticalSpace(16),
-                    ProfileRowItem(title: AppLocalizations.of(context)!.aboutUs),
+                    InkWell(
+                      onTap: () {
+                        navKey.currentState!.pushNamed(PageRouteName.aboutApp);
+                      },
+                      child: ProfileRowItem(
+                          title: AppLocalizations.of(context)!.aboutUs),
+                    ),
                     verticalSpace(16),
-                    ProfileRowItem(
-                        title: AppLocalizations.of(context)!.termsAndConditions),
+                    InkWell(
+                      onTap: () {
+                        navKey.currentState!.pushNamed(PageRouteName.termsAndConditions);
+                      },
+                      child: ProfileRowItem(
+                          title:
+                              AppLocalizations.of(context)!.termsAndConditions),
+                    ),
                     verticalSpace(16),
                     const Divider(),
                     verticalSpace(16),
@@ -116,6 +134,7 @@ class MainProfileBody extends StatelessWidget {
                         );
                       },
                     ),
+                    verticalSpace(16),
                     const Text(
                       'v 6.3.0 - (446)',
                       style: TextStyle(

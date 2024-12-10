@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flower_app/src/data/api/core/requestes_models/add_address_request.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
+import 'package:flower_app/src/data/api/core/response_model/address/address_response.dart';
 import 'package:flower_app/src/data/api/core/response_model/auth_response_models/reset_password_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/cart/add_cart_response_model/add_cart_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/cart/get_all_cart_response/get_all_cart_response_mode.dart';
@@ -102,4 +104,15 @@ abstract class ApiServices {
     @Path("id") required String id,
     @Body() required CartQuantityRequest cartQuantityRequest,
   });
+  @GET(ApisEndPoints.savedAddresses)
+  Future<AddressResponse> getSavedAddresses(
+      @Header("Authorization") String token);
+
+  @DELETE("${ApisEndPoints.deleteAddress}/{id}")
+  Future<AddressResponse> deleteAddress(
+      @Header("Authorization") String token, @Path("id") String id);
+
+  @PATCH(ApisEndPoints.addNewAddress)
+  Future<AddressResponse> addNewAddress(
+      @Header("Authorization") String token, @Body() AddAddressRequest address);
 }
