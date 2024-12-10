@@ -88,6 +88,7 @@ import '../src/domain/use_cases/cart/remove_specific_cart_item_use_case.dart'
 import '../src/domain/use_cases/cart/update_quantity_cart_use_case.dart'
     as _i413;
 import '../src/domain/use_cases/category_use_case.dart' as _i551;
+import '../src/domain/use_cases/chackout/checkout_use_case.dart' as _i820;
 import '../src/domain/use_cases/home_usecase.dart' as _i729;
 import '../src/domain/use_cases/occasions_use_case.dart' as _i845;
 import '../src/domain/use_cases/product_use_cases/get_product_use_case.dart'
@@ -139,7 +140,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i387.HiveModule>(() => _i387.HiveModule());
     gh.factory<_i450.BaseScreenViewmodel>(() => _i450.BaseScreenViewmodel());
     gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
-    gh.factory<_i123.CheckoutViewModel>(() => _i123.CheckoutViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.factory<_i334.AddressOfflineDatasource>(
@@ -192,6 +192,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i493.GetLoggedUserCartUseCase(gh<_i1032.CartRepo>()));
     gh.factory<_i413.UpdateQuantityCartUseCase>(
         () => _i413.UpdateQuantityCartUseCase(gh<_i1032.CartRepo>()));
+    gh.factory<_i820.CheckoutUseCase>(
+        () => _i820.CheckoutUseCase(gh<_i1032.CartRepo>()));
     gh.factory<_i871.CartViewModel>(() => _i871.CartViewModel(
           gh<_i634.AddCartUseCase>(),
           gh<_i493.GetLoggedUserCartUseCase>(),
@@ -202,6 +204,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i136.AuthOfflineDataSource>(),
           gh<_i557.AuthOnlineDataSource>(),
         ));
+    gh.factory<_i123.CheckoutViewModel>(
+        () => _i123.CheckoutViewModel(gh<_i820.CheckoutUseCase>()));
     gh.factory<_i699.ProductCubit>(
         () => _i699.ProductCubit(gh<_i902.GetProductUseCase>()));
     gh.factory<_i492.OccasionRepo>(

@@ -1,12 +1,14 @@
 import 'package:bloc/bloc.dart';
 import 'package:flower_app/common/common.dart';
+import 'package:flower_app/src/domain/use_cases/chackout/checkout_use_case.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_states.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class CheckoutViewModel extends Cubit<CheckOutStates> {
-  CheckoutViewModel() : super(InitialCheckOutState());
+  final CheckoutUseCase _checkoutUseCase;
+  CheckoutViewModel(this._checkoutUseCase) : super(InitialCheckOutState());
   bool isSwitched = false;
   final ScrollController scrollController = ScrollController();
   TextEditingController nameController = TextEditingController();
