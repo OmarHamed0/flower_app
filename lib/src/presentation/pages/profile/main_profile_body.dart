@@ -47,7 +47,8 @@ class MainProfileBody extends StatelessWidget {
               return const Center(
                 child: CircularProgressIndicator(),
               );
-            } else if (state is ProfileScreenLoaded) {
+            }
+            else if (state is ProfileScreenLoaded) {
               return SingleChildScrollView(
                 child: Column(
                   children: [
@@ -135,7 +136,8 @@ class MainProfileBody extends StatelessWidget {
                   ],
                 ),
               );
-            } else if (state is ProfileGuestScreenLoadedState) {
+            }
+            else if (state is ProfileGuestScreenLoadedState) {
               return GuestProfile(user: state.user);
             } else if (state is ProfileScreenError) {
               final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);

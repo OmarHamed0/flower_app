@@ -43,7 +43,9 @@ class AuthRepositoryImpl implements AuthRepository {
   Future<ApiResult<UserEntity>> getLoggedUserData() async {
     return await executeApi<UserEntity>(apiCall: () async {
       var token = await _offlineDataSource.getToken();
-
+      if(token==null || token.isEmpty || token==""){
+        return UserEntity(firstName: "Gust",email: "",lastName: "",phone: "");
+      }
       var response = await _onlineDataSource.getLoggedUserData(token ?? '');
       UserEntity userEntity = UserEntity(
         email: response.email,
