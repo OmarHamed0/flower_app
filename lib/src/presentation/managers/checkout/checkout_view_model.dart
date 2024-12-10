@@ -62,6 +62,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
         break;
       case PlaceOrderAction():
         _placeOrder();
+        _dispose();
         break;
     }
   }
