@@ -46,8 +46,7 @@ class SignUpViewModel extends Cubit<SignupViewState> {
         emit(SignupSuccessState(result.data));
         break;
       case Failures<SignupResponse>():
-        final error = ErrorHandler.fromException(result.exception);
-        emit(SignupErrorState(error.errorMassage));
+        emit(SignupErrorState(result.exception));
         break;
     }
 

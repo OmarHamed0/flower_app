@@ -46,8 +46,7 @@ class ProductCubit extends Cubit<ProductState> {
          products=result.data ?? [];
            emit(GetProductSuccessState(products:result.data! ));
       case Failures<List<ProductEntity>>():
-        String errorMassage = ErrorHandler.fromException(result.exception).errorMassage;
-        emit(GetProductErrorState(errorMassage: errorMassage));
+        emit(GetProductErrorState(exception: result.exception));
     }
 
   }

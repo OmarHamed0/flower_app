@@ -8,8 +8,8 @@ class InitialState extends SignupViewState {}
 class SignupLoadingState extends SignupViewState {}
 
 class SignupErrorState extends SignupViewState {
-  final String message;
-  SignupErrorState(this.message);
+  final Exception exception;
+  SignupErrorState(this.exception);
 }
 
 class SignupSuccessState extends SignupViewState {

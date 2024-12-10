@@ -37,8 +37,7 @@ class SignInViewModel extends Cubit<SignInStates> {
         break;
       case Failures<SignInEntity>():
         emit(PopDialogState());
-        final error = ErrorHandler.fromException(response.exception);
-        emit(SignInFailedState(error.errorMassage));
+        emit(SignInFailedState(response.exception));
         break;
     }
   }

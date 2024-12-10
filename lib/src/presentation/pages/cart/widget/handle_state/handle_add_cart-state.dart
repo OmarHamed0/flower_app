@@ -1,5 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flower_app/common/common.dart';
+import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import '../../../../../../common/awesome_dialoge.dart';
 import '../../../../../../config/routes/page_route_name.dart';
 import '../../../../../../core/dialogs/app_dialogs.dart';
@@ -27,10 +28,11 @@ class HandleAddCartState {
   }
 
   void _buildErrorAddCartState(BuildContext context, AddCartErrorState state) {
-    if (state.errorHandler.code == 401) {
+    final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
+    if (  errorHandler.code == 401) {
       _buildUnauthorizedErrorWidget(context);
     } else {
-      _buildErrorAddCartWidget(context, state.errorHandler.errorMassage);
+      _buildErrorAddCartWidget(context, errorHandler.errorMassage);
     }
   }
 

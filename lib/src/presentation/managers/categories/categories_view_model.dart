@@ -25,7 +25,7 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
       case Failures<List<CategoryEntity>>():
         emit(
           CategoriesError(
-            ErrorHandler.fromException(response.exception).errorMassage,
+           response.exception
           ),
         );
         break;

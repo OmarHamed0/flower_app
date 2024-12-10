@@ -20,9 +20,9 @@ class EditProfileLoaded extends EditProfileState {
 }
 
 class EditProfileError extends EditProfileState {
-  final String message;
+  final Exception exception;
   const EditProfileError(
-    this.message,
+    this.exception,
   );
 }
 

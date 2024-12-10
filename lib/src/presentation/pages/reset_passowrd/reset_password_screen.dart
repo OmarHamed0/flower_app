@@ -13,6 +13,8 @@ import 'package:flower_app/src/presentation/managers/reset_password/reset_passwo
 import 'package:flower_app/src/presentation/pages/reset_passowrd/reset_password_screen_body.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../data/api/core/error/error_handler.dart';
+
 class ResetPasswordScreen extends StatelessWidget {
   ResetPasswordScreen({super.key});
 
@@ -45,7 +47,8 @@ class ResetPasswordScreen extends StatelessWidget {
               LoadingDialog.hide(context);
             }
             if (state is ErrorState) {
-              showAwesomeDialog(context, title: 'Error', desc: state.message!,
+              final errorHandler=ErrorHandler.fromException(state.exception!, AppLocalizations.of(context)!);
+              showAwesomeDialog(context, title: 'Error', desc: errorHandler.errorMassage,
                   onOk: () {
                 viewModel.doActin(LogoutAction());
                 navKey.currentState!.pushNamedAndRemoveUntil(
