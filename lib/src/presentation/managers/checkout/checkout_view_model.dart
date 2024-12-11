@@ -1,5 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/common/common.dart';
+import 'package:flower_app/src/data/api/core/error/error_handler.dart';
+import 'package:flower_app/src/domain/entities/cart/cart_entity.dart';
 import 'package:flower_app/src/domain/use_cases/chackout/checkout_use_case.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_states.dart';
@@ -15,7 +18,6 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   PaymentMethodEnum selectedPaymentMethod = PaymentMethodEnum.cash;
-
   Future<void> _dispose() async {
     nameController.dispose();
     phoneController.dispose();
@@ -55,6 +57,18 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
     }
   }
 
+  void _getTotalPrice() async{
+    emit(LoadingState());
+    var userCart = await _checkoutUseCase.invoke();
+    switch (userCart) {
+
+      case Success<CartEntity>():
+         emit(TotalPriceState(totalPrice: userCart.data!.totalPrice.toString()));
+         break;
+      case Failures<CartEntity>():
+
+    }
+  }
   void doAction(CheckoutActions action) {
     switch (action) {
       case SwitchToggleAction():
@@ -65,6 +79,9 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
       case PlaceOrderAction():
         _placeOrder();
         _dispose();
+        break;
+      case GetTotalPriceAction():
+        _getTotalPrice();
         break;
     }
   }
