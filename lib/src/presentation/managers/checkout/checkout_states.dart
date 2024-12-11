@@ -1,3 +1,5 @@
+import 'package:flower_app/src/domain/entities/address/address_model.dart';
+
 class CheckOutStates{}
 class InitialCheckOutState extends CheckOutStates{}
 class SwitchToggleState extends CheckOutStates{
@@ -16,3 +18,11 @@ class FailGetTotalPriceState extends CheckOutStates{
 }
 class LoadingState extends CheckOutStates{}
 class AddNewAddressState extends CheckOutStates{}
+class SuccessGetUserSavedAddressState  extends CheckOutStates{
+  List<AddressModel>? savedAddresses;
+  SuccessGetUserSavedAddressState({this.savedAddresses});
+}
+class FailGetUserSavedAddressState extends CheckOutStates{
+  Exception? exception;
+  FailGetUserSavedAddressState({this.exception});
+}

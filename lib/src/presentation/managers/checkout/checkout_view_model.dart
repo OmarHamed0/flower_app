@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/common/common.dart';
-import 'package:flower_app/src/data/api/core/error/error_handler.dart';
+import 'package:flower_app/src/domain/entities/address/address_model.dart';
 import 'package:flower_app/src/domain/entities/cart/cart_entity.dart';
 import 'package:flower_app/src/domain/use_cases/chackout/checkout_use_case.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
@@ -10,7 +10,7 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class CheckoutViewModel extends Cubit<CheckOutStates> {
-  final CheckoutUseCase _checkoutUseCase;
+  final CheckoutUseCases _checkoutUseCase;
   CheckoutViewModel(this._checkoutUseCase) : super(InitialCheckOutState());
   bool isSwitched = false;
   final ScrollController scrollController = ScrollController();
@@ -19,6 +19,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   PaymentMethodEnum selectedPaymentMethod = PaymentMethodEnum.cash;
   num _deliveryFee = 10;
+
   Future<void> _dispose() async {
     nameController.dispose();
     phoneController.dispose();
@@ -60,11 +61,23 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
     }
   }
 
+  void _getUserSavedAddress() async{
+    emit(LoadingState());
+    var savedAddresses = await _checkoutUseCase.getSavedAddresses();
+    switch (savedAddresses) {
+      case Success<List<AddressModel>>():
+        emit(SuccessGetUserSavedAddressState(savedAddresses: savedAddresses.data));
+        break;
+      case Failures<List<AddressModel>>():
+        emit(FailGetTotalPriceState(exception: savedAddresses.exception));
+        break;
+    }
+  }
+
   void _getTotalPrice() async{
     emit(LoadingState());
-    var userCart = await _checkoutUseCase.invoke();
+    var userCart = await _checkoutUseCase.getLoggedUserCart();
     switch (userCart) {
-
       case Success<CartEntity>():
          emit(TotalPriceState(totalPrice: userCart.data!.totalPrice, deliveryFee: _deliveryFee));
          break;
@@ -85,6 +98,9 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
         break;
       case GetTotalPriceAction():
         _getTotalPrice();
+        break;
+      case GetUserSavedAddressAction():
+        _getUserSavedAddress();
         break;
     }
   }
