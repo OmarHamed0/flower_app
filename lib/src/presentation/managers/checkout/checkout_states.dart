@@ -15,3 +15,4 @@ class FailGetTotalPriceState extends CheckOutStates{
   FailGetTotalPriceState({this.exception});
 }
 class LoadingState extends CheckOutStates{}
+class AddNewAddressState extends CheckOutStates{}

@@ -78,6 +78,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
         _switchToggle();
         break;
       case AddNewAddressAction():
+        emit(AddNewAddressState());
         break;
       case PlaceOrderAction():
         _placeOrder();
