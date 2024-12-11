@@ -18,8 +18,9 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   PaymentMethodEnum selectedPaymentMethod = PaymentMethodEnum.cash;
+  List<AddressModel> userSavedAddress = [];
+  int selectedAddressIndex = -1;
   num _deliveryFee = 10;
-
   Future<void> _dispose() async {
     nameController.dispose();
     phoneController.dispose();
@@ -66,6 +67,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
     var savedAddresses = await _checkoutUseCase.getSavedAddresses();
     switch (savedAddresses) {
       case Success<List<AddressModel>>():
+        userSavedAddress = savedAddresses.data!;
         emit(SuccessGetUserSavedAddressState(savedAddresses: savedAddresses.data));
         break;
       case Failures<List<AddressModel>>():

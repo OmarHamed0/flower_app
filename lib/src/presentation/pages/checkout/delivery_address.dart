@@ -5,6 +5,7 @@ import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_view_model.dart';
 import 'package:flower_app/src/presentation/pages/checkout/address_item_card.dart';
+import 'package:flower_app/src/presentation/pages/checkout/user_address_list.dart';
 import 'package:flower_app/src/presentation/widgets/app_text_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,9 +27,10 @@ class DeliveryAddress extends StatelessWidget {
             style: AppTextStyles.font18BlackMedium,
           ),
           verticalSpace(16),
-          const AddressItemCard(),
-          verticalSpace(16),
-          const AddressItemCard(),
+          SizedBox(
+             height: 200.h,
+              child: UserAddressList()
+          ),
           verticalSpace(16),
           AppTextButton(
             buttonText: "+ ${AppLocalizations.of(context)!.addNew}",

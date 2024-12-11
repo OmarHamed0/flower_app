@@ -10,15 +10,29 @@ import 'package:flower_app/src/presentation/managers/checkout/checkout_view_mode
 import 'package:flower_app/src/presentation/pages/checkout/checkout_screen_body.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CheckoutScreen extends StatelessWidget {
+class CheckoutScreen extends StatefulWidget {
   CheckoutScreen({super.key});
 
-  final viewModel = getIt.get<CheckoutViewModel>();
+  @override
+  State<CheckoutScreen> createState() => _CheckoutScreenState();
+}
 
+class _CheckoutScreenState extends State<CheckoutScreen> {
+  final viewModel = getIt.get<CheckoutViewModel>();
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      context.read<CheckoutViewModel>().doAction(GetUserSavedAddressAction());
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (_) => viewModel..doAction(GetTotalPriceAction()),
+        create: (_) {
+          viewModel.doAction(GetTotalPriceAction());
+          viewModel.doAction(GetUserSavedAddressAction());
+          return viewModel;
+        },
         child: BlocConsumer<CheckoutViewModel, CheckOutStates>(
           builder: (context, state) {
             return Scaffold(
@@ -39,9 +53,12 @@ class CheckoutScreen extends StatelessWidget {
                 },
               ),
             );
-          }, listener: ( context,  state) {
+          }, listener: ( context,  state)async {
             if(state is AddNewAddressState){
-              navKey.currentState!.pushNamed(PageRouteName.addAddress);
+              final result = navKey.currentState!.pushNamed(PageRouteName.addAddress);
+              if(result == true){
+                 viewModel.doAction(GetUserSavedAddressAction());
+              }
             }
         },
         )

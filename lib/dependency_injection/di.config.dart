@@ -192,8 +192,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i493.GetLoggedUserCartUseCase(gh<_i1032.CartRepo>()));
     gh.factory<_i413.UpdateQuantityCartUseCase>(
         () => _i413.UpdateQuantityCartUseCase(gh<_i1032.CartRepo>()));
-    gh.factory<_i820.CheckoutUseCase>(
-        () => _i820.CheckoutUseCase(gh<_i1032.CartRepo>()));
     gh.factory<_i871.CartViewModel>(() => _i871.CartViewModel(
           gh<_i634.AddCartUseCase>(),
           gh<_i493.GetLoggedUserCartUseCase>(),
@@ -204,8 +202,6 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i136.AuthOfflineDataSource>(),
           gh<_i557.AuthOnlineDataSource>(),
         ));
-    gh.factory<_i123.CheckoutViewModel>(
-        () => _i123.CheckoutViewModel(gh<_i820.CheckoutUseCase>()));
     gh.factory<_i699.ProductCubit>(
         () => _i699.ProductCubit(gh<_i902.GetProductUseCase>()));
     gh.factory<_i492.OccasionRepo>(
@@ -220,6 +216,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i807.AddressScreenViewModel(gh<_i811.AddressUsecase>()));
     gh.factory<_i309.AddAddressScreenViewModel>(
         () => _i309.AddAddressScreenViewModel(gh<_i811.AddressUsecase>()));
+    gh.factory<_i820.CheckoutUseCases>(() => _i820.CheckoutUseCases(
+          gh<_i1032.CartRepo>(),
+          gh<_i91.AddressRepository>(),
+        ));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(
@@ -242,6 +242,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1070.SignUpViewModel(gh<_i625.SignupUserUseCase>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i123.CheckoutViewModel>(
+        () => _i123.CheckoutViewModel(gh<_i820.CheckoutUseCases>()));
     gh.factory<_i545.ResetPasswordViewModel>(
         () => _i545.ResetPasswordViewModel(gh<_i448.ResetPasswordUseCase>()));
     gh.factory<_i1022.OccasionViewModel>(
