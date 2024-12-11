@@ -51,9 +51,11 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
     if (isSwitched == true) {
       if (formKey.currentState!.validate()) {
         formKey.currentState!.save();
+        _dispose();
         emit(PlaceOrderState());
       }
     } else {
+      _dispose();
       emit(PlaceOrderState());
     }
   }
@@ -79,7 +81,6 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
         break;
       case PlaceOrderAction():
         _placeOrder();
-        _dispose();
         break;
       case GetTotalPriceAction():
         _getTotalPrice();

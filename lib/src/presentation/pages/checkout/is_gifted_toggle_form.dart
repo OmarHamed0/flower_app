@@ -53,7 +53,8 @@ class IsGiftedToggleForm extends StatelessWidget {
                 key: viewModel.formKey,
                 child: Column(
                   children: [
-                    FadeInLeft(
+                    FadeInDown(
+                      from: 20,
                       child: AppTextField(
                         controller: viewModel.nameController,
                         validator: (value) {
@@ -70,7 +71,8 @@ class IsGiftedToggleForm extends StatelessWidget {
                       ),
                     ),
                     verticalSpace(8),
-                    FadeInLeft(
+                    FadeInDown(
+                      from:50,
                       child: AppTextField(
                         controller: viewModel.phoneController,
                         keyboardType: TextInputType.phone,
