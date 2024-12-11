@@ -2,6 +2,7 @@ import 'package:flower_app/common/common.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/dependency_injection/di.dart';
+import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_states.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_view_model.dart';
 import 'package:flower_app/src/presentation/pages/checkout/checkout_screen_body.dart';
@@ -14,7 +15,7 @@ class CheckoutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create:(_) => viewModel,
+        create:(_) => viewModel..doAction(GetTotalPriceAction()),
       child: Scaffold(
         backgroundColor: AppColors.kWhiteBase,
         appBar: AppBar(

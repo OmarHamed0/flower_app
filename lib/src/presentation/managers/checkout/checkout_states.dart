@@ -6,11 +6,12 @@ class SwitchToggleState extends CheckOutStates{
 }
 class PlaceOrderState extends CheckOutStates{}
 class TotalPriceState extends CheckOutStates{
-  String? totalPrice;
-  TotalPriceState({this.totalPrice});
+  num? totalPrice;
+  num? deliveryFee;
+  TotalPriceState({this.totalPrice, this.deliveryFee});
 }
 class FailGetTotalPriceState extends CheckOutStates{
-  String? message;
-  FailGetTotalPriceState({this.message});
+  Exception? exception;
+  FailGetTotalPriceState({this.exception});
 }
 class LoadingState extends CheckOutStates{}

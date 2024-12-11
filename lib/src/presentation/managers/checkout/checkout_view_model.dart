@@ -18,6 +18,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
   TextEditingController phoneController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   PaymentMethodEnum selectedPaymentMethod = PaymentMethodEnum.cash;
+  num _deliveryFee = 10;
   Future<void> _dispose() async {
     nameController.dispose();
     phoneController.dispose();
@@ -63,10 +64,10 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
     switch (userCart) {
 
       case Success<CartEntity>():
-         emit(TotalPriceState(totalPrice: userCart.data!.totalPrice.toString()));
+         emit(TotalPriceState(totalPrice: userCart.data!.totalPrice, deliveryFee: _deliveryFee));
          break;
       case Failures<CartEntity>():
-
+        emit(FailGetTotalPriceState(exception: userCart.exception));
     }
   }
   void doAction(CheckoutActions action) {
