@@ -30,7 +30,7 @@ class Order {
   @JsonKey(name: "orderItems")
   final List<OrderItems>? orderItems;
   @JsonKey(name: "totalPrice")
-  final num? totalPrice;
+  final int? totalPrice;
   @JsonKey(name: "paymentType")
   final String? paymentType;
   @JsonKey(name: "isPaid")

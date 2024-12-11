@@ -27,7 +27,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       orderItems: (json['orderItems'] as List<dynamic>?)
           ?.map((e) => OrderItems.fromJson(e as Map<String, dynamic>))
           .toList(),
-      totalPrice: json['totalPrice'] as num?,
+      totalPrice: (json['totalPrice'] as num?)?.toInt(),
       paymentType: json['paymentType'] as String?,
       isPaid: json['isPaid'] as bool?,
       isDelivered: json['isDelivered'] as bool?,

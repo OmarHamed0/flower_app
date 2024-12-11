@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/common/api_execute.dart';
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/checkout_place_order_request_model/place_order_request_model.dart';
@@ -19,16 +21,16 @@ import 'package:injectable/injectable.dart';
 
   @override
   Future<ApiResult<PlaceOrderEntity>> placeOrder(ShippingAddressEntity shippingAddressEntity) async{
-       return await executeApi<PlaceOrderEntity>(apiCall: ()async{
-          var token = await _authOfflineDataSource.getToken();
-           PlaceOrderRequestModel placeOrderRequestModel = _getPlaceOrderRequestModel(shippingAddressEntity);
-           var response = await _placeOrderOnlineDataSource.placeOrder(token??"", placeOrderRequestModel);
-           PlaceOrderDto.fromResponse(response);
-           return PlaceOrderDto().toDomain();
+       var token = await _authOfflineDataSource.getToken();
+       PlaceOrderRequestModel placeOrderRequestModel =  _getPlaceOrderRequestModel(shippingAddressEntity);
+       var result =  await executeApi<PlaceOrderEntity>(apiCall:<PlaceOrderEntity> ()async{
+           var response = await _placeOrderOnlineDataSource.placeOrder(token!, placeOrderRequestModel);
+           return PlaceOrderDto().toDomain(response);
        });
+       return result;
   }
 
-  PlaceOrderRequestModel _getPlaceOrderRequestModel(ShippingAddressEntity shippingAddressEntity) {
+  PlaceOrderRequestModel _getPlaceOrderRequestModel(ShippingAddressEntity shippingAddressEntity){
      PlaceOrderRequestModel placeOrderRequestModel = PlaceOrderRequestModel(
       shippingAddress: ShippingAddress(
          city:  shippingAddressEntity.city,

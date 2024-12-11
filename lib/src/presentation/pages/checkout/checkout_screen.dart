@@ -11,6 +11,7 @@ import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.d
 import 'package:flower_app/src/presentation/managers/checkout/checkout_states.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_view_model.dart';
 import 'package:flower_app/src/presentation/pages/checkout/checkout_screen_body.dart';
+import 'package:flower_app/src/presentation/pages/thank_you.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CheckoutScreen extends StatelessWidget {
@@ -73,12 +74,16 @@ class CheckoutScreen extends StatelessWidget {
               );
             }
             if (state is PlaceOrderSuccessState) {
-              ScaffoldMessenger.of(context).showSnackBar(
+              Future.delayed(Duration(seconds: 4),() async{
+                await Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const ThankYou()));
+              });
+               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   backgroundColor: AppColors.kSuccess,
                   content: Text("Successfully placed your order"),
                 ),
               );
+
             }
             if (state is PlaceOrderFailState) {
               ScaffoldMessenger.of(context).showSnackBar(
