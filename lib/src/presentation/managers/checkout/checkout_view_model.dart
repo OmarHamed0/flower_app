@@ -66,7 +66,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
       isValidToPlace = true;
     }
     if(isValidToPlace){
-      emit(LoadingState());
+      emit(PlaceOrderLoadingState());
       var response  = await _placeOrderUserCases.placeOrder(ShippingAddressEntity(
           city: userSavedAddress[selectedAddressIndex].city,
           street: userSavedAddress[selectedAddressIndex].street,

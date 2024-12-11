@@ -31,3 +31,4 @@ class PlaceOrderFailState extends CheckOutStates{
   Exception? exception;
   PlaceOrderFailState({this.exception});
 }
+class PlaceOrderLoadingState extends CheckOutStates{}

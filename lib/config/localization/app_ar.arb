@@ -114,6 +114,6 @@
   "enterYourPhoneNumber": "ادخل رقم هاتفك",
   "placeOrder": "اطلب",
   "itsGift": "هدية",
-    "failedToLoadAddress": "فشل في تحميل العنوان",
+  "failedToLoadAddress": "فشل في تحميل العنوان"
 
 }

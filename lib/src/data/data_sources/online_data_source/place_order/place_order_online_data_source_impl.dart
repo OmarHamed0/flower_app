@@ -12,7 +12,7 @@ class PlaceOrderOnlineDataSourceImpl implements PlaceOrderOnlineDataSource{
   PlaceOrderOnlineDataSourceImpl(this._apiServices);
   @override
   Future<PlaceOrderResponseModel> placeOrder(String token,PlaceOrderRequestModel placeOrderRequestModel) async{
-    return await _apiServices.placeOrder(token, placeOrderRequestModel);
+    return await _apiServices.placeOrder("Bearer $token", placeOrderRequestModel);
   }
 
 }
