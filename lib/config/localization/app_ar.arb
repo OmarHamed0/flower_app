@@ -113,5 +113,7 @@
   "enterYourName": "ادخل اسمك",
   "enterYourPhoneNumber": "ادخل رقم هاتفك",
   "placeOrder": "اطلب",
-  "itsGift": "هدية"
+  "itsGift": "هدية",
+    "failedToLoadAddress": "فشل في تحميل العنوان",
+
 }

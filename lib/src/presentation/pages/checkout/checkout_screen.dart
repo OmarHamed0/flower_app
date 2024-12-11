@@ -55,7 +55,7 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
             );
           }, listener: ( context,  state)async {
             if(state is AddNewAddressState){
-              final result = navKey.currentState!.pushNamed(PageRouteName.addAddress);
+              final result = await navKey.currentState!.pushNamed(PageRouteName.addAddress);
               if(result == true){
                  viewModel.doAction(GetUserSavedAddressAction());
               }

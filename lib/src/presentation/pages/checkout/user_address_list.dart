@@ -6,6 +6,8 @@ import 'package:flower_app/src/presentation/pages/checkout/address_item_card.dar
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shimmer/shimmer.dart';
 
+import '../../../../common/common.dart';
+
 class UserAddressList extends StatefulWidget {
   UserAddressList({super.key});
 
@@ -50,10 +52,10 @@ class _UserAddressListState extends State<UserAddressList> {
       }
 
       if (state is FailGetUserSavedAddressState) {
-        return const Center(child: Text("Failed to load address"));
+        return  Center(child: Text(AppLocalizations.of(context)!.noAddressFound));
       }
       if ((viewModel.userSavedAddress.isEmpty)) {
-        return const Center(child: Text("No address found"));
+        return  Center(child: Text(AppLocalizations.of(context)!.noAddressFound));
       }
       return ListView.builder(
         itemCount: viewModel.userSavedAddress.length,

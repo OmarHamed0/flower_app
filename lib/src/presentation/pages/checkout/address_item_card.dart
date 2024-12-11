@@ -25,7 +25,7 @@ class AddressItemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = context.read<CheckoutViewModel>();
     return Container(
-      margin: const EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8,horizontal: 8),
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.all(Radius.circular(10)),
         color: AppColors.kWhiteBase,
