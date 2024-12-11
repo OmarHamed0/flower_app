@@ -11,9 +11,9 @@ class AddressScreenLoaded extends AddressScreenState {
 }
 
 class AddressScreenError extends AddressScreenState {
-  final String message;
+  final Exception exception;
 
-  AddressScreenError(this.message);
+  AddressScreenError(this.exception);
 }
 
 class AddressScreenEmpty extends AddressScreenState {}
@@ -29,7 +29,7 @@ class AddressScreenDeleted extends AddressScreenState {
 }
 
 class AddressScreenDeleteError extends AddressScreenState {
-  final String message;
+  final Exception exception;
 
-  AddressScreenDeleteError(this.message);
+  AddressScreenDeleteError(this.exception);
 }

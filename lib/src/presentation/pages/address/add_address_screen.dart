@@ -11,6 +11,7 @@ import 'package:flower_app/src/presentation/widgets/app_text_button.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/common.dart';
+import '../../../data/api/core/error/error_handler.dart';
 import '../../managers/address/add_address/add_address_screen_state.dart';
 
 class AddAddressScreen extends StatelessWidget {
@@ -30,10 +31,11 @@ class AddAddressScreen extends StatelessWidget {
         body: BlocListener<AddAddressScreenViewModel, AddAddressScreenState>(
           listener: (context, state) {
             if (state is AddAddressScreenError) {
+              final errorHandler=ErrorHandler.fromException(state.exception!, AppLocalizations.of(context)!);
               showAwesomeDialog(
                 context,
                 title: AppLocalizations.of(context)!.error,
-                desc: state.message,
+                desc: errorHandler.errorMassage,
                 onOk: () {},
                 dialogType: DialogType.error,
               );

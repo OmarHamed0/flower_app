@@ -39,8 +39,7 @@ class HomeViewModel extends Cubit<HomeState> {
         ));
         break;
       case Failures<HomeResponseModel>():
-        final error = ErrorHandler.fromException(result.exception);
-        emit(HomeStateFailure(error.errorMassage));
+        emit(HomeStateFailure(result.exception));
         break;
     }
   }

@@ -1,3 +1,4 @@
+import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/domain/entities/auth/user_entity.dart';
 
 sealed class ProfileScreenState {
@@ -37,8 +38,10 @@ class PopUpDialog extends ProfileScreenState {
 }
 
 class ProfileScreenError extends ProfileScreenState {
-  final String message;
+  final Exception exception;
   const ProfileScreenError(
-    this.message,
+    this.exception,
   );
 }
+
+

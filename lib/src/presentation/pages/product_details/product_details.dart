@@ -1,3 +1,4 @@
+import 'package:flower_app/common/common.dart';
 import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/managers/cart/cart_view_model.dart';
 import 'package:flower_app/src/presentation/managers/product_details/product_details_actions.dart';
@@ -7,6 +8,7 @@ import 'package:flower_app/src/presentation/pages/product_details/product_detail
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../data/api/core/error/error_handler.dart';
 import '../cart/widget/handle_state/handle_add_cart-state.dart';
 
 class ProductDetails extends StatelessWidget {
@@ -48,9 +50,10 @@ class ProductDetails extends StatelessWidget {
               },
               listener: (BuildContext context, ProductDetailsStates state) {
                 if (state is FailedState) {
+                  final errorHandler=ErrorHandler.fromException(state.exceptions!, AppLocalizations.of(context)!);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: Text(state.error!),
+                      content: Text(errorHandler.errorMassage),
                     ),
                   );
                 }

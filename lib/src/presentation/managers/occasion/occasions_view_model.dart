@@ -36,7 +36,7 @@ class OccasionViewModel extends Cubit<OccasionsStates>{
           occasionsList = result.data!;
           emit(LoadedState(occasions: result.data!));
       case Failures<List<OccasionsEntity>>():
-        emit(ErrorState(message: ErrorHandler.fromException(result.exception).errorMassage));
+        emit(ErrorState(exception: result.exception));
     }
   }
 

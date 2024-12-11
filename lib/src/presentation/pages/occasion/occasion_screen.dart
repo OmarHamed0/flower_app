@@ -8,14 +8,21 @@ import 'package:flower_app/src/presentation/managers/product/product_cubit.dart'
 import 'package:flower_app/src/presentation/pages/occasion/occasion_body.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../data/api/core/error/error_handler.dart';
 import '../../managers/occasion/occasions_actions.dart';
 
 
-class OccasionScreen extends StatelessWidget {
+class OccasionScreen extends StatefulWidget {
   int? index;
   OccasionScreen({super.key,  this.index});
 
+  @override
+  State<OccasionScreen> createState() => _OccasionScreenState();
+}
+
+class _OccasionScreenState extends State<OccasionScreen> {
   final OccasionViewModel occasionViewModel = getIt.get<OccasionViewModel>();
+
   final ProductCubit productCubit = getIt.get<ProductCubit>();
 
   @override
@@ -25,7 +32,7 @@ class OccasionScreen extends StatelessWidget {
         BlocProvider<OccasionViewModel>(
             create: (_){
               occasionViewModel.doAction(GetOccasionsAction());
-              occasionViewModel.selectedIndex = index??0;
+              occasionViewModel.selectedIndex = widget.index??0;
               return occasionViewModel;
             }
         ),
@@ -65,7 +72,8 @@ class OccasionScreen extends StatelessWidget {
     } else if (state is ChangeOccasionState) {
       return OccasionBody(occasionId: state.id);
     } else if (state is ErrorState) {
-      return Center(child: Text(state.message));
+      final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
+      return Center(child: Text(errorHandler.errorMassage));
     }
     return Container();
   }

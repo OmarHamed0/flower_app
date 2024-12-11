@@ -54,8 +54,7 @@ class CartViewModel extends Cubit<CartState> {
         emit(AddCartSuccessState());
         break;
       case Failures<CartEntity>():
-        emit(AddCartErrorState(
-            errorHandler: ErrorHandler.fromException(result.exception)));
+        emit(AddCartErrorState(exception: result.exception));
     }
   }
 
@@ -70,8 +69,7 @@ class CartViewModel extends Cubit<CartState> {
         totalPrice = result.data?.totalPrice ?? 0;
         emit(GetLoggedUserCartSuccessState());
       case Failures<CartEntity>():
-        emit(GetLoggedUserCartErrorState(
-            errorHandler: ErrorHandler.fromException(result.exception)));
+        emit(GetLoggedUserCartErrorState(exception: result.exception));
     }
   }
 
@@ -86,8 +84,7 @@ class CartViewModel extends Cubit<CartState> {
         totalPrice = result.data?.totalPrice ?? 0;
         emit(RemoveSpecificCartSuccessState());
       case Failures<CartEntity>():
-        emit(RemoveSpecificCartErrorState(
-            errorHandler: ErrorHandler.fromException(result.exception)));
+        emit(RemoveSpecificCartErrorState(exception: result.exception));
     }
   }
 
@@ -131,8 +128,7 @@ class CartViewModel extends Cubit<CartState> {
         print("Update Total Price :$totalPrice");
         emit(UpdateQuantitySuccessState());
       case Failures<CartEntity>():
-        emit(UpdateQuantityErrorState(
-            errorHandler: ErrorHandler.fromException(result.exception)));
+        emit(UpdateQuantityErrorState(exception: result.exception));
     }
   }
 }

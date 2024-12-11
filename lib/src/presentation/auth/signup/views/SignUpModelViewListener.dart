@@ -7,6 +7,8 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../common/common.dart';
+
 class SignUpModelViewListener extends StatelessWidget {
   const SignUpModelViewListener({super.key});
 
@@ -30,11 +32,11 @@ class SignUpModelViewListener extends StatelessWidget {
             },
           );
         } else if (state is SignupErrorState) {
-
+          final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
           showAwesomeDialog(
             context,
             title: "Error",
-            desc: state.message,
+            desc: errorHandler.errorMassage,
             dialogType: DialogType.error,
             onOk: () {},
           );

@@ -42,6 +42,7 @@ dependencies:
   dynamic_height_grid_view:
   hive_flutter:
   hive: ^2.2.3
+  shimmer: ^2.0.0
 
 dev_dependencies:
   flutter_test:

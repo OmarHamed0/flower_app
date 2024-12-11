@@ -13,8 +13,8 @@ class GetProductSuccessState extends ProductState {
 }
 
 class GetProductErrorState extends ProductState {
-  final String errorMassage;
-  GetProductErrorState({required this.errorMassage});
+  final Exception exception;
+  GetProductErrorState({required this.exception});
 }
 
 
@@ -26,6 +26,6 @@ class GetBesetSellerSuccessState extends ProductState {
 }
 
 class GetBesetSellerErrorState extends ProductState {
-  final String errorMassage;
-  GetBesetSellerErrorState({required this.errorMassage});
+  final Exception exception;
+  GetBesetSellerErrorState({required this.exception});
 }

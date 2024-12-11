@@ -11,8 +11,8 @@ class CategoriesLoaded extends CategoriesState {
 }
 
 class CategoriesError extends CategoriesState {
-  final String message;
-  CategoriesError(this.message);
+  final Exception  exception;
+  CategoriesError(this.exception);
 }
 
 class ChangeCategoryState extends CategoriesState {

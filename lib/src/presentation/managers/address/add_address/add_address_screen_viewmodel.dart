@@ -34,8 +34,7 @@ class AddAddressScreenViewModel extends Cubit<AddAddressScreenState> {
           emit(AddAddressScreenSuccessful());
           break;
         case Failures<String?>():
-          var error = ErrorHandler.fromException(result.exception);
-          emit(AddAddressScreenError(error.errorMassage));
+          emit(AddAddressScreenError(result.exception));
           break;
       }
     }

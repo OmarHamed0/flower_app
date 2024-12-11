@@ -11,6 +11,7 @@ import 'package:flower_app/src/presentation/pages/about_app/about_app_view.dart'
 import 'package:flower_app/src/presentation/pages/address/add_address_screen.dart';
 import 'package:flower_app/src/presentation/pages/address/saved_address_screen.dart';
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
+import 'package:flower_app/src/presentation/pages/checkout/checkout_screen.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
 import 'package:flower_app/src/presentation/pages/occasion/occasion_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
@@ -101,6 +102,9 @@ class AppRoute {
       case PageRouteName.termsAndConditions:
         return _handelMaterialPageRoute(
             settings: settings, widget: const TermsAndConditionsView());
+      case PageRouteName.checkout:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: CheckoutScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

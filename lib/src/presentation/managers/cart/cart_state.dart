@@ -7,8 +7,8 @@ final class CartInitial extends CartState {}
 class AddCartLoadingState extends CartState{}
 class AddCartSuccessState extends CartState{}
 class AddCartErrorState extends CartState{
-  final ErrorHandler errorHandler;
-  AddCartErrorState({required this.errorHandler});
+  final Exception exception;
+  AddCartErrorState({required this.exception});
 }
 
 
@@ -16,8 +16,8 @@ class AddCartErrorState extends CartState{
 class GetLoggedUserCartLoadingState extends CartState{}
 class GetLoggedUserCartSuccessState extends CartState{}
 class GetLoggedUserCartErrorState extends CartState{
-  final ErrorHandler errorHandler;
-  GetLoggedUserCartErrorState({required this.errorHandler});
+  final Exception exception;
+  GetLoggedUserCartErrorState({required this.exception});
 }
 
 
@@ -27,8 +27,8 @@ class GetLoggedUserCartErrorState extends CartState{
 class RemoveSpecificCartLoadingState extends CartState{}
 class RemoveSpecificCartSuccessState extends CartState{}
 class RemoveSpecificCartErrorState extends CartState{
-  final ErrorHandler errorHandler;
-  RemoveSpecificCartErrorState({required this.errorHandler});
+  final Exception exception;
+  RemoveSpecificCartErrorState({required this.exception});
 }
 
 
@@ -39,8 +39,8 @@ class UpdateQuantityState extends CartState{}
 class UpdateQuantityLoadingState extends CartState{}
 class UpdateQuantitySuccessState extends CartState{}
 class UpdateQuantityErrorState extends CartState{
-  final ErrorHandler errorHandler;
-  UpdateQuantityErrorState({required this.errorHandler});
+  final Exception exception;
+  UpdateQuantityErrorState({required this.exception});
 }
 
 
