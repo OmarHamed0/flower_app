@@ -158,8 +158,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i687.ApiServices>(() => _i687.ApiServices(gh<_i361.Dio>()));
     gh.factory<_i130.CartOnlineDataSource>(
         () => _i1063.CartOnlineDataSourceImpl(gh<_i687.ApiServices>()));
-    gh.factory<_i123.CheckoutViewModel>(
-        () => _i123.CheckoutViewModel(gh<InvalidType>()));
     gh.factory<_i838.CategoriesOnlineDataSource>(
         () => _i98.CategoriesOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i509.AddressOnlineDatasource>(
@@ -231,14 +229,15 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i807.AddressScreenViewModel(gh<_i811.AddressUsecase>()));
     gh.factory<_i309.AddAddressScreenViewModel>(
         () => _i309.AddAddressScreenViewModel(gh<_i811.AddressUsecase>()));
-    gh.factory<_i794.CheckoutUseCases>(() => _i794.CheckoutUseCases(
-          gh<_i1032.CartRepo>(),
-          gh<_i91.AddressRepository>(),
-        ));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(
         homeDataSource: gh<_i902.HomeOnlineDataSource>()));
+    gh.factory<_i794.PlaceOrderUserCases>(() => _i794.PlaceOrderUserCases(
+          gh<_i1032.CartRepo>(),
+          gh<_i91.AddressRepository>(),
+          gh<_i1053.PlaceOrderRepo>(),
+        ));
     gh.factory<_i196.ProductDetailsViewModel>(
         () => _i196.ProductDetailsViewModel(gh<_i1042.ProductByIdUseCase>()));
     gh.factory<_i1044.EditProfileViewModel>(
@@ -259,6 +258,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
     gh.factory<_i545.ResetPasswordViewModel>(
         () => _i545.ResetPasswordViewModel(gh<_i448.ResetPasswordUseCase>()));
+    gh.factory<_i123.CheckoutViewModel>(
+        () => _i123.CheckoutViewModel(gh<_i794.PlaceOrderUserCases>()));
     gh.factory<_i1022.OccasionViewModel>(
         () => _i1022.OccasionViewModel(gh<_i845.OccasionUseCase>()));
     return this;
