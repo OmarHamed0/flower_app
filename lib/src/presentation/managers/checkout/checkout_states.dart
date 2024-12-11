@@ -26,3 +26,8 @@ class FailGetUserSavedAddressState extends CheckOutStates{
   Exception? exception;
   FailGetUserSavedAddressState({this.exception});
 }
+class PlaceOrderSuccessState extends CheckOutStates{}
+class PlaceOrderFailState extends CheckOutStates{
+  Exception? exception;
+  PlaceOrderFailState({this.exception});
+}

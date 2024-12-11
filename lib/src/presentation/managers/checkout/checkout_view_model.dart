@@ -3,6 +3,8 @@ import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/src/domain/entities/address/address_model.dart';
 import 'package:flower_app/src/domain/entities/cart/cart_entity.dart';
+import 'package:flower_app/src/domain/entities/place_order/PlaceOrderEntity.dart';
+import 'package:flower_app/src/domain/entities/place_order/shipping_address_entity.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_states.dart';
 import 'package:injectable/injectable.dart';
@@ -20,7 +22,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   PaymentMethodEnum selectedPaymentMethod = PaymentMethodEnum.cash;
   List<AddressModel> userSavedAddress = [];
-  int selectedAddressIndex = -1;
+  int selectedAddressIndex = 0;
   num _deliveryFee = 10;
   Future<void> _dispose() async {
     nameController.dispose();
@@ -50,16 +52,34 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
     emit(SwitchToggleState(isSwitched));
   }
 
-  _placeOrder() {
+
+  _placeOrder() async{
+    bool isValidToPlace = false;
     if (isSwitched == true) {
       if (formKey.currentState!.validate()) {
         formKey.currentState!.save();
         _dispose();
-        emit(PlaceOrderState());
+        isValidToPlace = true;
       }
     } else {
       _dispose();
-      emit(PlaceOrderState());
+      isValidToPlace = true;
+    }
+    if(isValidToPlace){
+      emit(LoadingState());
+      var response  = await _placeOrderUserCases.placeOrder(ShippingAddressEntity(
+          city: userSavedAddress[selectedAddressIndex].city,
+          street: userSavedAddress[selectedAddressIndex].street,
+          phone: userSavedAddress[selectedAddressIndex].phone
+      ));
+      switch (response) {
+        case Success<PlaceOrderEntity>():
+         emit(PlaceOrderSuccessState());
+          break;
+        case Failures<PlaceOrderEntity>():
+        emit(PlaceOrderFailState(exception: response.exception));
+          break;
+      }
     }
   }
 
