@@ -3,15 +3,16 @@ import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/src/domain/entities/address/address_model.dart';
 import 'package:flower_app/src/domain/entities/cart/cart_entity.dart';
-import 'package:flower_app/src/domain/use_cases/chackout/checkout_use_case.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_states.dart';
 import 'package:injectable/injectable.dart';
 
+import '../../../domain/use_cases/place_order/checkout_use_case.dart';
+
 @injectable
 class CheckoutViewModel extends Cubit<CheckOutStates> {
-  final CheckoutUseCases _checkoutUseCase;
-  CheckoutViewModel(this._checkoutUseCase) : super(InitialCheckOutState());
+  final PlaceOrderUserCases _placeOrderUserCases;
+  CheckoutViewModel(this._placeOrderUserCases) : super(InitialCheckOutState());
   bool isSwitched = false;
   final ScrollController scrollController = ScrollController();
   TextEditingController nameController = TextEditingController();
@@ -64,7 +65,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
 
   void _getUserSavedAddress() async{
     emit(LoadingState());
-    var savedAddresses = await _checkoutUseCase.getSavedAddresses();
+    var savedAddresses = await _placeOrderUserCases.getSavedAddresses();
     switch (savedAddresses) {
       case Success<List<AddressModel>>():
         userSavedAddress = savedAddresses.data!;
@@ -78,7 +79,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
 
   void _getTotalPrice() async{
     emit(LoadingState());
-    var userCart = await _checkoutUseCase.getLoggedUserCart();
+    var userCart = await _placeOrderUserCases.getLoggedUserCart();
     switch (userCart) {
       case Success<CartEntity>():
          emit(TotalPriceState(totalPrice: userCart.data!.totalPrice, deliveryFee: _deliveryFee));
