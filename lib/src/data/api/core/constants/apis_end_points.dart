@@ -15,4 +15,5 @@ abstract class ApisEndPoints {
   static const String savedAddresses = "addresses";
   static const String deleteAddress = "addresses";
   static const String addNewAddress = "addresses";
+  static const String orders = "orders";
 }
