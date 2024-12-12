@@ -7,23 +7,23 @@ class TermsAndConditionsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title:  Text(AppLocalizations.of(context)!.termsAndConditions),
-      ),
-      body: ListView(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16 , vertical: 24),
-            child: Column(
-              children: [
-                Text(AppLocalizations.of(context)!.termsAndConditionsContent,
-                  style: AppTextStyles.font16WeightMedium,
-                )
-              ],
+        appBar: AppBar(
+          title: Text(AppLocalizations.of(context)!.termsAndConditions),
+        ),
+        body: ListView(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+              child: Column(
+                children: [
+                  Text(
+                    AppLocalizations.of(context)!.termsAndConditions,
+                    style: AppTextStyles.font16WeightMedium,
+                  )
+                ],
+              ),
             ),
-          ),
-        ],
-      )
-    );
+          ],
+        ));
   }
 }

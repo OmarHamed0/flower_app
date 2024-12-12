@@ -20,6 +20,10 @@ class AddressRepoImpl implements AddressRepository {
         String? token = await _addressOfflineDatasource.getToken();
         var response = await _addressOnlineDatasource.getSavedAddresses(token!);
 
+        for (var address in response.addresses!) {
+          await _addressOfflineDatasource.saveCacheAddresses(address.toModel());
+        }
+
         List<AddressModel> models = response.addresses
                 ?.map((addressDto) => addressDto.toModel())
                 .toList() ??

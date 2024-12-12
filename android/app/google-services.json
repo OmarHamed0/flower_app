@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "334921212661",
+    "project_id": "elevate-ecom",
+    "storage_bucket": "elevate-ecom.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:334921212661:android:11caaef907a4e0be34dbbc",
+        "android_client_info": {
+          "package_name": "com.example.flower_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaqgxCAf8rwQ0VzJb1ttkz02YlNC_0Ha4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
