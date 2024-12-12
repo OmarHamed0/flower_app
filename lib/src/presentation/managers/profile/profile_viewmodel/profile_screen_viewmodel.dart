@@ -7,7 +7,6 @@ import 'package:flower_app/src/presentation/managers/profile/profile_viewmodel/p
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../../data/api/core/error/error_handler.dart';
 import '../../../../domain/use_cases/profile_usecase/profile_usecase.dart';
 
 @injectable
@@ -39,8 +38,10 @@ class ProfileScreenViewModel extends Cubit<ProfileScreenState> {
     if (result is Success<UserEntity>) {
       currentUser = result.data;
       final user = result.data;
-      if(user?.firstName=="Gust"){
+
+      if (user?.firstName == 'Guest') {
         emit(const ProfileGuestScreenLoadedState());
+        return;
       }
       emit(ProfileScreenLoaded(user: user));
     } else if (result is Failures<UserEntity>) {
@@ -60,6 +61,4 @@ class ProfileScreenViewModel extends Cubit<ProfileScreenState> {
         break;
     }
   }
-
-
 }
