@@ -22,7 +22,8 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-
+      - name: Checkout Code
+        uses: actions/checkout@v3
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
 
