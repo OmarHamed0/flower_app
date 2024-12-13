@@ -29,18 +29,13 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Gradle
-        uses: gradle/gradle-build-action@v2
-
-      - name: Verify Gradle Wrapper
-        run: ls -la ./gradlew
-        # This step ensures the Gradle wrapper exists and is accessible
-
-      - name: Make Gradlew Executable
-        run: chmod +x ./gradlew
+      - name: Install Gradle
+        uses: eskatos/gradle-command-action@v1
+        with:
+          gradle-version: 8.0 # Specify the Gradle version compatible with your project
 
       - name: Execute Gradle Build (Debug)
-        run: ./gradlew assembleDebug
+        run: gradle assembleDebug
 
       - name: Upload Artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
