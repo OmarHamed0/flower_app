@@ -5,6 +5,7 @@ import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/presentation/managers/notifications/notifications_screen_actions.dart';
 import 'package:flower_app/src/presentation/managers/notifications/notifications_screen_states.dart';
 import 'package:flower_app/src/presentation/managers/notifications/notifications_view_model.dart';
+import 'package:flower_app/src/presentation/pages/notifications/notification_item_shimmer.dart';
 import 'package:flower_app/src/presentation/pages/notifications/notifications_screen_body.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,7 +31,7 @@ class NotificationsScreen extends StatelessWidget {
         body: BlocBuilder<NotificationsViewModel, NotificationsScreenStates>(
           builder: (context, state) {
               if(state is LoadingState) {
-                   return const Center(child: CircularProgressIndicator());
+                   return const NotificationItemShimmer();
               }
               if(state is LoadedState) {
                 return const NotificationsScreenBody();
