@@ -62,8 +62,6 @@ class Notifications {
   final String? createdAt;
   @JsonKey(name: "updatedAt")
   final String? updatedAt;
-  @JsonKey(name: "__v")
-  final int? _V;
 
   Notifications ({
     this.Id,
@@ -71,7 +69,6 @@ class Notifications {
     this.body,
     this.createdAt,
     this.updatedAt,
-    this._V,
   });
 
   factory Notifications.fromJson(Map<String, dynamic> json) {
