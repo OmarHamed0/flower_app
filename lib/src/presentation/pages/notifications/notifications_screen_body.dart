@@ -30,7 +30,7 @@ class NotificationsScreenBody extends StatelessWidget {
     return ListView.builder(
       itemCount: notificationsList.length,
       itemBuilder: (context, index) {
-        return NotificationItem(notification: notificationsList[index]);
+        return NotificationItem(index: index);
       },
     );
   }

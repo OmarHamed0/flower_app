@@ -12,7 +12,6 @@ class NotificationsViewModel extends Cubit<NotificationsScreenStates> {
 
   NotificationsViewModel(this._notificationsUseCases) : super(InitialState());
   List<NotificationEntity> notificationsList = [];
-
   void _getAllNotifications() async {
     emit(LoadingState());
     final notifications = await _notificationsUseCases.getAllNotifications();
@@ -27,13 +26,36 @@ class NotificationsViewModel extends Cubit<NotificationsScreenStates> {
     }
   }
 
+  void _deleteNotification(int index) {
+    if(index == -1){
+      return;
+    }
+    emit(DeleteNotificationState(notificationId: notificationsList[index].id));
+  }
+
+  void _undoDeleteNotification() {
+    emit(UndoDeleteNotificationState());
+  }
+
+  void _deleteNotificationConfirmed() {
+    emit(DeletingInProgressState());
+  }
   void doAction(NotificationsScreenActions action) {
     switch (action) {
       case GetAllNotificationsAction():
         _getAllNotifications();
         break;
       case GoToNotificationDetailsAction():
-      // TODO: Handle this case.
+         break;
+      case DeleteNotificationAction():
+        _deleteNotification(action.index??-1);
+        break;
+      case UndoDeleteNotificationAction():
+         _undoDeleteNotification();
+         break;
+      case DeleteNotificationConfirmedAction():
+        _deleteNotificationConfirmed();
+        break;
     }
   }
 }
