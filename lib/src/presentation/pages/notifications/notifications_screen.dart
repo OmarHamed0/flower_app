@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/dependency_injection/di.dart';
@@ -9,6 +8,7 @@ import 'package:flower_app/src/presentation/managers/notifications/notifications
 import 'package:flower_app/src/presentation/managers/notifications/notifications_view_model.dart';
 import 'package:flower_app/src/presentation/pages/notifications/notification_item_shimmer.dart';
 import 'package:flower_app/src/presentation/pages/notifications/notifications_screen_body.dart';
+import 'package:flower_app/src/presentation/pages/notifications/snack_bar_count_down.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class NotificationsScreen extends StatelessWidget {
@@ -53,53 +53,47 @@ class NotificationsScreen extends StatelessWidget {
           },
           listener: (context, state) {
             if (state is DeleteNotificationState) {
-              _handleDeleteNotification(context, state.notificationId??"");
+              _handleDeleteNotification(context, state.notificationId ?? "");
             }
           },
         ),
       )),
     );
   }
-  void _handleDeleteNotification(BuildContext context, String notificationId) {
-    Timer? countdownTimer;
-    int countdownSeconds = 5;
 
-    // Show a SnackBar with a circular countdown
+  void _handleDeleteNotification(BuildContext context, String notificationId) {
+    showSnackBarWithCountdown(
+      context: context,
+      duration: 5,
+      onUndo: () {
+        notificationsViewModel.doAction(UndoDeleteNotificationAction());
+      },
+      onComplete: () {
+        notificationsViewModel.doAction(
+            DeleteNotificationConfirmedAction(notificationId: notificationId));
+      },
+    );
+  }
+
+  void showSnackBarWithCountdown({
+    required BuildContext context,
+    required int duration,
+    required VoidCallback onUndo,
+    required VoidCallback onComplete,
+  }) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: const Duration(seconds: 5),
-        content: const Row(
-          children: [
-            SizedBox(
-              width: 20,
-              height: 20,
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
-                strokeWidth: 2.0,
-              ),
-            ),
-            SizedBox(width: 16),
-            Text("Deleting notification in 5 seconds..."),
-          ],
+        duration: Duration(seconds: duration),
+        content: SnackBarCountdown(
+          duration: duration,
+          onUndo: onUndo,
+          onComplete: onComplete,
         ),
         action: SnackBarAction(
           label: "Undo",
-          onPressed: () {
-            countdownTimer?.cancel();
-            notificationsViewModel.doAction(UndoDeleteNotificationAction());
-          },
+          onPressed: onUndo,
         ),
       ),
     );
-
-    // Start countdown
-    countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      countdownSeconds--;
-      if (countdownSeconds == 0) {
-        timer.cancel();
-        notificationsViewModel.doAction(DeleteNotificationConfirmedAction(notificationId: notificationId));
-      }
-    });
-
   }
 }
