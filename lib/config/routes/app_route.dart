@@ -13,7 +13,7 @@ import 'package:flower_app/src/presentation/pages/address/saved_address_screen.d
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
 import 'package:flower_app/src/presentation/pages/checkout/checkout_screen.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
-import 'package:flower_app/src/presentation/pages/notifications_screen.dart';
+import 'package:flower_app/src/presentation/pages/notifications/notifications_screen.dart';
 import 'package:flower_app/src/presentation/pages/occasion/occasion_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flower_app/src/presentation/pages/reset_passowrd/reset_password_screen.dart';
