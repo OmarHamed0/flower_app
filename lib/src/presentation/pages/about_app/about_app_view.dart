@@ -8,13 +8,14 @@ class AboutAppView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title:  Text(AppLocalizations.of(context)!.aboutUs),
+        title: Text(AppLocalizations.of(context)!.aboutUs),
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16 , vertical: 24),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
         child: Column(
           children: [
-            Text(AppLocalizations.of(context)!.aboutUsContent,
+            Text(
+              AppLocalizations.of(context)!.aboutUs,
               style: AppTextStyles.font16WeightMedium,
             )
           ],
