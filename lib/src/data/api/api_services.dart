@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flower_app/src/data/api/core/notifications/all_notifications_response_model.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/add_address_request.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/address/address_response.dart';
@@ -122,4 +123,9 @@ abstract class ApiServices {
   @POST(ApisEndPoints.orders)
   Future<PlaceOrderResponseModel> placeOrder(
       @Header("Authorization") String token, @Body() PlaceOrderRequestModel body);
+
+  @GET(ApisEndPoints.notifications)
+  Future<AllNotificationsResponseModel> getAllNotifications(
+      @Header("Authorization") String token);
+
 }
