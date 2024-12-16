@@ -171,7 +171,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'products/${id}',
+          'products/id',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -528,7 +528,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'cart/${id}',
+          'cart/id',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -567,7 +567,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'cart/${id}',
+          'cart/id',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -638,7 +638,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'addresses/${id}',
+          'addresses/{id',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -786,7 +786,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'notifications/${id}',
+          'notifications/id',
           queryParameters: queryParameters,
           data: _data,
         )

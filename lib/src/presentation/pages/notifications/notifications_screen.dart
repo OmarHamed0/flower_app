@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/dependency_injection/di.dart';

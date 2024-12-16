@@ -40,6 +40,7 @@ class NotificationsViewModel extends Cubit<NotificationsScreenStates> {
   }
 
   void _deleteNotificationConfirmed(String notificationId) async{
+    emit(DeletingInProgressState());
     final result = await _notificationsUseCases.deleteNotification(notificationId);
     switch(result){
       case Success<String>():
@@ -48,7 +49,7 @@ class NotificationsViewModel extends Cubit<NotificationsScreenStates> {
       case Failures<String>():
         emit(FailDeleteNotificationState(result.exception));
     }
-    emit(DeletingInProgressState());
+
   }
   void doAction(NotificationsScreenActions action) {
     switch (action) {
