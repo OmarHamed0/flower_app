@@ -12,4 +12,9 @@ class NotificationsUseCases{
   Future<ApiResult<List<NotificationEntity>>> getAllNotifications() async {
     return await _notificationsRepo.getAllNotifications();
   }
+
+  Future<ApiResult<String>> deleteNotification(String notificationId) async {
+    return await _notificationsRepo.deleteNotification(notificationId);
+  }
+
 }

@@ -27,4 +27,12 @@ class NotificationRepoImpl implements NotificationsRepo{
      return await _authOfflineDataSource.getToken()??"";
   }
 
+  @override
+  Future<ApiResult<String>> deleteNotification(String notificationId) async {
+    final String token = await _getToken();
+    return executeApi<String>(apiCall: () async{
+        return await _notificationsOnlineDataSource.deleteNotification(token, notificationId);
+    });
+  }
+
 }

@@ -3,4 +3,5 @@ import 'package:flower_app/src/domain/entities/notifications/notifications_entit
 
 abstract interface class NotificationsRepo {
   Future<ApiResult<List<NotificationEntity>>> getAllNotifications();
+  Future<ApiResult<String>> deleteNotification(String notificationId);
 }

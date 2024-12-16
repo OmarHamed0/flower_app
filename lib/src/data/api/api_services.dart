@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flower_app/src/data/api/core/constants/api_keys.dart';
 import 'package:flower_app/src/data/api/core/notifications/all_notifications_response_model.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/add_address_request.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
@@ -126,6 +127,9 @@ abstract class ApiServices {
 
   @GET(ApisEndPoints.notifications)
   Future<AllNotificationsResponseModel> getAllNotifications(
-      @Header("Authorization") String token);
+      @Header(ApiKey.authorization) String token);
+
+  @DELETE("${ApisEndPoints.notifications}/{id}")
+  Future<String> deleteNotification(@Header(ApiKey.token) String token, @Path(ApiKey.id) String id);
 
 }

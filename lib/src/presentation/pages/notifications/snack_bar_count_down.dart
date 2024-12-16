@@ -26,8 +26,6 @@ class _SnackBarWithCountdownState extends State<SnackBarCountdown> {
   void initState() {
     super.initState();
     remainingSeconds = widget.duration;
-
-    // Start Timer
     countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (remainingSeconds > 0) {
         setState(() {

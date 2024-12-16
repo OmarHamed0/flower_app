@@ -39,7 +39,15 @@ class NotificationsViewModel extends Cubit<NotificationsScreenStates> {
     emit(UndoDeleteNotificationState());
   }
 
-  void _deleteNotificationConfirmed() {
+  void _deleteNotificationConfirmed(String notificationId) async{
+    final result = await _notificationsUseCases.deleteNotification(notificationId);
+    switch(result){
+      case Success<String>():
+         emit(SuccessDeleteNotificationState());
+         break;
+      case Failures<String>():
+        emit(FailDeleteNotificationState(result.exception));
+    }
     emit(DeletingInProgressState());
   }
   void doAction(NotificationsScreenActions action) {
@@ -56,7 +64,7 @@ class NotificationsViewModel extends Cubit<NotificationsScreenStates> {
          _undoDeleteNotification();
          break;
       case DeleteNotificationConfirmedAction():
-        _deleteNotificationConfirmed();
+        _deleteNotificationConfirmed(action.notificationId??"");
         break;
     }
   }

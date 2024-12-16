@@ -12,4 +12,10 @@ class NotificationsOnlineDataSourceImpl implements NotificationsOnlineDataSource
   Future<AllNotificationsResponseModel> getNotifications(String token) async{
       return await _apiServices.getAllNotifications("Bearer $token");
   }
+
+  @override
+  Future<String> deleteNotification(String token, String notificationId) async{
+      return await _apiServices.deleteNotification(token, notificationId);
+  }
+
 }
