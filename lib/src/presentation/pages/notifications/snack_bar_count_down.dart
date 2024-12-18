@@ -1,6 +1,8 @@
 import 'dart:async';
+import 'dart:developer';
 
-import 'package:flutter/material.dart';
+import 'package:flower_app/common/common.dart';
+import 'package:flower_app/core/functions/spacing.dart';
 
 class SnackBarCountdown extends StatefulWidget {
   final int duration;
@@ -19,21 +21,24 @@ class SnackBarCountdown extends StatefulWidget {
 }
 
 class _SnackBarWithCountdownState extends State<SnackBarCountdown> {
-  late int remainingSeconds;
+   int remainingSeconds = 5;
   Timer? countdownTimer;
 
   @override
   void initState() {
     super.initState();
-    remainingSeconds = widget.duration;
     countdownTimer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (remainingSeconds > 0) {
         setState(() {
           remainingSeconds--;
         });
-      } else {
+        if(remainingSeconds == 0) {
+          widget.onComplete();
+        }
+      }
+      else {
+        log("Countdown finished, executing onComplete");
         timer.cancel();
-        widget.onComplete();
       }
     });
   }
@@ -52,12 +57,12 @@ class _SnackBarWithCountdownState extends State<SnackBarCountdown> {
           alignment: Alignment.center,
           children: [
             SizedBox(
-              width: 30,
-              height: 30,
+              width: 30.w,
+              height: 30.h,
               child: CircularProgressIndicator(
                 value: remainingSeconds / widget.duration,
                 valueColor: const AlwaysStoppedAnimation<Color>(Colors.white),
-                strokeWidth: 2.0,
+                strokeWidth: 2.0.w,
               ),
             ),
             Text(
@@ -66,7 +71,7 @@ class _SnackBarWithCountdownState extends State<SnackBarCountdown> {
             ),
           ],
         ),
-        const SizedBox(width: 16),
+        horizontalSpace(16),
         const Text("Deleting notification in..."),
       ],
     );

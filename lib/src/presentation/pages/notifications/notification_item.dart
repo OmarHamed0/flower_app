@@ -1,5 +1,4 @@
 import 'package:flower_app/common/common.dart';
-import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';

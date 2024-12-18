@@ -1,5 +1,6 @@
-import 'package:flower_app/src/data/api/core/notifications/all_notifications_response_model.dart';
 import 'package:flower_app/src/domain/entities/notifications/notifications_entity.dart';
+
+import '../../api/core/response_model/notifications/all_notifications_response_model.dart';
 
 class NotificationsDto{
   final String? id;

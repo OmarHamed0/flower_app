@@ -30,8 +30,8 @@ class NotificationsViewModel extends Cubit<NotificationsScreenStates> {
     if(index == -1){
       return;
     }
-    notificationsList.removeAt(index);
     emit(DeleteNotificationState(notificationId: notificationsList[index].id));
+    notificationsList.removeAt(index);
   }
 
   void _undoDeleteNotification() {

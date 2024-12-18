@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/dependency_injection/di.dart';
@@ -68,6 +70,7 @@ class NotificationsScreen extends StatelessWidget {
         notificationsViewModel.doAction(UndoDeleteNotificationAction());
       },
       onComplete: () {
+        log("Notification deleted");
         notificationsViewModel.doAction(
             DeleteNotificationConfirmedAction(notificationId: notificationId));
       },

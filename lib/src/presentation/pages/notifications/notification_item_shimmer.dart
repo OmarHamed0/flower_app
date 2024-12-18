@@ -35,8 +35,8 @@ class NotificationItemShimmer extends StatelessWidget {
                     children: [
                       // Title Placeholder
                       Container(
-                        width: 120,
-                        height: 16,
+                        width: 120.w,
+                        height: 16.h,
                         decoration: BoxDecoration(
                           color: AppColors.kWhiteBase,
                           borderRadius: BorderRadius.circular(4),
@@ -46,7 +46,7 @@ class NotificationItemShimmer extends StatelessWidget {
                       // Body Placeholder
                       Container(
                         width: double.infinity,
-                        height: 12,
+                        height: 12.h,
                         decoration: BoxDecoration(
                           color: AppColors.kWhiteBase,
                           borderRadius: BorderRadius.circular(4),
@@ -54,8 +54,8 @@ class NotificationItemShimmer extends StatelessWidget {
                       ),
                       verticalSpace(8),
                       Container(
-                        width: 150,
-                        height: 12,
+                        width: 150.w,
+                        height: 12.h,
                         decoration: BoxDecoration(
                           color: AppColors.kWhiteBase,
                           borderRadius: BorderRadius.circular(4),
@@ -69,7 +69,7 @@ class NotificationItemShimmer extends StatelessWidget {
           ),
         ),
         Container(
-          height: 1,
+          height: 1.h,
           color: AppColors.kWhite70,
         ),
       ],
