@@ -14,4 +14,5 @@ class PageRouteName {
   static const String aboutApp = "aboutApp";
   static const String termsAndConditions = "termsAndConditions";
   static const String checkout = "checkout";
+  static const String myOrders = "myOrders";
 }
