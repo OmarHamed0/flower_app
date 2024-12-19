@@ -1,0 +1,22 @@
+name : Unit Test Work Flow
+
+on:
+  push:
+    branches:
+
+jobs:
+  test:
+    name: run flutter test all branches
+    runs-on:  ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+      - name: install package
+        run: flutter pub get
+      - name : rub build
+        run : flutter  packages pub run build_runner watch
+      - name: run flutter test
+        run: flutter test
+
