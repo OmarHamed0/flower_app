@@ -56,7 +56,6 @@ class Orders {
     this.isDelivered,
     this.createdAt,
     this.updatedAt,
-    this._V,
   });
 
   factory Orders.fromJson(Map<String, dynamic> json) {

@@ -5,8 +5,8 @@ class OrdersEntity {
   List<OrdersItems>? orders;
   num? totalPrice;
   String? paymentMethod;
-  String? isPaid;
-  String? isDelivered;
+  bool? isPaid;
+  bool? isDelivered;
   String? createdAt;
   String? updatedAt;
 
@@ -28,7 +28,7 @@ class OrdersItems {
   final String? product;
   final num? price;
   final num? quantity;
-  final num? id;
+  final String? id;
 
   OrdersItems({this.product, this.price, this.quantity, this.id});
 }
