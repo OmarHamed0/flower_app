@@ -71,4 +71,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'elevate-ecom.firebasestorage.app',
     iosBundleId: 'com.example.flowerApp',
   );
+
 }
