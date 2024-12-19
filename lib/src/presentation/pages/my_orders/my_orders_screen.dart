@@ -1,11 +1,14 @@
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/dependency_injection/di.dart';
+import 'package:flower_app/src/data/api/core/error/error_handler.dart';
+import 'package:flower_app/src/domain/entities/orders_entity.dart';
 import 'package:flower_app/src/presentation/managers/cart/cart_action.dart';
 import 'package:flower_app/src/presentation/managers/my_orders/my_orders_actions.dart';
 import 'package:flower_app/src/presentation/managers/my_orders/my_orders_states.dart';
 import 'package:flower_app/src/presentation/managers/my_orders/my_orders_view_model.dart';
 import 'package:flower_app/src/presentation/pages/my_orders/my_orders_screen_body.dart';
+import 'package:flower_app/src/presentation/pages/my_orders/order_item_card_shimmer.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/common.dart';
@@ -26,11 +29,12 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
-     viewModel.doAction(GetUserCartItemsAction());
-    _tabController.addListener((){
-      if(_tabController.index ==  0){
+    viewModel.doAction(GetUserCartItemsAction());
+    viewModel.currentTabIndex = _tabController.index;
+    _tabController.addListener(() {
+      if (_tabController.index == 0) {
         viewModel.doAction(GetActiveOrdersAction());
-      }else{
+      } else {
         viewModel.doAction(GetCompletedOrderAction());
       }
     });
@@ -46,7 +50,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context){
+      create: (context) {
         return viewModel;
       },
       child: BlocBuilder<MyOrdersViewModel, MyOrdersStates>(
@@ -74,7 +78,21 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
                 ],
               ),
             ),
-            body: const MyOrdersScreenBody(),
+            body: BlocBuilder<MyOrdersViewModel, MyOrdersStates>(
+              builder: (context, state) {
+                if (state is LoadingMyOrdersState) {
+                  return const OrderItemCardShimmer();
+                }
+                if (state is ErrorMyOrdersState) {
+                  return Center(
+                    child: Text(ErrorHandler.fromException(
+                            state.exception!, AppLocalizations.of(context)!)
+                        .errorMassage),
+                  );
+                }
+                return const MyOrdersScreenBody();
+              },
+            ),
           );
         },
       ),

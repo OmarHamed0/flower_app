@@ -2,11 +2,14 @@ import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/images/app_images.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
+import 'package:flower_app/src/domain/entities/orders_entity.dart';
 import '../../../../common/common.dart';
 import '../../../../core/styles/colors/app_colors.dart';
 
 class OrderItemCard extends StatelessWidget {
-  const OrderItemCard({super.key});
+ final OrdersItems item;
+ final String buttonText;
+  const OrderItemCard({super.key, required this.item,required this.buttonText});
 
   @override
   Widget build(BuildContext context) {
@@ -32,17 +35,17 @@ class OrderItemCard extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "title",
+                 item.product.toString(),
                 style: AppTextStyles.font12WeightNormal,
               ),
               verticalSpace(4),
               Text(
-                "Egp 200",
+                item.price.toString(),
                 style: AppTextStyles.font16BlackBase400Weight,
               ),
               verticalSpace(4),
               Text(
-                "order number or delire at",
+                item.id.toString(),
                 style: AppTextStyles.font12WeightNormal,
               ),
               verticalSpace(4),
@@ -53,7 +56,7 @@ class OrderItemCard extends StatelessWidget {
                       backgroundColor: AppColors.kBaseColor),
                   onPressed: () {},
                   child: Text(
-                    "Reorder",
+                    buttonText,
                     style: AppTextStyles.font13WeightNormal
                         .copyWith(color: AppColors.kWhiteBase),
                   ),

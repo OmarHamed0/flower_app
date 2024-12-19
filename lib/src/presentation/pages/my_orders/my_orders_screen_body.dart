@@ -1,6 +1,6 @@
-import 'package:flower_app/src/presentation/pages/my_orders/order_item_card_shimmer.dart';
-
+import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../common/common.dart';
+import '../../managers/my_orders/my_orders_view_model.dart';
 import 'order_item_card.dart';
 
 class MyOrdersScreenBody extends StatelessWidget {
@@ -8,10 +8,22 @@ class MyOrdersScreenBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final viewModel = context.read<MyOrdersViewModel>();
+    final currentOrdersList = viewModel.orders[viewModel.currentTabIndex];
+    String? buttonText;
     return ListView.builder(
-        itemCount: 2,
-        itemBuilder: (context,index){
-          return const OrderItemCard();
-        });
+      itemCount: 2,
+      itemBuilder: (context, index) {
+        if (viewModel.currentTabIndex == 0) {
+          buttonText = "Track Order";
+        } else {
+          buttonText = "Reorder";
+        }
+        return OrderItemCard(
+          item: currentOrdersList[index],
+          buttonText: buttonText ?? "",
+        );
+      },
+    );
   }
 }

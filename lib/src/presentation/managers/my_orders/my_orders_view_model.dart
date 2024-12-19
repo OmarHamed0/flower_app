@@ -1,7 +1,7 @@
 
 import 'package:flower_app/common/api_result.dart';
-import 'package:flower_app/src/domain/entities/cart/cart_entity.dart';
-import 'package:flower_app/src/domain/use_cases/cart/get_logged_user_cart_use_case.dart';
+import 'package:flower_app/src/domain/entities/orders_entity.dart';
+import 'package:flower_app/src/domain/use_cases/orders/orders_use_case.dart';
 import 'package:flower_app/src/presentation/managers/my_orders/my_orders_actions.dart';
 import 'package:flower_app/src/presentation/managers/my_orders/my_orders_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,30 +10,40 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class MyOrdersViewModel extends Cubit<MyOrdersStates>{
-  final GetLoggedUserCartUseCase _getLoggedUserCartUseCase;
-  MyOrdersViewModel(this._getLoggedUserCartUseCase) : super(InitialMyOrdersState());
-  List<CartEntity> cartItems = [];
-  List<CartEntity> activeOrders = [];
-  List<CartEntity> completedOrders = [];
+  final OrdersUseCase _ordersUseCase;
+  MyOrdersViewModel(this._ordersUseCase) : super(InitialMyOrdersState());
+  List<OrdersItems> activeOrders = [];
+  List<OrdersItems> completedOrders = [];
+  List<List<OrdersItems>> orders = [];
+  int currentTabIndex = 0;
   void _getActiveOrders(){
-
     emit(LoadedMyOrdersState(cartItems: activeOrders));
   }
 
   void _getCompletedOrders() {
-
-
     emit(LoadedMyOrdersState(cartItems: completedOrders));
   }
   void _getLoggedUserCart() async{
     emit(LoadingMyOrdersState());
-    final response = await _getLoggedUserCartUseCase.invoke();
+    final response = await _ordersUseCase.getUserOrders();
     switch (response) {
-      case Success<CartEntity>():
+      case Success<OrdersEntity>():
+        if(response.data?.isDelivered == false && response.data?.isPaid == false){
+          activeOrders = response.data!.orders!;
+        }else{
+          completedOrders = response.data!.orders!;
+        }
+        if(currentTabIndex == 0) {
+          _getActiveOrders();
+        }
+        else{
+          _getCompletedOrders();
+        }
+        orders.add(activeOrders);
+        orders.add(completedOrders);
         break;
-      case Failures<CartEntity>():
+      case Failures<OrdersEntity>():
         emit(ErrorMyOrdersState(exception: response.exception));
-        break;
     }
   }
 

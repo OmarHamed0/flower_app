@@ -1,6 +1,5 @@
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/core/functions/spacing.dart';
-import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 
