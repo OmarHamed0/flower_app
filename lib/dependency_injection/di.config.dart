@@ -48,6 +48,10 @@ import '../src/data/data_sources/online_data_source/home_online_datasource.dart'
     as _i902;
 import '../src/data/data_sources/online_data_source/home_online_datasource_impl.dart'
     as _i1054;
+import '../src/data/data_sources/online_data_source/notifications%20/notifications_online_data_souce_impl.dart'
+    as _i9;
+import '../src/data/data_sources/online_data_source/notifications%20/notifications_online_data_source.dart'
+    as _i370;
 import '../src/data/data_sources/online_data_source/occasion_online_data_source/OccasionOnlineDataSource.dart'
     as _i241;
 import '../src/data/data_sources/online_data_source/occasion_online_data_source/OccasionOnlineDataSourceImpl.dart'
@@ -67,6 +71,8 @@ import '../src/data/repositories/cart_repo_impl/cart_repo_impl.dart' as _i474;
 import '../src/data/repositories/categories_repo/categories_repo_impl.dart'
     as _i545;
 import '../src/data/repositories/home_repository_impl.dart' as _i283;
+import '../src/data/repositories/notifications_repo_impl/notificatios_repo_impl.dart'
+    as _i579;
 import '../src/data/repositories/occasion_repo_impl/OccasionRepoImpl.dart'
     as _i475;
 import '../src/data/repositories/place_order/place_order_repo_impl.dart'
@@ -80,6 +86,8 @@ import '../src/domain/repositories/cart_repo/cart_repo.dart' as _i1032;
 import '../src/domain/repositories/categories_repo/categories_repo.dart'
     as _i139;
 import '../src/domain/repositories/home_repository.dart' as _i781;
+import '../src/domain/repositories/notifications/notifications_repo.dart'
+    as _i310;
 import '../src/domain/repositories/occasion_repo/OccasionRepo.dart' as _i492;
 import '../src/domain/repositories/place_order/PlaceOrderRepo.dart' as _i1053;
 import '../src/domain/repositories/product_repo/product_repo.dart' as _i170;
@@ -96,6 +104,8 @@ import '../src/domain/use_cases/cart/update_quantity_cart_use_case.dart'
     as _i413;
 import '../src/domain/use_cases/category_use_case.dart' as _i551;
 import '../src/domain/use_cases/home_usecase.dart' as _i729;
+import '../src/domain/use_cases/notifications/notifications_use_cases.dart'
+    as _i1031;
 import '../src/domain/use_cases/occasions_use_case.dart' as _i845;
 import '../src/domain/use_cases/place_order/checkout_use_case.dart' as _i794;
 import '../src/domain/use_cases/product_use_cases/get_product_use_case.dart'
@@ -118,6 +128,8 @@ import '../src/presentation/managers/categories/categories_view_model.dart'
 import '../src/presentation/managers/checkout/checkout_view_model.dart'
     as _i123;
 import '../src/presentation/managers/home/home_viewmodel.dart' as _i363;
+import '../src/presentation/managers/notifications/notifications_view_model.dart'
+    as _i505;
 import '../src/presentation/managers/occasion/occasions_view_model.dart'
     as _i1022;
 import '../src/presentation/managers/product/product_cubit.dart' as _i699;
@@ -181,6 +193,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i808.AuthOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i793.PlaceOrderOnlineDataSource>(
         () => _i231.PlaceOrderOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i370.NotificationsOnlineDataSource>(
+        () => _i9.NotificationsOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i91.AddressRepository>(() => _i888.AddressRepoImpl(
           gh<_i334.AddressOfflineDatasource>(),
           gh<_i509.AddressOnlineDatasource>(),
@@ -217,8 +231,14 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i699.ProductCubit>(
         () => _i699.ProductCubit(gh<_i902.GetProductUseCase>()));
+    gh.factory<_i310.NotificationsRepo>(() => _i579.NotificationRepoImpl(
+          gh<_i136.AuthOfflineDataSource>(),
+          gh<_i370.NotificationsOnlineDataSource>(),
+        ));
     gh.factory<_i492.OccasionRepo>(
         () => _i475.OccasionsRepoImpl(gh<_i241.OccasionOnlineDataSource>()));
+    gh.factory<_i1031.NotificationsUseCases>(
+        () => _i1031.NotificationsUseCases(gh<_i310.NotificationsRepo>()));
     gh.factory<_i822.CategoriesViewModel>(
         () => _i822.CategoriesViewModel(gh<_i551.CategoryUseCase>()));
     gh.factory<_i346.ProfileUseCase>(
@@ -250,6 +270,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i845.OccasionUseCase(gh<_i492.OccasionRepo>()));
     gh.factory<_i729.HomeUseCase>(
         () => _i729.HomeUseCase(gh<_i781.HomeRepository>()));
+    gh.factory<_i505.NotificationsViewModel>(
+        () => _i505.NotificationsViewModel(gh<_i1031.NotificationsUseCases>()));
     gh.factory<_i363.HomeViewModel>(
         () => _i363.HomeViewModel(gh<_i729.HomeUseCase>()));
     gh.factory<_i1070.SignUpViewModel>(
