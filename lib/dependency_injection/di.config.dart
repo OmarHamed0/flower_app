@@ -118,6 +118,8 @@ import '../src/presentation/managers/categories/categories_view_model.dart'
 import '../src/presentation/managers/checkout/checkout_view_model.dart'
     as _i123;
 import '../src/presentation/managers/home/home_viewmodel.dart' as _i363;
+import '../src/presentation/managers/my_orders/my_orders_view_model.dart'
+    as _i602;
 import '../src/presentation/managers/occasion/occasions_view_model.dart'
     as _i1022;
 import '../src/presentation/managers/product/product_cubit.dart' as _i699;
@@ -147,6 +149,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i387.HiveModule>(() => _i387.HiveModule());
     gh.factory<_i450.BaseScreenViewmodel>(() => _i450.BaseScreenViewmodel());
     gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
+    gh.factory<_i602.MyOrdersViewModel>(() => _i602.MyOrdersViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.factory<_i334.AddressOfflineDatasource>(

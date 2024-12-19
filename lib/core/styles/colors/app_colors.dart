@@ -56,4 +56,9 @@ class AppColors {
 
   // Others
   static const Color kLightPink = Color(0xFFF9ECF0);
+
+  // shimmer
+  static Color baseShimmer = Colors.grey[300]!;
+  static Color highlightShimmer = Colors.grey[100]!;
+
 }

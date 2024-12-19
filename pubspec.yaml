@@ -76,7 +76,7 @@ flutter:
     - assets/animations/cart_empty.json
     - assets/animations/invalid_token.json
     - assets/animations/error.json
-    - assets/images/
+    - assets/Images/
     - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
