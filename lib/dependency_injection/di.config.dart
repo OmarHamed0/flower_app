@@ -48,10 +48,10 @@ import '../src/data/data_sources/online_data_source/home_online_datasource.dart'
     as _i902;
 import '../src/data/data_sources/online_data_source/home_online_datasource_impl.dart'
     as _i1054;
-import '../src/data/data_sources/online_data_source/notifications%20/notifications_online_data_souce_impl.dart'
-    as _i9;
-import '../src/data/data_sources/online_data_source/notifications%20/notifications_online_data_source.dart'
-    as _i370;
+import '../src/data/data_sources/online_data_source/notifications/notifications_online_data_souce_impl.dart'
+    as _i236;
+import '../src/data/data_sources/online_data_source/notifications/notifications_online_data_source.dart'
+    as _i133;
 import '../src/data/data_sources/online_data_source/occasion_online_data_source/OccasionOnlineDataSource.dart'
     as _i241;
 import '../src/data/data_sources/online_data_source/occasion_online_data_source/OccasionOnlineDataSourceImpl.dart'
@@ -193,8 +193,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i808.AuthOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i793.PlaceOrderOnlineDataSource>(
         () => _i231.PlaceOrderOnlineDataSourceImpl(gh<_i687.ApiServices>()));
-    gh.factory<_i370.NotificationsOnlineDataSource>(
-        () => _i9.NotificationsOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i133.NotificationsOnlineDataSource>(
+        () => _i236.NotificationsOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i91.AddressRepository>(() => _i888.AddressRepoImpl(
           gh<_i334.AddressOfflineDatasource>(),
           gh<_i509.AddressOnlineDatasource>(),
@@ -231,14 +231,8 @@ extension GetItInjectableX on _i174.GetIt {
         ));
     gh.factory<_i699.ProductCubit>(
         () => _i699.ProductCubit(gh<_i902.GetProductUseCase>()));
-    gh.factory<_i310.NotificationsRepo>(() => _i579.NotificationRepoImpl(
-          gh<_i136.AuthOfflineDataSource>(),
-          gh<_i370.NotificationsOnlineDataSource>(),
-        ));
     gh.factory<_i492.OccasionRepo>(
         () => _i475.OccasionsRepoImpl(gh<_i241.OccasionOnlineDataSource>()));
-    gh.factory<_i1031.NotificationsUseCases>(
-        () => _i1031.NotificationsUseCases(gh<_i310.NotificationsRepo>()));
     gh.factory<_i822.CategoriesViewModel>(
         () => _i822.CategoriesViewModel(gh<_i551.CategoryUseCase>()));
     gh.factory<_i346.ProfileUseCase>(
@@ -249,6 +243,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i807.AddressScreenViewModel(gh<_i811.AddressUsecase>()));
     gh.factory<_i309.AddAddressScreenViewModel>(
         () => _i309.AddAddressScreenViewModel(gh<_i811.AddressUsecase>()));
+    gh.factory<_i310.NotificationsRepo>(() => _i579.NotificationRepoImpl(
+          gh<_i136.AuthOfflineDataSource>(),
+          gh<_i133.NotificationsOnlineDataSource>(),
+        ));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(
@@ -270,20 +268,22 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i845.OccasionUseCase(gh<_i492.OccasionRepo>()));
     gh.factory<_i729.HomeUseCase>(
         () => _i729.HomeUseCase(gh<_i781.HomeRepository>()));
-    gh.factory<_i505.NotificationsViewModel>(
-        () => _i505.NotificationsViewModel(gh<_i1031.NotificationsUseCases>()));
     gh.factory<_i363.HomeViewModel>(
         () => _i363.HomeViewModel(gh<_i729.HomeUseCase>()));
     gh.factory<_i1070.SignUpViewModel>(
         () => _i1070.SignUpViewModel(gh<_i625.SignupUserUseCase>()));
     gh.factory<_i558.SignInViewModel>(
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
+    gh.factory<_i1031.NotificationsUseCases>(
+        () => _i1031.NotificationsUseCases(gh<_i310.NotificationsRepo>()));
     gh.factory<_i545.ResetPasswordViewModel>(
         () => _i545.ResetPasswordViewModel(gh<_i448.ResetPasswordUseCase>()));
     gh.factory<_i123.CheckoutViewModel>(
         () => _i123.CheckoutViewModel(gh<_i794.PlaceOrderUserCases>()));
     gh.factory<_i1022.OccasionViewModel>(
         () => _i1022.OccasionViewModel(gh<_i845.OccasionUseCase>()));
+    gh.factory<_i505.NotificationsViewModel>(
+        () => _i505.NotificationsViewModel(gh<_i1031.NotificationsUseCases>()));
     return this;
   }
 }
