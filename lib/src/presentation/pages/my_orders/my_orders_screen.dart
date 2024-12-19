@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/dependency_injection/di.dart';
@@ -29,15 +31,28 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
-    viewModel.doAction(GetUserCartItemsAction());
-    viewModel.currentTabIndex = _tabController.index;
+
+    // Load data for the initial tab
+    _fetchOrdersData(_tabController.index);
+
+    // Add listener to TabController
     _tabController.addListener(() {
-      if (_tabController.index == 0) {
-        viewModel.doAction(GetActiveOrdersAction());
-      } else {
-        viewModel.doAction(GetCompletedOrderAction());
+      if (!_tabController.indexIsChanging) {
+        _fetchOrdersData(_tabController.index);
       }
     });
+  }
+
+  void _fetchOrdersData(int index) {
+    setState(() {
+      viewModel.currentTabIndex = index; // Update the current tab index
+    });
+
+    if (index == 0) {
+      viewModel.doAction(GetActiveOrdersAction());
+    } else if (index == 1) {
+      viewModel.doAction(GetCompletedOrderAction());
+    }
   }
 
   @override
@@ -51,6 +66,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
+        viewModel.doAction(GetUserCartItemsAction());
         return viewModel;
       },
       child: BlocBuilder<MyOrdersViewModel, MyOrdersStates>(
@@ -73,13 +89,14 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
                 controller: _tabController,
                 indicatorColor: AppColors.kBaseColor,
                 tabs: const [
-                  Tab(text: 'Active'),
+                  Tab(text: 'Active',),
                   Tab(text: 'Completed'),
                 ],
               ),
             ),
             body: BlocBuilder<MyOrdersViewModel, MyOrdersStates>(
               builder: (context, state) {
+                log("Current Tab index: ${viewModel.currentTabIndex}");
                 if (state is LoadingMyOrdersState) {
                   return const OrderItemCardShimmer();
                 }
@@ -90,7 +107,10 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
                         .errorMassage),
                   );
                 }
-                return const MyOrdersScreenBody();
+                if(state is LoadedMyOrdersState){
+                  return  MyOrdersScreenBody();
+                }
+                return  MyOrdersScreenBody();
               },
             ),
           );

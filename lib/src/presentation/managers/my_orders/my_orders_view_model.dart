@@ -1,4 +1,6 @@
 
+import 'dart:developer';
+
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/src/domain/entities/orders_entity.dart';
 import 'package:flower_app/src/domain/use_cases/orders/orders_use_case.dart';
@@ -41,6 +43,8 @@ class MyOrdersViewModel extends Cubit<MyOrdersStates>{
         }
         orders.add(activeOrders);
         orders.add(completedOrders);
+        log("Active Orders: ${activeOrders.length}");
+        log("Complete Orders: ${completedOrders.length}");
         break;
       case Failures<OrdersEntity>():
         emit(ErrorMyOrdersState(exception: response.exception));

@@ -25,11 +25,11 @@ class OrderItemCard extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
-          Image.asset(
-            AppImages.productDetailsTestImage,
-            width: 100.w,
-            height: 100.h,
-          ),
+          // Image.asset(
+          //   AppImages.productDetailsTestImage,
+          //   width: 30.w,
+          //   height: 30.h,
+          // ),
           horizontalSpace(16),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
