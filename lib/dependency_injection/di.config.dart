@@ -149,7 +149,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i387.HiveModule>(() => _i387.HiveModule());
     gh.factory<_i450.BaseScreenViewmodel>(() => _i450.BaseScreenViewmodel());
     gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
-    gh.factory<_i602.MyOrdersViewModel>(() => _i602.MyOrdersViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.factory<_i334.AddressOfflineDatasource>(
@@ -184,6 +183,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i808.AuthOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i793.PlaceOrderOnlineDataSource>(
         () => _i231.PlaceOrderOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i493.GetLoggedUserCartUseCase>(
+        () => _i493.GetLoggedUserCartUseCase(gh<_i1032.CartRepo>()));
     gh.factory<_i91.AddressRepository>(() => _i888.AddressRepoImpl(
           gh<_i334.AddressOfflineDatasource>(),
           gh<_i509.AddressOnlineDatasource>(),
@@ -200,8 +201,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1042.ProductByIdUseCase(gh<_i170.ProductRepo>()));
     gh.factory<_i902.HomeOnlineDataSource>(
         () => _i1054.HomeOnlineDataSourceImpl(gh<_i687.ApiServices>()));
-    gh.factory<_i493.GetLoggedUserCartUseCase>(
-        () => _i493.GetLoggedUserCartUseCase(gh<_i1032.CartRepo>()));
     gh.factory<_i413.UpdateQuantityCartUseCase>(
         () => _i413.UpdateQuantityCartUseCase(gh<_i1032.CartRepo>()));
     gh.factory<_i871.CartViewModel>(() => _i871.CartViewModel(
@@ -232,6 +231,8 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i807.AddressScreenViewModel(gh<_i811.AddressUsecase>()));
     gh.factory<_i309.AddAddressScreenViewModel>(
         () => _i309.AddAddressScreenViewModel(gh<_i811.AddressUsecase>()));
+    gh.factory<_i602.MyOrdersViewModel>(
+        () => _i602.MyOrdersViewModel(gh<_i493.GetLoggedUserCartUseCase>()));
     gh.factory<_i625.SignupUserUseCase>(
         () => _i625.SignupUserUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i781.HomeRepository>(() => _i283.HomeRepositoryImpl(
