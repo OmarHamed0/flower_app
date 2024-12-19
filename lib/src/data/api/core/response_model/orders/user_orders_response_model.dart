@@ -43,9 +43,6 @@ class Orders {
   final String? createdAt;
   @JsonKey(name: "updatedAt")
   final String? updatedAt;
-  @JsonKey(name: "__v")
-  final int? _V;
-
   Orders ({
     this.Id,
     this.user,
