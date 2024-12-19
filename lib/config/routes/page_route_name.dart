@@ -15,4 +15,5 @@ class PageRouteName {
   static const String termsAndConditions = "termsAndConditions";
   static const String checkout = "checkout";
   static const String notifications = "notifications";
+  static const String search = "search";
 }

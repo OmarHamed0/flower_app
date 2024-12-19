@@ -17,6 +17,7 @@ import 'package:flower_app/src/presentation/pages/notifications/notifications_sc
 import 'package:flower_app/src/presentation/pages/occasion/occasion_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flower_app/src/presentation/pages/reset_passowrd/reset_password_screen.dart';
+import 'package:flower_app/src/presentation/pages/search/view/search_view.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flower_app/src/presentation/pages/terms_and_conditions/terms_and_conditions_view.dart';
@@ -87,7 +88,6 @@ class AppRoute {
                   create: (context) => getIt<CategoriesViewModel>()
                     ..doAction(GetCategoriesAction()),
                 ),
-                BlocProvider(create: (context) => getIt<ProductCubit>()),
               ],
               child: const BaseScreen(),
             ));
@@ -109,6 +109,9 @@ class AppRoute {
       case PageRouteName.notifications:
         return _handelMaterialPageRoute(
             settings: settings, widget:  NotificationsScreen());
+      case PageRouteName.search:
+        return _handelMaterialPageRoute(
+            settings: settings, widget:  SearchView());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

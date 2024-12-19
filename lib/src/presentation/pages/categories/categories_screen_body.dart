@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_view_model.dart';
@@ -14,7 +15,7 @@ import '../../managers/product/product_event.dart';
 class CategoriesScreenBody extends StatefulWidget {
   final String? productId;
 
-  CategoriesScreenBody({super.key, this.productId});
+  const CategoriesScreenBody({super.key, this.productId});
 
   @override
   State<CategoriesScreenBody> createState() => _CategoriesScreenBodyState();
@@ -37,18 +38,22 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                   children: [
                     Expanded(
                       child: TextField(
+                        onTap: () => Navigator.pushNamed(context,PageRouteName.search),
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.search),
                           hintText: "Search",
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(color: AppColors.kWhite70),
+                            borderSide:
+                                const BorderSide(color: AppColors.kWhite70),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
-                            borderSide: const BorderSide(color: AppColors.kWhite70),
+                            borderSide:
+                                const BorderSide(color: AppColors.kWhite70),
                           ),
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 10),
+                          contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 10),
                         ),
                       ),
                     ),
@@ -76,37 +81,26 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
           ),
         ),
         SliverFillRemaining(
-          child: BlocBuilder<CategoriesViewModel,CategoriesState>(
-              builder:(context, state){
-                if(state is ChangeCategoryState){
-                  productViewModel.doAction(
-                   GetProductEvent(
-                      productQueryParameters: ProductQueryParameters(
-                          productEndPoints:  ProductEndPoints.products,
-                          productQuery: ProductQuery.category,
-                          productId: widget.productId,
-                      )
-                  ));
-                   return ProductView();
-
-                }else{
-                  productViewModel.doAction(
-                      GetProductEvent(
-                        productQueryParameters: ProductQueryParameters(
-                            productEndPoints:  ProductEndPoints.products
-                        ),
-
-
-                      ));
-                  return ProductView();
-                }
-              }
-          ),
+          child: BlocBuilder<CategoriesViewModel, CategoriesState>(
+              builder: (context, state) {
+            if (state is ChangeCategoryState) {
+              productViewModel.doAction(GetProductEvent(
+                  productQueryParameters: ProductQueryParameters(
+                productEndPoints: ProductEndPoints.products,
+                productQuery: ProductQuery.category,
+                productId: widget.productId,
+              )));
+              return ProductView();
+            } else {
+              productViewModel.doAction(GetProductEvent(
+                productQueryParameters: ProductQueryParameters(
+                    productEndPoints: ProductEndPoints.products),
+              ));
+              return ProductView();
+            }
+          }),
         )
       ],
     );
   }
 }
-
-
-
