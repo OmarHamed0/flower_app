@@ -45,6 +45,8 @@ dependencies:
   shimmer: ^2.0.0
   cloud_firestore: ^5.5.1
   firebase_core:
+  firebase_messaging: ^15.1.6
+  firebase_crashlytics:
 dev_dependencies:
   flutter_test:
     sdk: flutter
