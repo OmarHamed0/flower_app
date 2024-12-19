@@ -1,6 +1,8 @@
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/dependency_injection/di.dart';
+import 'package:flower_app/src/presentation/managers/cart/cart_action.dart';
+import 'package:flower_app/src/presentation/managers/my_orders/my_orders_actions.dart';
 import 'package:flower_app/src/presentation/managers/my_orders/my_orders_states.dart';
 import 'package:flower_app/src/presentation/managers/my_orders/my_orders_view_model.dart';
 import 'package:flower_app/src/presentation/pages/my_orders/my_orders_screen_body.dart';
@@ -24,6 +26,14 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
   void initState() {
     super.initState();
     _tabController = TabController(length: 2, vsync: this);
+     viewModel.doAction(GetUserCartItemsAction());
+    _tabController.addListener((){
+      if(_tabController.index ==  0){
+        viewModel.doAction(GetActiveOrdersAction());
+      }else{
+        viewModel.doAction(GetCompletedOrderAction());
+      }
+    });
   }
 
   @override
@@ -36,13 +46,15 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => viewModel,
+      create: (context){
+        return viewModel;
+      },
       child: BlocBuilder<MyOrdersViewModel, MyOrdersStates>(
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
               leading: IconButton(
-                icon: Icon(Icons.arrow_back_ios_new),
+                icon: const Icon(Icons.arrow_back_ios_new),
                 onPressed: () {
                   Navigator.pop(context);
                 },
