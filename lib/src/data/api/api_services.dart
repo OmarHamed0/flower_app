@@ -6,6 +6,7 @@ import 'package:flower_app/src/data/api/core/response_model/auth_response_models
 import 'package:flower_app/src/data/api/core/response_model/cart/add_cart_response_model/add_cart_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/cart/get_all_cart_response/get_all_cart_response_mode.dart';
 import 'package:flower_app/src/data/api/core/response_model/checkout_place_order/place_order_response_model.dart';
+import 'package:flower_app/src/data/api/core/response_model/orders/user_orders_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/product_response_models/one_product_response_model.dart';
 import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
@@ -64,8 +65,10 @@ abstract class ApiServices {
 
   @GET(ApisEndPoints.categories)
   Future<GetCatigoriesResponseModel> getCategories();
+
   @GET(ApisEndPoints.occassions)
   Future<OccasionResponseModel> getOccasions();
+
   @GET(ApisEndPoints.logout)
   Future<LogOutResponse> logout(@Header("Authorization") String token);
 
@@ -106,6 +109,7 @@ abstract class ApiServices {
     @Path("id") required String id,
     @Body() required CartQuantityRequest cartQuantityRequest,
   });
+
   @GET(ApisEndPoints.savedAddresses)
   Future<AddressResponse> getSavedAddresses(
       @Header("Authorization") String token);
@@ -118,8 +122,12 @@ abstract class ApiServices {
   Future<AddressResponse> addNewAddress(
       @Header("Authorization") String token, @Body() AddAddressRequest address);
 
-
   @POST(ApisEndPoints.orders)
   Future<PlaceOrderResponseModel> placeOrder(
-      @Header("Authorization") String token, @Body() PlaceOrderRequestModel body);
+      @Header("Authorization") String token,
+      @Body() PlaceOrderRequestModel body);
+
+  @GET(ApisEndPoints.orders)
+  Future<UserOrderResponseModel> getUserOrders(
+      @Header("Authorization") String token);
 }

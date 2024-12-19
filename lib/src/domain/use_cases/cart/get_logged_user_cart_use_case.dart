@@ -6,10 +6,10 @@ import '../../../../common/api_result.dart';
 
 @injectable
 class GetLoggedUserCartUseCase {
-  final CartRepo cartRepository;
-  GetLoggedUserCartUseCase(this.cartRepository);
+  final CartRepo _cartRepository;
+  GetLoggedUserCartUseCase(this._cartRepository);
 
   Future<ApiResult<CartEntity>> invoke() {
-    return cartRepository.getLoggedUserCart();
+    return _cartRepository.getLoggedUserCart();
   }
 }

@@ -24,6 +24,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../src/presentation/managers/product/product_cubit.dart';
 import '../../src/presentation/pages/base_screen/base_screen.dart';
+import '../../src/presentation/pages/my_orders/my_orders_screen.dart';
 import '../../src/presentation/pages/product_details/product_details.dart';
 
 class AppRoute {
@@ -105,6 +106,9 @@ class AppRoute {
       case PageRouteName.checkout:
         return _handelMaterialPageRoute(
             settings: settings, widget: CheckoutScreen());
+      case PageRouteName.myOrders:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: MyOrdersScreen());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

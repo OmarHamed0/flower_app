@@ -1,0 +1,121 @@
+import 'dart:developer';
+
+import 'package:flower_app/core/styles/colors/app_colors.dart';
+import 'package:flower_app/core/styles/texts/app_text_styles.dart';
+import 'package:flower_app/dependency_injection/di.dart';
+import 'package:flower_app/src/data/api/core/error/error_handler.dart';
+import 'package:flower_app/src/domain/entities/orders_entity.dart';
+import 'package:flower_app/src/presentation/managers/cart/cart_action.dart';
+import 'package:flower_app/src/presentation/managers/my_orders/my_orders_actions.dart';
+import 'package:flower_app/src/presentation/managers/my_orders/my_orders_states.dart';
+import 'package:flower_app/src/presentation/managers/my_orders/my_orders_view_model.dart';
+import 'package:flower_app/src/presentation/pages/my_orders/my_orders_screen_body.dart';
+import 'package:flower_app/src/presentation/pages/my_orders/order_item_card_shimmer.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../../common/common.dart';
+
+class MyOrdersScreen extends StatefulWidget {
+  MyOrdersScreen({super.key});
+
+  @override
+  State<MyOrdersScreen> createState() => _MyOrdersScreenState();
+}
+
+class _MyOrdersScreenState extends State<MyOrdersScreen>
+    with TickerProviderStateMixin {
+  final viewModel = getIt.get<MyOrdersViewModel>();
+  late TabController _tabController;
+
+  @override
+  void initState() {
+    super.initState();
+    _tabController = TabController(length: 2, vsync: this);
+
+    // Load data for the initial tab
+    _fetchOrdersData(_tabController.index);
+
+    // Add listener to TabController
+    _tabController.addListener(() {
+      if (!_tabController.indexIsChanging) {
+        _fetchOrdersData(_tabController.index);
+      }
+    });
+  }
+
+  void _fetchOrdersData(int index) {
+    setState(() {
+      viewModel.currentTabIndex = index; // Update the current tab index
+    });
+
+    if (index == 0) {
+      viewModel.doAction(GetActiveOrdersAction());
+    } else if (index == 1) {
+      viewModel.doAction(GetCompletedOrderAction());
+    }
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _tabController.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) {
+        viewModel.doAction(GetUserCartItemsAction());
+        return viewModel;
+      },
+      child: BlocBuilder<MyOrdersViewModel, MyOrdersStates>(
+        builder: (context, state) {
+          return Scaffold(
+            appBar: AppBar(
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back_ios_new),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+              title: Text('My Orders', style: AppTextStyles.font20WeightMedium),
+              bottom: TabBar(
+                indicatorWeight: 2,
+                labelStyle: AppTextStyles.font16BlackBase400Weight,
+                unselectedLabelColor: AppColors.kWhite70,
+                labelColor: AppColors.kBaseColor,
+                indicatorSize: TabBarIndicatorSize.tab,
+                controller: _tabController,
+                indicatorColor: AppColors.kBaseColor,
+                tabs: const [
+                  Tab(text: 'Active',),
+                  Tab(text: 'Completed'),
+                ],
+              ),
+            ),
+            body: BlocBuilder<MyOrdersViewModel, MyOrdersStates>(
+              builder: (context, state) {
+                log("Current Tab index: ${viewModel.currentTabIndex}");
+                if (state is LoadingMyOrdersState) {
+                  return const OrderItemCardShimmer();
+                }
+                if (state is ErrorMyOrdersState) {
+                  return Center(
+                    child: Text(ErrorHandler.fromException(
+                            state.exception!, AppLocalizations.of(context)!)
+                        .errorMassage),
+                  );
+                }
+                if(state is LoadedMyOrdersState){
+                  return  MyOrdersScreenBody();
+                }
+                return  MyOrdersScreenBody();
+              },
+            ),
+          );
+        },
+      ),
+    );
+  }
+}

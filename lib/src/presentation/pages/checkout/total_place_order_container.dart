@@ -22,16 +22,16 @@ class TotalPlaceOrderContainer extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              shimmerBox(width: 100, height: 16),
-              shimmerBox(width: 50, height: 16),
+              shimmerBox(width: 100.w, height: 16.h),
+              shimmerBox(width: 50.w, height: 16.h),
             ],
           ),
           verticalSpace(8),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              shimmerBox(width: 100, height: 16),
-              shimmerBox(width: 50, height: 16),
+              shimmerBox(width: 100.w, height: 16.h),
+              shimmerBox(width: 50.w, height: 16.h),
             ],
           ),
           verticalSpace(16),
@@ -40,12 +40,12 @@ class TotalPlaceOrderContainer extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              shimmerBox(width: 80, height: 18),
-              shimmerBox(width: 60, height: 18),
+              shimmerBox(width: 80.w, height: 18.h),
+              shimmerBox(width: 60.w, height: 18.h),
             ],
           ),
           verticalSpace(24),
-          shimmerBox(width: double.infinity, height: 48, borderRadius: 100),
+          shimmerBox(width: double.infinity, height: 48.h, borderRadius: 100),
           verticalSpace(16)
         ],
       ),
