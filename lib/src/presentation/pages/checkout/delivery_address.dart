@@ -28,7 +28,7 @@ class DeliveryAddress extends StatelessWidget {
           verticalSpace(16),
           SizedBox(
              height: 200.h,
-              child: UserAddressList()
+              child: const UserAddressList()
           ),
           verticalSpace(16),
           AppTextButton(
@@ -44,6 +44,6 @@ class DeliveryAddress extends StatelessWidget {
           )
         ],
       ),
-    );;
+    );
   }
 }

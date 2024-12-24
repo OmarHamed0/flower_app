@@ -1,5 +1,4 @@
 
-import '../../../domain/use_cases/product_use_cases/get_product_use_case.dart';
 import 'core/product_core.dart';
 
 sealed class ProductEvent{}

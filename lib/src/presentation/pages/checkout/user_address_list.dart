@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flower_app/src/domain/entities/address/address_model.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_states.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_view_model.dart';
 import 'package:flower_app/src/presentation/pages/checkout/address_item_card.dart';
@@ -9,7 +7,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../../../common/common.dart';
 
 class UserAddressList extends StatefulWidget {
-  UserAddressList({super.key});
+  const UserAddressList({super.key});
 
   @override
   State<UserAddressList> createState() => _UserAddressListState();

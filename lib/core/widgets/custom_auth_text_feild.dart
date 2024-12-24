@@ -46,7 +46,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
 
     // If changePasswordTap is not null, set initial value to "aaaaaaaa" or any string of length 8
     if (widget.changePasswordTap != null) {
-      widget.controller?.value = TextEditingValue(
+      widget.controller?.value = const TextEditingValue(
           text: '*********'); // Setting a default value of length 8
     }
   }
@@ -127,7 +127,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           widget.showPassword == null ? false : widget.isPasswordVisible,
       validator: widget.validator,
       keyboardType: widget.keyboardType,
-      style: TextStyle(
+      style: const TextStyle(
         color: Colors.black, // Text color
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flower_app/common/common.dart';
-import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../common/api_result.dart';
@@ -10,7 +9,7 @@ import 'add_address_screen_state.dart';
 
 @injectable
 class AddAddressScreenViewModel extends Cubit<AddAddressScreenState> {
-  AddressUsecase _addressUsecase;
+  final AddressUsecase _addressUsecase;
   AddAddressScreenViewModel(this._addressUsecase)
       : super(AddAddressScreenInitial());
 

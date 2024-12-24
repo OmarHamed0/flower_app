@@ -19,11 +19,11 @@ class AddAddressScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AddAddressScreenViewModel _viewModel =
+    final AddAddressScreenViewModel viewModel =
         getIt<AddAddressScreenViewModel>();
 
     return BlocProvider(
-      create: (context) => _viewModel,
+      create: (context) => viewModel,
       child: Scaffold(
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.addAddress),
@@ -31,7 +31,7 @@ class AddAddressScreen extends StatelessWidget {
         body: BlocListener<AddAddressScreenViewModel, AddAddressScreenState>(
           listener: (context, state) {
             if (state is AddAddressScreenError) {
-              final errorHandler=ErrorHandler.fromException(state.exception!, AppLocalizations.of(context)!);
+              final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
               showAwesomeDialog(
                 context,
                 title: AppLocalizations.of(context)!.error,
@@ -56,7 +56,7 @@ class AddAddressScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: SingleChildScrollView(
               child: Form(
-                key: _viewModel.formKey,
+                key: viewModel.formKey,
                 child: Column(
                   children: [
                     Image.asset(
@@ -70,7 +70,7 @@ class AddAddressScreen extends StatelessWidget {
                       labelText: AppLocalizations.of(context)!.street,
                       hintText: AppLocalizations.of(context)!.enterYourStreet,
                       keyboardType: TextInputType.text,
-                      controller: _viewModel.streetController,
+                      controller: viewModel.streetController,
                       validator: (value) => validateStreet(value),
                     ),
                     verticalSpace(24),
@@ -78,7 +78,7 @@ class AddAddressScreen extends StatelessWidget {
                       labelText: AppLocalizations.of(context)!.city,
                       hintText: AppLocalizations.of(context)!.enterYourCity,
                       keyboardType: TextInputType.text,
-                      controller: _viewModel.cityController,
+                      controller: viewModel.cityController,
                       validator: (value) => validateCity(value),
                     ),
                     verticalSpace(24),
@@ -86,7 +86,7 @@ class AddAddressScreen extends StatelessWidget {
                       labelText: AppLocalizations.of(context)!.phone,
                       hintText: AppLocalizations.of(context)!.enterYourPhone,
                       keyboardType: TextInputType.text,
-                      controller: _viewModel.phoneController,
+                      controller: viewModel.phoneController,
                       validator: (value) => validatePhoneNumber(value),
                     ),
                     verticalSpace(24),
@@ -97,7 +97,7 @@ class AddAddressScreen extends StatelessWidget {
                         fontSize: 16,
                       ),
                       onPressed: () {
-                        _viewModel.addNewAddress();
+                        viewModel.addNewAddress();
                       },
                     ),
                   ],

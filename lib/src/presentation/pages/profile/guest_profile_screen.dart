@@ -55,7 +55,7 @@ class GuestProfile extends StatelessWidget {
                     PageRouteName.signIn, (route) => false);
               },
             ),
-            Spacer(),
+            const Spacer(),
             const Text(
               'v 6.3.0 - (446)',
               style: TextStyle(

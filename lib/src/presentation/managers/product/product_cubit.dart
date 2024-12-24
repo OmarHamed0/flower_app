@@ -1,14 +1,11 @@
-import 'package:bloc/bloc.dart';
 import 'package:flower_app/src/presentation/managers/product/product_event.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../common/api_result.dart';
-import '../../../data/api/core/error/error_handler.dart';
 import '../../../domain/entities/product_entity/product_entity.dart';
 import '../../../domain/use_cases/product_use_cases/get_product_use_case.dart';
-import 'core/product_core.dart';
 
 part 'product_state.dart';
 @injectable

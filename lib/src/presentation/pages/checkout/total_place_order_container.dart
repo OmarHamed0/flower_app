@@ -70,9 +70,9 @@ class TotalPlaceOrderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.read<CheckoutViewModel>();
-    num _subTotal = 0;
-    num _deliveryFee = 0;
-    num _totalPrice = 0;
+    num subTotal = 0;
+    num deliveryFee = 0;
+    num totalPrice = 0;
 
     return BlocBuilder<CheckoutViewModel, CheckOutStates>(
       builder: (context, state) {
@@ -88,9 +88,9 @@ class TotalPlaceOrderContainer extends StatelessWidget {
             ),
           );
         } else if (state is TotalPriceState) {
-          _subTotal = state.totalPrice!;
-          _deliveryFee = state.deliveryFee!;
-          _totalPrice = state.totalPrice! + state.deliveryFee!;
+          subTotal = state.totalPrice!;
+          deliveryFee = state.deliveryFee!;
+          totalPrice = state.totalPrice! + state.deliveryFee!;
         }
 
         return Padding(
@@ -104,7 +104,7 @@ class TotalPlaceOrderContainer extends StatelessWidget {
                   Text(AppLocalizations.of(context)!.subTotal,
                       style: AppTextStyles.font16White500Weight
                           .copyWith(color: AppColors.kWhite70)),
-                  Text(_subTotal.toString(),
+                  Text(subTotal.toString(),
                       style: AppTextStyles.font16White500Weight
                           .copyWith(color: AppColors.kWhite70))
                 ],
@@ -116,7 +116,7 @@ class TotalPlaceOrderContainer extends StatelessWidget {
                   Text(AppLocalizations.of(context)!.deliveryFee,
                       style: AppTextStyles.font16White500Weight
                           .copyWith(color: AppColors.kWhite70)),
-                  Text(_deliveryFee.toString(),
+                  Text(deliveryFee.toString(),
                       style: AppTextStyles.font16White500Weight
                           .copyWith(color: AppColors.kWhite70))
                 ],
@@ -129,7 +129,7 @@ class TotalPlaceOrderContainer extends StatelessWidget {
                 children: [
                   Text(AppLocalizations.of(context)!.total,
                       style: AppTextStyles.font18BlackMedium),
-                  Text(_totalPrice.toString(),
+                  Text(totalPrice.toString(),
                       style: AppTextStyles.font18BlackMedium),
                 ],
               ),

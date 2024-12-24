@@ -2,7 +2,6 @@ import 'package:flower_app/common/common.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/fonts/app_fonts.dart';
 import 'package:flower_app/src/presentation/managers/cart/cart_view_model.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartTotalWidget extends StatelessWidget {

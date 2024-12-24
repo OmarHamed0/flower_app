@@ -34,7 +34,7 @@ class EditProfileBody extends StatelessWidget {
           LoadingDialog.show(context);
         } else if (state is EditProfileSuccessState) {
           LoadingDialog.hide(context);
-          context.read<EditProfileViewModel>().doAction(GetUserDataAction());
+          context.read<EditProfileViewModel>().doAction(const GetUserDataAction());
           showAwesomeDialog(
             context,
             title: AppLocalizations.of(context)!.success,
@@ -54,10 +54,10 @@ class EditProfileBody extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        final _viewModel = context.read<EditProfileViewModel>();
+        final viewModel = context.read<EditProfileViewModel>();
 
         if (state is EditProfileLoading) {
-          _viewModel.doAction(GetUserDataAction());
+          viewModel.doAction(const GetUserDataAction());
           return const Center(
             child: CircularProgressIndicator(),
           );
@@ -74,7 +74,7 @@ class EditProfileBody extends StatelessWidget {
                   verticalSpace(8),
                   Center(
                     child: ProfileImage(
-                      imageUrl: _viewModel.currentUser?.photo,
+                      imageUrl: viewModel.currentUser?.photo,
                       isEditable: true,
                     ),
                   ),
@@ -86,7 +86,7 @@ class EditProfileBody extends StatelessWidget {
                           hintText:
                               AppLocalizations.of(context)!.enterYourFirstName,
                           labelText: AppLocalizations.of(context)!.firstName,
-                          controller: _viewModel.firstNameController,
+                          controller: viewModel.firstNameController,
                           validator: (val) {
                             return validateName(val);
                           },
@@ -99,7 +99,7 @@ class EditProfileBody extends StatelessWidget {
                           hintText:
                               AppLocalizations.of(context)!.enterYourLastName,
                           labelText: AppLocalizations.of(context)!.lastName,
-                          controller: _viewModel.lastNameController,
+                          controller: viewModel.lastNameController,
                           validator: (val) {
                             return validateName(val);
                           },
@@ -112,7 +112,7 @@ class EditProfileBody extends StatelessWidget {
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context)!.enterYourEmail,
                     keyboardType: TextInputType.emailAddress,
-                    controller: _viewModel.emailController,
+                    controller: viewModel.emailController,
                     labelText: AppLocalizations.of(context)!.email,
                     validator: (val) {
                       return validateEmail(val);
@@ -122,7 +122,7 @@ class EditProfileBody extends StatelessWidget {
                   CustomTextFormField(
                     hintText: AppLocalizations.of(context)!.enterYourPhone,
                     keyboardType: TextInputType.phone,
-                    controller: _viewModel.phoneController,
+                    controller: viewModel.phoneController,
                     labelText: AppLocalizations.of(context)!.phone,
                     validator: (val) {
                       if (val!.length < 10 && val.isNotEmpty) {
@@ -135,13 +135,13 @@ class EditProfileBody extends StatelessWidget {
                   ),
                   verticalSpace(24),
                   GenderSelection(
-                    selectedGender: _viewModel.currentUser?.gender,
+                    selectedGender: viewModel.currentUser?.gender,
                   ),
                   verticalSpace(24),
                   AppTextButton(
                     buttonText: AppLocalizations.of(context)!.update,
                     onPressed: () {
-                      _viewModel.doAction(const EditProfileButtonAction());
+                      viewModel.doAction(const EditProfileButtonAction());
                     },
                     textStyle: AppTextStyles.font16WeightMedium.copyWith(
                       color: AppColors.kWhiteBase,

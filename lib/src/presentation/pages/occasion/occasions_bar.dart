@@ -15,6 +15,7 @@ class OccasionsBar extends StatefulWidget {
 }
 
 class _OccasionsBarState extends State<OccasionsBar> {
+  @override
   Widget build(BuildContext context) {
     final viewModel = context.read<OccasionViewModel>();
 

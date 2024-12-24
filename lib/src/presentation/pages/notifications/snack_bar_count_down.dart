@@ -10,11 +10,11 @@ class SnackBarCountdown extends StatefulWidget {
   final VoidCallback onComplete;
 
   const SnackBarCountdown({
-    Key? key,
+    super.key,
     required this.duration,
     required this.onUndo,
     required this.onComplete,
-  }) : super(key: key);
+  });
 
   @override
   State<SnackBarCountdown> createState() => _SnackBarWithCountdownState();

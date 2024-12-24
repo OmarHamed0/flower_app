@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class ProductByIdUseCase{
-  ProductRepo _productRepo;
+  final ProductRepo _productRepo;
   ProductByIdUseCase(this._productRepo);
   Future<ApiResult<ProductEntity>> getProductById(String id) async{
     return await _productRepo.getProductById(id);

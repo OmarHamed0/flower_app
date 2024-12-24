@@ -1,4 +1,3 @@
-import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/domain/entities/auth/signup/sign_up_response.dart';
 
 sealed class SignupViewState {}

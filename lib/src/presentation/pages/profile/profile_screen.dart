@@ -31,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     setState(() {
       _isEditing = !_isEditing;
     });
-    _viewModel.doAction(GetUserDataProfileAction());
+    _viewModel.doAction(const GetUserDataProfileAction());
   }
 
   @override

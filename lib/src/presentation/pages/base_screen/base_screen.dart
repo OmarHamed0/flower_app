@@ -7,14 +7,14 @@ import '../../../../dependency_injection/di.dart';
 import '../../managers/base_screen/base_screen_viewmodel.dart';
 
 class BaseScreen extends StatefulWidget {
-  const BaseScreen({Key? key}) : super(key: key);
+  const BaseScreen({super.key});
 
   @override
   State<BaseScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<BaseScreen> {
-  BaseScreenViewmodel _viewModel = getIt.get<BaseScreenViewmodel>();
+  final BaseScreenViewmodel _viewModel = getIt.get<BaseScreenViewmodel>();
 
   @override
   Widget build(BuildContext context) {

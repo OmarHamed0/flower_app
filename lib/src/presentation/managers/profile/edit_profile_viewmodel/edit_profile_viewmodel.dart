@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
 import '../../../../../common/api_result.dart';
-import '../../../../data/api/core/error/error_handler.dart';
 import '../../../../domain/entities/auth/edit_profile_model.dart';
 import '../../../../domain/use_cases/profile_usecase/profile_usecase.dart';
 import 'edit_profile_actions.dart';

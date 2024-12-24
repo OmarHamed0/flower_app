@@ -53,7 +53,7 @@ class ProfileImage extends StatelessWidget {
                 width: 24.w,
                 height: 24.h,
                 padding: EdgeInsets.all(4.r),
-                decoration: BoxDecoration(
+                decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: AppColors.kLightBink,
                 ),

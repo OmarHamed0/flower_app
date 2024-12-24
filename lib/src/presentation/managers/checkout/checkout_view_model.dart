@@ -23,7 +23,7 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
   PaymentMethodEnum selectedPaymentMethod = PaymentMethodEnum.cash;
   List<AddressModel> userSavedAddress = [];
   int selectedAddressIndex = 0;
-  num _deliveryFee = 10;
+  final num _deliveryFee = 10;
   Future<void> _dispose() async {
     nameController.dispose();
     phoneController.dispose();

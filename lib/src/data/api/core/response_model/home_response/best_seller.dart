@@ -64,20 +64,20 @@ class BestSeller {
 
   BestSellerModel toEntity() {
     return BestSellerModel(
-      Id: this.Id,
-      title: this.title,
-      slug: this.slug,
-      description: this.description,
-      imgCover: this.imgCover,
-      images: this.images,
-      price: this.price,
-      priceAfterDiscount: this.priceAfterDiscount,
-      quantity: this.quantity,
-      category: this.category,
-      occasion: this.occasion,
-      createdAt: this.createdAt,
-      updatedAt: this.updatedAt,
-      id: this.id,
+      Id: Id,
+      title: title,
+      slug: slug,
+      description: description,
+      imgCover: imgCover,
+      images: images,
+      price: price,
+      priceAfterDiscount: priceAfterDiscount,
+      quantity: quantity,
+      category: category,
+      occasion: occasion,
+      createdAt: createdAt,
+      updatedAt: updatedAt,
+      id: id,
     );
   }
 }

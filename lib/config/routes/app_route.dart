@@ -74,7 +74,7 @@ class AppRoute {
             settings: settings, widget: SavedAddressScreen());
       case PageRouteName.addAddress:
         return _handelMaterialPageRoute(
-            settings: settings, widget: AddAddressScreen());
+            settings: settings, widget: const AddAddressScreen());
       case PageRouteName.product:
         return _handelMaterialPageRoute(
             settings: settings, widget: const ProductView());
@@ -111,7 +111,7 @@ class AppRoute {
             settings: settings, widget:  NotificationsScreen());
       case PageRouteName.search:
         return _handelMaterialPageRoute(
-            settings: settings, widget:  SearchView());
+            settings: settings, widget:  const SearchView());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

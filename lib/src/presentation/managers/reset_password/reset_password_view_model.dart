@@ -3,7 +3,6 @@ import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/common/common.dart';
 import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/config/helpers/app_regex.dart';
-import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/domain/entities/auth/reset_password_entity.dart';
 import 'package:flower_app/src/domain/use_cases/reset_password_use_case.dart';
 import 'package:flower_app/src/presentation/managers/reset_password/reset_password_actions.dart';

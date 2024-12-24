@@ -7,7 +7,7 @@ class AppTheme {
 
   static ThemeData defaultTheme =
   ThemeData(scaffoldBackgroundColor: AppColors.kWhiteBase,
-  bottomSheetTheme: BottomSheetThemeData(
+  bottomSheetTheme: const BottomSheetThemeData(
     backgroundColor: Colors.transparent
   )
 

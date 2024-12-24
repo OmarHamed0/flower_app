@@ -4,7 +4,6 @@ import 'package:flower_app/src/presentation/managers/cart/cart_action.dart';
 import 'package:flower_app/src/presentation/managers/cart/cart_view_model.dart';
 import 'package:flower_app/src/presentation/pages/cart/widget/cart_body_widget.dart';
 import 'package:flower_app/src/presentation/pages/cart/widget/cart_handler_widget/cart_handler_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:lottie/lottie.dart';
 

@@ -11,7 +11,7 @@ class CustomAppBarEditProfile extends StatelessWidget {
       children: [
         InkWell(
           onTap: onBack,
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back_ios,
             color: Colors.black,
           ),

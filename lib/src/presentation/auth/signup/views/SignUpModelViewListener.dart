@@ -4,7 +4,6 @@ import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/presentation/auth/signup/manager/signup_states.dart';
 import 'package:flower_app/src/presentation/auth/signup/manager/signup_viewmodel.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/common.dart';

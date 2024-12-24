@@ -7,7 +7,7 @@ import 'address_online_datasource.dart';
 
 @Injectable(as: AddressOnlineDatasource)
 class AddressOnlineDataSourceImpl implements AddressOnlineDatasource {
-  ApiServices _apiServices;
+  final ApiServices _apiServices;
   AddressOnlineDataSourceImpl(this._apiServices);
   @override
   Future<AddressResponseDto> getSavedAddresses(String token) async {

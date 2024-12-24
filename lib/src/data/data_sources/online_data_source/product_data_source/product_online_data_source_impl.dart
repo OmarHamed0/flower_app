@@ -8,7 +8,7 @@ import '../../../api/core/response_model/product/product_response_model.dart';
 
 @Injectable(as:ProductOnlineDataSource)
 class ProductOnlineDataSourceImpl implements ProductOnlineDataSource{
-  ApiServices _apiServices;
+  final ApiServices _apiServices;
   ProductOnlineDataSourceImpl(this._apiServices);
   @override
   Future<OneProductResponseModel> getProductById(String id) async{

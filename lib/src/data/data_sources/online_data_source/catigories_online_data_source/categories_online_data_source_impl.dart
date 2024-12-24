@@ -6,7 +6,7 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: CategoriesOnlineDataSource)
 class CategoriesOnlineDataSourceImpl implements CategoriesOnlineDataSource{
-  ApiServices _apiServices;
+  final ApiServices _apiServices;
   CategoriesOnlineDataSourceImpl(this._apiServices);
   @override
   Future<GetCatigoriesResponseModel> getCategories() async{

@@ -19,8 +19,8 @@ import '../../models/auth/sign_in_response_dto.dart';
 
 @Injectable(as: AuthRepository)
 class AuthRepositoryImpl implements AuthRepository {
-  AuthOnlineDataSource _onlineDataSource;
-  AuthOfflineDataSource _offlineDataSource;
+  final AuthOnlineDataSource _onlineDataSource;
+  final AuthOfflineDataSource _offlineDataSource;
 
   AuthRepositoryImpl(this._offlineDataSource, this._onlineDataSource);
 

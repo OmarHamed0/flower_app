@@ -1,4 +1,3 @@
-import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/domain/entities/auth/user_entity.dart';
 
 sealed class ProfileScreenState {

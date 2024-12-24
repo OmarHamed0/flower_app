@@ -58,7 +58,7 @@ import '../../../managers/product/product_cubit.dart';
                 },
               ),
               ListTile(
-                leading: Icon(Icons.percent),
+                leading: const Icon(Icons.percent),
                 title: const Text('ort by the Price After Discount in Ascending order'),
                 onTap: () {
                   Navigator.pop(context);

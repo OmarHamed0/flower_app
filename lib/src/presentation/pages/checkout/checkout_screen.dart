@@ -74,7 +74,7 @@ class CheckoutScreen extends StatelessWidget {
               );
             }
             if (state is PlaceOrderSuccessState) {
-              Future.delayed(Duration(seconds: 4),() async{
+              Future.delayed(const Duration(seconds: 4),() async{
                 await Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const ThankYou()));
               });
                ScaffoldMessenger.of(context).showSnackBar(

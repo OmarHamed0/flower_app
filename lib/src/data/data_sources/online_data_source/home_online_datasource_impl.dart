@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: HomeOnlineDataSource)
 class HomeOnlineDataSourceImpl implements HomeOnlineDataSource {
-  ApiServices _apiServices;
+  final ApiServices _apiServices;
   HomeOnlineDataSourceImpl(this._apiServices);
 
   @override

@@ -90,7 +90,7 @@ class ResetPasswordScreenBody extends StatelessWidget {
                           viewModel.doActin(ChangePasswordVisibilityAction(
                               fieldId: PasswordFieldId.confirmPassword));
                         },
-                        icon: Icon(Icons.remove_red_eye),
+                        icon: const Icon(Icons.remove_red_eye),
                         color: isObscureColor[2]),
                     obscureText:
                         viewModel.getIsObscure(PasswordFieldId.confirmPassword),

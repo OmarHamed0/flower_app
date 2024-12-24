@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flower_app/common/api_result.dart';
-import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/domain/entities/category_entity/category_entity.dart';
 import 'package:flower_app/src/domain/use_cases/category_use_case.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_action.dart';
@@ -42,7 +41,7 @@ class CategoriesViewModel extends Cubit<CategoriesState> {
         _getCategories();
         break;
       case ChangeCategoryAction():
-        selectedIndex = action.index!;
+        selectedIndex = action.index;
         emit(ChangeCategoryState(categories[action.index].id));
         break;
     }

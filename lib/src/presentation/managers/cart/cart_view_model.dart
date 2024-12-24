@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flower_app/common/api_result.dart';
-import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/data/api/core/requestes_models/cart/add_cart_request.dart';
 import 'package:flower_app/src/domain/entities/cart/cart_entity.dart';
 import 'package:flower_app/src/domain/use_cases/cart/get_logged_user_cart_use_case.dart';

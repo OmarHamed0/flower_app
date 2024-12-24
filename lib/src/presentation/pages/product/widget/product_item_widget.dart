@@ -18,7 +18,7 @@ class ProductItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(border: Border.all(color: Color(0xFFA6A6A6))),
+      decoration: BoxDecoration(border: Border.all(color: const Color(0xFFA6A6A6))),
       padding: EdgeInsets.all(8.r),
       child: Column(
         children: [

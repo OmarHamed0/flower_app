@@ -1,7 +1,6 @@
 import 'package:flower_app/common/api_result.dart';
 import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/config/helpers/app_regex.dart';
-import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/domain/entities/auth/sign_in_entity.dart';
 import 'package:flower_app/src/domain/use_cases/auth_use_cases/sign_in_use_case.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_actions.dart';

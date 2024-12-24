@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flower_app/config/routes/page_route_name.dart';
 
 class SplashPage extends StatelessWidget {
-  const SplashPage({Key? key}) : super(key: key);
+  const SplashPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,16 +12,16 @@ class SplashPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               'Welcome to Flower App',
               style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 Navigator.pushNamed(context, PageRouteName.signup);
               },
-              child: Text('Go to Sign Up'),
+              child: const Text('Go to Sign Up'),
             ),
           ],
         ),

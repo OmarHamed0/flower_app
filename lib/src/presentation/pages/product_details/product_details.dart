@@ -5,7 +5,6 @@ import 'package:flower_app/src/presentation/managers/product_details/product_det
 import 'package:flower_app/src/presentation/managers/product_details/product_details_states.dart';
 import 'package:flower_app/src/presentation/managers/product_details/product_details_view_model.dart';
 import 'package:flower_app/src/presentation/pages/product_details/product_details_body.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/api/core/error/error_handler.dart';

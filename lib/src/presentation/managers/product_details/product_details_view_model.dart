@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:flower_app/common/api_result.dart';
-import 'package:flower_app/src/data/api/core/error/error_handler.dart';
 import 'package:flower_app/src/domain/entities/product_entity/product_entity.dart';
 import 'package:flower_app/src/domain/use_cases/product_use_cases/product_by_id_use_case.dart';
 import 'package:flower_app/src/presentation/managers/product_details/product_details_actions.dart';

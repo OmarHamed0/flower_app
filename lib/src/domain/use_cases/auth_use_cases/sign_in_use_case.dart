@@ -6,7 +6,7 @@ import '../../repositories/auth_repo.dart';
 
 @injectable
 class SignInUseCase {
-  AuthRepository _signInRepo;
+  final AuthRepository _signInRepo;
   SignInUseCase(this._signInRepo);
 
   Future<ApiResult<SignInEntity>> signIn(String email, String password) async {

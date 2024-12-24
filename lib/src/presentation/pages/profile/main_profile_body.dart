@@ -12,9 +12,7 @@ import 'package:flower_app/src/presentation/widgets/profile/custom_app_bar_profi
 import 'package:flower_app/src/presentation/widgets/profile/name_and_email.dart';
 import 'package:flower_app/src/presentation/widgets/profile/profile_image.dart';
 import 'package:flower_app/src/presentation/widgets/profile/profile_row_item.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../../../flower_app.dart';
 import '../../../data/api/core/error/error_handler.dart';
@@ -25,7 +23,7 @@ import 'guest_profile_screen.dart';
 class MainProfileBody extends StatelessWidget {
   final VoidCallback onEdit;
 
-  MainProfileBody({super.key, required this.onEdit});
+  const MainProfileBody({super.key, required this.onEdit});
 
   @override
   Widget build(BuildContext context) {
@@ -41,9 +39,9 @@ class MainProfileBody extends StatelessWidget {
             }
           },
           builder: (context, state) {
-            final _viewModel = context.read<ProfileScreenViewModel>();
+            final viewModel = context.read<ProfileScreenViewModel>();
             if (state is ProfileScreenLoading) {
-              _viewModel.doAction(GetUserDataProfileAction());
+              viewModel.doAction(const GetUserDataProfileAction());
               return const Center(
                 child: CircularProgressIndicator(),
               );

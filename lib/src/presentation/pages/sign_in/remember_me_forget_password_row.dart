@@ -1,6 +1,5 @@
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_actions.dart';
 import 'package:flower_app/src/presentation/managers/sign_in/sign_in_states.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../core/styles/texts/app_text_styles.dart';

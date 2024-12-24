@@ -1,9 +1,6 @@
 
 import 'package:bloc/bloc.dart';
-import 'package:dio/dio.dart';
 import 'package:flower_app/common/api_result.dart';
-import 'package:flower_app/src/data/api/core/error/error_handler.dart';
-import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/domain/entities/auth/signup/sign_up_response.dart';
 import 'package:flower_app/src/domain/entities/auth/signup/sign_up_user.dart';
 import 'package:flower_app/src/domain/use_cases/auth_use_cases/signup_user_use_case.dart';

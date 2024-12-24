@@ -13,7 +13,7 @@ class AddressItemCard extends StatelessWidget {
   final int? groupValue;
   final ValueChanged<int?> onChanged;
 
-  AddressItemCard(
+  const AddressItemCard(
       {super.key,
       required this.address,
       required this.value,

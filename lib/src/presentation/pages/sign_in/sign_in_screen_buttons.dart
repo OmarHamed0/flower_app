@@ -2,7 +2,6 @@ import 'package:flower_app/core/styles/app_radius.dart';
 import 'package:flower_app/core/styles/spaceing.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/styles/colors/app_colors.dart';
 import '../../../../core/styles/texts/app_text_styles.dart';
 import '../../managers/sign_in/sign_in_actions.dart';

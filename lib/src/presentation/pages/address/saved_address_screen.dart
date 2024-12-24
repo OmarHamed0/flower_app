@@ -16,7 +16,7 @@ import '../../managers/address/saved_addresses/address_screen_viewmodel.dart';
 class SavedAddressScreen extends StatelessWidget {
   SavedAddressScreen({super.key});
 
-  AddressScreenViewModel _viewModel = getIt<AddressScreenViewModel>();
+  final AddressScreenViewModel _viewModel = getIt<AddressScreenViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +38,7 @@ class SavedAddressScreen extends StatelessWidget {
                     onOk: () {},
                     dialogType: DialogType.success);
               } else if (state is AddressScreenDeleteError) {
-                final errorHandler=ErrorHandler.fromException(state.exception!, AppLocalizations.of(context)!);
+                final errorHandler=ErrorHandler.fromException(state.exception, AppLocalizations.of(context)!);
                 showAwesomeDialog(context,
                     title: AppLocalizations.of(context)!.error,
                     desc: errorHandler.errorMassage,
@@ -58,12 +58,12 @@ class SavedAddressScreen extends StatelessWidget {
             },
             builder: (context, state) {
               if (state is AddressScreenLoading) {
-                return CircularProgressIndicator();
+                return const CircularProgressIndicator();
               } else if (state is AddressScreenLoaded) {
                 if (state.addresses!.isEmpty) {
                   return Center(
                     child: Padding(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -75,7 +75,7 @@ class SavedAddressScreen extends StatelessWidget {
                           verticalSpace(16),
                           Text(
                             AppLocalizations.of(context)!.noAddressFound,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 20,
                               fontWeight: FontWeight.bold,
                               color: Colors.grey,
@@ -84,7 +84,7 @@ class SavedAddressScreen extends StatelessWidget {
                           verticalSpace(8),
                           Text(
                             AppLocalizations.of(context)!.addNewAddress,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontSize: 16,
                               color: Colors.grey,
                             ),
@@ -176,8 +176,8 @@ class AddressCard extends StatelessWidget {
     required this.city,
     required this.onDelete,
     required this.onEdit,
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

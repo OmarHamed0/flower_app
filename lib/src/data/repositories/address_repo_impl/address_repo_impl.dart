@@ -9,8 +9,8 @@ import '../../../domain/repositories/address_repo/address_repository.dart';
 
 @Injectable(as: AddressRepository)
 class AddressRepoImpl implements AddressRepository {
-  AddressOfflineDatasource _addressOfflineDatasource;
-  AddressOnlineDatasource _addressOnlineDatasource;
+  final AddressOfflineDatasource _addressOfflineDatasource;
+  final AddressOnlineDatasource _addressOnlineDatasource;
   AddressRepoImpl(
       this._addressOfflineDatasource, this._addressOnlineDatasource);
   @override

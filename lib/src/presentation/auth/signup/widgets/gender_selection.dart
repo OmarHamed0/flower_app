@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class GenderSelection extends StatefulWidget {
-  GenderSelection({Key? key, this.selectedGender = 'female'}) : super(key: key);
+  GenderSelection({super.key, this.selectedGender = 'female'});
   String? selectedGender;
   @override
   _GenderSelectionState createState() => _GenderSelectionState();
@@ -18,7 +18,7 @@ class _GenderSelectionState extends State<GenderSelection> {
       padding: EdgeInsets.symmetric(vertical: 20.h),
       child: Row(
         children: [
-          Text(
+          const Text(
             'Gender',
           ),
           horizontalSpace(20),
