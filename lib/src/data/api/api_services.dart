@@ -7,6 +7,7 @@ import 'package:flower_app/src/data/api/core/response_model/auth_response_models
 import 'package:flower_app/src/data/api/core/response_model/cart/add_cart_response_model/add_cart_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/cart/get_all_cart_response/get_all_cart_response_mode.dart';
 import 'package:flower_app/src/data/api/core/response_model/checkout/cash_checkout_response_model.dart';
+import 'package:flower_app/src/data/api/core/response_model/checkout/credit_checkout_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/checkout_place_order/place_order_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/notifications/delete_notification_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/product_response_models/one_product_response_model.dart';
@@ -144,4 +145,8 @@ abstract class ApiServices {
   Future<CashCheckoutResponseModel> cashCheckout(
       @Header(ApiKey.authorization) String token,
       @Body() PlaceOrderRequestModel placeOrderRequestModel);
+
+  @POST(ApisEndPoints.checkout)
+  Future<CreditCheckoutResponseModel> creditCheckout(@Header(ApiKey.authorization) String token, @Body() PlaceOrderRequestModel placeOrderRequestModel);
+
 }
