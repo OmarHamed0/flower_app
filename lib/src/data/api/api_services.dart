@@ -6,6 +6,7 @@ import 'package:flower_app/src/data/api/core/response_model/address/address_resp
 import 'package:flower_app/src/data/api/core/response_model/auth_response_models/reset_password_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/cart/add_cart_response_model/add_cart_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/cart/get_all_cart_response/get_all_cart_response_mode.dart';
+import 'package:flower_app/src/data/api/core/response_model/checkout/cash_checkout_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/checkout_place_order/place_order_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/notifications/delete_notification_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/product_response_models/one_product_response_model.dart';
@@ -67,14 +68,17 @@ abstract class ApiServices {
 
   @GET(ApisEndPoints.categories)
   Future<GetCatigoriesResponseModel> getCategories();
+
   @GET(ApisEndPoints.occassions)
   Future<OccasionResponseModel> getOccasions();
+
   @GET(ApisEndPoints.logout)
   Future<LogOutResponse> logout(@Header(ApiKey.authorization) String token);
 
   @PUT(ApisEndPoints.editProfile)
   Future<LoggedUserDataResponseModel> editProfile(
-      @Header(ApiKey.authorization) String token, @Body() EditProfileRequest body);
+      @Header(ApiKey.authorization) String token,
+      @Body() EditProfileRequest body);
 
   // @PUT(ApisEndPoints.uploadPhoto)
   // @MultiPart()
@@ -109,6 +113,7 @@ abstract class ApiServices {
     @Path(ApiKey.id) required String id,
     @Body() required CartQuantityRequest cartQuantityRequest,
   });
+
   @GET(ApisEndPoints.savedAddresses)
   Future<AddressResponse> getSavedAddresses(
       @Header(ApiKey.authorization) String token);
@@ -119,18 +124,24 @@ abstract class ApiServices {
 
   @PATCH(ApisEndPoints.addNewAddress)
   Future<AddressResponse> addNewAddress(
-      @Header(ApiKey.authorization) String token, @Body() AddAddressRequest address);
-
+      @Header(ApiKey.authorization) String token,
+      @Body() AddAddressRequest address);
 
   @POST(ApisEndPoints.orders)
   Future<PlaceOrderResponseModel> placeOrder(
-      @Header(ApiKey.authorization) String token, @Body() PlaceOrderRequestModel body);
+      @Header(ApiKey.authorization) String token,
+      @Body() PlaceOrderRequestModel body);
 
   @GET(ApisEndPoints.notifications)
   Future<AllNotificationsResponseModel> getAllNotifications(
       @Header(ApiKey.authorization) String token);
 
   @DELETE("${ApisEndPoints.notifications}/${ApiKey.id}")
-  Future<DeleteNotificationResponseModel> deleteNotification(@Header(ApiKey.token) String token, @Path(ApiKey.id) String id);
+  Future<DeleteNotificationResponseModel> deleteNotification(
+      @Header(ApiKey.token) String token, @Path(ApiKey.id) String id);
 
+  @POST(ApisEndPoints.orders)
+  Future<CashCheckoutResponseModel> cashCheckout(
+      @Header(ApiKey.authorization) String token,
+      @Body() PlaceOrderRequestModel placeOrderRequestModel);
 }
