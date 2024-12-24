@@ -19,7 +19,6 @@ class ProductCubit extends Cubit<ProductState> {
 
     static ProductCubit of(context)=>BlocProvider.of(context);
 
-
   Future<void> doAction(ProductEvent productEvent) async {
     switch (productEvent) {
       case GetProductEvent():

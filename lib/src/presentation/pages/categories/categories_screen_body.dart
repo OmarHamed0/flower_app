@@ -11,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../managers/product/product_event.dart';
+import '../product/widget/show_sort_options_bottom_sheet_widget.dart';
 
 class CategoriesScreenBody extends StatefulWidget {
   final String? productId;
@@ -38,7 +39,8 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                   children: [
                     Expanded(
                       child: TextField(
-                        onTap: () => Navigator.pushNamed(context,PageRouteName.search),
+                        onTap: () =>
+                            Navigator.pushNamed(context, PageRouteName.search),
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.search),
                           hintText: "Search",
@@ -66,7 +68,9 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                       ),
                       child: IconButton(
                         icon: const Icon(Icons.filter_list),
-                        onPressed: () {},
+                        onPressed: () {
+                          showSortOptions(context);
+                        },
                       ),
                     ),
                   ],
@@ -90,13 +94,13 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                 productQuery: ProductQuery.category,
                 productId: widget.productId,
               )));
-              return ProductView();
+              return const ProductView();
             } else {
               productViewModel.doAction(GetProductEvent(
                 productQueryParameters: ProductQueryParameters(
                     productEndPoints: ProductEndPoints.products),
               ));
-              return ProductView();
+              return const ProductView();
             }
           }),
         )

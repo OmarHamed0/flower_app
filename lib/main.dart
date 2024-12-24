@@ -21,7 +21,6 @@ void main() async {
   const fatalError = true;
   FlutterError.onError = (errorDetails) {
     if (fatalError) {
-      // If you want to record a "fatal" exception
       FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
       // ignore: dead_code
     } else {

@@ -11,6 +11,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'config/localization/l10n.dart';
 import 'config/routes/app_route.dart';
 import 'config/routes/page_route_name.dart';
+import 'config/theme/app_theme.dart';
 
 final GlobalKey<NavigatorState> navKey = GlobalKey<NavigatorState>();
 
@@ -50,6 +51,7 @@ class FlowerApp extends StatelessWidget {
               initialRoute: PageRouteName.splash,
               onGenerateRoute: AppRoute.onGenerateRoute,
               themeMode: ThemeMode.light,
+              theme: AppTheme.defaultTheme,
               // theme: AppTheme.appTheme,
             ),
           );
