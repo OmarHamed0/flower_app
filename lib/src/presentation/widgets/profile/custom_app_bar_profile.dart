@@ -1,5 +1,7 @@
+import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/core/styles/icons/app_icons.dart';
 import 'package:flower_app/core/styles/images/app_images.dart';
+import 'package:flower_app/flower_app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -19,7 +21,9 @@ class CustomAppBarProfile extends StatelessWidget {
           ),
           const Spacer(),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              navKey.currentState!.pushNamed(PageRouteName.notifications);
+            },
             icon: const ImageIcon(
               AssetImage(AppIcons.notificationIcon),
             ),

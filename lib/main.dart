@@ -6,6 +6,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/adapters.dart';
 
+import 'core/services/firebase_cloud_messaging.dart';
 import 'core/utils/bloc_observer/bloc_observer.dart';
 import 'dependency_injection/di.dart';
 import 'firebase_options.dart';
@@ -18,6 +19,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  FirebaseCloudMessaging.getInstance().initializeFirebaseCloudMessaging();
+
   const fatalError = true;
   FlutterError.onError = (errorDetails) {
     if (fatalError) {

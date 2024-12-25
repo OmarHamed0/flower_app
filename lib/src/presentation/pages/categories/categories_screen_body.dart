@@ -1,7 +1,9 @@
 import 'dart:developer';
+import 'package:flower_app/common/common.dart';
 import 'package:flower_app/config/routes/page_route_name.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
+import 'package:flower_app/core/styles/fonts/app_fonts.dart';
 import 'package:flower_app/src/presentation/managers/categories/categories_view_model.dart';
 import 'package:flower_app/src/presentation/managers/product/core/product_core.dart';
 import 'package:flower_app/src/presentation/managers/product/product_cubit.dart';
@@ -38,21 +40,27 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                 Row(
                   children: [
                     Expanded(
-                      child: TextField(
+                      child: GestureDetector(
                         onTap: () =>
                             Navigator.pushNamed(context, PageRouteName.search),
-                        decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.search),
-                          hintText: "Search",
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide:
-                                const BorderSide(color: AppColors.kWhite70),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                            borderSide:
-                                const BorderSide(color: AppColors.kWhite70),
+                        child: Container(
+                          alignment: Alignment.bottomLeft,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              border: Border.all(
+                                color: AppColors.kWhite70,
+                              )),
+                          child: TextButton.icon(
+                            onPressed: () {},
+                            label: Text(
+                              "Search",
+                              style: AppFonts.font14Gray400Weight70,
+                            ),
+                            icon: const Icon(
+                              Icons.search,
+                              color: AppColors.kGray,
+                            ),
                           ),
                           contentPadding:
                               const EdgeInsets.symmetric(horizontal: 10),
