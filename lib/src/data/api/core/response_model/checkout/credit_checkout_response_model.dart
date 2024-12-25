@@ -1,5 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
 
+import '../../../../../domain/entities/checkout/credit_checkout_entity.dart';
+
 part 'credit_checkout_response_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -19,6 +21,13 @@ class CreditCheckoutResponseModel {
       _$CreditCheckoutResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CreditCheckoutResponseModelToJson(this);
+
+  CreditCheckoutEntity toDomainDto() {
+    return CreditCheckoutEntity(
+      message: message,
+      session: session.toDomainDto(),
+    );
+  }
 }
 
 @JsonSerializable(explicitToJson: true)
@@ -106,6 +115,30 @@ class Session {
       _$SessionFromJson(json);
 
   Map<String, dynamic> toJson() => _$SessionToJson(this);
+
+  SessionEntity toDomainDto() {
+    return SessionEntity(
+      id: id,
+      object: object,
+      adaptivePricing: adaptivePricing.toDomainDto(),
+      amountSubtotal: amountSubtotal,
+      amountTotal: amountTotal,
+      automaticTax: automaticTax.toDomainDto(),
+      cancelUrl: cancelUrl,
+      clientReferenceId: clientReferenceId,
+      created: created,
+      currency: currency,
+      customerDetails: customerDetails?.toDomainDto(),
+      customerEmail: customerEmail,
+      expiresAt: expiresAt,
+      metadata: metadata.toDomainDto(),
+      mode: mode,
+      paymentStatus: paymentStatus,
+      paymentMethodTypes: paymentMethodTypes,
+      totalDetails: totalDetails.toDomainDto(),
+      url: url,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -119,6 +152,10 @@ class AdaptivePricing {
       _$AdaptivePricingFromJson(json);
 
   Map<String, dynamic> toJson() => _$AdaptivePricingToJson(this);
+
+  AdaptivePricingEntity toDomainDto() {
+    return AdaptivePricingEntity(enabled: enabled);
+  }
 }
 
 @JsonSerializable()
@@ -142,6 +179,14 @@ class AutomaticTax {
       _$AutomaticTaxFromJson(json);
 
   Map<String, dynamic> toJson() => _$AutomaticTaxToJson(this);
+
+  AutomaticTaxEntity toDomainDto() {
+    return AutomaticTaxEntity(
+      enabled: enabled,
+      liability: liability,
+      status: status,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -177,6 +222,17 @@ class CustomerDetails {
       _$CustomerDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$CustomerDetailsToJson(this);
+
+  CustomerDetailsEntity toDomainDto() {
+    return CustomerDetailsEntity(
+      address: address,
+      email: email,
+      name: name,
+      phone: phone,
+      taxExempt: taxExempt,
+      taxIds: taxIds,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -200,6 +256,14 @@ class Metadata {
       _$MetadataFromJson(json);
 
   Map<String, dynamic> toJson() => _$MetadataToJson(this);
+
+  MetadataEntity toDomainDto() {
+    return MetadataEntity(
+      city: city,
+      phone: phone,
+      street: street,
+    );
+  }
 }
 
 @JsonSerializable()
@@ -223,4 +287,12 @@ class TotalDetails {
       _$TotalDetailsFromJson(json);
 
   Map<String, dynamic> toJson() => _$TotalDetailsToJson(this);
+
+  TotalDetailsEntity toDomainDto() {
+    return TotalDetailsEntity(
+      amountDiscount: amountDiscount,
+      amountShipping: amountShipping,
+      amountTax: amountTax,
+    );
+  }
 }

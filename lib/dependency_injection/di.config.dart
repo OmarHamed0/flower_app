@@ -109,6 +109,7 @@ import '../src/domain/use_cases/cart/remove_specific_cart_item_use_case.dart'
 import '../src/domain/use_cases/cart/update_quantity_cart_use_case.dart'
     as _i413;
 import '../src/domain/use_cases/category_use_case.dart' as _i551;
+import '../src/domain/use_cases/checkout/checkout_use_cases.dart' as _i270;
 import '../src/domain/use_cases/home_usecase.dart' as _i729;
 import '../src/domain/use_cases/notifications/notifications_use_cases.dart'
     as _i1031;
@@ -241,6 +242,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i793.PlaceOrderOnlineDataSource>(),
           gh<_i136.AuthOfflineDataSource>(),
         ));
+    gh.factory<_i270.CheckoutUseCase>(
+        () => _i270.CheckoutUseCase(gh<_i171.CheckoutRepo>()));
     gh.factory<_i699.ProductCubit>(
         () => _i699.ProductCubit(gh<_i902.GetProductUseCase>()));
     gh.factory<_i492.OccasionRepo>(
