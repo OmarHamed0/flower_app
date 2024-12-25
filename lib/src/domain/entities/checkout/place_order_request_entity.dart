@@ -1,4 +1,5 @@
 import '../../../data/api/core/requestes_models/checkout_place_order_request_model/place_order_request_model.dart';
+import '../place_order/shipping_address_entity.dart';
 
 class PlaceOrderRequestEntity {
   final ShippingAddressEntity? shippingAddressEntity;
@@ -17,14 +18,3 @@ class PlaceOrderRequestEntity {
   }
 }
 
-class ShippingAddressEntity {
-  final String? street;
-  final String? phone;
-  final String? city;
-
-  ShippingAddressEntity({
-    this.street,
-    this.phone,
-    this.city,
-  });
-}

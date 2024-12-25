@@ -56,8 +56,8 @@ abstract class ApiServices {
   @GET(ApisEndPoints.home)
   Future<HomeResponse> getHomeData();
 
-  @GET("${ApisEndPoints.products}/${ApiKey.id}")
-  Future<OneProductResponseModel> getProductById(@Path(ApiKey.id) String id);
+  @GET("${ApisEndPoints.products}/{id}")
+  Future<OneProductResponseModel> getProductById(@Path() String id);
 
   @GET(ApisEndPoints.products)
   Future<ProductResponseModel> getProduct(
@@ -103,15 +103,15 @@ abstract class ApiServices {
   Future<GetAllCartResponseModel> getLoggedUserCart(
       {@Header(ApiKey.authorization) required String token});
 
-  @DELETE("${ApisEndPoints.cart}/${ApiKey.id}")
+  @DELETE("${ApisEndPoints.cart}/{id}")
   Future<RemoveCartResponseModel> removeSpecificCartItem(
       {@Header(ApiKey.authorization) required String token,
-      @Path(ApiKey.id) required String id});
+      @Path() required String id});
 
-  @PUT("${ApisEndPoints.cart}/${ApiKey.id}")
+  @PUT("${ApisEndPoints.cart}/{id}")
   Future<GetAllCartResponseModel> updateQuantity({
     @Header(ApiKey.authorization) required String token,
-    @Path(ApiKey.id) required String id,
+    @Path() required String id,
     @Body() required CartQuantityRequest cartQuantityRequest,
   });
 
@@ -119,9 +119,9 @@ abstract class ApiServices {
   Future<AddressResponse> getSavedAddresses(
       @Header(ApiKey.authorization) String token);
 
-  @DELETE("${ApisEndPoints.deleteAddress}/{${ApiKey.id}")
+  @DELETE("${ApisEndPoints.deleteAddress}/{id}")
   Future<AddressResponse> deleteAddress(
-      @Header(ApiKey.authorization) String token, @Path(ApiKey.id) String id);
+      @Header(ApiKey.authorization) String token, @Path() String id);
 
   @PATCH(ApisEndPoints.addNewAddress)
   Future<AddressResponse> addNewAddress(
@@ -137,9 +137,9 @@ abstract class ApiServices {
   Future<AllNotificationsResponseModel> getAllNotifications(
       @Header(ApiKey.authorization) String token);
 
-  @DELETE("${ApisEndPoints.notifications}/${ApiKey.id}")
+  @DELETE("${ApisEndPoints.notifications}/{id}")
   Future<DeleteNotificationResponseModel> deleteNotification(
-      @Header(ApiKey.token) String token, @Path(ApiKey.id) String id);
+      @Header(ApiKey.token) String token, @Path() String id);
 
   @POST(ApisEndPoints.orders)
   Future<CashCheckoutResponseModel> cashCheckout(

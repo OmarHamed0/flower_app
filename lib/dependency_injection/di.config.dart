@@ -271,6 +271,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i91.AddressRepository>(),
           gh<_i1053.PlaceOrderRepo>(),
         ));
+    gh.factory<_i123.CheckoutViewModel>(() => _i123.CheckoutViewModel(
+          gh<_i794.PlaceOrderUserCases>(),
+          gh<_i270.CheckoutUseCase>(),
+        ));
     gh.factory<_i196.ProductDetailsViewModel>(
         () => _i196.ProductDetailsViewModel(gh<_i1042.ProductByIdUseCase>()));
     gh.factory<_i1044.EditProfileViewModel>(
@@ -293,8 +297,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1031.NotificationsUseCases(gh<_i310.NotificationsRepo>()));
     gh.factory<_i545.ResetPasswordViewModel>(
         () => _i545.ResetPasswordViewModel(gh<_i448.ResetPasswordUseCase>()));
-    gh.factory<_i123.CheckoutViewModel>(
-        () => _i123.CheckoutViewModel(gh<_i794.PlaceOrderUserCases>()));
     gh.factory<_i1022.OccasionViewModel>(
         () => _i1022.OccasionViewModel(gh<_i845.OccasionUseCase>()));
     gh.factory<_i505.NotificationsViewModel>(
