@@ -11,6 +11,7 @@ import 'package:flower_app/src/domain/use_cases/checkout/checkout_use_cases.dart
 import 'package:flower_app/src/presentation/managers/checkout/checkout_actions.dart';
 import 'package:flower_app/src/presentation/managers/checkout/checkout_states.dart';
 import 'package:injectable/injectable.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../../../domain/use_cases/place_order/checkout_use_case.dart';
 
@@ -35,6 +36,13 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
     nameController.dispose();
     phoneController.dispose();
     scrollController.dispose();
+  }
+
+  Future<void> launchCheckoutUrl(String ulr) async {
+    Uri _url = Uri.parse(ulr);
+    if (!await launchUrl(_url)) {
+      emit(FailedCheckoutState(exception: Exception("Can't open the url")));
+    }
   }
 
   String? validateName(String? value) {
@@ -85,9 +93,11 @@ class CheckoutViewModel extends Cubit<CheckOutStates> {
     var response = await _checkoutUseCase.cashCheckout(placeOrderRequestEntity);
     switch (response) {
       case Success<CashCheckoutEntity>():
-      // TODO: Handle this case.
+        emit(CashSuccessState());
+        break;
       case Failures<CashCheckoutEntity>():
-      // TODO: Handle this case.
+         emit(FailedCheckoutState(exception: response.exception));
+         break;
     }
   }
 
