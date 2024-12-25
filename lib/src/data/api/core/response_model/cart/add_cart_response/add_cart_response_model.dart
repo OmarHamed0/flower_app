@@ -34,17 +34,25 @@ class Cart {
   final String? user;
   @JsonKey(name: "cartItems")
   final List<CartItems>? cartItems;
+  @JsonKey(name: "discount")
+  final int? discount;
   @JsonKey(name: "totalPrice")
   final int? totalPrice;
+  @JsonKey(name: "totalPriceAfterDiscount")
+  final int? totalPriceAfterDiscount;
   @JsonKey(name: "createdAt")
   final String? createdAt;
   @JsonKey(name: "updatedAt")
   final String? updatedAt;
+
+
   Cart ({
     this.Id,
     this.user,
     this.cartItems,
+    this.discount,
     this.totalPrice,
+    this.totalPriceAfterDiscount,
     this.createdAt,
     this.updatedAt,
   });
@@ -61,7 +69,7 @@ class Cart {
 @JsonSerializable()
 class CartItems {
   @JsonKey(name: "product")
-  final String? product;
+  final Product? product;
   @JsonKey(name: "price")
   final int? price;
   @JsonKey(name: "quantity")
@@ -82,6 +90,69 @@ class CartItems {
 
   Map<String, dynamic> toJson() {
     return _$CartItemsToJson(this);
+  }
+}
+
+@JsonSerializable()
+class Product {
+  @JsonKey(name: "_id")
+  final String? Id;
+  @JsonKey(name: "title")
+  final String? title;
+  @JsonKey(name: "slug")
+  final String? slug;
+  @JsonKey(name: "description")
+  final String? description;
+  @JsonKey(name: "imgCover")
+  final String? imgCover;
+  @JsonKey(name: "images")
+  final List<String>? images;
+  @JsonKey(name: "price")
+  final int? price;
+  @JsonKey(name: "priceAfterDiscount")
+  final int? priceAfterDiscount;
+  @JsonKey(name: "quantity")
+  final int? quantity;
+  @JsonKey(name: "category")
+  final String? category;
+  @JsonKey(name: "occasion")
+  final String? occasion;
+  @JsonKey(name: "createdAt")
+  final String? createdAt;
+  @JsonKey(name: "updatedAt")
+  final String? updatedAt;
+  @JsonKey(name: "discount")
+  final int? discount;
+  @JsonKey(name: "sold")
+  final int? sold;
+  @JsonKey(name: "id")
+  final String? id;
+
+  Product ({
+    this.Id,
+    this.title,
+    this.slug,
+    this.description,
+    this.imgCover,
+    this.images,
+    this.price,
+    this.priceAfterDiscount,
+    this.quantity,
+    this.category,
+    this.occasion,
+    this.createdAt,
+    this.updatedAt,
+    this.discount,
+    this.sold,
+    this.id,
+  });
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return _$ProductFromJson(json);
+  }
+
+  Map<String, dynamic> toJson() {
+    return _$ProductToJson(this);
   }
 }
 

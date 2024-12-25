@@ -1,13 +1,13 @@
 import 'package:flower_app/src/domain/entities/cart/cart_entity.dart';
 import '../../../domain/entities/cart/cart_product_entity.dart';
-import '../../api/core/response_model/cart/remove_cart_response/remove_cart_respone_model.dart';
+import '../../api/core/response_model/cart/get_all_cart_response/get_all_cart_response_mode.dart';
 
 class RemoveCartDto {
   String? message;
   RemoveCartDto({this.message});
 
   CartEntity toDomain(
-      {required RemoveCartResponseModel removeCartResponseModel}) {
+      {required GetAllCartResponseModel removeCartResponseModel}) {
     return CartEntity(
         numOfCartItems: removeCartResponseModel.numOfCartItems,
         totalPrice: removeCartResponseModel.cart?.totalPrice,

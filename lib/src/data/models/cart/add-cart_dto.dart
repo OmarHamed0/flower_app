@@ -1,5 +1,7 @@
-import 'package:flower_app/src/data/api/core/response_model/cart/add_cart_response_model/add_cart_response_model.dart';
 import 'package:flower_app/src/domain/entities/cart/cart_entity.dart';
+
+import '../../api/core/response_model/cart/add_cart_response/add_cart_response_model.dart';
+
 
 class AddCartDto {
   String? message;
@@ -8,9 +10,9 @@ class AddCartDto {
 
   static CartEntity toDomain({required AddCartResponseModel addCartResponseModel}){
     return  CartEntity(
-      numOfCartItems: addCartResponseModel.numOfCartItems,
+      numOfCartItems: 0    ,
       totalPrice: addCartResponseModel.cart?.totalPrice,
-      cartList: []
+      //cartList: []
     );
   }
 }

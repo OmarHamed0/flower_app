@@ -15,6 +15,7 @@ class HandleAddCartState {
       _buildSuccessAddCartState(context);
     } else if (state is AddCartErrorState) {
       _hideLoading(context);
+      print("state is ${state.exception}");
       _buildErrorAddCartState(context, state);
     }
   }

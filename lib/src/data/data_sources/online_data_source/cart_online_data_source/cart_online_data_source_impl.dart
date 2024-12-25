@@ -6,7 +6,7 @@ import 'package:flower_app/src/data/api/core/response_model/cart/remove_cart_res
 import 'package:flower_app/src/data/data_sources/online_data_source/cart_online_data_source/cart_online_data_source.dart';
 import 'package:injectable/injectable.dart';
 
-import '../../../api/core/response_model/cart/add_cart_response_model/add_cart_response_model.dart';
+import '../../../api/core/response_model/cart/add_cart_response/add_cart_response_model.dart';
 
 @Injectable(as:CartOnlineDataSource )
 class CartOnlineDataSourceImpl  implements CartOnlineDataSource {
@@ -25,7 +25,9 @@ class CartOnlineDataSourceImpl  implements CartOnlineDataSource {
   }
 
   @override
-  Future<RemoveCartResponseModel> removeSpecificCartItem({required String token, required String id}) async{
+  Future<GetAllCartResponseModel> removeSpecificCartItem({
+    required String token,
+    required String id}) async{
     var removeCartResponseModel=await _apiServices.removeSpecificCartItem(token: token, id: id);
     return removeCartResponseModel;
   }

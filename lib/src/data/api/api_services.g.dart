@@ -512,7 +512,7 @@ class _ApiServices implements ApiServices {
   }
 
   @override
-  Future<RemoveCartResponseModel> removeSpecificCartItem({
+  Future<GetAllCartResponseModel> removeSpecificCartItem({
     required String token,
     required String id,
   }) async {
@@ -521,14 +521,14 @@ class _ApiServices implements ApiServices {
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     const Map<String, dynamic>? _data = null;
-    final _options = _setStreamType<RemoveCartResponseModel>(Options(
+    final _options = _setStreamType<GetAllCartResponseModel>(Options(
       method: 'DELETE',
       headers: _headers,
       extra: _extra,
     )
         .compose(
           _dio.options,
-          'cart/id',
+          'cart/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -538,9 +538,9 @@ class _ApiServices implements ApiServices {
           baseUrl,
         )));
     final _result = await _dio.fetch<Map<String, dynamic>>(_options);
-    late RemoveCartResponseModel _value;
+    late GetAllCartResponseModel _value;
     try {
-      _value = RemoveCartResponseModel.fromJson(_result.data!);
+      _value = GetAllCartResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
@@ -567,7 +567,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'cart/id',
+          'cart/${id}',
           queryParameters: queryParameters,
           data: _data,
         )

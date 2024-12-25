@@ -4,7 +4,6 @@ import 'package:flower_app/src/data/api/core/requestes_models/add_address_reques
 import 'package:flower_app/src/data/api/core/requestes_models/reset_password_request_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/address/address_response.dart';
 import 'package:flower_app/src/data/api/core/response_model/auth_response_models/reset_password_response_model.dart';
-import 'package:flower_app/src/data/api/core/response_model/cart/add_cart_response_model/add_cart_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/cart/get_all_cart_response/get_all_cart_response_mode.dart';
 import 'package:flower_app/src/data/api/core/response_model/checkout_place_order/place_order_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/notifications/delete_notification_response_model.dart';
@@ -24,6 +23,7 @@ import 'core/requestes_models/signin_request_body.dart';
 import 'core/response_model/auth_response_models/logged_user_data_reponse_model.dart';
 import 'core/response_model/auth_response_models/signin_response_model.dart';
 import 'core/response_model/beset_seller/beset_seller_model.dart';
+import 'core/response_model/cart/add_cart_response/add_cart_response_model.dart';
 import 'core/response_model/cart/remove_cart_response/remove_cart_respone_model.dart';
 import 'core/response_model/get_catigories/get_catigories_resonse_model.dart';
 import 'core/response_model/home_response/home_response.dart';
@@ -93,15 +93,16 @@ abstract class ApiServices {
   Future<GetAllCartResponseModel> getLoggedUserCart(
       {@Header(ApiKey.authorization) required String token});
 
-  @DELETE("${ApisEndPoints.cart}/${ApiKey.id}")
-  Future<RemoveCartResponseModel> removeSpecificCartItem(
+  @DELETE("${ApisEndPoints.cart}/{id}")
+  Future<GetAllCartResponseModel> removeSpecificCartItem(
       {@Header(ApiKey.authorization) required String token,
-      @Path(ApiKey.id) required String id});
+      @Path() required String id
+      });
 
-  @PUT("${ApisEndPoints.cart}/${ApiKey.id}")
+  @PUT("${ApisEndPoints.cart}/{id}")
   Future<GetAllCartResponseModel> updateQuantity({
     @Header(ApiKey.authorization) required String token,
-    @Path(ApiKey.id) required String id,
+    @Path() required String id,
     @Body() required CartQuantityRequest cartQuantityRequest,
   });
   @GET(ApisEndPoints.savedAddresses)

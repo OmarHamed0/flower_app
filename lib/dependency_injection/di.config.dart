@@ -235,14 +235,14 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i475.OccasionsRepoImpl(gh<_i241.OccasionOnlineDataSource>()));
     gh.factory<_i822.CategoriesViewModel>(
         () => _i822.CategoriesViewModel(gh<_i551.CategoryUseCase>()));
-    gh.factory<_i346.ProfileUseCase>(
-        () => _i346.ProfileUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i207.SignInUseCase>(
         () => _i207.SignInUseCase(gh<_i862.AuthRepository>()));
-    gh.factory<_i807.AddressScreenViewModel>(
-        () => _i807.AddressScreenViewModel(gh<_i811.AddressUsecase>()));
+    gh.factory<_i346.ProfileUseCase>(
+        () => _i346.ProfileUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i309.AddAddressScreenViewModel>(
         () => _i309.AddAddressScreenViewModel(gh<_i811.AddressUsecase>()));
+    gh.factory<_i807.AddressScreenViewModel>(
+        () => _i807.AddressScreenViewModel(gh<_i811.AddressUsecase>()));
     gh.factory<_i310.NotificationsRepo>(() => _i579.NotificationRepoImpl(
           gh<_i136.AuthOfflineDataSource>(),
           gh<_i133.NotificationsOnlineDataSource>(),
