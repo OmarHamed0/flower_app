@@ -81,12 +81,7 @@ abstract class ApiServices {
       @Header(ApiKey.authorization) String token,
       @Body() EditProfileRequest body);
 
-  // @PUT(ApisEndPoints.uploadPhoto)
-  // @MultiPart()
-  // Future<String> uploadPhotos(
-  //   @Header("Authorization") String token,
-  //   @Part(name: "photo") MultipartFile files,
-  // );
+
 
   @PATCH(ApisEndPoints.changePassword)
   Future<ResetPasswordResponseModel> resetPassword(

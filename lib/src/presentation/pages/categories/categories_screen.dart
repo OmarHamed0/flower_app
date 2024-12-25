@@ -19,7 +19,7 @@ class CategoriesScreen extends StatelessWidget {
           body: BlocBuilder<CategoriesViewModel, CategoriesState>(
             builder: (context, state) {
               if (state is CategoriesLoaded) {
-                return CategoriesScreenBody();
+                return const CategoriesScreenBody();
               } else if (state is ChangeCategoryState) {
                 log("ChangeCategoryState: id: ${state.id}");
                 return CategoriesScreenBody(productId: state.id);

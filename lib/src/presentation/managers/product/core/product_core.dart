@@ -3,7 +3,7 @@ enum ProductEndPoints {
   besetSeller,
 }
 
-enum ProductQuery { category, occasion }
+enum ProductQuery { category, occasion , search }
 
 abstract class ProductQueryParams {
   Map<String, dynamic>? getQueryParameters(String? productId);
@@ -30,6 +30,13 @@ class NoQueryParams implements ProductQueryParams {
   }
 }
 
+class SearchProductParams implements ProductQueryParams {
+  @override
+  Map<String, dynamic>? getQueryParameters(String? productId) {
+    return {"keyword": productId};
+  }
+}
+
 class ProductQueryFactory {
   static ProductQueryParams getProductQueryParams(ProductQuery? productQuery) {
     switch (productQuery) {
@@ -39,6 +46,8 @@ class ProductQueryFactory {
         return OccasionQueryParams();
       case null:
         return NoQueryParams();
+        case ProductQuery.search:
+        return SearchProductParams();
     }
   }
 }

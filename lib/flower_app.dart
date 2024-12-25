@@ -1,6 +1,7 @@
 import 'package:flower_app/dependency_injection/di.dart';
 import 'package:flower_app/src/presentation/managers/cart/cart_view_model.dart';
 import 'package:flower_app/src/presentation/managers/localization/localization_cubit.dart';
+import 'package:flower_app/src/presentation/managers/product/product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -24,7 +25,9 @@ class FlowerApp extends StatelessWidget {
           create: (context) => getIt.get<CartViewModel>(),
         ),
         BlocProvider(
-            create: (context) => LocalizationCubit()..getSavedLanguage())
+            create: (context) => LocalizationCubit()..getSavedLanguage()),
+        BlocProvider(create: (context) => getIt<ProductCubit>()),
+
       ],
       child: BlocBuilder<LocalizationCubit, LocalizationState>(
         builder: (context, state) {
