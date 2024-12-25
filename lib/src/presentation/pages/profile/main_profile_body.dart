@@ -65,9 +65,14 @@ class MainProfileBody extends StatelessWidget {
                       onEdit: onEdit,
                     ),
                     verticalSpace(32),
-                    ProfileRowItem(
-                      title: AppLocalizations.of(context)!.myOrders,
-                      icon: AppIcons.orderIcon,
+                    InkWell(
+                      onTap: (){
+                        navKey.currentState!.pushNamed(PageRouteName.myOrders);
+                      },
+                      child: ProfileRowItem(
+                        title: AppLocalizations.of(context)!.myOrders,
+                        icon: AppIcons.orderIcon,
+                      ),
                     ),
                     verticalSpace(16),
                     InkWell(

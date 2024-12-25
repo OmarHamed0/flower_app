@@ -124,7 +124,6 @@ abstract class ApiServices {
       @Header(ApiKey.authorization) String token,
       @Body() AddAddressRequest address);
 
-      @Header("Authorization") String token, @Body() AddAddressRequest address);
 
   @POST(ApisEndPoints.orders)
   Future<PlaceOrderResponseModel> placeOrder(
@@ -146,10 +145,6 @@ abstract class ApiServices {
 
   @POST("${ApisEndPoints.orders}/${ApisEndPoints.checkout}")
   Future<CreditCheckoutResponseModel> creditCheckout(@Header(ApiKey.authorization) String token, @Body() PlaceOrderRequestModel placeOrderRequestModel, @Query("url") String localHost);
-
-
-      @Header("Authorization") String token,
-      @Body() PlaceOrderRequestModel body);
 
   @GET(ApisEndPoints.orders)
   Future<UserOrderResponseModel> getUserOrders(

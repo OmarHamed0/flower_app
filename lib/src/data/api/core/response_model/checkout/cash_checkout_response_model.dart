@@ -183,8 +183,8 @@ class Product {
   }
 
   // Method to convert to Product entity
-  ProductEntity toDomainDto() {
-    return ProductEntity(
+  CheckoutProductEntity toDomainDto() {
+    return CheckoutProductEntity(
       id_: this.Id,
       title: this.title,
       slug: this.slug,
