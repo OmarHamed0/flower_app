@@ -12,7 +12,6 @@ class SplashViewModel extends Cubit<SplashStates> {
 
   Future<void> _navigateBasedOnToken() async {
     await Future.delayed(const Duration(seconds: 4));
-
     final userToken =
     await SharedPrefHelper.getSecureString(SharedPrefKeys.userToken);
 
@@ -20,6 +19,7 @@ class SplashViewModel extends Cubit<SplashStates> {
     final nextRoute = (userToken != null && userToken.isNotEmpty)
         ? PageRouteName.baseScreen
         : PageRouteName.signIn;
+
 
     emit(NavigateToNextScreen(nextRoute));
   }

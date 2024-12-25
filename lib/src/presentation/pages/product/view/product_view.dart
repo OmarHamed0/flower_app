@@ -67,19 +67,21 @@ class ProductView extends StatelessWidget {
 
   Widget _productEmptyWidget() {
     return Center(
-        child: Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        Lottie.asset(AppImages.loading),
-        SizedBox(
-          height: 20.h,
-        ),
-        Text(
-          "No Product List",
-          style: AppFonts.font20Black500Weight,
-        )
-      ],
-    ));
+        child: SingleChildScrollView(
+          child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+          Lottie.asset(AppImages.loading),
+          SizedBox(
+            height: 20.h,
+          ),
+          Text(
+            "No Product List",
+            style: AppFonts.font20Black500Weight,
+          )
+                ],
+              ),
+        ));
   }
 }

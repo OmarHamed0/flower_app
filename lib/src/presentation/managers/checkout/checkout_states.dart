@@ -32,3 +32,15 @@ class PlaceOrderFailState extends CheckOutStates{
   PlaceOrderFailState({this.exception});
 }
 class PlaceOrderLoadingState extends CheckOutStates{}
+
+class CreditCardSuccessState extends CheckOutStates{
+  final String? url;
+  CreditCardSuccessState({this.url});
+}
+class CashSuccessState extends CheckOutStates{
+}
+
+class FailedCheckoutState extends CheckOutStates{
+  final Exception? exception;
+  FailedCheckoutState({this.exception});
+}

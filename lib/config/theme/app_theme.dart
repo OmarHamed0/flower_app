@@ -6,7 +6,12 @@ class AppTheme {
 
 
   static ThemeData defaultTheme =
-  ThemeData(scaffoldBackgroundColor: AppColors.kWhiteBase);
+  ThemeData(scaffoldBackgroundColor: AppColors.kWhiteBase,
+  bottomSheetTheme: BottomSheetThemeData(
+    backgroundColor: Colors.transparent
+  )
+
+  );
 
 
 }

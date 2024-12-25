@@ -73,9 +73,9 @@ class CheckoutScreen extends StatelessWidget {
                 ),
               );
             }
-            if (state is PlaceOrderSuccessState) {
+            if (state is CreditCardSuccessState) {
               Future.delayed(Duration(seconds: 4),() async{
-                await Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const ThankYou()));
+                await viewModel.launchCheckoutUrl(state.url!);
               });
                ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
@@ -83,7 +83,17 @@ class CheckoutScreen extends StatelessWidget {
                   content: Text("Successfully placed your order"),
                 ),
               );
-
+            }
+            if(state is CashSuccessState){
+              Future.delayed(Duration(seconds: 4),() async{
+                await Navigator.push(context, MaterialPageRoute(builder: (_)=> const ThankYou()));
+              });
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  backgroundColor: AppColors.kSuccess,
+                  content: Text("Successfully placed your order"),
+                ),
+              );
             }
             if (state is PlaceOrderFailState) {
               ScaffoldMessenger.of(context).showSnackBar(

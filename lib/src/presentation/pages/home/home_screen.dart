@@ -30,7 +30,7 @@ class HomeScreen extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         body: BlocProvider(
-          create: (context) => homeViewModel..doAction(LoadHomeDataAction()),
+          create: (context) => homeViewModel..doAction(const LoadHomeDataAction()),
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: SingleChildScrollView(

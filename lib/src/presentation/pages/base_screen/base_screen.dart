@@ -35,7 +35,7 @@ class _HomeScreenState extends State<BaseScreen> {
                   color: Colors.black.withOpacity(0.1),
                   spreadRadius: 5,
                   blurRadius: 7,
-                  offset: Offset(4, 4),
+                  offset: const Offset(4, 4),
                 ),
               ],
               borderRadius: BorderRadius.only(

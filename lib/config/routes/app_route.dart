@@ -13,9 +13,11 @@ import 'package:flower_app/src/presentation/pages/address/saved_address_screen.d
 import 'package:flower_app/src/presentation/pages/best_seller/best_seller_screen.dart';
 import 'package:flower_app/src/presentation/pages/checkout/checkout_screen.dart';
 import 'package:flower_app/src/presentation/pages/home/home_screen.dart';
+import 'package:flower_app/src/presentation/pages/notifications/notifications_screen.dart';
 import 'package:flower_app/src/presentation/pages/occasion/occasion_screen.dart';
 import 'package:flower_app/src/presentation/pages/product/view/product_view.dart';
 import 'package:flower_app/src/presentation/pages/reset_passowrd/reset_password_screen.dart';
+import 'package:flower_app/src/presentation/pages/search/view/search_view.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flower_app/src/presentation/pages/terms_and_conditions/terms_and_conditions_view.dart';
@@ -87,7 +89,6 @@ class AppRoute {
                   create: (context) => getIt<CategoriesViewModel>()
                     ..doAction(GetCategoriesAction()),
                 ),
-                BlocProvider(create: (context) => getIt<ProductCubit>()),
               ],
               child: const BaseScreen(),
             ));
@@ -106,6 +107,12 @@ class AppRoute {
       case PageRouteName.checkout:
         return _handelMaterialPageRoute(
             settings: settings, widget: CheckoutScreen());
+      case PageRouteName.notifications:
+        return _handelMaterialPageRoute(
+            settings: settings, widget:  NotificationsScreen());
+      case PageRouteName.search:
+        return _handelMaterialPageRoute(
+            settings: settings, widget:  SearchView());
       case PageRouteName.myOrders:
         return _handelMaterialPageRoute(
             settings: settings, widget: MyOrdersScreen());
