@@ -4,5 +4,5 @@ import 'package:flower_app/src/data/api/core/response_model/checkout/credit_chec
 
 abstract interface class CheckoutOnlineDataSource{
   Future<CashCheckoutResponseModel> cashCheckout(String token, PlaceOrderRequestModel placeOrderRequestModel);
-  Future<CreditCheckoutResponseModel> creditCheckout(String token, PlaceOrderRequestModel placeOrderRequestModel);
+  Future<CreditCheckoutResponseModel> creditCheckout(String token, PlaceOrderRequestModel placeOrderRequestModel,String localHost);
 }

@@ -848,9 +848,10 @@ class _ApiServices implements ApiServices {
   Future<CreditCheckoutResponseModel> creditCheckout(
     String token,
     PlaceOrderRequestModel placeOrderRequestModel,
+    String localHost,
   ) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'url': localHost};
     final _headers = <String, dynamic>{r'Authorization': token};
     _headers.removeWhere((k, v) => v == null);
     final _data = <String, dynamic>{};
@@ -862,7 +863,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'checkout',
+          'orders/checkout',
           queryParameters: queryParameters,
           data: _data,
         )

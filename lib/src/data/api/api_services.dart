@@ -146,7 +146,8 @@ abstract class ApiServices {
       @Header(ApiKey.authorization) String token,
       @Body() PlaceOrderRequestModel placeOrderRequestModel);
 
-  @POST(ApisEndPoints.checkout)
-  Future<CreditCheckoutResponseModel> creditCheckout(@Header(ApiKey.authorization) String token, @Body() PlaceOrderRequestModel placeOrderRequestModel);
+  @POST("${ApisEndPoints.orders}/${ApisEndPoints.checkout}")
+  Future<CreditCheckoutResponseModel> creditCheckout(@Header(ApiKey.authorization) String token, @Body() PlaceOrderRequestModel placeOrderRequestModel, @Query("url") String localHost);
+
 
 }
