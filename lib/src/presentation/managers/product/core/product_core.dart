@@ -3,7 +3,14 @@ enum ProductEndPoints {
   besetSeller,
 }
 
-enum ProductQuery { category, occasion , search }
+enum ProductQuery {
+  category,
+  occasion,
+  search,
+  sortQuantityDescending,
+  sortQuantityAscending,
+  sortPriceAfterDiscount
+}
 
 abstract class ProductQueryParams {
   Map<String, dynamic>? getQueryParameters(String? productId);
@@ -37,6 +44,27 @@ class SearchProductParams implements ProductQueryParams {
   }
 }
 
+class SortProductPriceDiscount implements ProductQueryParams {
+  @override
+  Map<String, dynamic>? getQueryParameters(String? productId) {
+    return { "sort": "priceAfterDiscount"};
+  }
+}
+
+class SortProductQuantityAscending implements ProductQueryParams {
+  @override
+  Map<String, dynamic>? getQueryParameters(String? productId) {
+    return { "sort": "quantity"};
+  }
+}
+
+class SortProductQuantityDescending implements ProductQueryParams {
+  @override
+  Map<String, dynamic>? getQueryParameters(String? productId) {
+    return {"sort": "-quantity"};
+  }
+}
+
 class ProductQueryFactory {
   static ProductQueryParams getProductQueryParams(ProductQuery? productQuery) {
     switch (productQuery) {
@@ -46,8 +74,14 @@ class ProductQueryFactory {
         return OccasionQueryParams();
       case null:
         return NoQueryParams();
-        case ProductQuery.search:
+      case ProductQuery.search:
         return SearchProductParams();
+      case ProductQuery.sortQuantityDescending:
+        return SortProductQuantityDescending();
+      case ProductQuery.sortQuantityAscending:
+        return SortProductQuantityAscending();
+      case ProductQuery.sortPriceAfterDiscount:
+        return SortProductPriceDiscount();
     }
   }
 }
