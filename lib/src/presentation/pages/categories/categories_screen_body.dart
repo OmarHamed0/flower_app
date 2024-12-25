@@ -39,19 +39,30 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                 Row(
                   children: [
                     Expanded(
-                      child:
-                          GestureDetector(
-                            onTap:()=>Navigator.pushNamed(context,PageRouteName.search),
-                            child: Container(
-                                                    alignment: Alignment.bottomLeft,
-                                                   decoration: BoxDecoration(
-                                                 borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                                 border: Border.all(color: AppColors.kWhite70,)
-                                                 ),
-                                                 child: TextButton.icon(onPressed: (){}, label: Text( "Search"
-                                                   ,style:AppFonts.font14Gray400Weight70,),icon:  const Icon(Icons.search,color:AppColors.kGray ,),),
-                                                  ),
+                      child: GestureDetector(
+                        onTap: () =>
+                            Navigator.pushNamed(context, PageRouteName.search),
+                        child: Container(
+                          alignment: Alignment.bottomLeft,
+                          decoration: BoxDecoration(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              border: Border.all(
+                                color: AppColors.kWhite70,
+                              )),
+                          child: TextButton.icon(
+                            onPressed: () {},
+                            label: Text(
+                              "Search",
+                              style: AppFonts.font14Gray400Weight70,
+                            ),
+                            icon: const Icon(
+                              Icons.search,
+                              color: AppColors.kGray,
+                            ),
                           ),
+                        ),
+                      ),
                     ),
                     horizontalSpace(8),
                     Container(
