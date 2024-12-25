@@ -171,7 +171,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'products/id',
+          'products/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -528,7 +528,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'cart/id',
+          'cart/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -567,7 +567,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'cart/id',
+          'cart/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -638,7 +638,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'addresses/{id',
+          'addresses/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -786,7 +786,7 @@ class _ApiServices implements ApiServices {
     )
         .compose(
           _dio.options,
-          'notifications/id',
+          'notifications/${id}',
           queryParameters: queryParameters,
           data: _data,
         )
@@ -799,6 +799,83 @@ class _ApiServices implements ApiServices {
     late DeleteNotificationResponseModel _value;
     try {
       _value = DeleteNotificationResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<CashCheckoutResponseModel> cashCheckout(
+    String token,
+    PlaceOrderRequestModel placeOrderRequestModel,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(placeOrderRequestModel.toJson());
+    final _options = _setStreamType<CashCheckoutResponseModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'orders',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CashCheckoutResponseModel _value;
+    try {
+      _value = CashCheckoutResponseModel.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<CreditCheckoutResponseModel> creditCheckout(
+    String token,
+    PlaceOrderRequestModel placeOrderRequestModel,
+    String localHost,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'url': localHost};
+    final _headers = <String, dynamic>{r'Authorization': token};
+    _headers.removeWhere((k, v) => v == null);
+    final _data = <String, dynamic>{};
+    _data.addAll(placeOrderRequestModel.toJson());
+    final _options = _setStreamType<CreditCheckoutResponseModel>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+        .compose(
+          _dio.options,
+          'orders/checkout',
+          queryParameters: queryParameters,
+          data: _data,
+        )
+        .copyWith(
+            baseUrl: _combineBaseUrls(
+          _dio.options.baseUrl,
+          baseUrl,
+        )));
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late CreditCheckoutResponseModel _value;
+    try {
+      _value = CreditCheckoutResponseModel.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
