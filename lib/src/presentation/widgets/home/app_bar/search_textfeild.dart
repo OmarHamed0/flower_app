@@ -13,14 +13,14 @@ class SearchTextfeild extends StatelessWidget {
       decoration: InputDecoration(
         hintText: AppLocalizations.of(context)!.search,
         hintStyle: const TextStyle(color: AppColors.kWhite70, fontSize: 16),
-        prefixIcon: Icon(Icons.search, color: AppColors.kWhite70),
+        prefixIcon: const Icon(Icons.search, color: AppColors.kWhite70),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8), // Rounded corners
-          borderSide: BorderSide(width: 1.5, color: AppColors.kWhite70),
+          borderSide: const BorderSide(width: 1.5, color: AppColors.kWhite70),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(24), // Rounded corners
-          borderSide: BorderSide(width: 1.5, color: AppColors.kWhite70),
+          borderSide: const BorderSide(width: 1.5, color: AppColors.kWhite70),
         ),
         contentPadding: const EdgeInsets.symmetric(
             vertical: 12, horizontal: 16), // Adjust padding

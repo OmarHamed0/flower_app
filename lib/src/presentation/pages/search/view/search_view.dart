@@ -58,7 +58,9 @@ class SearchView extends StatelessWidget {
                     ),
                     child: IconButton(
                       icon: const Icon(Icons.filter_list),
-                      onPressed: () {},
+                      onPressed: () {
+
+                      },
                     ),
                   ),
                 ],
