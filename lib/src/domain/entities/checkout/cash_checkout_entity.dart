@@ -1,42 +1,42 @@
 class CashCheckoutEntity {
   final String? message;
-  final Order? order;
+  final OrderEntity? order;
   CashCheckoutEntity({this.message, this.order});
 }
 
-class Order {
+class OrderEntity{
   final String? user;
-  final List<OrderItems>? orderItems;
+  final List<OrderItemsEntity>? orderItems;
   final num? totalPrice;
   final String? paymentType;
   final bool? isPaid;
   final bool? isDelivered;
-  final String? id_;
+  final String? id;
   final String? createdAt;
   final String? updatedAt;
 
-  Order(
+  OrderEntity(
       {this.user,
       this.orderItems,
       this.totalPrice,
       this.paymentType,
       this.isPaid,
       this.isDelivered,
-      this.id_,
+      this.id,
       this.createdAt,
       this.updatedAt});
 }
 
-class OrderItems {
-  final Product? product;
+class OrderItemsEntity{
+  final ProductEntity? product;
   final num? price;
   final num? quantity;
-  final String? id_;
+  final String? id;
 
-  OrderItems({this.product, this.price, this.quantity, this.id_});
+  OrderItemsEntity({this.product, this.price, this.quantity, this.id});
 }
 
-class Product {
+class ProductEntity{
   final String? id_;
   final String? title;
   final String? slug;
@@ -54,7 +54,7 @@ class Product {
   final num? sold;
   final String? id;
 
-  Product(
+  ProductEntity(
       {this.id_,
       this.title,
       this.slug,

@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-
+import 'package:flower_app/src/domain/entities/checkout/cash_checkout_entity.dart';
 part 'cash_checkout_response_model.g.dart';
 
 @JsonSerializable()
@@ -9,7 +9,7 @@ class CashCheckoutResponseModel {
   @JsonKey(name: "order")
   final Order? order;
 
-  CashCheckoutResponseModel ({
+  CashCheckoutResponseModel({
     this.message,
     this.order,
   });
@@ -21,8 +21,14 @@ class CashCheckoutResponseModel {
   Map<String, dynamic> toJson() {
     return _$CashCheckoutResponseModelToJson(this);
   }
-}
 
+  CashCheckoutEntity toDomainDto() {
+    return CashCheckoutEntity(
+      message: this.message,
+      order: this.order!.toDomainDto(),
+    );
+  }
+}
 @JsonSerializable()
 class Order {
   @JsonKey(name: "user")
@@ -44,7 +50,7 @@ class Order {
   @JsonKey(name: "updatedAt")
   final String? updatedAt;
 
-  Order ({
+  Order({
     this.user,
     this.orderItems,
     this.totalPrice,
@@ -63,8 +69,21 @@ class Order {
   Map<String, dynamic> toJson() {
     return _$OrderToJson(this);
   }
-}
 
+  OrderEntity toDomainDto() {
+    return OrderEntity(
+      user: this.user,
+      orderItems: this.orderItems?.map((item) => item.toDomainDto()).toList(),
+      totalPrice: this.totalPrice,
+      paymentType: this.paymentType,
+      isPaid: this.isPaid,
+      isDelivered: this.isDelivered,
+      id: this.Id,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+    );
+  }
+}
 @JsonSerializable()
 class OrderItems {
   @JsonKey(name: "product")
@@ -76,7 +95,7 @@ class OrderItems {
   @JsonKey(name: "_id")
   final String? Id;
 
-  OrderItems ({
+  OrderItems({
     this.product,
     this.price,
     this.quantity,
@@ -90,8 +109,17 @@ class OrderItems {
   Map<String, dynamic> toJson() {
     return _$OrderItemsToJson(this);
   }
-}
 
+  // Method to convert to OrderItems entity
+  OrderItemsEntity toDomainDto() {
+    return OrderItemsEntity(
+      product: this.product?.toDomainDto(),
+      price: this.price,
+      quantity: this.quantity,
+      id: this.Id,
+    );
+  }
+}
 @JsonSerializable()
 class Product {
   @JsonKey(name: "_id")
@@ -127,7 +155,7 @@ class Product {
   @JsonKey(name: "id")
   final String? id;
 
-  Product ({
+  Product({
     this.Id,
     this.title,
     this.slug,
@@ -153,6 +181,26 @@ class Product {
   Map<String, dynamic> toJson() {
     return _$ProductToJson(this);
   }
+
+  // Method to convert to Product entity
+  ProductEntity toDomainDto() {
+    return ProductEntity(
+      id_: this.Id,
+      title: this.title,
+      slug: this.slug,
+      description: this.description,
+      imgCover: this.imgCover,
+      images: this.images,
+      price: this.price,
+      priceAfterDiscount: this.priceAfterDiscount,
+      quantity: this.quantity,
+      category: this.category,
+      occasion: this.occasion,
+      createdAt: this.createdAt,
+      updatedAt: this.updatedAt,
+      discount: this.discount,
+      sold: this.sold,
+      id: this.id,
+    );
+  }
 }
-
-

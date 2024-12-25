@@ -44,6 +44,10 @@ import '../src/data/data_sources/online_data_source/catigories_online_data_sourc
     as _i98;
 import '../src/data/data_sources/online_data_source/catigories_online_data_source/catigories_data_source.dart'
     as _i838;
+import '../src/data/data_sources/online_data_source/checkout/checkout_online_data_source.dart'
+    as _i175;
+import '../src/data/data_sources/online_data_source/checkout/checkout_online_data_source_impl.dart'
+    as _i1072;
 import '../src/data/data_sources/online_data_source/home_online_datasource.dart'
     as _i902;
 import '../src/data/data_sources/online_data_source/home_online_datasource_impl.dart'
@@ -70,6 +74,7 @@ import '../src/data/repositories/auth_repo_impl/auth_repo_impl.dart' as _i531;
 import '../src/data/repositories/cart_repo_impl/cart_repo_impl.dart' as _i474;
 import '../src/data/repositories/categories_repo/categories_repo_impl.dart'
     as _i545;
+import '../src/data/repositories/checkout/checkout_repo_impl.dart' as _i610;
 import '../src/data/repositories/home_repository_impl.dart' as _i283;
 import '../src/data/repositories/notifications_repo_impl/notificatios_repo_impl.dart'
     as _i579;
@@ -85,6 +90,7 @@ import '../src/domain/repositories/auth_repo.dart' as _i862;
 import '../src/domain/repositories/cart_repo/cart_repo.dart' as _i1032;
 import '../src/domain/repositories/categories_repo/categories_repo.dart'
     as _i139;
+import '../src/domain/repositories/checkout/checkout_repo.dart' as _i171;
 import '../src/domain/repositories/home_repository.dart' as _i781;
 import '../src/domain/repositories/notifications/notifications_repo.dart'
     as _i310;
@@ -195,6 +201,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i231.PlaceOrderOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i133.NotificationsOnlineDataSource>(
         () => _i236.NotificationsOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i175.CheckoutOnlineDataSource>(
+        () => _i1072.CheckoutOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i171.CheckoutRepo>(() => _i610.CheckoutRepoImpl(
+          gh<_i175.CheckoutOnlineDataSource>(),
+          gh<_i136.AuthOfflineDataSource>(),
+        ));
     gh.factory<_i91.AddressRepository>(() => _i888.AddressRepoImpl(
           gh<_i334.AddressOfflineDatasource>(),
           gh<_i509.AddressOnlineDatasource>(),
