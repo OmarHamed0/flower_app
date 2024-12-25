@@ -62,8 +62,8 @@ class _CategoriesScreenBodyState extends State<CategoriesScreenBody> {
                               color: AppColors.kGray,
                             ),
                           ),
-                          contentPadding:
-                              const EdgeInsets.symmetric(horizontal: 10),
+                         /* contentPadding:
+                              const EdgeInsets.symmetric(horizontal: 10),*/
                         ),
                       ),
                     ),
