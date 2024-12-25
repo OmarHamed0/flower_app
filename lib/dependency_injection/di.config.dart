@@ -44,6 +44,10 @@ import '../src/data/data_sources/online_data_source/catigories_online_data_sourc
     as _i98;
 import '../src/data/data_sources/online_data_source/catigories_online_data_source/catigories_data_source.dart'
     as _i838;
+import '../src/data/data_sources/online_data_source/checkout/checkout_online_data_source.dart'
+    as _i175;
+import '../src/data/data_sources/online_data_source/checkout/checkout_online_data_source_impl.dart'
+    as _i1072;
 import '../src/data/data_sources/online_data_source/home_online_datasource.dart'
     as _i902;
 import '../src/data/data_sources/online_data_source/home_online_datasource_impl.dart'
@@ -70,6 +74,7 @@ import '../src/data/repositories/auth_repo_impl/auth_repo_impl.dart' as _i531;
 import '../src/data/repositories/cart_repo_impl/cart_repo_impl.dart' as _i474;
 import '../src/data/repositories/categories_repo/categories_repo_impl.dart'
     as _i545;
+import '../src/data/repositories/checkout/checkout_repo_impl.dart' as _i610;
 import '../src/data/repositories/home_repository_impl.dart' as _i283;
 import '../src/data/repositories/notifications_repo_impl/notificatios_repo_impl.dart'
     as _i579;
@@ -85,6 +90,7 @@ import '../src/domain/repositories/auth_repo.dart' as _i862;
 import '../src/domain/repositories/cart_repo/cart_repo.dart' as _i1032;
 import '../src/domain/repositories/categories_repo/categories_repo.dart'
     as _i139;
+import '../src/domain/repositories/checkout/checkout_repo.dart' as _i171;
 import '../src/domain/repositories/home_repository.dart' as _i781;
 import '../src/domain/repositories/notifications/notifications_repo.dart'
     as _i310;
@@ -103,6 +109,7 @@ import '../src/domain/use_cases/cart/remove_specific_cart_item_use_case.dart'
 import '../src/domain/use_cases/cart/update_quantity_cart_use_case.dart'
     as _i413;
 import '../src/domain/use_cases/category_use_case.dart' as _i551;
+import '../src/domain/use_cases/checkout/checkout_use_cases.dart' as _i270;
 import '../src/domain/use_cases/home_usecase.dart' as _i729;
 import '../src/domain/use_cases/notifications/notifications_use_cases.dart'
     as _i1031;
@@ -195,6 +202,12 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i231.PlaceOrderOnlineDataSourceImpl(gh<_i687.ApiServices>()));
     gh.factory<_i133.NotificationsOnlineDataSource>(
         () => _i236.NotificationsOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i175.CheckoutOnlineDataSource>(
+        () => _i1072.CheckoutOnlineDataSourceImpl(gh<_i687.ApiServices>()));
+    gh.factory<_i171.CheckoutRepo>(() => _i610.CheckoutRepoImpl(
+          gh<_i175.CheckoutOnlineDataSource>(),
+          gh<_i136.AuthOfflineDataSource>(),
+        ));
     gh.factory<_i91.AddressRepository>(() => _i888.AddressRepoImpl(
           gh<_i334.AddressOfflineDatasource>(),
           gh<_i509.AddressOnlineDatasource>(),
@@ -229,6 +242,8 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i793.PlaceOrderOnlineDataSource>(),
           gh<_i136.AuthOfflineDataSource>(),
         ));
+    gh.factory<_i270.CheckoutUseCase>(
+        () => _i270.CheckoutUseCase(gh<_i171.CheckoutRepo>()));
     gh.factory<_i699.ProductCubit>(
         () => _i699.ProductCubit(gh<_i902.GetProductUseCase>()));
     gh.factory<_i492.OccasionRepo>(
@@ -256,6 +271,10 @@ extension GetItInjectableX on _i174.GetIt {
           gh<_i91.AddressRepository>(),
           gh<_i1053.PlaceOrderRepo>(),
         ));
+    gh.factory<_i123.CheckoutViewModel>(() => _i123.CheckoutViewModel(
+          gh<_i794.PlaceOrderUserCases>(),
+          gh<_i270.CheckoutUseCase>(),
+        ));
     gh.factory<_i196.ProductDetailsViewModel>(
         () => _i196.ProductDetailsViewModel(gh<_i1042.ProductByIdUseCase>()));
     gh.factory<_i1044.EditProfileViewModel>(
@@ -278,8 +297,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i1031.NotificationsUseCases(gh<_i310.NotificationsRepo>()));
     gh.factory<_i545.ResetPasswordViewModel>(
         () => _i545.ResetPasswordViewModel(gh<_i448.ResetPasswordUseCase>()));
-    gh.factory<_i123.CheckoutViewModel>(
-        () => _i123.CheckoutViewModel(gh<_i794.PlaceOrderUserCases>()));
     gh.factory<_i1022.OccasionViewModel>(
         () => _i1022.OccasionViewModel(gh<_i845.OccasionUseCase>()));
     gh.factory<_i505.NotificationsViewModel>(
