@@ -21,6 +21,8 @@ import 'package:flower_app/src/presentation/pages/search/view/search_view.dart';
 import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flower_app/src/presentation/pages/terms_and_conditions/terms_and_conditions_view.dart';
+import 'package:flower_app/src/presentation/pages/tracking_order/thanks_page.dart';
+import 'package:flower_app/src/presentation/pages/tracking_order/tracking_order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -116,6 +118,11 @@ class AppRoute {
       case PageRouteName.myOrders:
         return _handelMaterialPageRoute(
             settings: settings, widget: MyOrdersScreen());
+      case PageRouteName.startToTrack:
+        return _handelMaterialPageRoute(widget: const ThanksPage(), settings: settings);
+      case PageRouteName.trackingOrder:
+        return _handelMaterialPageRoute(
+            settings: settings, widget: const TrackingOrder());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

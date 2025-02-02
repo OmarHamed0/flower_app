@@ -302,6 +302,10 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i448.ResetPasswordUseCase(gh<_i862.AuthRepository>()));
     gh.factory<_i845.OccasionUseCase>(
         () => _i845.OccasionUseCase(gh<_i492.OccasionRepo>()));
+    gh.factory<_i602.MyOrdersViewModel>(() => _i602.MyOrdersViewModel(
+          gh<_i1010.OrdersUseCase>(),
+          gh<_i1042.ProductByIdUseCase>(),
+        ));
     gh.factory<_i729.HomeUseCase>(
         () => _i729.HomeUseCase(gh<_i781.HomeRepository>()));
     gh.factory<_i363.HomeViewModel>(
@@ -312,8 +316,6 @@ extension GetItInjectableX on _i174.GetIt {
         () => _i558.SignInViewModel(gh<_i207.SignInUseCase>()));
     gh.factory<_i1031.NotificationsUseCases>(
         () => _i1031.NotificationsUseCases(gh<_i310.NotificationsRepo>()));
-    gh.factory<_i602.MyOrdersViewModel>(
-        () => _i602.MyOrdersViewModel(gh<_i1010.OrdersUseCase>()));
     gh.factory<_i545.ResetPasswordViewModel>(
         () => _i545.ResetPasswordViewModel(gh<_i448.ResetPasswordUseCase>()));
     gh.factory<_i1022.OccasionViewModel>(

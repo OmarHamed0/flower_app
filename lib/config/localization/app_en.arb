@@ -114,5 +114,7 @@
   "placeOrder": "Place Order",
   "itsGift": "It's a gift",
   "failedToLoadAddress": "Failed to load address",
-  "notifications" : "Notifications"
+  "notifications" : "Notifications",
+  "trackOrder" : "Track Order",
+  "orderPlacedSuccessfully" : "Order placed successfully"
 }

@@ -17,4 +17,6 @@ class PageRouteName {
   static const String notifications = "notifications";
   static const String search = "search";
   static const String myOrders = "myOrders";
+  static const String startToTrack = "startToTrack";
+  static const String trackingOrder = "trackingOrder";
 }

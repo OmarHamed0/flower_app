@@ -110,7 +110,7 @@ class _MyOrdersScreenState extends State<MyOrdersScreen>
                 if(state is LoadedMyOrdersState){
                   return  MyOrdersScreenBody();
                 }
-                return  MyOrdersScreenBody();
+                return  const SizedBox();
               },
             ),
           );

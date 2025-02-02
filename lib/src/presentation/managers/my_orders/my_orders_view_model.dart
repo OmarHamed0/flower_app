@@ -17,21 +17,23 @@ class MyOrdersViewModel extends Cubit<MyOrdersStates>{
   List<OrdersItems> activeOrders = [];
   List<OrdersItems> completedOrders = [];
   List<List<OrdersItems>> orders = [];
+  List<ProductEntity> list = [];
   int currentTabIndex = 0;
-  void _getActiveOrders(){
-    emit(LoadedMyOrdersState(cartItems: activeOrders));
-  }
 
-  void _getCompletedOrders() {
-    emit(LoadedMyOrdersState(cartItems: completedOrders));
-  }
+  // void _getActiveOrders(){
+  //   emit(LoadedMyOrdersState(cartItems: activeOrders));
+  // }
+  //
+  // void _getCompletedOrders() {
+  //   emit(LoadedMyOrdersState(cartItems: completedOrders));
+  // }
 
   _getProductDetails(String productId) async{
     emit(LoadingMyOrdersState());
     var response = await _productByIdUseCase.getProductById(productId);
     switch (response) {
       case Success<ProductEntity>():
-         emit(SuccessGetProductDetailsState(productEntity: response.data));
+         list.add(response.data!);
          break;
       case Failures<ProductEntity>():
         emit(FailureGetProductDetailsState(exception: response.exception));
@@ -46,16 +48,16 @@ class MyOrdersViewModel extends Cubit<MyOrdersStates>{
       case Success<OrdersEntity>():
         if(response.data?.isDelivered == false && response.data?.isPaid == false){
           activeOrders = response.data!.orders!;
-          _getProductDetails(response.data!.id!);
+          await _gelProrudctsDetails(response);
         }else{
           completedOrders = response.data!.orders!;
         }
-        if(currentTabIndex == 0) {
-          _getActiveOrders();
-        }
-        else{
-          _getCompletedOrders();
-        }
+        // if(currentTabIndex == 0) {
+        //   _getActiveOrders();
+        // }
+        // else{
+        //   _getCompletedOrders();
+        // }
         orders.add(activeOrders);
         orders.add(completedOrders);
         break;
@@ -64,13 +66,20 @@ class MyOrdersViewModel extends Cubit<MyOrdersStates>{
     }
   }
 
+  Future<void> _gelProrudctsDetails(Success<OrdersEntity> response)  async{
+     for(var order in response.data!.orders!){
+       _getProductDetails(order.product!);
+    }
+     emit(LoadedMyOrdersState());
+  }
+
   void doAction(MyOrdersScreenActions action){
     switch (action) {
       case GetActiveOrdersAction():
-        _getActiveOrders();
+        // _getActiveOrders();
         break;
       case GetCompletedOrderAction():
-        _getCompletedOrders();
+        // _getCompletedOrders();
        break;
       case GetUserCartItemsAction():
         _getLoggedUserCart();

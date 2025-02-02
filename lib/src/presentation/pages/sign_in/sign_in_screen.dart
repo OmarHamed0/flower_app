@@ -15,15 +15,13 @@ class SignInScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (_)=> signInViewModel,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: AppColors.kWhiteBase,
-          appBar: AppBar(
-            leading: const Icon(Icons.arrow_back_ios_new),
-            title: Text(AppLocalizations.of(context)!.login ,style: AppTextStyles.font20WeightMedium,)
-          ),
-          body: const SignInScreenBody(),
+      child: Scaffold(
+        backgroundColor: AppColors.kWhiteBase,
+        appBar: AppBar(
+          leading: const Icon(Icons.arrow_back_ios_new),
+          title: Text(AppLocalizations.of(context)!.login ,style: AppTextStyles.font20WeightMedium,)
         ),
+        body: const SignInScreenBody(),
       ),
     );
   }

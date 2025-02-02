@@ -113,5 +113,7 @@
   "placeOrder": "اطلب",
   "itsGift": "هدية",
   "failedToLoadAddress": "فشل في تحميل العنوان",
-  "notifications": "الإشعارات"
+  "notifications": "الإشعارات",
+  "trackOrder": "تتبع الطلب",
+  "orderPlacedSuccessfully": "تم تقديم الطلب بنجاح"
 }

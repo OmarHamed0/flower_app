@@ -16,7 +16,6 @@ import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-
 import 'core/constants/apis_baseurl.dart';
 import 'core/constants/apis_end_points.dart';
 import 'core/requestes_models/cart/add_cart_request.dart';
