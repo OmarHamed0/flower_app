@@ -159,6 +159,8 @@ import '../src/presentation/managers/reset_password/reset_password_view_model.da
     as _i545;
 import '../src/presentation/managers/sign_in/sign_in_view_model.dart' as _i558;
 import '../src/presentation/managers/splash/splash_view_model.dart' as _i992;
+import '../src/presentation/managers/tracking_order/tracking_order_view_model.dart'
+    as _i786;
 
 extension GetItInjectableX on _i174.GetIt {
 // initializes the registration of main-scope dependencies inside of GetIt
@@ -175,6 +177,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i387.HiveModule>(() => _i387.HiveModule());
     gh.factory<_i450.BaseScreenViewmodel>(() => _i450.BaseScreenViewmodel());
     gh.factory<_i992.SplashViewModel>(() => _i992.SplashViewModel());
+    gh.factory<_i786.TrackingOrderViewModel>(
+        () => _i786.TrackingOrderViewModel());
     gh.lazySingleton<_i361.Dio>(() => dioProvider.dioProvider());
     gh.lazySingleton<_i528.PrettyDioLogger>(() => dioProvider.providePretty());
     gh.factory<_i334.AddressOfflineDatasource>(

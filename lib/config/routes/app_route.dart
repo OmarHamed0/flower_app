@@ -119,7 +119,7 @@ class AppRoute {
         return _handelMaterialPageRoute(
             settings: settings, widget: MyOrdersScreen());
       case PageRouteName.startToTrack:
-        return _handelMaterialPageRoute(widget: const ThanksPage(), settings: settings);
+        return _handelMaterialPageRoute(widget:  ThanksPage(), settings: settings);
       case PageRouteName.trackingOrder:
         return _handelMaterialPageRoute(
             settings: settings, widget: const TrackingOrder());
