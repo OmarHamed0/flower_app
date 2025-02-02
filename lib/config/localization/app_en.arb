@@ -116,5 +116,6 @@
   "failedToLoadAddress": "Failed to load address",
   "notifications" : "Notifications",
   "trackOrder" : "Track Order",
-  "orderPlacedSuccessfully" : "Order placed successfully"
+  "orderPlacedSuccessfully" : "Your Order placed successfully!",
+  "onMyWay": "On my way......"
 }

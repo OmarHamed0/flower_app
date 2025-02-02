@@ -22,7 +22,6 @@ import 'package:flower_app/src/presentation/pages/sign_in/sign_in_screen.dart';
 import 'package:flower_app/src/presentation/pages/splash/splash_screen.dart';
 import 'package:flower_app/src/presentation/pages/terms_and_conditions/terms_and_conditions_view.dart';
 import 'package:flower_app/src/presentation/pages/tracking_order/thanks_page.dart';
-import 'package:flower_app/src/presentation/pages/tracking_order/tracking_order.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -30,6 +29,7 @@ import '../../src/presentation/managers/product/product_cubit.dart';
 import '../../src/presentation/pages/base_screen/base_screen.dart';
 import '../../src/presentation/pages/my_orders/my_orders_screen.dart';
 import '../../src/presentation/pages/product_details/product_details.dart';
+import '../../src/presentation/pages/tracking_order/tracking_order_page.dart';
 
 class AppRoute {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
@@ -122,7 +122,7 @@ class AppRoute {
         return _handelMaterialPageRoute(widget:  ThanksPage(), settings: settings);
       case PageRouteName.trackingOrder:
         return _handelMaterialPageRoute(
-            settings: settings, widget: const TrackingOrder());
+            settings: settings, widget:  TrackingOrderPage());
       default:
         return _handelMaterialPageRoute(
             settings: settings, widget: const Scaffold());

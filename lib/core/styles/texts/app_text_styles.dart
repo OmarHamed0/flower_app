@@ -126,4 +126,11 @@ class AppTextStyles{
     color: AppColors.kBaseColor,
   );
 
+  static TextStyle font24W500 = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: AppFontWeights.medium,
+    color: AppColors.kBlackBase,
+  );
+
+
 }

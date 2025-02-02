@@ -17,6 +17,9 @@ class TrackingOrderViewModel extends Cubit<TrackingOrderStates>{
       case StartTrackingOrderAction():
         emit(StartTrackingOrderState());
         break;
+      case GoToTrackingOrderPageAction():
+        emit(GoToTrackingOrderPageState());
+        break;
     }
   }
 }

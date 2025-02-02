@@ -47,7 +47,7 @@ class FlowerApp extends StatelessWidget {
               locale: Locale(BlocProvider.of<LocalizationCubit>(context)
                   .cachedLanguageCode),
               navigatorKey: navKey,
-              initialRoute: PageRouteName.startToTrack,
+              initialRoute: PageRouteName.trackingOrder,
               onGenerateRoute: AppRoute.onGenerateRoute,
               themeMode: ThemeMode.light,
               theme: AppTheme.defaultTheme,

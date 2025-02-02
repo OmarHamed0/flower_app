@@ -115,5 +115,6 @@
   "failedToLoadAddress": "فشل في تحميل العنوان",
   "notifications": "الإشعارات",
   "trackOrder": "تتبع الطلب",
-  "orderPlacedSuccessfully": "تم تقديم الطلب بنجاح"
+  "orderPlacedSuccessfully": "تم تقديم الطلب بنجاح",
+  "onMyWay": "في طريقي......"
 }
