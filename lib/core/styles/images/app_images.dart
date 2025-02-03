@@ -15,7 +15,7 @@ class AppImages {
   static const String errorImage = "assets/animations/error.json";
 
   static const String deliveryMan ="assets/Images/Delivery Boy.svg";
-  static const String carSvg = "assets/Images/Car.svg";
+  static const String carSvg = "assets/Images/car.svg";
   static const String phoneSvg = "assets/Images/phone.svg";
   static const String whatsAppSvg = "assets/Images/whatsapp.svg";
 

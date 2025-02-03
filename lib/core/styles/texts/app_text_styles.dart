@@ -120,6 +120,11 @@ class AppTextStyles{
     fontWeight: FontWeight.w500,
     color: AppColors.kGray,
   );
+  static TextStyle font18500Weight = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.kWhiteBase,
+  );
 
   static TextStyle font18BlackMedium = TextStyle(
     fontSize: 18.sp,

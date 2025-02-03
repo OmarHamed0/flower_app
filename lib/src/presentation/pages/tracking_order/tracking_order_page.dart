@@ -1,5 +1,6 @@
 import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/core/animations/app_animation.dart';
+import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/texts/app_text_styles.dart';
 import 'package:flower_app/src/presentation/managers/tracking_order/tracking_order_actions.dart';
 import 'package:flower_app/src/presentation/managers/tracking_order/tracking_order_states.dart';
@@ -22,6 +23,7 @@ class TrackingOrderPage extends StatelessWidget {
     return BlocProvider(
       create: (_) => viewModel,
       child: Scaffold(
+        backgroundColor: AppColors.kWhiteBase,
         appBar: AppBar(
           title: Text(
             context.localization.trackOrder,
