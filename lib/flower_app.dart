@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 import 'config/localization/l10n.dart';
 import 'config/routes/app_route.dart';
 import 'config/routes/page_route_name.dart';
@@ -48,7 +47,7 @@ class FlowerApp extends StatelessWidget {
               locale: Locale(BlocProvider.of<LocalizationCubit>(context)
                   .cachedLanguageCode),
               navigatorKey: navKey,
-              initialRoute: PageRouteName.splash,
+              initialRoute: PageRouteName.trackingOrder,
               onGenerateRoute: AppRoute.onGenerateRoute,
               themeMode: ThemeMode.light,
               theme: AppTheme.defaultTheme,

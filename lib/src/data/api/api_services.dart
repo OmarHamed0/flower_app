@@ -10,12 +10,12 @@ import 'package:flower_app/src/data/api/core/response_model/checkout/cash_checko
 import 'package:flower_app/src/data/api/core/response_model/checkout/credit_checkout_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/checkout_place_order/place_order_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/notifications/delete_notification_response_model.dart';
+import 'package:flower_app/src/data/api/core/response_model/orders/user_orders_response_model.dart';
 import 'package:flower_app/src/data/api/core/response_model/product_response_models/one_product_response_model.dart';
 import 'package:flower_app/src/data/models/auth/signup/request/sign_up_user_body.dart';
 import 'package:flower_app/src/data/models/auth/signup/response/sign_up_response.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
-
 import 'core/constants/apis_baseurl.dart';
 import 'core/constants/apis_end_points.dart';
 import 'core/requestes_models/cart/add_cart_request.dart';
@@ -123,6 +123,7 @@ abstract class ApiServices {
       @Header(ApiKey.authorization) String token,
       @Body() AddAddressRequest address);
 
+
   @POST(ApisEndPoints.orders)
   Future<PlaceOrderResponseModel> placeOrder(
       @Header(ApiKey.authorization) String token,
@@ -144,5 +145,7 @@ abstract class ApiServices {
   @POST("${ApisEndPoints.orders}/${ApisEndPoints.checkout}")
   Future<CreditCheckoutResponseModel> creditCheckout(@Header(ApiKey.authorization) String token, @Body() PlaceOrderRequestModel placeOrderRequestModel, @Query("url") String localHost);
 
-
+  @GET(ApisEndPoints.orders)
+  Future<UserOrderResponseModel> getUserOrders(
+      @Header("Authorization") String token);
 }

@@ -114,5 +114,10 @@
   "placeOrder": "Place Order",
   "itsGift": "It's a gift",
   "failedToLoadAddress": "Failed to load address",
-  "notifications" : "Notifications"
+  "notifications" : "Notifications",
+  "trackOrder" : "Track Order",
+  "orderPlacedSuccessfully" : "Your Order placed successfully!",
+  "onMyWay": "On my way......",
+  "estimatedArrival": "Estimated Arrival ",
+  "isYourDelivery": "Is your delivery hero for today"
 }

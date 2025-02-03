@@ -28,7 +28,7 @@ class OrderEntity{
 }
 
 class OrderItemsEntity{
-  final ProductEntity? product;
+  final CheckoutProductEntity? product;
   final num? price;
   final num? quantity;
   final String? id;
@@ -36,7 +36,7 @@ class OrderItemsEntity{
   OrderItemsEntity({this.product, this.price, this.quantity, this.id});
 }
 
-class ProductEntity{
+class CheckoutProductEntity{
   final String? id_;
   final String? title;
   final String? slug;
@@ -54,7 +54,7 @@ class ProductEntity{
   final num? sold;
   final String? id;
 
-  ProductEntity(
+  CheckoutProductEntity(
       {this.id_,
       this.title,
       this.slug,

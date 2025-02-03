@@ -31,7 +31,7 @@ String? validateEmail(String? email) {
 }
 
 String? validatePhoneNumber(String? phoneNumber) {
-  if (phoneNumber!.isEmpty || !AppRegExp.isPhoneNumberValid(phoneNumber)) {
+  if (phoneNumber!.isEmpty) {
     return 'Phone number is required!';
   }
   return null;

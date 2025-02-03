@@ -127,7 +127,7 @@ class AutomaticTaxEntity {
 
 }
 
-@JsonSerializable()
+
 class CustomerDetailsEntity {
 
   final dynamic address;

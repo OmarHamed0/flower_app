@@ -51,6 +51,7 @@ dependencies:
   firebase_crashlytics:
   flutter_local_notifications: ^18.0.1
   url_launcher: ^6.3.1
+  timeline_tile: ^2.0.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -82,7 +83,7 @@ flutter:
     - assets/animations/cart_empty.json
     - assets/animations/invalid_token.json
     - assets/animations/error.json
-    - assets/images/
+    - assets/Images/
     - assets/icons/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
