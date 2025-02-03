@@ -118,5 +118,6 @@
   "trackOrder" : "Track Order",
   "orderPlacedSuccessfully" : "Your Order placed successfully!",
   "onMyWay": "On my way......",
-  "estimatedArrival": "Estimated Arrival "
+  "estimatedArrival": "Estimated Arrival ",
+  "isYourDelivery": "Is your delivery hero for today"
 }

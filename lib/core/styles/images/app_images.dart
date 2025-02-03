@@ -13,4 +13,10 @@ class AppImages {
   static String cartEmpty = "assets/animations/cart_empty.json";
   static const String deleteIcon = "assets/icons/icon_delete4.png";
   static const String errorImage = "assets/animations/error.json";
+
+  static const String deliveryMan ="assets/Images/Delivery Boy.svg";
+  static const String carSvg = "assets/Images/car.svg";
+  static const String phoneSvg = "assets/Images/phone.svg";
+  static const String whatsAppSvg = "assets/Images/whatsapp.svg";
+
 }

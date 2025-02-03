@@ -117,5 +117,6 @@
   "trackOrder": "تتبع الطلب",
   "orderPlacedSuccessfully": "تم تقديم الطلب بنجاح",
   "onMyWay": "في طريقي......",
-  "estimatedArrival": "الوقت المقدر للوصول"
+  "estimatedArrival": "الوقت المقدر للوصول",
+  "isYourDelivery": "هل هو بطل التوصيل الخاص بك لليوم"
 }

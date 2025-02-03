@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/common.dart';
 import '../../../../core/styles/texts/app_text_styles.dart';
+import 'driver_data_row.dart';
 
 class TrackingOrderView extends StatelessWidget {
   const TrackingOrderView({super.key});
@@ -14,12 +15,14 @@ class TrackingOrderView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _viewModel = context.read<TrackingOrderViewModel>();
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+    return  Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          TrackingOrderViewTopView(),
+          const TrackingOrderViewTopView(),
+          verticalSpace(40),
+          const DriverDataRow(),
         ],
       ),
     );
