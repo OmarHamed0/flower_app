@@ -117,5 +117,6 @@
   "notifications" : "Notifications",
   "trackOrder" : "Track Order",
   "orderPlacedSuccessfully" : "Your Order placed successfully!",
-  "onMyWay": "On my way......"
+  "onMyWay": "On my way......",
+  "estimatedArrival": "Estimated Arrival "
 }

@@ -116,5 +116,6 @@
   "notifications": "الإشعارات",
   "trackOrder": "تتبع الطلب",
   "orderPlacedSuccessfully": "تم تقديم الطلب بنجاح",
-  "onMyWay": "في طريقي......"
+  "onMyWay": "في طريقي......",
+  "estimatedArrival": "الوقت المقدر للوصول"
 }
