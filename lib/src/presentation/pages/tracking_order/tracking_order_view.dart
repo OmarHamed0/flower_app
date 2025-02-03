@@ -20,29 +20,34 @@ class TrackingOrderView extends StatelessWidget {
     final _viewModel = context.read<TrackingOrderViewModel>();
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const TrackingOrderViewTopView(),
-          verticalSpace(40),
-          const DriverDataRow(),
-          verticalSpace(40),
-          Align(
-            alignment: Alignment.center,
-            child: SvgPicture.asset(AppImages.carSvg),
-          ),
-          verticalSpace(40),
-          const TimeLineView(),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
+      child: Expanded(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const TrackingOrderViewTopView(),
+            verticalSpace(40),
+            const DriverDataRow(),
+            verticalSpace(40),
+            Align(
+              alignment: Alignment.center,
+              child: SvgPicture.asset(AppImages.carSvg),
+            ),
+            verticalSpace(40),
+            const TimeLineView(),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                onPressed: () {},
+                child: Text("show map", style: AppTextStyles.font18500Weight),
               ),
             ),
-            onPressed: () {},
-            child: Text("show map", style: AppTextStyles.font18500Weight),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
