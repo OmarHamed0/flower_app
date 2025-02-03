@@ -1,3 +1,4 @@
+import 'package:flower_app/config/extensions/extensions.dart';
 import 'package:flower_app/core/functions/spacing.dart';
 import 'package:flower_app/core/styles/colors/app_colors.dart';
 import 'package:flower_app/core/styles/images/app_images.dart';
@@ -26,7 +27,7 @@ class DriverDataRow extends StatelessWidget {
                 style: AppTextStyles.font14BlackBase500Weight,
               ),
               verticalSpace(4),
-              Text("Is your delivery hero for today",
+              Text(context.localization.isYourDelivery,
                   style: AppTextStyles.font14Gray500Weight70),
             ],
           ),
